@@ -1,0 +1,35 @@
+03:30:25 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_paying_a_claim_writes_exactly_one_payout_for_the_right_amount
+03:30:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"f324c360-9b54-4fa0-ba89-cd8802989c39","policy_number":"POL-1001","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"10000.00","is_active":true},{"id":"23dd5f82-375d-4f7f-91e4-ba756cd201e6","policy_number":"POL-1002","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"2500.00","is_active":true}]
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'f324c360-9b54-4fa0-ba89-cd8802989c39', 'amount': '2345.67', 'description': 'QA b9baf8ce Lay run father improve gas beat.', 'incident_date': '2026-08-16'}
+  response: {"id":"bab2e56e-88b0-48da-8915-8c83e154ddb0","reference":"CLM-40E688E5","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"2345.67","description":"QA b9baf8ce Lay run father improve gas beat.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:25.587144Z","updated_at":"2026-08-23T03:30:25.587144Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/bab2e56e-88b0-48da-8915-8c83e154ddb0/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/bab2e56e-88b0-48da-8915-8c83e154ddb0/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"bab2e56e-88b0-48da-8915-8c83e154ddb0","reference":"CLM-40E688E5","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"2345.67","description":"QA b9baf8ce Lay run father improve gas beat.","incident_date":"2026-08-16","status":"SUBMITTED","created_at":"2026-08-23T03:30:25.587144Z","updated_at":"2026-08-23T03:30:25.600173Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/bab2e56e-88b0-48da-8915-8c83e154ddb0/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/bab2e56e-88b0-48da-8915-8c83e154ddb0/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"bab2e56e-88b0-48da-8915-8c83e154ddb0","reference":"CLM-40E688E5","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"2345.67","description":"QA b9baf8ce Lay run father improve gas beat.","incident_date":"2026-08-16","status":"UNDER_REVIEW","created_at":"2026-08-23T03:30:25.587144Z","updated_at":"2026-08-23T03:30:25.611380Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/bab2e56e-88b0-48da-8915-8c83e154ddb0/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/bab2e56e-88b0-48da-8915-8c83e154ddb0/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"bab2e56e-88b0-48da-8915-8c83e154ddb0","reference":"CLM-40E688E5","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"2345.67","description":"QA b9baf8ce Lay run father improve gas beat.","incident_date":"2026-08-16","status":"APPROVED","created_at":"2026-08-23T03:30:25.587144Z","updated_at":"2026-08-23T03:30:25.623970Z","withdrawn_at":null,"decided_by_id":"e45ecea4-7854-4b98-9d1d-c0d04870ce2e"}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/bab2e56e-88b0-48da-8915-8c83e154ddb0/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/bab2e56e-88b0-48da-8915-8c83e154ddb0/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"bab2e56e-88b0-48da-8915-8c83e154ddb0","reference":"CLM-40E688E5","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"2345.67","description":"QA b9baf8ce Lay run father improve gas beat.","incident_date":"2026-08-16","status":"PAID","created_at":"2026-08-23T03:30:25.587144Z","updated_at":"2026-08-23T03:30:25.634894Z","withdrawn_at":null,"decided_by_id":"e45ecea4-7854-4b98-9d1d-c0d04870ce2e"}
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('bab2e56e-88b0-48da-8915-8c83e154ddb0',)
+  rows: 1
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('bab2e56e-88b0-48da-8915-8c83e154ddb0',)
+  rows: 1
+03:30:25 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_paying_a_claim_writes_exactly_one_payout_for_the_right_amount

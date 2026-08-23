@@ -1,0 +1,28 @@
+03:30:25 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-reject]
+03:30:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"f324c360-9b54-4fa0-ba89-cd8802989c39","policy_number":"POL-1001","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"10000.00","is_active":true},{"id":"23dd5f82-375d-4f7f-91e4-ba756cd201e6","policy_number":"POL-1002","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"2500.00","is_active":true}]
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'f324c360-9b54-4fa0-ba89-cd8802989c39', 'amount': '100.00', 'description': 'QA 1fd8d364 Speech trade his art leader manage book.', 'incident_date': '2026-08-16'}
+  response: {"id":"84a135d3-8340-47bc-88d1-059c6bc78b5e","reference":"CLM-B1406AF8","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 1fd8d364 Speech trade his art leader manage book.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:25.478433Z","updated_at":"2026-08-23T03:30:25.478433Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"84a135d3-8340-47bc-88d1-059c6bc78b5e","reference":"CLM-B1406AF8","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 1fd8d364 Speech trade his art leader manage book.","incident_date":"2026-08-16","status":"SUBMITTED","created_at":"2026-08-23T03:30:25.478433Z","updated_at":"2026-08-23T03:30:25.488303Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"84a135d3-8340-47bc-88d1-059c6bc78b5e","reference":"CLM-B1406AF8","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 1fd8d364 Speech trade his art leader manage book.","incident_date":"2026-08-16","status":"UNDER_REVIEW","created_at":"2026-08-23T03:30:25.478433Z","updated_at":"2026-08-23T03:30:25.498082Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e/transitions -> 200 (10 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"84a135d3-8340-47bc-88d1-059c6bc78b5e","reference":"CLM-B1406AF8","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 1fd8d364 Speech trade his art leader manage book.","incident_date":"2026-08-16","status":"REJECTED","created_at":"2026-08-23T03:30:25.478433Z","updated_at":"2026-08-23T03:30:25.508648Z","withdrawn_at":null,"decided_by_id":"e45ecea4-7854-4b98-9d1d-c0d04870ce2e"}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e/transitions "HTTP/1.1 409 Conflict"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e/transitions -> 409 (8 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status REJECTED; it must be UNDER_REVIEW."}
+03:30:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/84a135d3-8340-47bc-88d1-059c6bc78b5e -> 200 (6 ms)
+  response: {"id":"84a135d3-8340-47bc-88d1-059c6bc78b5e","reference":"CLM-B1406AF8","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 1fd8d364 Speech trade his art leader manage book.","incident_date":"2026-08-16","status":"REJECTED","created_at":"2026-08-23T03:30:25.478433Z","updated_at":"2026-08-23T03:30:25.508648Z","withdrawn_at":null,"decided_by_id":"e45ecea4-7854-4b98-9d1d-c0d04870ce2e"}
+03:30:25 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-reject]

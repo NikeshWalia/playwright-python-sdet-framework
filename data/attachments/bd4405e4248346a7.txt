@@ -1,0 +1,13 @@
+03:30:23 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_updating_a_draft_changes_only_the_field_sent
+03:30:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:30:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"f324c360-9b54-4fa0-ba89-cd8802989c39","policy_number":"POL-1001","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"10000.00","is_active":true},{"id":"23dd5f82-375d-4f7f-91e4-ba756cd201e6","policy_number":"POL-1002","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"2500.00","is_active":true}]
+03:30:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:30:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'f324c360-9b54-4fa0-ba89-cd8802989c39', 'amount': '410.00', 'description': 'QA ffbd6e38 Cost fear medical enough.', 'incident_date': '2026-08-16'}
+  response: {"id":"6972b2a7-eab3-4df1-9afe-e326adc9d72a","reference":"CLM-4E60D9DB","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"410.00","description":"QA ffbd6e38 Cost fear medical enough.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:23.912125Z","updated_at":"2026-08-23T03:30:23.912125Z","withdrawn_at":null,"decided_by_id":null}
+03:30:23 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/6972b2a7-eab3-4df1-9afe-e326adc9d72a "HTTP/1.1 200 OK"
+03:30:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/6972b2a7-eab3-4df1-9afe-e326adc9d72a -> 200 (9 ms)
+  request : {'description': 'Updated description for the claim'}
+  response: {"id":"6972b2a7-eab3-4df1-9afe-e326adc9d72a","reference":"CLM-4E60D9DB","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"410.00","description":"Updated description for the claim","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:23.912125Z","updated_at":"2026-08-23T03:30:23.921505Z","withdrawn_at":null,"decided_by_id":null}
+03:30:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_updating_a_draft_changes_only_the_field_sent

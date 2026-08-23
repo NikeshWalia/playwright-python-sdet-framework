@@ -1,0 +1,28 @@
+03:30:26 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_the_approving_actor_is_recorded_against_the_claim
+03:30:26 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:30:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"f324c360-9b54-4fa0-ba89-cd8802989c39","policy_number":"POL-1001","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"10000.00","is_active":true},{"id":"23dd5f82-375d-4f7f-91e4-ba756cd201e6","policy_number":"POL-1002","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"2500.00","is_active":true}]
+03:30:26 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+03:30:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:30:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'f324c360-9b54-4fa0-ba89-cd8802989c39', 'amount': '900.00', 'description': 'QA 1e99f5eb Sport measure four several hot.', 'incident_date': '2026-08-16'}
+  response: {"id":"87481def-670b-4613-95b8-de0d86596f5c","reference":"CLM-A4E2BFA9","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"900.00","description":"QA 1e99f5eb Sport measure four several hot.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:26.139601Z","updated_at":"2026-08-23T03:30:26.139601Z","withdrawn_at":null,"decided_by_id":null}
+03:30:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/87481def-670b-4613-95b8-de0d86596f5c/transitions "HTTP/1.1 200 OK"
+03:30:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/87481def-670b-4613-95b8-de0d86596f5c/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"87481def-670b-4613-95b8-de0d86596f5c","reference":"CLM-A4E2BFA9","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"900.00","description":"QA 1e99f5eb Sport measure four several hot.","incident_date":"2026-08-16","status":"SUBMITTED","created_at":"2026-08-23T03:30:26.139601Z","updated_at":"2026-08-23T03:30:26.152706Z","withdrawn_at":null,"decided_by_id":null}
+03:30:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/87481def-670b-4613-95b8-de0d86596f5c/transitions "HTTP/1.1 200 OK"
+03:30:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/87481def-670b-4613-95b8-de0d86596f5c/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"87481def-670b-4613-95b8-de0d86596f5c","reference":"CLM-A4E2BFA9","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"900.00","description":"QA 1e99f5eb Sport measure four several hot.","incident_date":"2026-08-16","status":"UNDER_REVIEW","created_at":"2026-08-23T03:30:26.139601Z","updated_at":"2026-08-23T03:30:26.164584Z","withdrawn_at":null,"decided_by_id":null}
+03:30:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/87481def-670b-4613-95b8-de0d86596f5c/transitions "HTTP/1.1 200 OK"
+03:30:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/87481def-670b-4613-95b8-de0d86596f5c/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"87481def-670b-4613-95b8-de0d86596f5c","reference":"CLM-A4E2BFA9","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"900.00","description":"QA 1e99f5eb Sport measure four several hot.","incident_date":"2026-08-16","status":"APPROVED","created_at":"2026-08-23T03:30:26.139601Z","updated_at":"2026-08-23T03:30:26.176605Z","withdrawn_at":null,"decided_by_id":"e45ecea4-7854-4b98-9d1d-c0d04870ce2e"}
+03:30:26 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('87481def-670b-4613-95b8-de0d86596f5c',)
+  rows: 1
+03:30:26 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+03:30:26 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_the_approving_actor_is_recorded_against_the_claim

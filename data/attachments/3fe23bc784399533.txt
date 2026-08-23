@@ -1,0 +1,17 @@
+03:30:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[SUBMITTED-start_review-UNDER_REVIEW]
+03:30:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:30:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"f324c360-9b54-4fa0-ba89-cd8802989c39","policy_number":"POL-1001","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"10000.00","is_active":true},{"id":"23dd5f82-375d-4f7f-91e4-ba756cd201e6","policy_number":"POL-1002","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"2500.00","is_active":true}]
+03:30:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:30:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'f324c360-9b54-4fa0-ba89-cd8802989c39', 'amount': '100.00', 'description': 'QA 7f744808 She prove development weight.', 'incident_date': '2026-08-16'}
+  response: {"id":"7b1d5422-8e9e-4698-9a19-ad7cbfeb8aab","reference":"CLM-3BAD7C4C","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 7f744808 She prove development weight.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:24.215693Z","updated_at":"2026-08-23T03:30:24.215693Z","withdrawn_at":null,"decided_by_id":null}
+03:30:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7b1d5422-8e9e-4698-9a19-ad7cbfeb8aab/transitions "HTTP/1.1 200 OK"
+03:30:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7b1d5422-8e9e-4698-9a19-ad7cbfeb8aab/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7b1d5422-8e9e-4698-9a19-ad7cbfeb8aab","reference":"CLM-3BAD7C4C","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 7f744808 She prove development weight.","incident_date":"2026-08-16","status":"SUBMITTED","created_at":"2026-08-23T03:30:24.215693Z","updated_at":"2026-08-23T03:30:24.228089Z","withdrawn_at":null,"decided_by_id":null}
+03:30:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7b1d5422-8e9e-4698-9a19-ad7cbfeb8aab/transitions "HTTP/1.1 200 OK"
+03:30:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7b1d5422-8e9e-4698-9a19-ad7cbfeb8aab/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7b1d5422-8e9e-4698-9a19-ad7cbfeb8aab","reference":"CLM-3BAD7C4C","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 7f744808 She prove development weight.","incident_date":"2026-08-16","status":"UNDER_REVIEW","created_at":"2026-08-23T03:30:24.215693Z","updated_at":"2026-08-23T03:30:24.239762Z","withdrawn_at":null,"decided_by_id":null}
+03:30:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[SUBMITTED-start_review-UNDER_REVIEW]

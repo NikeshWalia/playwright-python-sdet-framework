@@ -1,0 +1,32 @@
+03:30:25 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row
+03:30:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"f324c360-9b54-4fa0-ba89-cd8802989c39","policy_number":"POL-1001","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"10000.00","is_active":true},{"id":"23dd5f82-375d-4f7f-91e4-ba756cd201e6","policy_number":"POL-1002","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"2500.00","is_active":true}]
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (23 ms)
+  request : {'policy_id': 'f324c360-9b54-4fa0-ba89-cd8802989c39', 'amount': '700.00', 'description': 'QA 24b2a335 My reveal notice attack.', 'incident_date': '2026-08-16'}
+  response: {"id":"951b218a-74d5-4c45-879f-eef41396ec6b","reference":"CLM-E7175B67","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"700.00","description":"QA 24b2a335 My reveal notice attack.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:25.240169Z","updated_at":"2026-08-23T03:30:25.240169Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/951b218a-74d5-4c45-879f-eef41396ec6b/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/951b218a-74d5-4c45-879f-eef41396ec6b/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"951b218a-74d5-4c45-879f-eef41396ec6b","reference":"CLM-E7175B67","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"700.00","description":"QA 24b2a335 My reveal notice attack.","incident_date":"2026-08-16","status":"SUBMITTED","created_at":"2026-08-23T03:30:25.240169Z","updated_at":"2026-08-23T03:30:25.255324Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/951b218a-74d5-4c45-879f-eef41396ec6b/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/951b218a-74d5-4c45-879f-eef41396ec6b/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"951b218a-74d5-4c45-879f-eef41396ec6b","reference":"CLM-E7175B67","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"700.00","description":"QA 24b2a335 My reveal notice attack.","incident_date":"2026-08-16","status":"UNDER_REVIEW","created_at":"2026-08-23T03:30:25.240169Z","updated_at":"2026-08-23T03:30:25.267835Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/951b218a-74d5-4c45-879f-eef41396ec6b/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/951b218a-74d5-4c45-879f-eef41396ec6b/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"951b218a-74d5-4c45-879f-eef41396ec6b","reference":"CLM-E7175B67","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"700.00","description":"QA 24b2a335 My reveal notice attack.","incident_date":"2026-08-16","status":"APPROVED","created_at":"2026-08-23T03:30:25.240169Z","updated_at":"2026-08-23T03:30:25.277152Z","withdrawn_at":null,"decided_by_id":"e45ecea4-7854-4b98-9d1d-c0d04870ce2e"}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/951b218a-74d5-4c45-879f-eef41396ec6b/transitions "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/951b218a-74d5-4c45-879f-eef41396ec6b/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"951b218a-74d5-4c45-879f-eef41396ec6b","reference":"CLM-E7175B67","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"700.00","description":"QA 24b2a335 My reveal notice attack.","incident_date":"2026-08-16","status":"PAID","created_at":"2026-08-23T03:30:25.240169Z","updated_at":"2026-08-23T03:30:25.289138Z","withdrawn_at":null,"decided_by_id":"e45ecea4-7854-4b98-9d1d-c0d04870ce2e"}
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('951b218a-74d5-4c45-879f-eef41396ec6b',)
+  rows: 5
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('951b218a-74d5-4c45-879f-eef41396ec6b',)
+  rows: 1
+03:30:25 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row

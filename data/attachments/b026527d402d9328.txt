@@ -1,0 +1,19 @@
+03:30:25 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
+03:30:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"f324c360-9b54-4fa0-ba89-cd8802989c39","policy_number":"POL-1001","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"10000.00","is_active":true},{"id":"23dd5f82-375d-4f7f-91e4-ba756cd201e6","policy_number":"POL-1002","holder_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","coverage_limit":"2500.00","is_active":true}]
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'f324c360-9b54-4fa0-ba89-cd8802989c39', 'amount': '100.00', 'description': 'QA 2e77147c Blood like light as all.', 'incident_date': '2026-08-16'}
+  response: {"id":"ee3f82b8-bdef-4de7-92bb-691f5dc47b2e","reference":"CLM-6943CE12","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 2e77147c Blood like light as all.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:25.643915Z","updated_at":"2026-08-23T03:30:25.643915Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ee3f82b8-bdef-4de7-92bb-691f5dc47b2e "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ee3f82b8-bdef-4de7-92bb-691f5dc47b2e -> 200 (5 ms)
+  response: {"id":"ee3f82b8-bdef-4de7-92bb-691f5dc47b2e","reference":"CLM-6943CE12","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 2e77147c Blood like light as all.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:25.643915Z","updated_at":"2026-08-23T03:30:25.643915Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ee3f82b8-bdef-4de7-92bb-691f5dc47b2e/transitions "HTTP/1.1 409 Conflict"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ee3f82b8-bdef-4de7-92bb-691f5dc47b2e/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status DRAFT; it must be APPROVED."}
+03:30:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ee3f82b8-bdef-4de7-92bb-691f5dc47b2e "HTTP/1.1 200 OK"
+03:30:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ee3f82b8-bdef-4de7-92bb-691f5dc47b2e -> 200 (6 ms)
+  response: {"id":"ee3f82b8-bdef-4de7-92bb-691f5dc47b2e","reference":"CLM-6943CE12","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"100.00","description":"QA 2e77147c Blood like light as all.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:25.643915Z","updated_at":"2026-08-23T03:30:25.643915Z","withdrawn_at":null,"decided_by_id":null}
+03:30:25 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
