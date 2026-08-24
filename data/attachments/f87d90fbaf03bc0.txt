@@ -1,0 +1,10 @@
+03:32:31 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]
+03:32:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:32:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","policy_number":"POL-1001","holder_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","coverage_limit":"10000.00","is_active":true},{"id":"f4378b89-fdfd-4700-a405-4105b6657489","policy_number":"POL-1002","holder_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","coverage_limit":"2500.00","is_active":true}]
+03:32:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:32:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '435e17f2-9fd6-4580-b036-f8bc9f845f0c', 'amount': '640.00', 'description': 'QA 98f2f99d Study oil someone act play.', 'incident_date': '2026-08-17'}
+  response: {"id":"78a42759-10f0-4e3a-a2e9-14312f3cd67e","reference":"CLM-4A0F5622","policy_id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","claimant_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","amount":"640.00","description":"QA 98f2f99d Study oil someone act play.","incident_date":"2026-08-17","status":"DRAFT","created_at":"2026-08-24T03:32:32.062054Z","updated_at":"2026-08-24T03:32:32.062054Z","withdrawn_at":null,"decided_by_id":null}
+03:32:32 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/78a42759-10f0-4e3a-a2e9-14312f3cd67e
+03:32:32 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]

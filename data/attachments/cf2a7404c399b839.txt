@@ -1,1 +1,0 @@
-15:30:34 INFO    [qa-e0ddad4449] claimdesk_qa.probe: hello from the worker

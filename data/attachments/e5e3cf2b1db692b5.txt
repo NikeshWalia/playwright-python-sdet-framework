@@ -1,2 +1,0 @@
-03:30:35 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_tls.py::test_the_shared_context_refuses_obsolete_protocols
-03:30:35 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_tls.py::test_the_shared_context_refuses_obsolete_protocols

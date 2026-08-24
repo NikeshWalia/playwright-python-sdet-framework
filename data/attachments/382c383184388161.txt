@@ -1,0 +1,9 @@
+03:32:21 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[policy_id]
+03:32:21 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:32:21 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","policy_number":"POL-1001","holder_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","coverage_limit":"10000.00","is_active":true},{"id":"f4378b89-fdfd-4700-a405-4105b6657489","policy_number":"POL-1002","holder_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","coverage_limit":"2500.00","is_active":true}]
+03:32:22 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+03:32:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (7 ms)
+  request : {'amount': '250.00', 'description': 'QA 8e2f4a1b Off door voice body politics follow.', 'incident_date': '2026-08-17'}
+  response: {"detail":[{"type":"missing","loc":["body","policy_id"],"msg":"Field required","input":{"amount":"250.00","description":"QA 8e2f4a1b Off door voice body politics follow.","incident_date":"2026-08-17"}}]}
+03:32:22 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[policy_id]

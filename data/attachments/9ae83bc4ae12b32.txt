@@ -1,0 +1,32 @@
+03:32:23 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-approve]
+03:32:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:32:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","policy_number":"POL-1001","holder_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","coverage_limit":"10000.00","is_active":true},{"id":"f4378b89-fdfd-4700-a405-4105b6657489","policy_number":"POL-1002","holder_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","coverage_limit":"2500.00","is_active":true}]
+03:32:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:32:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '435e17f2-9fd6-4580-b036-f8bc9f845f0c', 'amount': '100.00', 'description': 'QA 0f100efd Hotel another better already fact.', 'incident_date': '2026-08-17'}
+  response: {"id":"7ca3c3b5-d969-4e3e-a242-a825b95aac22","reference":"CLM-C0B19AC3","policy_id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","claimant_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","amount":"100.00","description":"QA 0f100efd Hotel another better already fact.","incident_date":"2026-08-17","status":"DRAFT","created_at":"2026-08-24T03:32:23.453311Z","updated_at":"2026-08-24T03:32:23.453311Z","withdrawn_at":null,"decided_by_id":null}
+03:32:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions "HTTP/1.1 200 OK"
+03:32:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7ca3c3b5-d969-4e3e-a242-a825b95aac22","reference":"CLM-C0B19AC3","policy_id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","claimant_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","amount":"100.00","description":"QA 0f100efd Hotel another better already fact.","incident_date":"2026-08-17","status":"SUBMITTED","created_at":"2026-08-24T03:32:23.453311Z","updated_at":"2026-08-24T03:32:23.466729Z","withdrawn_at":null,"decided_by_id":null}
+03:32:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions "HTTP/1.1 200 OK"
+03:32:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7ca3c3b5-d969-4e3e-a242-a825b95aac22","reference":"CLM-C0B19AC3","policy_id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","claimant_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","amount":"100.00","description":"QA 0f100efd Hotel another better already fact.","incident_date":"2026-08-17","status":"UNDER_REVIEW","created_at":"2026-08-24T03:32:23.453311Z","updated_at":"2026-08-24T03:32:23.479995Z","withdrawn_at":null,"decided_by_id":null}
+03:32:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions "HTTP/1.1 200 OK"
+03:32:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"7ca3c3b5-d969-4e3e-a242-a825b95aac22","reference":"CLM-C0B19AC3","policy_id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","claimant_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","amount":"100.00","description":"QA 0f100efd Hotel another better already fact.","incident_date":"2026-08-17","status":"APPROVED","created_at":"2026-08-24T03:32:23.453311Z","updated_at":"2026-08-24T03:32:23.490640Z","withdrawn_at":null,"decided_by_id":"5e101450-b94a-4f16-8af9-e5b364aad0ab"}
+03:32:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions "HTTP/1.1 200 OK"
+03:32:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions -> 200 (15 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"7ca3c3b5-d969-4e3e-a242-a825b95aac22","reference":"CLM-C0B19AC3","policy_id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","claimant_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","amount":"100.00","description":"QA 0f100efd Hotel another better already fact.","incident_date":"2026-08-17","status":"PAID","created_at":"2026-08-24T03:32:23.453311Z","updated_at":"2026-08-24T03:32:23.502988Z","withdrawn_at":null,"decided_by_id":"5e101450-b94a-4f16-8af9-e5b364aad0ab"}
+03:32:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions "HTTP/1.1 409 Conflict"
+03:32:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22/transitions -> 409 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status PAID; it must be UNDER_REVIEW."}
+03:32:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22 "HTTP/1.1 200 OK"
+03:32:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/7ca3c3b5-d969-4e3e-a242-a825b95aac22 -> 200 (8 ms)
+  response: {"id":"7ca3c3b5-d969-4e3e-a242-a825b95aac22","reference":"CLM-C0B19AC3","policy_id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","claimant_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","amount":"100.00","description":"QA 0f100efd Hotel another better already fact.","incident_date":"2026-08-17","status":"PAID","created_at":"2026-08-24T03:32:23.453311Z","updated_at":"2026-08-24T03:32:23.502988Z","withdrawn_at":null,"decided_by_id":"5e101450-b94a-4f16-8af9-e5b364aad0ab"}
+03:32:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-approve]

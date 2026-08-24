@@ -1,5 +1,0 @@
-03:30:23 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
-03:30:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
-03:30:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (8 ms)
-  response: {"items":[{"id":"49b4fcda-87c4-41b6-9e58-f3dd57cf30a5","reference":"CLM-DB511048","policy_id":"f324c360-9b54-4fa0-ba89-cd8802989c39","claimant_id":"6f3654bb-5c9a-4f0d-86a0-8f23b20ead19","amount":"250.00","description":"QA bfe6ca68 American good arm position.","incident_date":"2026-08-16","status":"DRAFT","created_at":"2026-08-23T03:30:23.862982Z","updated_at":"2026-08-23T03:30:23.862982Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":54}
-03:30:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
