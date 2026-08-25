@@ -1,0 +1,10 @@
+03:27:26 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_opening_a_claim_from_the_table_navigates_to_its_detail_page[chromium]
+03:27:26 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:27:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","policy_number":"POL-1001","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"10000.00","is_active":true},{"id":"d46f9510-7e15-4688-afba-132923cafc39","policy_number":"POL-1002","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"2500.00","is_active":true}]
+03:27:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '250.00', 'description': 'QA a042b9e2 Poor on side professional.', 'incident_date': '2026-08-18'}
+  response: {"id":"d28bf5a4-45f7-4c0e-9c0a-3cc1b1d54794","reference":"CLM-DE87793D","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"250.00","description":"QA a042b9e2 Poor on side professional.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:26.909334Z","updated_at":"2026-08-25T03:27:26.909334Z","withdrawn_at":null,"decided_by_id":null}
+03:27:26 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+03:27:27 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_opening_a_claim_from_the_table_navigates_to_its_detail_page[chromium]

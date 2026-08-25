@@ -1,0 +1,24 @@
+03:27:17 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]
+03:27:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:27:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","policy_number":"POL-1001","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"10000.00","is_active":true},{"id":"d46f9510-7e15-4688-afba-132923cafc39","policy_number":"POL-1002","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"2500.00","is_active":true}]
+03:27:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '5000.01', 'description': 'QA 94332573 Institution himself west later business.', 'incident_date': '2026-08-18'}
+  response: {"id":"85c1a399-15c0-49e1-b280-09ba9c6c58d6","reference":"CLM-22D68C5C","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"5000.01","description":"QA 94332573 Institution himself west later business.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:17.903805Z","updated_at":"2026-08-25T03:27:17.903805Z","withdrawn_at":null,"decided_by_id":null}
+03:27:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/85c1a399-15c0-49e1-b280-09ba9c6c58d6/transitions "HTTP/1.1 200 OK"
+03:27:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/85c1a399-15c0-49e1-b280-09ba9c6c58d6/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"85c1a399-15c0-49e1-b280-09ba9c6c58d6","reference":"CLM-22D68C5C","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"5000.01","description":"QA 94332573 Institution himself west later business.","incident_date":"2026-08-18","status":"SUBMITTED","created_at":"2026-08-25T03:27:17.903805Z","updated_at":"2026-08-25T03:27:17.916847Z","withdrawn_at":null,"decided_by_id":null}
+03:27:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/85c1a399-15c0-49e1-b280-09ba9c6c58d6/transitions "HTTP/1.1 200 OK"
+03:27:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/85c1a399-15c0-49e1-b280-09ba9c6c58d6/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"85c1a399-15c0-49e1-b280-09ba9c6c58d6","reference":"CLM-22D68C5C","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"5000.01","description":"QA 94332573 Institution himself west later business.","incident_date":"2026-08-18","status":"UNDER_REVIEW","created_at":"2026-08-25T03:27:17.903805Z","updated_at":"2026-08-25T03:27:17.929184Z","withdrawn_at":null,"decided_by_id":null}
+03:27:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/85c1a399-15c0-49e1-b280-09ba9c6c58d6/transitions "HTTP/1.1 403 Forbidden"
+03:27:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/85c1a399-15c0-49e1-b280-09ba9c6c58d6/transitions -> 403 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 5000.01 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+03:27:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/85c1a399-15c0-49e1-b280-09ba9c6c58d6 "HTTP/1.1 200 OK"
+03:27:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/85c1a399-15c0-49e1-b280-09ba9c6c58d6 -> 200 (5 ms)
+  response: {"id":"85c1a399-15c0-49e1-b280-09ba9c6c58d6","reference":"CLM-22D68C5C","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"5000.01","description":"QA 94332573 Institution himself west later business.","incident_date":"2026-08-18","status":"UNDER_REVIEW","created_at":"2026-08-25T03:27:17.903805Z","updated_at":"2026-08-25T03:27:17.929184Z","withdrawn_at":null,"decided_by_id":null}
+03:27:17 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]

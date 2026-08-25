@@ -1,5 +1,0 @@
-03:32:20 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
-03:32:20 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
-03:32:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (8 ms)
-  response: {"items":[{"id":"b67ed099-d793-4316-990b-51de38b484bb","reference":"CLM-0C1F4773","policy_id":"435e17f2-9fd6-4580-b036-f8bc9f845f0c","claimant_id":"9c267157-6ac2-4ac3-8ff4-c45053dc1712","amount":"250.00","description":"QA 597cf79d Pass visit including image compare.","incident_date":"2026-08-17","status":"WITHDRAWN","created_at":"2026-08-24T03:32:20.494910Z","updated_at":"2026-08-24T03:32:20.507829Z","withdrawn_at":"2026-08-24T03:32:20.510205Z","decided_by_id":null}],"page":1,"size":50,"total":1}
-03:32:20 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]

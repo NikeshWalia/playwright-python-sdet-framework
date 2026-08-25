@@ -1,0 +1,28 @@
+03:27:19 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-start_review]
+03:27:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","policy_number":"POL-1001","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"10000.00","is_active":true},{"id":"d46f9510-7e15-4688-afba-132923cafc39","policy_number":"POL-1002","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"2500.00","is_active":true}]
+03:27:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '100.00', 'description': 'QA 705c6ccf Employee drive side outside however among.', 'incident_date': '2026-08-18'}
+  response: {"id":"ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3","reference":"CLM-81BC80EA","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"100.00","description":"QA 705c6ccf Employee drive side outside however among.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:19.142675Z","updated_at":"2026-08-25T03:27:19.142675Z","withdrawn_at":null,"decided_by_id":null}
+03:27:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3/transitions "HTTP/1.1 200 OK"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3","reference":"CLM-81BC80EA","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"100.00","description":"QA 705c6ccf Employee drive side outside however among.","incident_date":"2026-08-18","status":"SUBMITTED","created_at":"2026-08-25T03:27:19.142675Z","updated_at":"2026-08-25T03:27:19.157187Z","withdrawn_at":null,"decided_by_id":null}
+03:27:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3/transitions "HTTP/1.1 200 OK"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3","reference":"CLM-81BC80EA","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"100.00","description":"QA 705c6ccf Employee drive side outside however among.","incident_date":"2026-08-18","status":"UNDER_REVIEW","created_at":"2026-08-25T03:27:19.142675Z","updated_at":"2026-08-25T03:27:19.170766Z","withdrawn_at":null,"decided_by_id":null}
+03:27:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3/transitions "HTTP/1.1 200 OK"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3/transitions -> 200 (14 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3","reference":"CLM-81BC80EA","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"100.00","description":"QA 705c6ccf Employee drive side outside however among.","incident_date":"2026-08-18","status":"APPROVED","created_at":"2026-08-25T03:27:19.142675Z","updated_at":"2026-08-25T03:27:19.184648Z","withdrawn_at":null,"decided_by_id":"ead743e3-ecb8-4e5b-9370-4873c94f5a2a"}
+03:27:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3/transitions "HTTP/1.1 409 Conflict"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3/transitions -> 409 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status APPROVED; it must be SUBMITTED."}
+03:27:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3 "HTTP/1.1 200 OK"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3 -> 200 (6 ms)
+  response: {"id":"ef1adb6d-df3e-435e-9e66-ecd4c2dbabc3","reference":"CLM-81BC80EA","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"100.00","description":"QA 705c6ccf Employee drive side outside however among.","incident_date":"2026-08-18","status":"APPROVED","created_at":"2026-08-25T03:27:19.142675Z","updated_at":"2026-08-25T03:27:19.184648Z","withdrawn_at":null,"decided_by_id":"ead743e3-ecb8-4e5b-9370-4873c94f5a2a"}
+03:27:19 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-start_review]

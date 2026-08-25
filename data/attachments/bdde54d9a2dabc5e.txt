@@ -1,0 +1,23 @@
+03:27:19 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event
+03:27:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","policy_number":"POL-1001","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"10000.00","is_active":true},{"id":"d46f9510-7e15-4688-afba-132923cafc39","policy_number":"POL-1002","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"2500.00","is_active":true}]
+03:27:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (209 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '300.00', 'description': 'QA 520c3251 Capital foot run few material available those.', 'incident_date': '2026-08-18'}
+  response: {"id":"55edee33-e6e9-4725-a7da-df4e1781e612","reference":"CLM-5FD07DE7","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"300.00","description":"QA 520c3251 Capital foot run few material available those.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:19.625170Z","updated_at":"2026-08-25T03:27:19.625170Z","withdrawn_at":null,"decided_by_id":null}
+03:27:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/55edee33-e6e9-4725-a7da-df4e1781e612/transitions "HTTP/1.1 200 OK"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/55edee33-e6e9-4725-a7da-df4e1781e612/transitions -> 200 (158 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"55edee33-e6e9-4725-a7da-df4e1781e612","reference":"CLM-5FD07DE7","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"300.00","description":"QA 520c3251 Capital foot run few material available those.","incident_date":"2026-08-18","status":"SUBMITTED","created_at":"2026-08-25T03:27:19.625170Z","updated_at":"2026-08-25T03:27:19.834476Z","withdrawn_at":null,"decided_by_id":null}
+03:27:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/55edee33-e6e9-4725-a7da-df4e1781e612/events "HTTP/1.1 200 OK"
+03:27:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/55edee33-e6e9-4725-a7da-df4e1781e612/events -> 200 (9 ms)
+  response: [{"id":"e73ed5e6-3dda-4340-8bc7-dba54261d83a","claim_id":"55edee33-e6e9-4725-a7da-df4e1781e612","actor_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-08-25T03:27:19.625170Z"},{"id":"89a97c02-fdb8-4ab1-a7be-975a05afc2e9","claim_id":"55edee33-e6e9-4725-a7da-df4e1781e612","actor_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-08-25T03:27:19.834476Z"}]
+03:27:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/55edee33-e6e9-4725-a7da-df4e1781e612/transitions "HTTP/1.1 409 Conflict"
+03:27:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/55edee33-e6e9-4725-a7da-df4e1781e612/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+03:27:20 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/55edee33-e6e9-4725-a7da-df4e1781e612/events "HTTP/1.1 200 OK"
+03:27:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/55edee33-e6e9-4725-a7da-df4e1781e612/events -> 200 (5 ms)
+  response: [{"id":"e73ed5e6-3dda-4340-8bc7-dba54261d83a","claim_id":"55edee33-e6e9-4725-a7da-df4e1781e612","actor_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-08-25T03:27:19.625170Z"},{"id":"89a97c02-fdb8-4ab1-a7be-975a05afc2e9","claim_id":"55edee33-e6e9-4725-a7da-df4e1781e612","actor_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-08-25T03:27:19.834476Z"}]
+03:27:20 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event

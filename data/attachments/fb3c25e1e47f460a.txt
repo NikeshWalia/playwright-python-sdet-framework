@@ -1,0 +1,25 @@
+03:27:18 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
+03:27:18 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","policy_number":"POL-1001","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"10000.00","is_active":true},{"id":"d46f9510-7e15-4688-afba-132923cafc39","policy_number":"POL-1002","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"2500.00","is_active":true}]
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '750.00', 'description': 'QA 58247e83 Drug wish contain end little pretty.', 'incident_date': '2026-08-18'}
+  response: {"id":"195db1ae-fd55-4827-b22d-27bd5a3c313c","reference":"CLM-EACA3997","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"750.00","description":"QA 58247e83 Drug wish contain end little pretty.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:18.675830Z","updated_at":"2026-08-25T03:27:18.675830Z","withdrawn_at":null,"decided_by_id":null}
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/195db1ae-fd55-4827-b22d-27bd5a3c313c/transitions "HTTP/1.1 200 OK"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/195db1ae-fd55-4827-b22d-27bd5a3c313c/transitions -> 200 (14 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"195db1ae-fd55-4827-b22d-27bd5a3c313c","reference":"CLM-EACA3997","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"750.00","description":"QA 58247e83 Drug wish contain end little pretty.","incident_date":"2026-08-18","status":"SUBMITTED","created_at":"2026-08-25T03:27:18.675830Z","updated_at":"2026-08-25T03:27:18.690644Z","withdrawn_at":null,"decided_by_id":null}
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/195db1ae-fd55-4827-b22d-27bd5a3c313c/transitions "HTTP/1.1 200 OK"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/195db1ae-fd55-4827-b22d-27bd5a3c313c/transitions -> 200 (14 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"195db1ae-fd55-4827-b22d-27bd5a3c313c","reference":"CLM-EACA3997","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"750.00","description":"QA 58247e83 Drug wish contain end little pretty.","incident_date":"2026-08-18","status":"UNDER_REVIEW","created_at":"2026-08-25T03:27:18.675830Z","updated_at":"2026-08-25T03:27:18.705202Z","withdrawn_at":null,"decided_by_id":null}
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/195db1ae-fd55-4827-b22d-27bd5a3c313c/transitions "HTTP/1.1 200 OK"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/195db1ae-fd55-4827-b22d-27bd5a3c313c/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"195db1ae-fd55-4827-b22d-27bd5a3c313c","reference":"CLM-EACA3997","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"750.00","description":"QA 58247e83 Drug wish contain end little pretty.","incident_date":"2026-08-18","status":"APPROVED","created_at":"2026-08-25T03:27:18.675830Z","updated_at":"2026-08-25T03:27:18.719403Z","withdrawn_at":null,"decided_by_id":"ead743e3-ecb8-4e5b-9370-4873c94f5a2a"}
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/195db1ae-fd55-4827-b22d-27bd5a3c313c/transitions "HTTP/1.1 200 OK"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/195db1ae-fd55-4827-b22d-27bd5a3c313c/transitions -> 200 (19 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"195db1ae-fd55-4827-b22d-27bd5a3c313c","reference":"CLM-EACA3997","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"750.00","description":"QA 58247e83 Drug wish contain end little pretty.","incident_date":"2026-08-18","status":"PAID","created_at":"2026-08-25T03:27:18.675830Z","updated_at":"2026-08-25T03:27:18.731441Z","withdrawn_at":null,"decided_by_id":"ead743e3-ecb8-4e5b-9370-4873c94f5a2a"}
+03:27:18 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle

@@ -1,0 +1,26 @@
+03:27:28 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+03:27:28 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:27:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (17 ms)
+  response: [{"id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","policy_number":"POL-1001","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"10000.00","is_active":true},{"id":"d46f9510-7e15-4688-afba-132923cafc39","policy_number":"POL-1002","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"2500.00","is_active":true}]
+03:27:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (16 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '410.00', 'description': 'QA f162b27b Again Democrat next enjoy record phone story.', 'incident_date': '2026-08-18'}
+  response: {"id":"6c4bc938-c125-4c57-9ac9-cf01239208af","reference":"CLM-8506C7CE","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"410.00","description":"QA f162b27b Again Democrat next enjoy record phone story.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:28.815851Z","updated_at":"2026-08-25T03:27:28.815851Z","withdrawn_at":null,"decided_by_id":null}
+03:27:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6c4bc938-c125-4c57-9ac9-cf01239208af/transitions "HTTP/1.1 200 OK"
+03:27:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6c4bc938-c125-4c57-9ac9-cf01239208af/transitions -> 200 (16 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"6c4bc938-c125-4c57-9ac9-cf01239208af","reference":"CLM-8506C7CE","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"410.00","description":"QA f162b27b Again Democrat next enjoy record phone story.","incident_date":"2026-08-18","status":"SUBMITTED","created_at":"2026-08-25T03:27:28.815851Z","updated_at":"2026-08-25T03:27:28.833650Z","withdrawn_at":null,"decided_by_id":null}
+03:27:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6c4bc938-c125-4c57-9ac9-cf01239208af/transitions "HTTP/1.1 200 OK"
+03:27:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6c4bc938-c125-4c57-9ac9-cf01239208af/transitions -> 200 (18 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"6c4bc938-c125-4c57-9ac9-cf01239208af","reference":"CLM-8506C7CE","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"410.00","description":"QA f162b27b Again Democrat next enjoy record phone story.","incident_date":"2026-08-18","status":"UNDER_REVIEW","created_at":"2026-08-25T03:27:28.815851Z","updated_at":"2026-08-25T03:27:28.849091Z","withdrawn_at":null,"decided_by_id":null}
+03:27:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6c4bc938-c125-4c57-9ac9-cf01239208af/transitions "HTTP/1.1 200 OK"
+03:27:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6c4bc938-c125-4c57-9ac9-cf01239208af/transitions -> 200 (16 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"6c4bc938-c125-4c57-9ac9-cf01239208af","reference":"CLM-8506C7CE","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"410.00","description":"QA f162b27b Again Democrat next enjoy record phone story.","incident_date":"2026-08-18","status":"APPROVED","created_at":"2026-08-25T03:27:28.815851Z","updated_at":"2026-08-25T03:27:28.867162Z","withdrawn_at":null,"decided_by_id":"ead743e3-ecb8-4e5b-9370-4873c94f5a2a"}
+03:27:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6c4bc938-c125-4c57-9ac9-cf01239208af/transitions "HTTP/1.1 200 OK"
+03:27:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6c4bc938-c125-4c57-9ac9-cf01239208af/transitions -> 200 (13 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"6c4bc938-c125-4c57-9ac9-cf01239208af","reference":"CLM-8506C7CE","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"410.00","description":"QA f162b27b Again Democrat next enjoy record phone story.","incident_date":"2026-08-18","status":"PAID","created_at":"2026-08-25T03:27:28.815851Z","updated_at":"2026-08-25T03:27:28.882628Z","withdrawn_at":null,"decided_by_id":"ead743e3-ecb8-4e5b-9370-4873c94f5a2a"}
+03:27:28 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/6c4bc938-c125-4c57-9ac9-cf01239208af
+03:27:29 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

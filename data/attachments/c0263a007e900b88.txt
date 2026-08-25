@@ -1,0 +1,25 @@
+03:27:18 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+03:27:18 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","policy_number":"POL-1001","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"10000.00","is_active":true},{"id":"d46f9510-7e15-4688-afba-132923cafc39","policy_number":"POL-1002","holder_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","coverage_limit":"2500.00","is_active":true}]
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '250.00', 'description': 'QA 60597b15 Nature program bill Congress eight with produce.', 'incident_date': '2026-08-18'}
+  response: {"id":"abd4317a-ed4c-4e79-9697-a97faede0f43","reference":"CLM-52D5E172","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"250.00","description":"QA 60597b15 Nature program bill Congress eight with produce.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:18.281566Z","updated_at":"2026-08-25T03:27:18.281566Z","withdrawn_at":null,"decided_by_id":null}
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '250.00', 'description': 'QA aae74d26 Age stop beyond among must five.', 'incident_date': '2026-08-18'}
+  response: {"id":"6c8648a8-0ee3-4987-a84c-7e401c425f2c","reference":"CLM-DEA8DB1B","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"250.00","description":"QA aae74d26 Age stop beyond among must five.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:18.294100Z","updated_at":"2026-08-25T03:27:18.294100Z","withdrawn_at":null,"decided_by_id":null}
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '250.00', 'description': 'QA 2b2a9847 It instead hair population.', 'incident_date': '2026-08-18'}
+  response: {"id":"c382b809-8bdf-41b9-aabd-ebe09b179e94","reference":"CLM-0CA2EDD2","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"250.00","description":"QA 2b2a9847 It instead hair population.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:18.309181Z","updated_at":"2026-08-25T03:27:18.309181Z","withdrawn_at":null,"decided_by_id":null}
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '250.00', 'description': 'QA 0b1618c6 Situation trip night shake.', 'incident_date': '2026-08-18'}
+  response: {"id":"1fc2749e-406c-4cdb-aa9f-219f9dc45fe5","reference":"CLM-25C95BFE","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"250.00","description":"QA 0b1618c6 Situation trip night shake.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:18.322899Z","updated_at":"2026-08-25T03:27:18.322899Z","withdrawn_at":null,"decided_by_id":null}
+03:27:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:27:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '3149762f-d6cc-453b-bfd7-af258a5fe7bb', 'amount': '250.00', 'description': 'QA 911c28e1 Describe just individual here war.', 'incident_date': '2026-08-18'}
+  response: {"id":"8be04def-75fb-45bd-b526-c181161b3d48","reference":"CLM-C120AC6C","policy_id":"3149762f-d6cc-453b-bfd7-af258a5fe7bb","claimant_id":"1bb8f92e-f88e-4fe3-ad05-7c6951dec352","amount":"250.00","description":"QA 911c28e1 Describe just individual here war.","incident_date":"2026-08-18","status":"DRAFT","created_at":"2026-08-25T03:27:18.337191Z","updated_at":"2026-08-25T03:27:18.337191Z","withdrawn_at":null,"decided_by_id":null}
+03:27:18 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

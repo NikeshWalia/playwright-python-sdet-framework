@@ -1,2 +1,0 @@
-03:32:33 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_logging_and_correlation.py::test_context_variable_is_restored_after_the_block
-03:32:33 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_logging_and_correlation.py::test_context_variable_is_restored_after_the_block
