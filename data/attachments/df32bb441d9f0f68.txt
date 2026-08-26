@@ -1,0 +1,10 @@
+03:34:17 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]
+03:34:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:34:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"21e4d055-7bfd-4bd5-b283-8278021ab334","policy_number":"POL-1001","holder_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","coverage_limit":"10000.00","is_active":true},{"id":"4d7eb7d7-b155-409d-a9eb-0cb8f80da526","policy_number":"POL-1002","holder_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","coverage_limit":"2500.00","is_active":true}]
+03:34:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:34:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': '21e4d055-7bfd-4bd5-b283-8278021ab334', 'amount': '640.00', 'description': 'QA f9946058 Student speech away follow.', 'incident_date': '2026-08-19'}
+  response: {"id":"ef45af58-c52a-4404-a0bb-bf5f1ce296b7","reference":"CLM-913F0BDE","policy_id":"21e4d055-7bfd-4bd5-b283-8278021ab334","claimant_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","amount":"640.00","description":"QA f9946058 Student speech away follow.","incident_date":"2026-08-19","status":"DRAFT","created_at":"2026-08-26T03:34:17.308728Z","updated_at":"2026-08-26T03:34:17.308728Z","withdrawn_at":null,"decided_by_id":null}
+03:34:17 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/ef45af58-c52a-4404-a0bb-bf5f1ce296b7
+03:34:17 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]

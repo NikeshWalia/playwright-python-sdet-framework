@@ -1,0 +1,19 @@
+03:34:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-start_review]
+03:34:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:34:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"21e4d055-7bfd-4bd5-b283-8278021ab334","policy_number":"POL-1001","holder_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","coverage_limit":"10000.00","is_active":true},{"id":"4d7eb7d7-b155-409d-a9eb-0cb8f80da526","policy_number":"POL-1002","holder_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","coverage_limit":"2500.00","is_active":true}]
+03:34:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:34:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '21e4d055-7bfd-4bd5-b283-8278021ab334', 'amount': '100.00', 'description': 'QA ef1b9c3f Whole member education manage.', 'incident_date': '2026-08-19'}
+  response: {"id":"2154ccdb-2257-4c9c-bf3b-1476b2e67a44","reference":"CLM-145025C2","policy_id":"21e4d055-7bfd-4bd5-b283-8278021ab334","claimant_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","amount":"100.00","description":"QA ef1b9c3f Whole member education manage.","incident_date":"2026-08-19","status":"DRAFT","created_at":"2026-08-26T03:34:10.136981Z","updated_at":"2026-08-26T03:34:10.136981Z","withdrawn_at":null,"decided_by_id":null}
+03:34:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2154ccdb-2257-4c9c-bf3b-1476b2e67a44 "HTTP/1.1 200 OK"
+03:34:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2154ccdb-2257-4c9c-bf3b-1476b2e67a44 -> 200 (6 ms)
+  response: {"id":"2154ccdb-2257-4c9c-bf3b-1476b2e67a44","reference":"CLM-145025C2","policy_id":"21e4d055-7bfd-4bd5-b283-8278021ab334","claimant_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","amount":"100.00","description":"QA ef1b9c3f Whole member education manage.","incident_date":"2026-08-19","status":"DRAFT","created_at":"2026-08-26T03:34:10.136981Z","updated_at":"2026-08-26T03:34:10.136981Z","withdrawn_at":null,"decided_by_id":null}
+03:34:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2154ccdb-2257-4c9c-bf3b-1476b2e67a44/transitions "HTTP/1.1 409 Conflict"
+03:34:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2154ccdb-2257-4c9c-bf3b-1476b2e67a44/transitions -> 409 (5 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status DRAFT; it must be SUBMITTED."}
+03:34:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2154ccdb-2257-4c9c-bf3b-1476b2e67a44 "HTTP/1.1 200 OK"
+03:34:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2154ccdb-2257-4c9c-bf3b-1476b2e67a44 -> 200 (5 ms)
+  response: {"id":"2154ccdb-2257-4c9c-bf3b-1476b2e67a44","reference":"CLM-145025C2","policy_id":"21e4d055-7bfd-4bd5-b283-8278021ab334","claimant_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","amount":"100.00","description":"QA ef1b9c3f Whole member education manage.","incident_date":"2026-08-19","status":"DRAFT","created_at":"2026-08-26T03:34:10.136981Z","updated_at":"2026-08-26T03:34:10.136981Z","withdrawn_at":null,"decided_by_id":null}
+03:34:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-start_review]

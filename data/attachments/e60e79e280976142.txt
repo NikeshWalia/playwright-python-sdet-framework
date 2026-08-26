@@ -1,0 +1,24 @@
+03:34:09 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[far-above-limit]
+03:34:09 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+03:34:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"21e4d055-7bfd-4bd5-b283-8278021ab334","policy_number":"POL-1001","holder_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","coverage_limit":"10000.00","is_active":true},{"id":"4d7eb7d7-b155-409d-a9eb-0cb8f80da526","policy_number":"POL-1002","holder_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","coverage_limit":"2500.00","is_active":true}]
+03:34:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+03:34:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '21e4d055-7bfd-4bd5-b283-8278021ab334', 'amount': '9999.99', 'description': 'QA b5000853 Concern and learn commercial politics.', 'incident_date': '2026-08-19'}
+  response: {"id":"56d30e67-02a7-4b65-bac7-615219485ee5","reference":"CLM-C5612D99","policy_id":"21e4d055-7bfd-4bd5-b283-8278021ab334","claimant_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","amount":"9999.99","description":"QA b5000853 Concern and learn commercial politics.","incident_date":"2026-08-19","status":"DRAFT","created_at":"2026-08-26T03:34:09.384691Z","updated_at":"2026-08-26T03:34:09.384691Z","withdrawn_at":null,"decided_by_id":null}
+03:34:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/56d30e67-02a7-4b65-bac7-615219485ee5/transitions "HTTP/1.1 200 OK"
+03:34:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/56d30e67-02a7-4b65-bac7-615219485ee5/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"56d30e67-02a7-4b65-bac7-615219485ee5","reference":"CLM-C5612D99","policy_id":"21e4d055-7bfd-4bd5-b283-8278021ab334","claimant_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","amount":"9999.99","description":"QA b5000853 Concern and learn commercial politics.","incident_date":"2026-08-19","status":"SUBMITTED","created_at":"2026-08-26T03:34:09.384691Z","updated_at":"2026-08-26T03:34:09.394479Z","withdrawn_at":null,"decided_by_id":null}
+03:34:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/56d30e67-02a7-4b65-bac7-615219485ee5/transitions "HTTP/1.1 200 OK"
+03:34:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/56d30e67-02a7-4b65-bac7-615219485ee5/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"56d30e67-02a7-4b65-bac7-615219485ee5","reference":"CLM-C5612D99","policy_id":"21e4d055-7bfd-4bd5-b283-8278021ab334","claimant_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","amount":"9999.99","description":"QA b5000853 Concern and learn commercial politics.","incident_date":"2026-08-19","status":"UNDER_REVIEW","created_at":"2026-08-26T03:34:09.384691Z","updated_at":"2026-08-26T03:34:09.405768Z","withdrawn_at":null,"decided_by_id":null}
+03:34:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/56d30e67-02a7-4b65-bac7-615219485ee5/transitions "HTTP/1.1 403 Forbidden"
+03:34:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/56d30e67-02a7-4b65-bac7-615219485ee5/transitions -> 403 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 9999.99 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+03:34:09 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/56d30e67-02a7-4b65-bac7-615219485ee5 "HTTP/1.1 200 OK"
+03:34:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/56d30e67-02a7-4b65-bac7-615219485ee5 -> 200 (6 ms)
+  response: {"id":"56d30e67-02a7-4b65-bac7-615219485ee5","reference":"CLM-C5612D99","policy_id":"21e4d055-7bfd-4bd5-b283-8278021ab334","claimant_id":"0cc8b490-9783-4d38-b239-bde43d4326e3","amount":"9999.99","description":"QA b5000853 Concern and learn commercial politics.","incident_date":"2026-08-19","status":"UNDER_REVIEW","created_at":"2026-08-26T03:34:09.384691Z","updated_at":"2026-08-26T03:34:09.405768Z","withdrawn_at":null,"decided_by_id":null}
+03:34:09 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[far-above-limit]
