@@ -1,0 +1,21 @@
+13:00:31 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-approve-APPROVED]
+13:00:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","policy_number":"POL-1001","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"10000.00","is_active":true},{"id":"c651af4f-1d16-49b3-a689-d84821993629","policy_number":"POL-1002","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"2500.00","is_active":true}]
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '100.00', 'description': 'QA 8fef6ee7 Day father expect run race section.', 'incident_date': '2026-08-20'}
+  response: {"id":"82a28dd0-2a40-4e63-8c56-f1f45d82b315","reference":"CLM-8C3F7E02","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"100.00","description":"QA 8fef6ee7 Day father expect run race section.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:31.889753Z","updated_at":"2026-08-27T13:00:31.889753Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/82a28dd0-2a40-4e63-8c56-f1f45d82b315/transitions "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/82a28dd0-2a40-4e63-8c56-f1f45d82b315/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"82a28dd0-2a40-4e63-8c56-f1f45d82b315","reference":"CLM-8C3F7E02","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"100.00","description":"QA 8fef6ee7 Day father expect run race section.","incident_date":"2026-08-20","status":"SUBMITTED","created_at":"2026-08-27T13:00:31.889753Z","updated_at":"2026-08-27T13:00:31.901207Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/82a28dd0-2a40-4e63-8c56-f1f45d82b315/transitions "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/82a28dd0-2a40-4e63-8c56-f1f45d82b315/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"82a28dd0-2a40-4e63-8c56-f1f45d82b315","reference":"CLM-8C3F7E02","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"100.00","description":"QA 8fef6ee7 Day father expect run race section.","incident_date":"2026-08-20","status":"UNDER_REVIEW","created_at":"2026-08-27T13:00:31.889753Z","updated_at":"2026-08-27T13:00:31.914404Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/82a28dd0-2a40-4e63-8c56-f1f45d82b315/transitions "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/82a28dd0-2a40-4e63-8c56-f1f45d82b315/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"82a28dd0-2a40-4e63-8c56-f1f45d82b315","reference":"CLM-8C3F7E02","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"100.00","description":"QA 8fef6ee7 Day father expect run race section.","incident_date":"2026-08-20","status":"APPROVED","created_at":"2026-08-27T13:00:31.889753Z","updated_at":"2026-08-27T13:00:31.925609Z","withdrawn_at":null,"decided_by_id":"c136b919-e8e3-4d2d-b1d9-091ee415839d"}
+13:00:31 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-approve-APPROVED]

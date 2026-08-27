@@ -1,0 +1,24 @@
+13:00:31 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]
+13:00:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","policy_number":"POL-1001","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"10000.00","is_active":true},{"id":"c651af4f-1d16-49b3-a689-d84821993629","policy_number":"POL-1002","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"2500.00","is_active":true}]
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '5000.01', 'description': 'QA 4f0244e8 Whole beautiful enter letter analysis program.', 'incident_date': '2026-08-20'}
+  response: {"id":"b7b99e3d-0d1a-4496-905c-1abf277d824f","reference":"CLM-252E3F15","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"5000.01","description":"QA 4f0244e8 Whole beautiful enter letter analysis program.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:31.232994Z","updated_at":"2026-08-27T13:00:31.232994Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b7b99e3d-0d1a-4496-905c-1abf277d824f/transitions "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b7b99e3d-0d1a-4496-905c-1abf277d824f/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b7b99e3d-0d1a-4496-905c-1abf277d824f","reference":"CLM-252E3F15","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"5000.01","description":"QA 4f0244e8 Whole beautiful enter letter analysis program.","incident_date":"2026-08-20","status":"SUBMITTED","created_at":"2026-08-27T13:00:31.232994Z","updated_at":"2026-08-27T13:00:31.242600Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b7b99e3d-0d1a-4496-905c-1abf277d824f/transitions "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b7b99e3d-0d1a-4496-905c-1abf277d824f/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b7b99e3d-0d1a-4496-905c-1abf277d824f","reference":"CLM-252E3F15","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"5000.01","description":"QA 4f0244e8 Whole beautiful enter letter analysis program.","incident_date":"2026-08-20","status":"UNDER_REVIEW","created_at":"2026-08-27T13:00:31.232994Z","updated_at":"2026-08-27T13:00:31.251560Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b7b99e3d-0d1a-4496-905c-1abf277d824f/transitions "HTTP/1.1 403 Forbidden"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b7b99e3d-0d1a-4496-905c-1abf277d824f/transitions -> 403 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 5000.01 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+13:00:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/b7b99e3d-0d1a-4496-905c-1abf277d824f "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/b7b99e3d-0d1a-4496-905c-1abf277d824f -> 200 (4 ms)
+  response: {"id":"b7b99e3d-0d1a-4496-905c-1abf277d824f","reference":"CLM-252E3F15","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"5000.01","description":"QA 4f0244e8 Whole beautiful enter letter analysis program.","incident_date":"2026-08-20","status":"UNDER_REVIEW","created_at":"2026-08-27T13:00:31.232994Z","updated_at":"2026-08-27T13:00:31.251560Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]

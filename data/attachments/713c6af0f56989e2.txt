@@ -1,0 +1,10 @@
+13:00:39 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]
+13:00:39 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+13:00:39 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","policy_number":"POL-1001","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"10000.00","is_active":true},{"id":"c651af4f-1d16-49b3-a689-d84821993629","policy_number":"POL-1002","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"2500.00","is_active":true}]
+13:00:39 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:39 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '640.00', 'description': 'QA 3da99abc With member hope look bill take section article.', 'incident_date': '2026-08-20'}
+  response: {"id":"6061e0e9-6b26-4fa3-a06c-44e21f28e09b","reference":"CLM-983E1A92","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"640.00","description":"QA 3da99abc With member hope look bill take section article.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:39.424905Z","updated_at":"2026-08-27T13:00:39.424905Z","withdrawn_at":null,"decided_by_id":null}
+13:00:39 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/6061e0e9-6b26-4fa3-a06c-44e21f28e09b
+13:00:39 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]

@@ -1,0 +1,2 @@
+13:00:40 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_allure_support.py::test_severity_reflects_triage_order[markers3-minor]
+13:00:40 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_allure_support.py::test_severity_reflects_triage_order[markers3-minor]

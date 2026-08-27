@@ -1,0 +1,26 @@
+13:00:40 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+13:00:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+13:00:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (11 ms)
+  response: [{"id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","policy_number":"POL-1001","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"10000.00","is_active":true},{"id":"c651af4f-1d16-49b3-a689-d84821993629","policy_number":"POL-1002","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"2500.00","is_active":true}]
+13:00:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (20 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '410.00', 'description': 'QA ae33ad99 Red in suddenly drop wait it back.', 'incident_date': '2026-08-20'}
+  response: {"id":"e1944eca-f8c5-4042-ac1a-4acee069b422","reference":"CLM-66E2A6B7","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"410.00","description":"QA ae33ad99 Red in suddenly drop wait it back.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:40.467525Z","updated_at":"2026-08-27T13:00:40.467525Z","withdrawn_at":null,"decided_by_id":null}
+13:00:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1944eca-f8c5-4042-ac1a-4acee069b422/transitions "HTTP/1.1 200 OK"
+13:00:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1944eca-f8c5-4042-ac1a-4acee069b422/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"e1944eca-f8c5-4042-ac1a-4acee069b422","reference":"CLM-66E2A6B7","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"410.00","description":"QA ae33ad99 Red in suddenly drop wait it back.","incident_date":"2026-08-20","status":"SUBMITTED","created_at":"2026-08-27T13:00:40.467525Z","updated_at":"2026-08-27T13:00:40.482872Z","withdrawn_at":null,"decided_by_id":null}
+13:00:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1944eca-f8c5-4042-ac1a-4acee069b422/transitions "HTTP/1.1 200 OK"
+13:00:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1944eca-f8c5-4042-ac1a-4acee069b422/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"e1944eca-f8c5-4042-ac1a-4acee069b422","reference":"CLM-66E2A6B7","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"410.00","description":"QA ae33ad99 Red in suddenly drop wait it back.","incident_date":"2026-08-20","status":"UNDER_REVIEW","created_at":"2026-08-27T13:00:40.467525Z","updated_at":"2026-08-27T13:00:40.495413Z","withdrawn_at":null,"decided_by_id":null}
+13:00:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1944eca-f8c5-4042-ac1a-4acee069b422/transitions "HTTP/1.1 200 OK"
+13:00:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1944eca-f8c5-4042-ac1a-4acee069b422/transitions -> 200 (14 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"e1944eca-f8c5-4042-ac1a-4acee069b422","reference":"CLM-66E2A6B7","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"410.00","description":"QA ae33ad99 Red in suddenly drop wait it back.","incident_date":"2026-08-20","status":"APPROVED","created_at":"2026-08-27T13:00:40.467525Z","updated_at":"2026-08-27T13:00:40.509262Z","withdrawn_at":null,"decided_by_id":"c136b919-e8e3-4d2d-b1d9-091ee415839d"}
+13:00:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1944eca-f8c5-4042-ac1a-4acee069b422/transitions "HTTP/1.1 200 OK"
+13:00:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1944eca-f8c5-4042-ac1a-4acee069b422/transitions -> 200 (17 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"e1944eca-f8c5-4042-ac1a-4acee069b422","reference":"CLM-66E2A6B7","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"410.00","description":"QA ae33ad99 Red in suddenly drop wait it back.","incident_date":"2026-08-20","status":"PAID","created_at":"2026-08-27T13:00:40.467525Z","updated_at":"2026-08-27T13:00:40.523968Z","withdrawn_at":null,"decided_by_id":"c136b919-e8e3-4d2d-b1d9-091ee415839d"}
+13:00:40 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/e1944eca-f8c5-4042-ac1a-4acee069b422
+13:00:40 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

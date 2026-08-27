@@ -1,0 +1,2 @@
+01:00:41 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_settings.py::test_log_level_is_normalised_to_upper_case
+01:00:41 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_settings.py::test_log_level_is_normalised_to_upper_case

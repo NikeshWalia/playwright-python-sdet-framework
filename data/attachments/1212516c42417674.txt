@@ -1,0 +1,19 @@
+13:00:32 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-reject]
+13:00:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+13:00:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","policy_number":"POL-1001","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"10000.00","is_active":true},{"id":"c651af4f-1d16-49b3-a689-d84821993629","policy_number":"POL-1002","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"2500.00","is_active":true}]
+13:00:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '100.00', 'description': 'QA 03efbb5c Event word plant put answer arrive.', 'incident_date': '2026-08-20'}
+  response: {"id":"89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1","reference":"CLM-C0D80876","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"100.00","description":"QA 03efbb5c Event word plant put answer arrive.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:32.808735Z","updated_at":"2026-08-27T13:00:32.808735Z","withdrawn_at":null,"decided_by_id":null}
+13:00:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1 "HTTP/1.1 200 OK"
+13:00:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1 -> 200 (5 ms)
+  response: {"id":"89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1","reference":"CLM-C0D80876","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"100.00","description":"QA 03efbb5c Event word plant put answer arrive.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:32.808735Z","updated_at":"2026-08-27T13:00:32.808735Z","withdrawn_at":null,"decided_by_id":null}
+13:00:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1/transitions "HTTP/1.1 409 Conflict"
+13:00:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1/transitions -> 409 (5 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status DRAFT; it must be UNDER_REVIEW."}
+13:00:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1 "HTTP/1.1 200 OK"
+13:00:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1 -> 200 (6 ms)
+  response: {"id":"89c2ffa0-57d2-4f65-9c1e-82c9594eb2f1","reference":"CLM-C0D80876","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"100.00","description":"QA 03efbb5c Event word plant put answer arrive.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:32.808735Z","updated_at":"2026-08-27T13:00:32.808735Z","withdrawn_at":null,"decided_by_id":null}
+13:00:32 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-reject]

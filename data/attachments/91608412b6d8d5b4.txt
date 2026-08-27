@@ -1,0 +1,25 @@
+13:00:31 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+13:00:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","policy_number":"POL-1001","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"10000.00","is_active":true},{"id":"c651af4f-1d16-49b3-a689-d84821993629","policy_number":"POL-1002","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"2500.00","is_active":true}]
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '250.00', 'description': 'QA 75626a17 Act move standard yourself name.', 'incident_date': '2026-08-20'}
+  response: {"id":"3f02fd58-33ff-4727-b408-e3f962f7604f","reference":"CLM-1B1AAFE1","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"250.00","description":"QA 75626a17 Act move standard yourself name.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:31.535530Z","updated_at":"2026-08-27T13:00:31.535530Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '250.00', 'description': 'QA f71cad01 Guy career suffer choose detail.', 'incident_date': '2026-08-20'}
+  response: {"id":"8e8c1381-60e4-41c9-8bc7-e078731974e9","reference":"CLM-E13D482D","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"250.00","description":"QA f71cad01 Guy career suffer choose detail.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:31.545884Z","updated_at":"2026-08-27T13:00:31.545884Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '250.00', 'description': 'QA 36354fb5 Second whose candidate kind work theory lawyer.', 'incident_date': '2026-08-20'}
+  response: {"id":"425b64e9-4bb1-42c4-8fc9-2692eebd0e8c","reference":"CLM-277585F4","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"250.00","description":"QA 36354fb5 Second whose candidate kind work theory lawyer.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:31.556606Z","updated_at":"2026-08-27T13:00:31.556606Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '250.00', 'description': 'QA bda5c90d Avoid no two common.', 'incident_date': '2026-08-20'}
+  response: {"id":"a2b18e0f-a55a-436d-9698-55d01ff781f8","reference":"CLM-6DEDB6AF","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"250.00","description":"QA bda5c90d Avoid no two common.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:31.566771Z","updated_at":"2026-08-27T13:00:31.566771Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '250.00', 'description': 'QA 444f4ebe Article none fly.', 'incident_date': '2026-08-20'}
+  response: {"id":"a786a732-b106-4508-8dc7-80619a0cd124","reference":"CLM-B2CBCD1F","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"250.00","description":"QA 444f4ebe Article none fly.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:31.575573Z","updated_at":"2026-08-27T13:00:31.575573Z","withdrawn_at":null,"decided_by_id":null}
+13:00:31 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

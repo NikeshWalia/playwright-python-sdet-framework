@@ -1,0 +1,13 @@
+13:00:33 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_a_claim_created_through_the_api_is_persisted
+13:00:33 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+13:00:33 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","policy_number":"POL-1001","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"10000.00","is_active":true},{"id":"c651af4f-1d16-49b3-a689-d84821993629","policy_number":"POL-1002","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"2500.00","is_active":true}]
+13:00:33 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+13:00:33 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:33 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '1234.56', 'description': 'QA 202f0f50 Mean huge eight treat.', 'incident_date': '2026-08-20'}
+  response: {"id":"e6259b6e-d267-4e52-9526-987b67b7d767","reference":"CLM-C5A4A58A","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"1234.56","description":"QA 202f0f50 Mean huge eight treat.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:33.339242Z","updated_at":"2026-08-27T13:00:33.339242Z","withdrawn_at":null,"decided_by_id":null}
+13:00:33 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('e6259b6e-d267-4e52-9526-987b67b7d767',)
+  rows: 1
+13:00:33 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_a_claim_created_through_the_api_is_persisted

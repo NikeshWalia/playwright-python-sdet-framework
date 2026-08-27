@@ -1,0 +1,12 @@
+13:00:30 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim
+13:00:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+13:00:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","policy_number":"POL-1001","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"10000.00","is_active":true},{"id":"c651af4f-1d16-49b3-a689-d84821993629","policy_number":"POL-1002","holder_id":"a1a9fb1c-06e4-4520-866a-866050903464","coverage_limit":"2500.00","is_active":true}]
+13:00:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+13:00:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '14f7ad40-7c6c-4e91-881a-f66125f9cef6', 'amount': '250.00', 'description': 'QA 39bff926 After sound mind.', 'incident_date': '2026-08-20'}
+  response: {"id":"78808185-2bf3-4003-a378-4bd923b283ca","reference":"CLM-914D8099","policy_id":"14f7ad40-7c6c-4e91-881a-f66125f9cef6","claimant_id":"a1a9fb1c-06e4-4520-866a-866050903464","amount":"250.00","description":"QA 39bff926 After sound mind.","incident_date":"2026-08-20","status":"DRAFT","created_at":"2026-08-27T13:00:30.698850Z","updated_at":"2026-08-27T13:00:30.698850Z","withdrawn_at":null,"decided_by_id":null}
+13:00:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/78808185-2bf3-4003-a378-4bd923b283ca "HTTP/1.1 404 Not Found"
+13:00:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/78808185-2bf3-4003-a378-4bd923b283ca -> 404 (6 ms)
+  response: {"detail":"Claim not found"}
+13:00:30 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim
