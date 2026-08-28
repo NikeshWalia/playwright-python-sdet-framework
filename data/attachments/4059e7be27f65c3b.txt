@@ -1,0 +1,25 @@
+14:31:54 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+14:31:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+14:31:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","policy_number":"POL-1001","holder_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","coverage_limit":"10000.00","is_active":true},{"id":"e83e20f6-6852-433a-b202-891b051f1ff1","policy_number":"POL-1002","holder_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","coverage_limit":"2500.00","is_active":true}]
+14:31:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+14:31:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '250.00', 'description': 'QA ebd37e04 Just election who up bring information.', 'incident_date': '2026-08-21'}
+  response: {"id":"e4d6a59c-47ba-4ebd-ab3d-e25e9f8e9792","reference":"CLM-441D595D","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"250.00","description":"QA ebd37e04 Just election who up bring information.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:54.409960Z","updated_at":"2026-08-28T14:31:54.409960Z","withdrawn_at":null,"decided_by_id":null}
+14:31:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+14:31:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '250.00', 'description': 'QA 3a89f852 Relate yourself think.', 'incident_date': '2026-08-21'}
+  response: {"id":"e31f4168-0584-4f24-bfb3-23c1426d99a3","reference":"CLM-EBD641A1","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"250.00","description":"QA 3a89f852 Relate yourself think.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:54.420160Z","updated_at":"2026-08-28T14:31:54.420160Z","withdrawn_at":null,"decided_by_id":null}
+14:31:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+14:31:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '250.00', 'description': 'QA 45589861 Cause man involve exist color case.', 'incident_date': '2026-08-21'}
+  response: {"id":"eab22ee4-1a9a-4c9d-abf4-83e1d09a9b79","reference":"CLM-E255EA59","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"250.00","description":"QA 45589861 Cause man involve exist color case.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:54.430447Z","updated_at":"2026-08-28T14:31:54.430447Z","withdrawn_at":null,"decided_by_id":null}
+14:31:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+14:31:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '250.00', 'description': 'QA be8ec211 Decide if owner detail.', 'incident_date': '2026-08-21'}
+  response: {"id":"cd2faded-f6f8-4016-9c63-cebd71cca81c","reference":"CLM-2836D3AC","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"250.00","description":"QA be8ec211 Decide if owner detail.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:54.440741Z","updated_at":"2026-08-28T14:31:54.440741Z","withdrawn_at":null,"decided_by_id":null}
+14:31:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+14:31:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '250.00', 'description': 'QA 3d93695c Think inside thus wind capital born.', 'incident_date': '2026-08-21'}
+  response: {"id":"75815af6-e444-4223-92fd-0a9711367120","reference":"CLM-4EAAA165","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"250.00","description":"QA 3d93695c Think inside thus wind capital born.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:54.449317Z","updated_at":"2026-08-28T14:31:54.449317Z","withdrawn_at":null,"decided_by_id":null}
+14:31:54 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

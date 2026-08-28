@@ -1,0 +1,28 @@
+14:31:56 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_the_approving_actor_is_recorded_against_the_claim
+14:31:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+14:31:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","policy_number":"POL-1001","holder_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","coverage_limit":"10000.00","is_active":true},{"id":"e83e20f6-6852-433a-b202-891b051f1ff1","policy_number":"POL-1002","holder_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","coverage_limit":"2500.00","is_active":true}]
+14:31:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+14:31:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+14:31:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '900.00', 'description': 'QA 117c014d Economy instead director will her answer.', 'incident_date': '2026-08-21'}
+  response: {"id":"887ea351-d9fd-4fea-b6f9-a69c2231dd33","reference":"CLM-5F897B8C","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"900.00","description":"QA 117c014d Economy instead director will her answer.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:56.264197Z","updated_at":"2026-08-28T14:31:56.264197Z","withdrawn_at":null,"decided_by_id":null}
+14:31:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/887ea351-d9fd-4fea-b6f9-a69c2231dd33/transitions "HTTP/1.1 200 OK"
+14:31:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/887ea351-d9fd-4fea-b6f9-a69c2231dd33/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"887ea351-d9fd-4fea-b6f9-a69c2231dd33","reference":"CLM-5F897B8C","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"900.00","description":"QA 117c014d Economy instead director will her answer.","incident_date":"2026-08-21","status":"SUBMITTED","created_at":"2026-08-28T14:31:56.264197Z","updated_at":"2026-08-28T14:31:56.275099Z","withdrawn_at":null,"decided_by_id":null}
+14:31:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/887ea351-d9fd-4fea-b6f9-a69c2231dd33/transitions "HTTP/1.1 200 OK"
+14:31:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/887ea351-d9fd-4fea-b6f9-a69c2231dd33/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"887ea351-d9fd-4fea-b6f9-a69c2231dd33","reference":"CLM-5F897B8C","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"900.00","description":"QA 117c014d Economy instead director will her answer.","incident_date":"2026-08-21","status":"UNDER_REVIEW","created_at":"2026-08-28T14:31:56.264197Z","updated_at":"2026-08-28T14:31:56.285746Z","withdrawn_at":null,"decided_by_id":null}
+14:31:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/887ea351-d9fd-4fea-b6f9-a69c2231dd33/transitions "HTTP/1.1 200 OK"
+14:31:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/887ea351-d9fd-4fea-b6f9-a69c2231dd33/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"887ea351-d9fd-4fea-b6f9-a69c2231dd33","reference":"CLM-5F897B8C","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"900.00","description":"QA 117c014d Economy instead director will her answer.","incident_date":"2026-08-21","status":"APPROVED","created_at":"2026-08-28T14:31:56.264197Z","updated_at":"2026-08-28T14:31:56.297289Z","withdrawn_at":null,"decided_by_id":"4d8b5e00-4ec9-4dd6-ae10-e2c2fa48553e"}
+14:31:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('887ea351-d9fd-4fea-b6f9-a69c2231dd33',)
+  rows: 1
+14:31:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+14:31:56 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_the_approving_actor_is_recorded_against_the_claim

@@ -1,0 +1,17 @@
+14:31:52 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/health/ready "HTTP/1.1 200 OK"
+14:31:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+14:31:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+14:31:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+14:31:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+14:31:53 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+14:31:53 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+14:31:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '250.00', 'description': 'QA ff2399b9 Billion election rate.', 'incident_date': '2026-08-21'}
+  response: {"id":"bd384f08-5449-4a73-ae1f-c62949d6b54e","reference":"CLM-3512CD5F","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"250.00","description":"QA ff2399b9 Billion election rate.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:53.026957Z","updated_at":"2026-08-28T14:31:53.026957Z","withdrawn_at":null,"decided_by_id":null}
+14:31:53 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/bd384f08-5449-4a73-ae1f-c62949d6b54e "HTTP/1.1 204 No Content"
+14:31:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/bd384f08-5449-4a73-ae1f-c62949d6b54e -> 204 (8 ms)
+  response: 
+14:31:53 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/bd384f08-5449-4a73-ae1f-c62949d6b54e/events "HTTP/1.1 200 OK"
+14:31:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/bd384f08-5449-4a73-ae1f-c62949d6b54e/events -> 200 (6 ms)
+  response: [{"id":"c18e8afa-d118-4c31-90c3-577486792591","claim_id":"bd384f08-5449-4a73-ae1f-c62949d6b54e","actor_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-08-28T14:31:53.026957Z"},{"id":"4f62edef-ea89-4b36-a32d-1cf80dcca20e","claim_id":"bd384f08-5449-4a73-ae1f-c62949d6b54e","actor_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","from_status":"DRAFT","to_status":"WITHDRAWN","note":null,"occurred_at":"2026-08-28T14:31:53.037210Z"}]
+14:31:53 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_withdrawal_is_recorded_in_the_audit_trail

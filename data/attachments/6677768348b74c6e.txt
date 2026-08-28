@@ -1,2 +1,0 @@
-13:00:41 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_readiness.py::test_never_sleeps_past_the_deadline
-13:00:41 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_readiness.py::test_never_sleeps_past_the_deadline

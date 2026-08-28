@@ -1,2 +1,0 @@
-13:00:40 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_artifacts.py::test_slug_is_stable_for_the_same_node_id
-13:00:40 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_artifacts.py::test_slug_is_stable_for_the_same_node_id

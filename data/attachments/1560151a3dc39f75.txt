@@ -1,0 +1,32 @@
+14:31:55 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-reject]
+14:31:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+14:31:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","policy_number":"POL-1001","holder_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","coverage_limit":"10000.00","is_active":true},{"id":"e83e20f6-6852-433a-b202-891b051f1ff1","policy_number":"POL-1002","holder_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","coverage_limit":"2500.00","is_active":true}]
+14:31:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+14:31:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '100.00', 'description': 'QA e126a808 Which human health still present.', 'incident_date': '2026-08-21'}
+  response: {"id":"a504c09f-d619-4300-899f-73a7fa8a95e3","reference":"CLM-7E8F3FB5","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"100.00","description":"QA e126a808 Which human health still present.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:55.875401Z","updated_at":"2026-08-28T14:31:55.875401Z","withdrawn_at":null,"decided_by_id":null}
+14:31:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions "HTTP/1.1 200 OK"
+14:31:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a504c09f-d619-4300-899f-73a7fa8a95e3","reference":"CLM-7E8F3FB5","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"100.00","description":"QA e126a808 Which human health still present.","incident_date":"2026-08-21","status":"SUBMITTED","created_at":"2026-08-28T14:31:55.875401Z","updated_at":"2026-08-28T14:31:55.887285Z","withdrawn_at":null,"decided_by_id":null}
+14:31:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions "HTTP/1.1 200 OK"
+14:31:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a504c09f-d619-4300-899f-73a7fa8a95e3","reference":"CLM-7E8F3FB5","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"100.00","description":"QA e126a808 Which human health still present.","incident_date":"2026-08-21","status":"UNDER_REVIEW","created_at":"2026-08-28T14:31:55.875401Z","updated_at":"2026-08-28T14:31:55.896185Z","withdrawn_at":null,"decided_by_id":null}
+14:31:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions "HTTP/1.1 200 OK"
+14:31:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"a504c09f-d619-4300-899f-73a7fa8a95e3","reference":"CLM-7E8F3FB5","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"100.00","description":"QA e126a808 Which human health still present.","incident_date":"2026-08-21","status":"APPROVED","created_at":"2026-08-28T14:31:55.875401Z","updated_at":"2026-08-28T14:31:55.905161Z","withdrawn_at":null,"decided_by_id":"4d8b5e00-4ec9-4dd6-ae10-e2c2fa48553e"}
+14:31:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions "HTTP/1.1 200 OK"
+14:31:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"a504c09f-d619-4300-899f-73a7fa8a95e3","reference":"CLM-7E8F3FB5","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"100.00","description":"QA e126a808 Which human health still present.","incident_date":"2026-08-21","status":"PAID","created_at":"2026-08-28T14:31:55.875401Z","updated_at":"2026-08-28T14:31:55.914945Z","withdrawn_at":null,"decided_by_id":"4d8b5e00-4ec9-4dd6-ae10-e2c2fa48553e"}
+14:31:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions "HTTP/1.1 409 Conflict"
+14:31:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3/transitions -> 409 (6 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status PAID; it must be UNDER_REVIEW."}
+14:31:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3 "HTTP/1.1 200 OK"
+14:31:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/a504c09f-d619-4300-899f-73a7fa8a95e3 -> 200 (6 ms)
+  response: {"id":"a504c09f-d619-4300-899f-73a7fa8a95e3","reference":"CLM-7E8F3FB5","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"100.00","description":"QA e126a808 Which human health still present.","incident_date":"2026-08-21","status":"PAID","created_at":"2026-08-28T14:31:55.875401Z","updated_at":"2026-08-28T14:31:55.914945Z","withdrawn_at":null,"decided_by_id":"4d8b5e00-4ec9-4dd6-ae10-e2c2fa48553e"}
+14:31:55 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-reject]

@@ -1,2 +1,0 @@
-13:00:40 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_artifacts.py::test_run_ids_sort_chronologically_and_do_not_collide
-13:00:40 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_artifacts.py::test_run_ids_sort_chronologically_and_do_not_collide
