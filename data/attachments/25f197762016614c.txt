@@ -1,2 +1,0 @@
-02:32:04 DEBUG   [qa-060f8fdffb] claimdesk_qa.tests.conftest: start tests/framework/test_settings.py::test_api_url_can_be_overridden_independently
-02:32:04 DEBUG   [qa-060f8fdffb] claimdesk_qa.tests.conftest: end tests/framework/test_settings.py::test_api_url_can_be_overridden_independently

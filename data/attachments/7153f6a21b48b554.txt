@@ -1,0 +1,2 @@
+09:18:35 INFO    [qa-70b23f1f1f] claimdesk_qa.claimdesk_qa.ui.base_page: Opening http://127.0.0.1:8000/claims
+09:18:36 INFO    [qa-70b23f1f1f] claimdesk_qa.claimdesk_qa.ui.base_page: Opening http://127.0.0.1:8000/claims

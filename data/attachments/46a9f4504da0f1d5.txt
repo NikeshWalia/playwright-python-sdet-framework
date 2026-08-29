@@ -1,9 +1,0 @@
-14:31:54 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_returns_the_full_contract
-14:31:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-14:31:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
-  response: [{"id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","policy_number":"POL-1001","holder_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","coverage_limit":"10000.00","is_active":true},{"id":"e83e20f6-6852-433a-b202-891b051f1ff1","policy_number":"POL-1002","holder_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","coverage_limit":"2500.00","is_active":true}]
-14:31:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-14:31:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
-  request : {'policy_id': '553fa00c-e453-4bf5-ac4a-fbbce7dd2288', 'amount': '1250.50', 'description': 'QA 0ec6f629 Fact either little this.', 'incident_date': '2026-08-21'}
-  response: {"id":"7b4dc037-e61f-4356-ad41-9a4f65f9732c","reference":"CLM-B44E226F","policy_id":"553fa00c-e453-4bf5-ac4a-fbbce7dd2288","claimant_id":"04cd05c0-1abb-4f3f-97cb-b10b02376759","amount":"1250.50","description":"QA 0ec6f629 Fact either little this.","incident_date":"2026-08-21","status":"DRAFT","created_at":"2026-08-28T14:31:54.353371Z","updated_at":"2026-08-28T14:31:54.353371Z","withdrawn_at":null,"decided_by_id":null}
-14:31:54 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_returns_the_full_contract

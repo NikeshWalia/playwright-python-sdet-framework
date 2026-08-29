@@ -1,0 +1,12 @@
+09:18:29 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event
+09:18:29 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:18:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"32f3f95e-d5ce-435a-9709-7f0df59dd96c","policy_number":"POL-1001","holder_id":"074c53e1-0035-4496-bc57-e179f8a0415a","coverage_limit":"10000.00","is_active":true},{"id":"6582bc82-738a-4d34-80f1-d5d8bc25d416","policy_number":"POL-1002","holder_id":"074c53e1-0035-4496-bc57-e179f8a0415a","coverage_limit":"2500.00","is_active":true}]
+09:18:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '32f3f95e-d5ce-435a-9709-7f0df59dd96c', 'amount': '250.00', 'description': 'QA 48a0076f Answer consider car music really we.', 'incident_date': '2026-08-22'}
+  response: {"id":"bf8cfb0e-ec64-40e0-b4a0-4bcd6b2d4c27","reference":"CLM-B20E6A42","policy_id":"32f3f95e-d5ce-435a-9709-7f0df59dd96c","claimant_id":"074c53e1-0035-4496-bc57-e179f8a0415a","amount":"250.00","description":"QA 48a0076f Answer consider car music really we.","incident_date":"2026-08-22","status":"DRAFT","created_at":"2026-08-29T09:18:29.693602Z","updated_at":"2026-08-29T09:18:29.693602Z","withdrawn_at":null,"decided_by_id":null}
+09:18:29 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/bf8cfb0e-ec64-40e0-b4a0-4bcd6b2d4c27/events "HTTP/1.1 200 OK"
+09:18:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/bf8cfb0e-ec64-40e0-b4a0-4bcd6b2d4c27/events -> 200 (5 ms)
+  response: [{"id":"5f8e6a6f-0597-421b-871e-77fe73565603","claim_id":"bf8cfb0e-ec64-40e0-b4a0-4bcd6b2d4c27","actor_id":"074c53e1-0035-4496-bc57-e179f8a0415a","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-08-29T09:18:29.693602Z"}]
+09:18:29 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event
