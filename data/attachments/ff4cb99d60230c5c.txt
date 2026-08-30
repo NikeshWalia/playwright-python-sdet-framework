@@ -1,0 +1,9 @@
+08:29:22 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]
+08:29:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"52d93429-5af5-4d94-b573-76192f5056e7","policy_number":"POL-1001","holder_id":"f869a28b-a775-4507-827a-e0f8df462a3f","coverage_limit":"10000.00","is_active":true},{"id":"c0cb0dbf-7660-4c72-9aee-63d7345a0ba3","policy_number":"POL-1002","holder_id":"f869a28b-a775-4507-827a-e0f8df462a3f","coverage_limit":"2500.00","is_active":true}]
+08:29:22 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:29:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '52d93429-5af5-4d94-b573-76192f5056e7', 'amount': '１２３', 'description': 'QA 41c729f8 Certainly form officer amount woman population.', 'incident_date': '2026-08-23'}
+  response: {"id":"42524690-ed0e-45b2-94c5-a6b9ad968aa3","reference":"CLM-08458FDA","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"123.00","description":"QA 41c729f8 Certainly form officer amount woman population.","incident_date":"2026-08-23","status":"DRAFT","created_at":"2026-08-30T08:29:22.436833Z","updated_at":"2026-08-30T08:29:22.436833Z","withdrawn_at":null,"decided_by_id":null}
+08:29:22 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]

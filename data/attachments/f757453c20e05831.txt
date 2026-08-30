@@ -1,0 +1,13 @@
+08:29:25 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_money_is_stored_exactly
+08:29:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"52d93429-5af5-4d94-b573-76192f5056e7","policy_number":"POL-1001","holder_id":"f869a28b-a775-4507-827a-e0f8df462a3f","coverage_limit":"10000.00","is_active":true},{"id":"c0cb0dbf-7660-4c72-9aee-63d7345a0ba3","policy_number":"POL-1002","holder_id":"f869a28b-a775-4507-827a-e0f8df462a3f","coverage_limit":"2500.00","is_active":true}]
+08:29:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:29:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:29:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '52d93429-5af5-4d94-b573-76192f5056e7', 'amount': '1234.57', 'description': 'QA eccd8b42 Their plant blue.', 'incident_date': '2026-08-23'}
+  response: {"id":"f6629bf6-aab5-44a0-9dd3-e93db078937e","reference":"CLM-6160EEFA","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"1234.57","description":"QA eccd8b42 Their plant blue.","incident_date":"2026-08-23","status":"DRAFT","created_at":"2026-08-30T08:29:25.024990Z","updated_at":"2026-08-30T08:29:25.024990Z","withdrawn_at":null,"decided_by_id":null}
+08:29:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('f6629bf6-aab5-44a0-9dd3-e93db078937e',)
+  rows: 1
+08:29:25 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_money_is_stored_exactly

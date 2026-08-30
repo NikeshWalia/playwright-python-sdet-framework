@@ -1,6 +1,0 @@
-09:18:37 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_form.py::test_a_description_below_the_minimum_length_is_rejected[chromium]
-09:18:37 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/new
-09:18:37 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-09:18:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (14 ms)
-  response: [{"id":"32f3f95e-d5ce-435a-9709-7f0df59dd96c","policy_number":"POL-1001","holder_id":"074c53e1-0035-4496-bc57-e179f8a0415a","coverage_limit":"10000.00","is_active":true},{"id":"6582bc82-738a-4d34-80f1-d5d8bc25d416","policy_number":"POL-1002","holder_id":"074c53e1-0035-4496-bc57-e179f8a0415a","coverage_limit":"2500.00","is_active":true}]
-09:18:37 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_form.py::test_a_description_below_the_minimum_length_is_rejected[chromium]

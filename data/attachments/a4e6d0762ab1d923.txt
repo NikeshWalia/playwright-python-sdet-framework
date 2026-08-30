@@ -1,0 +1,32 @@
+08:29:23 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-submit]
+08:29:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"52d93429-5af5-4d94-b573-76192f5056e7","policy_number":"POL-1001","holder_id":"f869a28b-a775-4507-827a-e0f8df462a3f","coverage_limit":"10000.00","is_active":true},{"id":"c0cb0dbf-7660-4c72-9aee-63d7345a0ba3","policy_number":"POL-1002","holder_id":"f869a28b-a775-4507-827a-e0f8df462a3f","coverage_limit":"2500.00","is_active":true}]
+08:29:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '52d93429-5af5-4d94-b573-76192f5056e7', 'amount': '100.00', 'description': 'QA 077cf916 Research today behavior sure impact key center candidate.', 'incident_date': '2026-08-23'}
+  response: {"id":"9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95","reference":"CLM-FB933502","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"100.00","description":"QA 077cf916 Research today behavior sure impact key center candidate.","incident_date":"2026-08-23","status":"DRAFT","created_at":"2026-08-30T08:29:23.520397Z","updated_at":"2026-08-30T08:29:23.520397Z","withdrawn_at":null,"decided_by_id":null}
+08:29:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions "HTTP/1.1 200 OK"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95","reference":"CLM-FB933502","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"100.00","description":"QA 077cf916 Research today behavior sure impact key center candidate.","incident_date":"2026-08-23","status":"SUBMITTED","created_at":"2026-08-30T08:29:23.520397Z","updated_at":"2026-08-30T08:29:23.531763Z","withdrawn_at":null,"decided_by_id":null}
+08:29:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions "HTTP/1.1 200 OK"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95","reference":"CLM-FB933502","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"100.00","description":"QA 077cf916 Research today behavior sure impact key center candidate.","incident_date":"2026-08-23","status":"UNDER_REVIEW","created_at":"2026-08-30T08:29:23.520397Z","updated_at":"2026-08-30T08:29:23.543063Z","withdrawn_at":null,"decided_by_id":null}
+08:29:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions "HTTP/1.1 200 OK"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95","reference":"CLM-FB933502","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"100.00","description":"QA 077cf916 Research today behavior sure impact key center candidate.","incident_date":"2026-08-23","status":"APPROVED","created_at":"2026-08-30T08:29:23.520397Z","updated_at":"2026-08-30T08:29:23.553616Z","withdrawn_at":null,"decided_by_id":"755e9078-cf31-455a-b7cc-854f9e8f3f8c"}
+08:29:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions "HTTP/1.1 200 OK"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions -> 200 (16 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95","reference":"CLM-FB933502","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"100.00","description":"QA 077cf916 Research today behavior sure impact key center candidate.","incident_date":"2026-08-23","status":"PAID","created_at":"2026-08-30T08:29:23.520397Z","updated_at":"2026-08-30T08:29:23.565077Z","withdrawn_at":null,"decided_by_id":"755e9078-cf31-455a-b7cc-854f9e8f3f8c"}
+08:29:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions "HTTP/1.1 409 Conflict"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95/transitions -> 409 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status PAID; it must be DRAFT."}
+08:29:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95 "HTTP/1.1 200 OK"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95 -> 200 (7 ms)
+  response: {"id":"9482f7ba-74ca-49ae-9c06-f7a1c1fb9b95","reference":"CLM-FB933502","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"100.00","description":"QA 077cf916 Research today behavior sure impact key center candidate.","incident_date":"2026-08-23","status":"PAID","created_at":"2026-08-30T08:29:23.520397Z","updated_at":"2026-08-30T08:29:23.565077Z","withdrawn_at":null,"decided_by_id":"755e9078-cf31-455a-b7cc-854f9e8f3f8c"}
+08:29:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-submit]

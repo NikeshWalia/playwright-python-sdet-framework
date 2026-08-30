@@ -1,0 +1,5 @@
+08:29:23 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
+08:29:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
+08:29:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (11 ms)
+  response: {"items":[{"id":"1b655d95-f9de-4b42-aa1d-12b04fac6c9d","reference":"CLM-BB37B6AA","policy_id":"52d93429-5af5-4d94-b573-76192f5056e7","claimant_id":"f869a28b-a775-4507-827a-e0f8df462a3f","amount":"250.00","description":"QA a54aed92 Baby attorney focus none under.","incident_date":"2026-08-23","status":"DRAFT","created_at":"2026-08-30T08:29:23.058409Z","updated_at":"2026-08-30T08:29:23.058409Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":52}
+08:29:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
