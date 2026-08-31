@@ -1,0 +1,20 @@
+08:50:48 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-approve]
+08:50:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:50:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","policy_number":"POL-1001","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"10000.00","is_active":true},{"id":"6d6de095-4aa9-4cd9-b64c-436fc9838e48","policy_number":"POL-1002","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"2500.00","is_active":true}]
+08:50:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:50:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'efe8eb5d-b357-4b81-ab02-a9739f101e7f', 'amount': '100.00', 'description': 'QA dfb5ec23 Year language executive around modern.', 'incident_date': '2026-08-24'}
+  response: {"id":"0e49f463-3c39-4845-b457-bdb69d7c1943","reference":"CLM-FFF47344","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"100.00","description":"QA dfb5ec23 Year language executive around modern.","incident_date":"2026-08-24","status":"DRAFT","created_at":"2026-08-31T08:50:48.258225Z","updated_at":"2026-08-31T08:50:48.258225Z","withdrawn_at":null,"decided_by_id":null}
+08:50:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0e49f463-3c39-4845-b457-bdb69d7c1943/transitions "HTTP/1.1 200 OK"
+08:50:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0e49f463-3c39-4845-b457-bdb69d7c1943/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"0e49f463-3c39-4845-b457-bdb69d7c1943","reference":"CLM-FFF47344","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"100.00","description":"QA dfb5ec23 Year language executive around modern.","incident_date":"2026-08-24","status":"SUBMITTED","created_at":"2026-08-31T08:50:48.258225Z","updated_at":"2026-08-31T08:50:48.267024Z","withdrawn_at":null,"decided_by_id":null}
+08:50:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0e49f463-3c39-4845-b457-bdb69d7c1943/transitions "HTTP/1.1 409 Conflict"
+08:50:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0e49f463-3c39-4845-b457-bdb69d7c1943/transitions -> 409 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+08:50:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/0e49f463-3c39-4845-b457-bdb69d7c1943 "HTTP/1.1 200 OK"
+08:50:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/0e49f463-3c39-4845-b457-bdb69d7c1943 -> 200 (5 ms)
+  response: {"id":"0e49f463-3c39-4845-b457-bdb69d7c1943","reference":"CLM-FFF47344","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"100.00","description":"QA dfb5ec23 Year language executive around modern.","incident_date":"2026-08-24","status":"SUBMITTED","created_at":"2026-08-31T08:50:48.258225Z","updated_at":"2026-08-31T08:50:48.267024Z","withdrawn_at":null,"decided_by_id":null}
+08:50:48 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-approve]

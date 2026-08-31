@@ -1,0 +1,24 @@
+08:50:47 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_approve_their_own_claim
+08:50:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:50:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","policy_number":"POL-1001","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"10000.00","is_active":true},{"id":"6d6de095-4aa9-4cd9-b64c-436fc9838e48","policy_number":"POL-1002","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"2500.00","is_active":true}]
+08:50:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:50:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'efe8eb5d-b357-4b81-ab02-a9739f101e7f', 'amount': '100.00', 'description': 'QA 0725af46 Former where face anything.', 'incident_date': '2026-08-24'}
+  response: {"id":"0e84a9a1-063c-4217-b99c-c09de0f2aaa9","reference":"CLM-034B143A","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"100.00","description":"QA 0725af46 Former where face anything.","incident_date":"2026-08-24","status":"DRAFT","created_at":"2026-08-31T08:50:47.185833Z","updated_at":"2026-08-31T08:50:47.185833Z","withdrawn_at":null,"decided_by_id":null}
+08:50:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0e84a9a1-063c-4217-b99c-c09de0f2aaa9/transitions "HTTP/1.1 200 OK"
+08:50:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0e84a9a1-063c-4217-b99c-c09de0f2aaa9/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"0e84a9a1-063c-4217-b99c-c09de0f2aaa9","reference":"CLM-034B143A","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"100.00","description":"QA 0725af46 Former where face anything.","incident_date":"2026-08-24","status":"SUBMITTED","created_at":"2026-08-31T08:50:47.185833Z","updated_at":"2026-08-31T08:50:47.195722Z","withdrawn_at":null,"decided_by_id":null}
+08:50:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0e84a9a1-063c-4217-b99c-c09de0f2aaa9/transitions "HTTP/1.1 200 OK"
+08:50:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0e84a9a1-063c-4217-b99c-c09de0f2aaa9/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"0e84a9a1-063c-4217-b99c-c09de0f2aaa9","reference":"CLM-034B143A","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"100.00","description":"QA 0725af46 Former where face anything.","incident_date":"2026-08-24","status":"UNDER_REVIEW","created_at":"2026-08-31T08:50:47.185833Z","updated_at":"2026-08-31T08:50:47.207180Z","withdrawn_at":null,"decided_by_id":null}
+08:50:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0e84a9a1-063c-4217-b99c-c09de0f2aaa9/transitions "HTTP/1.1 403 Forbidden"
+08:50:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0e84a9a1-063c-4217-b99c-c09de0f2aaa9/transitions -> 403 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Role CUSTOMER may not approve a claim."}
+08:50:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/0e84a9a1-063c-4217-b99c-c09de0f2aaa9 "HTTP/1.1 200 OK"
+08:50:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/0e84a9a1-063c-4217-b99c-c09de0f2aaa9 -> 200 (4 ms)
+  response: {"id":"0e84a9a1-063c-4217-b99c-c09de0f2aaa9","reference":"CLM-034B143A","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"100.00","description":"QA 0725af46 Former where face anything.","incident_date":"2026-08-24","status":"UNDER_REVIEW","created_at":"2026-08-31T08:50:47.185833Z","updated_at":"2026-08-31T08:50:47.207180Z","withdrawn_at":null,"decided_by_id":null}
+08:50:47 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_approve_their_own_claim

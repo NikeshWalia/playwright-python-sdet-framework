@@ -1,0 +1,21 @@
+08:50:52 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_withdrawn_in_the_browser_survives_in_the_database[chromium]
+08:50:52 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:50:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (13 ms)
+  response: [{"id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","policy_number":"POL-1001","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"10000.00","is_active":true},{"id":"6d6de095-4aa9-4cd9-b64c-436fc9838e48","policy_number":"POL-1002","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"2500.00","is_active":true}]
+08:50:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:50:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:50:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (21 ms)
+  request : {'policy_id': 'efe8eb5d-b357-4b81-ab02-a9739f101e7f', 'amount': '640.00', 'description': 'QA d853ae3e Should choose organization case across contain.', 'incident_date': '2026-08-24'}
+  response: {"id":"95f7468e-dff6-4707-af0c-46913ec68259","reference":"CLM-B5FABDDE","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"640.00","description":"QA d853ae3e Should choose organization case across contain.","incident_date":"2026-08-24","status":"DRAFT","created_at":"2026-08-31T08:50:52.258349Z","updated_at":"2026-08-31T08:50:52.258349Z","withdrawn_at":null,"decided_by_id":null}
+08:50:52 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+08:50:52 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/95f7468e-dff6-4707-af0c-46913ec68259 "HTTP/1.1 204 No Content"
+08:50:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/95f7468e-dff6-4707-af0c-46913ec68259 -> 204 (10 ms)
+  response: 
+08:50:52 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/95f7468e-dff6-4707-af0c-46913ec68259
+08:50:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('95f7468e-dff6-4707-af0c-46913ec68259',)
+  rows: 1
+08:50:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('95f7468e-dff6-4707-af0c-46913ec68259',)
+  rows: 2
+08:50:52 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_withdrawn_in_the_browser_survives_in_the_database[chromium]

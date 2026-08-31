@@ -1,2 +1,0 @@
-08:29:32 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_allure_support.py::test_the_catch_all_categories_come_last
-08:29:32 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_allure_support.py::test_the_catch_all_categories_come_last

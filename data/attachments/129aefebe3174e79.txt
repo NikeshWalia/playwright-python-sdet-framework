@@ -1,0 +1,12 @@
+08:50:45 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event
+08:50:45 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:50:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","policy_number":"POL-1001","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"10000.00","is_active":true},{"id":"6d6de095-4aa9-4cd9-b64c-436fc9838e48","policy_number":"POL-1002","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"2500.00","is_active":true}]
+08:50:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:50:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'efe8eb5d-b357-4b81-ab02-a9739f101e7f', 'amount': '250.00', 'description': 'QA 8e7a6853 Leader perhaps half support.', 'incident_date': '2026-08-24'}
+  response: {"id":"c04cedf7-cd85-444b-be6f-4657f22704fa","reference":"CLM-5CBE5121","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"250.00","description":"QA 8e7a6853 Leader perhaps half support.","incident_date":"2026-08-24","status":"DRAFT","created_at":"2026-08-31T08:50:45.941378Z","updated_at":"2026-08-31T08:50:45.941378Z","withdrawn_at":null,"decided_by_id":null}
+08:50:46 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/c04cedf7-cd85-444b-be6f-4657f22704fa/events "HTTP/1.1 200 OK"
+08:50:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/c04cedf7-cd85-444b-be6f-4657f22704fa/events -> 200 (53 ms)
+  response: [{"id":"05b03a16-1a46-46ec-a273-496eae9317e8","claim_id":"c04cedf7-cd85-444b-be6f-4657f22704fa","actor_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-08-31T08:50:45.941378Z"}]
+08:50:46 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event

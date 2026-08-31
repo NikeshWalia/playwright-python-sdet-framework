@@ -1,0 +1,31 @@
+08:50:49 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
+08:50:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","policy_number":"POL-1001","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"10000.00","is_active":true},{"id":"6d6de095-4aa9-4cd9-b64c-436fc9838e48","policy_number":"POL-1002","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"2500.00","is_active":true}]
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:50:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'efe8eb5d-b357-4b81-ab02-a9739f101e7f', 'amount': '800.00', 'description': 'QA 7e9375f9 Chair stop no sister film six.', 'incident_date': '2026-08-24'}
+  response: {"id":"3805c614-bdfd-4d98-9d8e-448af997a8a1","reference":"CLM-1B36C535","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"800.00","description":"QA 7e9375f9 Chair stop no sister film six.","incident_date":"2026-08-24","status":"DRAFT","created_at":"2026-08-31T08:50:49.170716Z","updated_at":"2026-08-31T08:50:49.170716Z","withdrawn_at":null,"decided_by_id":null}
+08:50:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3805c614-bdfd-4d98-9d8e-448af997a8a1/transitions "HTTP/1.1 200 OK"
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3805c614-bdfd-4d98-9d8e-448af997a8a1/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"3805c614-bdfd-4d98-9d8e-448af997a8a1","reference":"CLM-1B36C535","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"800.00","description":"QA 7e9375f9 Chair stop no sister film six.","incident_date":"2026-08-24","status":"SUBMITTED","created_at":"2026-08-31T08:50:49.170716Z","updated_at":"2026-08-31T08:50:49.180498Z","withdrawn_at":null,"decided_by_id":null}
+08:50:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3805c614-bdfd-4d98-9d8e-448af997a8a1/transitions "HTTP/1.1 200 OK"
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3805c614-bdfd-4d98-9d8e-448af997a8a1/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"3805c614-bdfd-4d98-9d8e-448af997a8a1","reference":"CLM-1B36C535","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"800.00","description":"QA 7e9375f9 Chair stop no sister film six.","incident_date":"2026-08-24","status":"UNDER_REVIEW","created_at":"2026-08-31T08:50:49.170716Z","updated_at":"2026-08-31T08:50:49.192453Z","withdrawn_at":null,"decided_by_id":null}
+08:50:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3805c614-bdfd-4d98-9d8e-448af997a8a1/transitions "HTTP/1.1 200 OK"
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3805c614-bdfd-4d98-9d8e-448af997a8a1/transitions -> 200 (10 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"3805c614-bdfd-4d98-9d8e-448af997a8a1","reference":"CLM-1B36C535","policy_id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","claimant_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","amount":"800.00","description":"QA 7e9375f9 Chair stop no sister film six.","incident_date":"2026-08-24","status":"REJECTED","created_at":"2026-08-31T08:50:49.170716Z","updated_at":"2026-08-31T08:50:49.203466Z","withdrawn_at":null,"decided_by_id":"af34650e-6504-48a6-b850-7348218b90f3"}
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('3805c614-bdfd-4d98-9d8e-448af997a8a1',)
+  rows: 1
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('3805c614-bdfd-4d98-9d8e-448af997a8a1',)
+  rows: 1
+08:50:49 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('3805c614-bdfd-4d98-9d8e-448af997a8a1',)
+  rows: 1
+08:50:49 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid

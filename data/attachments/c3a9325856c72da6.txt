@@ -1,0 +1,9 @@
+08:50:46 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[negative]
+08:50:46 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:50:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"efe8eb5d-b357-4b81-ab02-a9739f101e7f","policy_number":"POL-1001","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"10000.00","is_active":true},{"id":"6d6de095-4aa9-4cd9-b64c-436fc9838e48","policy_number":"POL-1002","holder_id":"32f88557-5fee-4bb7-aeac-5de80bd9556e","coverage_limit":"2500.00","is_active":true}]
+08:50:46 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+08:50:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
+  request : {'policy_id': 'efe8eb5d-b357-4b81-ab02-a9739f101e7f', 'amount': '-500.00', 'description': 'QA 49d60663 Security TV raise quite create civil.', 'incident_date': '2026-08-24'}
+  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"-500.00","ctx":{"gt":0}}]}
+08:50:46 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[negative]

@@ -1,2 +1,0 @@
-08:29:32 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_settings.py::test_real_environment_beats_the_dotenv_file
-08:29:32 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_settings.py::test_real_environment_beats_the_dotenv_file
