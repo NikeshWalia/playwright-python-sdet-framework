@@ -1,0 +1,2 @@
+19:57:19 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_flakiness.py::test_browser_tests_are_retried_once_in_ci_only[ui]
+19:57:19 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_flakiness.py::test_browser_tests_are_retried_once_in_ci_only[ui]

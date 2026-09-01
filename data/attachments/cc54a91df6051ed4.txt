@@ -1,0 +1,28 @@
+07:57:09 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-submit]
+07:57:09 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"4911b737-1cf6-4883-ba18-0f86635c175c","policy_number":"POL-1001","holder_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","coverage_limit":"10000.00","is_active":true},{"id":"c44dd31b-4889-4cc4-b404-4dec80e25034","policy_number":"POL-1002","holder_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","coverage_limit":"2500.00","is_active":true}]
+07:57:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '4911b737-1cf6-4883-ba18-0f86635c175c', 'amount': '100.00', 'description': 'QA 806a023e Where police chance blue check.', 'incident_date': '2026-08-25'}
+  response: {"id":"e20e926d-63d5-4dff-9bf8-57caeb427f65","reference":"CLM-94F3F12A","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 806a023e Where police chance blue check.","incident_date":"2026-08-25","status":"DRAFT","created_at":"2026-09-01T07:57:09.164230Z","updated_at":"2026-09-01T07:57:09.164230Z","withdrawn_at":null,"decided_by_id":null}
+07:57:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65/transitions "HTTP/1.1 200 OK"
+07:57:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"e20e926d-63d5-4dff-9bf8-57caeb427f65","reference":"CLM-94F3F12A","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 806a023e Where police chance blue check.","incident_date":"2026-08-25","status":"SUBMITTED","created_at":"2026-09-01T07:57:09.164230Z","updated_at":"2026-09-01T07:57:09.176869Z","withdrawn_at":null,"decided_by_id":null}
+07:57:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65/transitions "HTTP/1.1 200 OK"
+07:57:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"e20e926d-63d5-4dff-9bf8-57caeb427f65","reference":"CLM-94F3F12A","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 806a023e Where police chance blue check.","incident_date":"2026-08-25","status":"UNDER_REVIEW","created_at":"2026-09-01T07:57:09.164230Z","updated_at":"2026-09-01T07:57:09.189369Z","withdrawn_at":null,"decided_by_id":null}
+07:57:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65/transitions "HTTP/1.1 200 OK"
+07:57:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"e20e926d-63d5-4dff-9bf8-57caeb427f65","reference":"CLM-94F3F12A","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 806a023e Where police chance blue check.","incident_date":"2026-08-25","status":"APPROVED","created_at":"2026-09-01T07:57:09.164230Z","updated_at":"2026-09-01T07:57:09.200927Z","withdrawn_at":null,"decided_by_id":"1f340fe7-608e-431c-be63-d3900709423b"}
+07:57:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65/transitions "HTTP/1.1 409 Conflict"
+07:57:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65/transitions -> 409 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status APPROVED; it must be DRAFT."}
+07:57:09 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65 "HTTP/1.1 200 OK"
+07:57:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/e20e926d-63d5-4dff-9bf8-57caeb427f65 -> 200 (6 ms)
+  response: {"id":"e20e926d-63d5-4dff-9bf8-57caeb427f65","reference":"CLM-94F3F12A","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 806a023e Where police chance blue check.","incident_date":"2026-08-25","status":"APPROVED","created_at":"2026-09-01T07:57:09.164230Z","updated_at":"2026-09-01T07:57:09.200927Z","withdrawn_at":null,"decided_by_id":"1f340fe7-608e-431c-be63-d3900709423b"}
+07:57:09 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-submit]

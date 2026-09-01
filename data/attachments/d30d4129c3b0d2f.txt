@@ -1,0 +1,24 @@
+07:57:08 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_approve_their_own_claim
+07:57:08 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"4911b737-1cf6-4883-ba18-0f86635c175c","policy_number":"POL-1001","holder_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","coverage_limit":"10000.00","is_active":true},{"id":"c44dd31b-4889-4cc4-b404-4dec80e25034","policy_number":"POL-1002","holder_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","coverage_limit":"2500.00","is_active":true}]
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '4911b737-1cf6-4883-ba18-0f86635c175c', 'amount': '100.00', 'description': 'QA 74dd8417 Power radio individual thing prove range public range.', 'incident_date': '2026-08-25'}
+  response: {"id":"61418edf-6eb6-408e-b42e-6a90119d14a4","reference":"CLM-6718EC35","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 74dd8417 Power radio individual thing prove range public range.","incident_date":"2026-08-25","status":"DRAFT","created_at":"2026-09-01T07:57:08.659009Z","updated_at":"2026-09-01T07:57:08.659009Z","withdrawn_at":null,"decided_by_id":null}
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/61418edf-6eb6-408e-b42e-6a90119d14a4/transitions "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/61418edf-6eb6-408e-b42e-6a90119d14a4/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"61418edf-6eb6-408e-b42e-6a90119d14a4","reference":"CLM-6718EC35","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 74dd8417 Power radio individual thing prove range public range.","incident_date":"2026-08-25","status":"SUBMITTED","created_at":"2026-09-01T07:57:08.659009Z","updated_at":"2026-09-01T07:57:08.672252Z","withdrawn_at":null,"decided_by_id":null}
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/61418edf-6eb6-408e-b42e-6a90119d14a4/transitions "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/61418edf-6eb6-408e-b42e-6a90119d14a4/transitions -> 200 (14 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"61418edf-6eb6-408e-b42e-6a90119d14a4","reference":"CLM-6718EC35","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 74dd8417 Power radio individual thing prove range public range.","incident_date":"2026-08-25","status":"UNDER_REVIEW","created_at":"2026-09-01T07:57:08.659009Z","updated_at":"2026-09-01T07:57:08.686149Z","withdrawn_at":null,"decided_by_id":null}
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/61418edf-6eb6-408e-b42e-6a90119d14a4/transitions "HTTP/1.1 403 Forbidden"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/61418edf-6eb6-408e-b42e-6a90119d14a4/transitions -> 403 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Role CUSTOMER may not approve a claim."}
+07:57:08 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/61418edf-6eb6-408e-b42e-6a90119d14a4 "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/61418edf-6eb6-408e-b42e-6a90119d14a4 -> 200 (5 ms)
+  response: {"id":"61418edf-6eb6-408e-b42e-6a90119d14a4","reference":"CLM-6718EC35","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"100.00","description":"QA 74dd8417 Power radio individual thing prove range public range.","incident_date":"2026-08-25","status":"UNDER_REVIEW","created_at":"2026-09-01T07:57:08.659009Z","updated_at":"2026-09-01T07:57:08.686149Z","withdrawn_at":null,"decided_by_id":null}
+07:57:08 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_approve_their_own_claim

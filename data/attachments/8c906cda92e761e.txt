@@ -1,0 +1,35 @@
+07:57:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:57:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (100 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhM2E3ODA2Zi04ZWJjLTQzYTctYWU3OS1lZGZlYmJkN2ZmODUiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3ODgyNDk0MzIsImV4cCI6MTc4ODI1MzAzMn0.wuvIYOAXPDqJy5tLrj3c4-RpTuJQ9NadafkC-t94d2g","token_type":"bearer","expires_in":3600}
+07:57:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:57:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (77 ms)
+  request : {'email': 'adjuster@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxZjM0MGZlNy02MDhlLTQzMWMtYmU2My1kMzkwMDcwOTQyM2IiLCJyb2xlIjoiQURKVVNURVIiLCJpYXQiOjE3ODgyNDk0MzIsImV4cCI6MTc4ODI1MzAzMn0.9IBbJxH8nY_uBxY5Y9GNfesixiuvdbHGMaoKofw6B3c","token_type":"bearer","expires_in":3600}
+07:57:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:57:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (77 ms)
+  request : {'email': 'admin@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNzQzM2MzOS1kNmYxLTQ5ZmQtOWJmMS04NDlmMWU2MmU3ZTciLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3ODgyNDk0MzIsImV4cCI6MTc4ODI1MzAzMn0.rxkMXTXAMCfizqhQx1hu9U9pvUcoOYUjvrGesVvZDjY","token_type":"bearer","expires_in":3600}
+07:57:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:57:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (75 ms)
+  request : {'email': 'other.customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MDU2Nzc1MC0xYjg2LTQ1ZWUtYmZkMy01MzZjMWQ0MmY1YzgiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3ODgyNDk0MzIsImV4cCI6MTc4ODI1MzAzMn0.YlmxKs6pgiUrB9jGD6T2aDs76EkKn00KdBqG01levAM","token_type":"bearer","expires_in":3600}
+07:57:12 INFO     claimdesk_qa.tests._fixtures.browser Prepared storage states for customer, adjuster, admin, other_customer
+07:57:12 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]
+07:57:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"4911b737-1cf6-4883-ba18-0f86635c175c","policy_number":"POL-1001","holder_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","coverage_limit":"10000.00","is_active":true},{"id":"c44dd31b-4889-4cc4-b404-4dec80e25034","policy_number":"POL-1002","holder_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","coverage_limit":"2500.00","is_active":true}]
+07:57:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (40 ms)
+  request : {'policy_id': '4911b737-1cf6-4883-ba18-0f86635c175c', 'amount': '5000.01', 'description': 'QA 52c4dc13 Free me grow charge sit kid once blood.', 'incident_date': '2026-08-25'}
+  response: {"id":"a4ea8547-bd2c-4421-a519-af767b55d22d","reference":"CLM-74196508","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"5000.01","description":"QA 52c4dc13 Free me grow charge sit kid once blood.","incident_date":"2026-08-25","status":"DRAFT","created_at":"2026-09-01T07:57:12.641217Z","updated_at":"2026-09-01T07:57:12.641217Z","withdrawn_at":null,"decided_by_id":null}
+07:57:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a4ea8547-bd2c-4421-a519-af767b55d22d/transitions "HTTP/1.1 200 OK"
+07:57:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a4ea8547-bd2c-4421-a519-af767b55d22d/transitions -> 200 (24 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a4ea8547-bd2c-4421-a519-af767b55d22d","reference":"CLM-74196508","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"5000.01","description":"QA 52c4dc13 Free me grow charge sit kid once blood.","incident_date":"2026-08-25","status":"SUBMITTED","created_at":"2026-09-01T07:57:12.641217Z","updated_at":"2026-09-01T07:57:12.682725Z","withdrawn_at":null,"decided_by_id":null}
+07:57:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a4ea8547-bd2c-4421-a519-af767b55d22d/transitions "HTTP/1.1 200 OK"
+07:57:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a4ea8547-bd2c-4421-a519-af767b55d22d/transitions -> 200 (15 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a4ea8547-bd2c-4421-a519-af767b55d22d","reference":"CLM-74196508","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"5000.01","description":"QA 52c4dc13 Free me grow charge sit kid once blood.","incident_date":"2026-08-25","status":"UNDER_REVIEW","created_at":"2026-09-01T07:57:12.641217Z","updated_at":"2026-09-01T07:57:12.708410Z","withdrawn_at":null,"decided_by_id":null}
+07:57:12 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/a4ea8547-bd2c-4421-a519-af767b55d22d
+07:57:13 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]

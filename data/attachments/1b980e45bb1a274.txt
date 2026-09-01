@@ -1,0 +1,40 @@
+07:57:10 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
+07:57:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"4911b737-1cf6-4883-ba18-0f86635c175c","policy_number":"POL-1001","holder_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","coverage_limit":"10000.00","is_active":true},{"id":"c44dd31b-4889-4cc4-b404-4dec80e25034","policy_number":"POL-1002","holder_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","coverage_limit":"2500.00","is_active":true}]
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:57:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '4911b737-1cf6-4883-ba18-0f86635c175c', 'amount': '800.00', 'description': 'QA e94299a3 Finish young old race time happy street.', 'incident_date': '2026-08-25'}
+  response: {"id":"0c6e785f-0f2e-4a49-b60f-cc86b9febfe3","reference":"CLM-B9139099","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"800.00","description":"QA e94299a3 Finish young old race time happy street.","incident_date":"2026-08-25","status":"DRAFT","created_at":"2026-09-01T07:57:10.783768Z","updated_at":"2026-09-01T07:57:10.783768Z","withdrawn_at":null,"decided_by_id":null}
+07:57:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions "HTTP/1.1 200 OK"
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"0c6e785f-0f2e-4a49-b60f-cc86b9febfe3","reference":"CLM-B9139099","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"800.00","description":"QA e94299a3 Finish young old race time happy street.","incident_date":"2026-08-25","status":"SUBMITTED","created_at":"2026-09-01T07:57:10.783768Z","updated_at":"2026-09-01T07:57:10.798531Z","withdrawn_at":null,"decided_by_id":null}
+07:57:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions "HTTP/1.1 200 OK"
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"0c6e785f-0f2e-4a49-b60f-cc86b9febfe3","reference":"CLM-B9139099","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"800.00","description":"QA e94299a3 Finish young old race time happy street.","incident_date":"2026-08-25","status":"UNDER_REVIEW","created_at":"2026-09-01T07:57:10.783768Z","updated_at":"2026-09-01T07:57:10.811025Z","withdrawn_at":null,"decided_by_id":null}
+07:57:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions "HTTP/1.1 200 OK"
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions -> 200 (15 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"0c6e785f-0f2e-4a49-b60f-cc86b9febfe3","reference":"CLM-B9139099","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"800.00","description":"QA e94299a3 Finish young old race time happy street.","incident_date":"2026-08-25","status":"APPROVED","created_at":"2026-09-01T07:57:10.783768Z","updated_at":"2026-09-01T07:57:10.825371Z","withdrawn_at":null,"decided_by_id":"1f340fe7-608e-431c-be63-d3900709423b"}
+07:57:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions "HTTP/1.1 200 OK"
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"0c6e785f-0f2e-4a49-b60f-cc86b9febfe3","reference":"CLM-B9139099","policy_id":"4911b737-1cf6-4883-ba18-0f86635c175c","claimant_id":"a3a7806f-8ebc-43a7-ae79-edfebbd7ff85","amount":"800.00","description":"QA e94299a3 Finish young old race time happy street.","incident_date":"2026-08-25","status":"PAID","created_at":"2026-09-01T07:57:10.783768Z","updated_at":"2026-09-01T07:57:10.838279Z","withdrawn_at":null,"decided_by_id":"1f340fe7-608e-431c-be63-d3900709423b"}
+07:57:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions "HTTP/1.1 409 Conflict"
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions -> 409 (8 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+07:57:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions "HTTP/1.1 409 Conflict"
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0c6e785f-0f2e-4a49-b60f-cc86b9febfe3/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('0c6e785f-0f2e-4a49-b60f-cc86b9febfe3',)
+  rows: 1
+07:57:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('0c6e785f-0f2e-4a49-b60f-cc86b9febfe3',)
+  rows: 1
+07:57:10 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
