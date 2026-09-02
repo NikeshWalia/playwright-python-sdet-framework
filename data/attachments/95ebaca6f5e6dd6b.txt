@@ -1,0 +1,5 @@
+07:16:41 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
+07:16:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
+07:16:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (7 ms)
+  response: {"items":[{"id":"3f675101-0602-4430-a410-3dcbfe6bb7a8","reference":"CLM-51775CA2","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"99.99","description":"QA d00e8b3f Total tree fast produce bed.","incident_date":"2026-08-26","status":"DRAFT","created_at":"2026-09-02T07:16:41.498263Z","updated_at":"2026-09-02T07:16:41.498263Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":51}
+07:16:41 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]

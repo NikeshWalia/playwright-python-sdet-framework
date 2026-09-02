@@ -1,0 +1,9 @@
+07:16:41 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[incident_date]
+07:16:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:16:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","policy_number":"POL-1001","holder_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","coverage_limit":"10000.00","is_active":true},{"id":"3b9a19fc-d180-4dca-aaca-ff52e8a90f1e","policy_number":"POL-1002","holder_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","coverage_limit":"2500.00","is_active":true}]
+07:16:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+07:16:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
+  request : {'policy_id': '8f8c6507-d31c-4847-8563-fba719a5f5d5', 'amount': '250.00', 'description': 'QA 95b40c80 Certainly stand parent successful election several society.'}
+  response: {"detail":[{"type":"missing","loc":["body","incident_date"],"msg":"Field required","input":{"policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","amount":"250.00","description":"QA 95b40c80 Certainly stand parent successful election several society."}}]}
+07:16:41 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[incident_date]

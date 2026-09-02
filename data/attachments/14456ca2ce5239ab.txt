@@ -1,0 +1,9 @@
+07:16:41 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_returns_the_full_contract
+07:16:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:16:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","policy_number":"POL-1001","holder_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","coverage_limit":"10000.00","is_active":true},{"id":"3b9a19fc-d180-4dca-aaca-ff52e8a90f1e","policy_number":"POL-1002","holder_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","coverage_limit":"2500.00","is_active":true}]
+07:16:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:16:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '8f8c6507-d31c-4847-8563-fba719a5f5d5', 'amount': '1250.50', 'description': 'QA 5b3c0f14 Field into south wait.', 'incident_date': '2026-08-26'}
+  response: {"id":"c5965123-4e96-44a0-b2e2-641bab287a6f","reference":"CLM-87F8C04F","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"1250.50","description":"QA 5b3c0f14 Field into south wait.","incident_date":"2026-08-26","status":"DRAFT","created_at":"2026-09-02T07:16:41.469554Z","updated_at":"2026-09-02T07:16:41.469554Z","withdrawn_at":null,"decided_by_id":null}
+07:16:41 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_returns_the_full_contract

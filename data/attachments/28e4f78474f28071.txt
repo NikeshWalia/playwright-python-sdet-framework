@@ -1,0 +1,32 @@
+07:16:42 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-start_review]
+07:16:42 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","policy_number":"POL-1001","holder_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","coverage_limit":"10000.00","is_active":true},{"id":"3b9a19fc-d180-4dca-aaca-ff52e8a90f1e","policy_number":"POL-1002","holder_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","coverage_limit":"2500.00","is_active":true}]
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '8f8c6507-d31c-4847-8563-fba719a5f5d5', 'amount': '100.00', 'description': 'QA d48104e6 Building recent newspaper late threat.', 'incident_date': '2026-08-26'}
+  response: {"id":"168093df-2e43-4dcb-88f1-38d04aa858ff","reference":"CLM-F460CD80","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA d48104e6 Building recent newspaper late threat.","incident_date":"2026-08-26","status":"DRAFT","created_at":"2026-09-02T07:16:42.405946Z","updated_at":"2026-09-02T07:16:42.405946Z","withdrawn_at":null,"decided_by_id":null}
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"168093df-2e43-4dcb-88f1-38d04aa858ff","reference":"CLM-F460CD80","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA d48104e6 Building recent newspaper late threat.","incident_date":"2026-08-26","status":"SUBMITTED","created_at":"2026-09-02T07:16:42.405946Z","updated_at":"2026-09-02T07:16:42.416697Z","withdrawn_at":null,"decided_by_id":null}
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"168093df-2e43-4dcb-88f1-38d04aa858ff","reference":"CLM-F460CD80","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA d48104e6 Building recent newspaper late threat.","incident_date":"2026-08-26","status":"UNDER_REVIEW","created_at":"2026-09-02T07:16:42.405946Z","updated_at":"2026-09-02T07:16:42.429534Z","withdrawn_at":null,"decided_by_id":null}
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"168093df-2e43-4dcb-88f1-38d04aa858ff","reference":"CLM-F460CD80","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA d48104e6 Building recent newspaper late threat.","incident_date":"2026-08-26","status":"APPROVED","created_at":"2026-09-02T07:16:42.405946Z","updated_at":"2026-09-02T07:16:42.438844Z","withdrawn_at":null,"decided_by_id":"371dca8e-3b6f-4677-95b0-fb333d2fcec8"}
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"168093df-2e43-4dcb-88f1-38d04aa858ff","reference":"CLM-F460CD80","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA d48104e6 Building recent newspaper late threat.","incident_date":"2026-08-26","status":"PAID","created_at":"2026-09-02T07:16:42.405946Z","updated_at":"2026-09-02T07:16:42.449929Z","withdrawn_at":null,"decided_by_id":"371dca8e-3b6f-4677-95b0-fb333d2fcec8"}
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions "HTTP/1.1 409 Conflict"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff/transitions -> 409 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status PAID; it must be SUBMITTED."}
+07:16:42 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/168093df-2e43-4dcb-88f1-38d04aa858ff -> 200 (6 ms)
+  response: {"id":"168093df-2e43-4dcb-88f1-38d04aa858ff","reference":"CLM-F460CD80","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA d48104e6 Building recent newspaper late threat.","incident_date":"2026-08-26","status":"PAID","created_at":"2026-09-02T07:16:42.405946Z","updated_at":"2026-09-02T07:16:42.449929Z","withdrawn_at":null,"decided_by_id":"371dca8e-3b6f-4677-95b0-fb333d2fcec8"}
+07:16:42 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-start_review]

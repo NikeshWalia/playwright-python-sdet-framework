@@ -1,0 +1,21 @@
+07:16:41 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-reject-REJECTED]
+07:16:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:16:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","policy_number":"POL-1001","holder_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","coverage_limit":"10000.00","is_active":true},{"id":"3b9a19fc-d180-4dca-aaca-ff52e8a90f1e","policy_number":"POL-1002","holder_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","coverage_limit":"2500.00","is_active":true}]
+07:16:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:16:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '8f8c6507-d31c-4847-8563-fba719a5f5d5', 'amount': '100.00', 'description': 'QA 0a0721db Girl majority our project model last hour democratic.', 'incident_date': '2026-08-26'}
+  response: {"id":"95a2a54d-0d90-47e8-89db-009296013b05","reference":"CLM-585294A5","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA 0a0721db Girl majority our project model last hour democratic.","incident_date":"2026-08-26","status":"DRAFT","created_at":"2026-09-02T07:16:41.987428Z","updated_at":"2026-09-02T07:16:41.987428Z","withdrawn_at":null,"decided_by_id":null}
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/95a2a54d-0d90-47e8-89db-009296013b05/transitions "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/95a2a54d-0d90-47e8-89db-009296013b05/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"95a2a54d-0d90-47e8-89db-009296013b05","reference":"CLM-585294A5","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA 0a0721db Girl majority our project model last hour democratic.","incident_date":"2026-08-26","status":"SUBMITTED","created_at":"2026-09-02T07:16:41.987428Z","updated_at":"2026-09-02T07:16:41.999760Z","withdrawn_at":null,"decided_by_id":null}
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/95a2a54d-0d90-47e8-89db-009296013b05/transitions "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/95a2a54d-0d90-47e8-89db-009296013b05/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"95a2a54d-0d90-47e8-89db-009296013b05","reference":"CLM-585294A5","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA 0a0721db Girl majority our project model last hour democratic.","incident_date":"2026-08-26","status":"UNDER_REVIEW","created_at":"2026-09-02T07:16:41.987428Z","updated_at":"2026-09-02T07:16:42.010600Z","withdrawn_at":null,"decided_by_id":null}
+07:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/95a2a54d-0d90-47e8-89db-009296013b05/transitions "HTTP/1.1 200 OK"
+07:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/95a2a54d-0d90-47e8-89db-009296013b05/transitions -> 200 (13 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"95a2a54d-0d90-47e8-89db-009296013b05","reference":"CLM-585294A5","policy_id":"8f8c6507-d31c-4847-8563-fba719a5f5d5","claimant_id":"26c14a83-ec93-437d-9e59-315f0a2c7d52","amount":"100.00","description":"QA 0a0721db Girl majority our project model last hour democratic.","incident_date":"2026-08-26","status":"REJECTED","created_at":"2026-09-02T07:16:41.987428Z","updated_at":"2026-09-02T07:16:42.020947Z","withdrawn_at":null,"decided_by_id":"371dca8e-3b6f-4677-95b0-fb333d2fcec8"}
+07:16:42 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-reject-REJECTED]
