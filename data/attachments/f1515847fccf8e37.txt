@@ -1,0 +1,28 @@
+07:20:57 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-pay]
+07:20:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:20:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","policy_number":"POL-1001","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"10000.00","is_active":true},{"id":"8516e73d-bda5-44c0-8575-4c79136d1a6e","policy_number":"POL-1002","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"2500.00","is_active":true}]
+07:20:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:20:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '9bf97a1c-18dc-4056-857e-a52daa069ae3', 'amount': '100.00', 'description': 'QA eeb20cb1 Difference quality general throw perform low force.', 'incident_date': '2026-08-27'}
+  response: {"id":"c513f8f6-a19a-4d82-ba7f-128dd5e142b7","reference":"CLM-CAF47611","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"100.00","description":"QA eeb20cb1 Difference quality general throw perform low force.","incident_date":"2026-08-27","status":"DRAFT","created_at":"2026-09-03T07:20:57.039808Z","updated_at":"2026-09-03T07:20:57.039808Z","withdrawn_at":null,"decided_by_id":null}
+07:20:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7/transitions "HTTP/1.1 200 OK"
+07:20:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"c513f8f6-a19a-4d82-ba7f-128dd5e142b7","reference":"CLM-CAF47611","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"100.00","description":"QA eeb20cb1 Difference quality general throw perform low force.","incident_date":"2026-08-27","status":"SUBMITTED","created_at":"2026-09-03T07:20:57.039808Z","updated_at":"2026-09-03T07:20:57.050767Z","withdrawn_at":null,"decided_by_id":null}
+07:20:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7/transitions "HTTP/1.1 200 OK"
+07:20:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"c513f8f6-a19a-4d82-ba7f-128dd5e142b7","reference":"CLM-CAF47611","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"100.00","description":"QA eeb20cb1 Difference quality general throw perform low force.","incident_date":"2026-08-27","status":"UNDER_REVIEW","created_at":"2026-09-03T07:20:57.039808Z","updated_at":"2026-09-03T07:20:57.062085Z","withdrawn_at":null,"decided_by_id":null}
+07:20:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7/transitions "HTTP/1.1 200 OK"
+07:20:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7/transitions -> 200 (11 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"c513f8f6-a19a-4d82-ba7f-128dd5e142b7","reference":"CLM-CAF47611","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"100.00","description":"QA eeb20cb1 Difference quality general throw perform low force.","incident_date":"2026-08-27","status":"REJECTED","created_at":"2026-09-03T07:20:57.039808Z","updated_at":"2026-09-03T07:20:57.071144Z","withdrawn_at":null,"decided_by_id":"8e343653-c3a6-42b6-86f9-e4eee5238cd1"}
+07:20:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7/transitions "HTTP/1.1 409 Conflict"
+07:20:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status REJECTED; it must be APPROVED."}
+07:20:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7 "HTTP/1.1 200 OK"
+07:20:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/c513f8f6-a19a-4d82-ba7f-128dd5e142b7 -> 200 (4 ms)
+  response: {"id":"c513f8f6-a19a-4d82-ba7f-128dd5e142b7","reference":"CLM-CAF47611","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"100.00","description":"QA eeb20cb1 Difference quality general throw perform low force.","incident_date":"2026-08-27","status":"REJECTED","created_at":"2026-09-03T07:20:57.039808Z","updated_at":"2026-09-03T07:20:57.071144Z","withdrawn_at":null,"decided_by_id":"8e343653-c3a6-42b6-86f9-e4eee5238cd1"}
+07:20:57 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-pay]

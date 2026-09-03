@@ -1,0 +1,28 @@
+07:20:56 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout
+07:20:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","policy_number":"POL-1001","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"10000.00","is_active":true},{"id":"8516e73d-bda5-44c0-8575-4c79136d1a6e","policy_number":"POL-1002","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"2500.00","is_active":true}]
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '9bf97a1c-18dc-4056-857e-a52daa069ae3', 'amount': '800.00', 'description': 'QA b6234bf2 Section ten happen money back.', 'incident_date': '2026-08-27'}
+  response: {"id":"af83a0d1-4c85-43cb-9398-eb9e6562ff7f","reference":"CLM-FAEAE203","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"800.00","description":"QA b6234bf2 Section ten happen money back.","incident_date":"2026-08-27","status":"DRAFT","created_at":"2026-09-03T07:20:56.890894Z","updated_at":"2026-09-03T07:20:56.890894Z","withdrawn_at":null,"decided_by_id":null}
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af83a0d1-4c85-43cb-9398-eb9e6562ff7f/transitions "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af83a0d1-4c85-43cb-9398-eb9e6562ff7f/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"af83a0d1-4c85-43cb-9398-eb9e6562ff7f","reference":"CLM-FAEAE203","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"800.00","description":"QA b6234bf2 Section ten happen money back.","incident_date":"2026-08-27","status":"SUBMITTED","created_at":"2026-09-03T07:20:56.890894Z","updated_at":"2026-09-03T07:20:56.901739Z","withdrawn_at":null,"decided_by_id":null}
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af83a0d1-4c85-43cb-9398-eb9e6562ff7f/transitions "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af83a0d1-4c85-43cb-9398-eb9e6562ff7f/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"af83a0d1-4c85-43cb-9398-eb9e6562ff7f","reference":"CLM-FAEAE203","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"800.00","description":"QA b6234bf2 Section ten happen money back.","incident_date":"2026-08-27","status":"UNDER_REVIEW","created_at":"2026-09-03T07:20:56.890894Z","updated_at":"2026-09-03T07:20:56.912750Z","withdrawn_at":null,"decided_by_id":null}
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af83a0d1-4c85-43cb-9398-eb9e6562ff7f/transitions "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af83a0d1-4c85-43cb-9398-eb9e6562ff7f/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"af83a0d1-4c85-43cb-9398-eb9e6562ff7f","reference":"CLM-FAEAE203","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"800.00","description":"QA b6234bf2 Section ten happen money back.","incident_date":"2026-08-27","status":"APPROVED","created_at":"2026-09-03T07:20:56.890894Z","updated_at":"2026-09-03T07:20:56.924745Z","withdrawn_at":null,"decided_by_id":"8e343653-c3a6-42b6-86f9-e4eee5238cd1"}
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('af83a0d1-4c85-43cb-9398-eb9e6562ff7f',)
+  rows: 0
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('af83a0d1-4c85-43cb-9398-eb9e6562ff7f',)
+  rows: 1
+07:20:56 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout

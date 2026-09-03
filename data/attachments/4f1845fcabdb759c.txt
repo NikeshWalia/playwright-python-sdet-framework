@@ -1,0 +1,12 @@
+07:20:54 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim
+07:20:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:20:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","policy_number":"POL-1001","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"10000.00","is_active":true},{"id":"8516e73d-bda5-44c0-8575-4c79136d1a6e","policy_number":"POL-1002","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"2500.00","is_active":true}]
+07:20:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:20:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '9bf97a1c-18dc-4056-857e-a52daa069ae3', 'amount': '250.00', 'description': 'QA 6dcb67d8 Mean cultural always small cover forget.', 'incident_date': '2026-08-27'}
+  response: {"id":"6a31fc23-3a07-4ada-bf71-a5eb86fe2dff","reference":"CLM-B87D1203","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"250.00","description":"QA 6dcb67d8 Mean cultural always small cover forget.","incident_date":"2026-08-27","status":"DRAFT","created_at":"2026-09-03T07:20:54.295083Z","updated_at":"2026-09-03T07:20:54.295083Z","withdrawn_at":null,"decided_by_id":null}
+07:20:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/6a31fc23-3a07-4ada-bf71-a5eb86fe2dff "HTTP/1.1 404 Not Found"
+07:20:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/6a31fc23-3a07-4ada-bf71-a5eb86fe2dff -> 404 (6 ms)
+  response: {"detail":"Claim not found"}
+07:20:54 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim

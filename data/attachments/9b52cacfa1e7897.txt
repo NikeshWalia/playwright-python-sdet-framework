@@ -1,0 +1,32 @@
+07:20:56 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row
+07:20:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","policy_number":"POL-1001","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"10000.00","is_active":true},{"id":"8516e73d-bda5-44c0-8575-4c79136d1a6e","policy_number":"POL-1002","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"2500.00","is_active":true}]
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '9bf97a1c-18dc-4056-857e-a52daa069ae3', 'amount': '700.00', 'description': 'QA 7ad1cc85 Policy war high mouth add.', 'incident_date': '2026-08-27'}
+  response: {"id":"03a0a0e3-ab26-4ef8-9bf0-78289fe0079d","reference":"CLM-B5FABB9B","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"700.00","description":"QA 7ad1cc85 Policy war high mouth add.","incident_date":"2026-08-27","status":"DRAFT","created_at":"2026-09-03T07:20:56.286576Z","updated_at":"2026-09-03T07:20:56.286576Z","withdrawn_at":null,"decided_by_id":null}
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/03a0a0e3-ab26-4ef8-9bf0-78289fe0079d/transitions "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/03a0a0e3-ab26-4ef8-9bf0-78289fe0079d/transitions -> 200 (25 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"03a0a0e3-ab26-4ef8-9bf0-78289fe0079d","reference":"CLM-B5FABB9B","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"700.00","description":"QA 7ad1cc85 Policy war high mouth add.","incident_date":"2026-08-27","status":"SUBMITTED","created_at":"2026-09-03T07:20:56.286576Z","updated_at":"2026-09-03T07:20:56.304443Z","withdrawn_at":null,"decided_by_id":null}
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/03a0a0e3-ab26-4ef8-9bf0-78289fe0079d/transitions "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/03a0a0e3-ab26-4ef8-9bf0-78289fe0079d/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"03a0a0e3-ab26-4ef8-9bf0-78289fe0079d","reference":"CLM-B5FABB9B","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"700.00","description":"QA 7ad1cc85 Policy war high mouth add.","incident_date":"2026-08-27","status":"UNDER_REVIEW","created_at":"2026-09-03T07:20:56.286576Z","updated_at":"2026-09-03T07:20:56.322015Z","withdrawn_at":null,"decided_by_id":null}
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/03a0a0e3-ab26-4ef8-9bf0-78289fe0079d/transitions "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/03a0a0e3-ab26-4ef8-9bf0-78289fe0079d/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"03a0a0e3-ab26-4ef8-9bf0-78289fe0079d","reference":"CLM-B5FABB9B","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"700.00","description":"QA 7ad1cc85 Policy war high mouth add.","incident_date":"2026-08-27","status":"APPROVED","created_at":"2026-09-03T07:20:56.286576Z","updated_at":"2026-09-03T07:20:56.335507Z","withdrawn_at":null,"decided_by_id":"8e343653-c3a6-42b6-86f9-e4eee5238cd1"}
+07:20:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/03a0a0e3-ab26-4ef8-9bf0-78289fe0079d/transitions "HTTP/1.1 200 OK"
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/03a0a0e3-ab26-4ef8-9bf0-78289fe0079d/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"03a0a0e3-ab26-4ef8-9bf0-78289fe0079d","reference":"CLM-B5FABB9B","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"700.00","description":"QA 7ad1cc85 Policy war high mouth add.","incident_date":"2026-08-27","status":"PAID","created_at":"2026-09-03T07:20:56.286576Z","updated_at":"2026-09-03T07:20:56.346474Z","withdrawn_at":null,"decided_by_id":"8e343653-c3a6-42b6-86f9-e4eee5238cd1"}
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('03a0a0e3-ab26-4ef8-9bf0-78289fe0079d',)
+  rows: 5
+07:20:56 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('03a0a0e3-ab26-4ef8-9bf0-78289fe0079d',)
+  rows: 1
+07:20:56 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row
