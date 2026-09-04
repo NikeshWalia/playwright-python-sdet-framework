@@ -1,0 +1,19 @@
+07:22:47 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_modify_another_customers_claim
+07:22:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:22:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","policy_number":"POL-1001","holder_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","coverage_limit":"10000.00","is_active":true},{"id":"a3d1756e-d35d-4a39-9b5e-035fba3c3f81","policy_number":"POL-1002","holder_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","coverage_limit":"2500.00","is_active":true}]
+07:22:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:22:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '9e6a26b6-67a8-4141-8896-e31f62659c7e', 'amount': '250.00', 'description': 'QA 348eec0b Nor no want.', 'incident_date': '2026-08-28'}
+  response: {"id":"fd940737-e3e1-4f54-9df7-cb851c2e3626","reference":"CLM-82ED17A9","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"250.00","description":"QA 348eec0b Nor no want.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:47.478502Z","updated_at":"2026-09-04T07:22:47.478502Z","withdrawn_at":null,"decided_by_id":null}
+07:22:47 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/fd940737-e3e1-4f54-9df7-cb851c2e3626 "HTTP/1.1 404 Not Found"
+07:22:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/fd940737-e3e1-4f54-9df7-cb851c2e3626 -> 404 (8 ms)
+  request : {'description': 'hijacked by another user'}
+  response: {"detail":"Claim not found"}
+07:22:47 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/fd940737-e3e1-4f54-9df7-cb851c2e3626 "HTTP/1.1 404 Not Found"
+07:22:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/fd940737-e3e1-4f54-9df7-cb851c2e3626 -> 404 (8 ms)
+  response: {"detail":"Claim not found"}
+07:22:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/fd940737-e3e1-4f54-9df7-cb851c2e3626 "HTTP/1.1 200 OK"
+07:22:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/fd940737-e3e1-4f54-9df7-cb851c2e3626 -> 200 (7 ms)
+  response: {"id":"fd940737-e3e1-4f54-9df7-cb851c2e3626","reference":"CLM-82ED17A9","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"250.00","description":"QA 348eec0b Nor no want.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:47.478502Z","updated_at":"2026-09-04T07:22:47.478502Z","withdrawn_at":null,"decided_by_id":null}
+07:22:47 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_modify_another_customers_claim

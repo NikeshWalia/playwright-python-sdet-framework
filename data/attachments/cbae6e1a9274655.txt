@@ -1,0 +1,2 @@
+19:22:59 DEBUG   [qa-7de4794bb7] claimdesk_qa.tests.conftest: start tests/framework/test_recording.py::test_an_empty_recording_says_so_rather_than_rendering_nothing
+19:22:59 DEBUG   [qa-7de4794bb7] claimdesk_qa.tests.conftest: end tests/framework/test_recording.py::test_an_empty_recording_says_so_rather_than_rendering_nothing

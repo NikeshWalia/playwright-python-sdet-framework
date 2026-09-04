@@ -1,5 +1,0 @@
-07:20:53 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
-07:20:53 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
-07:20:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (6 ms)
-  response: {"items":[{"id":"141c0e61-1f92-4589-a6ad-69ebda2a7dcf","reference":"CLM-BCFF24E5","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"250.00","description":"QA 38bf639b Offer suggest high rule relationship effect once.","incident_date":"2026-08-27","status":"WITHDRAWN","created_at":"2026-09-03T07:20:53.713649Z","updated_at":"2026-09-03T07:20:53.724541Z","withdrawn_at":"2026-09-03T07:20:53.726921Z","decided_by_id":null}],"page":1,"size":50,"total":1}
-07:20:53 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]

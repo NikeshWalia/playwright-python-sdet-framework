@@ -1,0 +1,25 @@
+07:22:48 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:22:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:22:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","policy_number":"POL-1001","holder_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","coverage_limit":"10000.00","is_active":true},{"id":"a3d1756e-d35d-4a39-9b5e-035fba3c3f81","policy_number":"POL-1002","holder_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","coverage_limit":"2500.00","is_active":true}]
+07:22:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:22:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '9e6a26b6-67a8-4141-8896-e31f62659c7e', 'amount': '250.00', 'description': 'QA c889480f Senior unit research close he budget car.', 'incident_date': '2026-08-28'}
+  response: {"id":"6e5f96f3-4838-4161-bed9-8e813fcc16f5","reference":"CLM-83F83EA5","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"250.00","description":"QA c889480f Senior unit research close he budget car.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:48.536698Z","updated_at":"2026-09-04T07:22:48.536698Z","withdrawn_at":null,"decided_by_id":null}
+07:22:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:22:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '9e6a26b6-67a8-4141-8896-e31f62659c7e', 'amount': '250.00', 'description': 'QA 636e38ab Term door herself away this behavior smile.', 'incident_date': '2026-08-28'}
+  response: {"id":"0a0e977e-f80c-4f57-8776-e01eb9e6486f","reference":"CLM-E89CDAF6","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"250.00","description":"QA 636e38ab Term door herself away this behavior smile.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:48.549606Z","updated_at":"2026-09-04T07:22:48.549606Z","withdrawn_at":null,"decided_by_id":null}
+07:22:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:22:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '9e6a26b6-67a8-4141-8896-e31f62659c7e', 'amount': '250.00', 'description': 'QA cefbc437 Attorney your least boy new cultural.', 'incident_date': '2026-08-28'}
+  response: {"id":"9f142e9a-cae2-413f-8740-2ce30d8466d3","reference":"CLM-498C7CB4","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"250.00","description":"QA cefbc437 Attorney your least boy new cultural.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:48.562166Z","updated_at":"2026-09-04T07:22:48.562166Z","withdrawn_at":null,"decided_by_id":null}
+07:22:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:22:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '9e6a26b6-67a8-4141-8896-e31f62659c7e', 'amount': '250.00', 'description': 'QA 82e999f7 National mission stage arrive successful.', 'incident_date': '2026-08-28'}
+  response: {"id":"7d73ab0c-a720-41eb-abff-c41e15b0e550","reference":"CLM-726C0C90","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"250.00","description":"QA 82e999f7 National mission stage arrive successful.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:48.574005Z","updated_at":"2026-09-04T07:22:48.574005Z","withdrawn_at":null,"decided_by_id":null}
+07:22:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:22:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '9e6a26b6-67a8-4141-8896-e31f62659c7e', 'amount': '250.00', 'description': 'QA e0da5830 Back can art themselves century.', 'incident_date': '2026-08-28'}
+  response: {"id":"229f1ad2-b587-43d3-948c-e719d0666681","reference":"CLM-61EE4D2C","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"250.00","description":"QA e0da5830 Back can art themselves century.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:48.585948Z","updated_at":"2026-09-04T07:22:48.585948Z","withdrawn_at":null,"decided_by_id":null}
+07:22:48 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

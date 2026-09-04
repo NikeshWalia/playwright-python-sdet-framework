@@ -1,9 +1,0 @@
-07:20:55 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_unknown_field_does_not_change_the_claim
-07:20:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-07:20:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
-  response: [{"id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","policy_number":"POL-1001","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"10000.00","is_active":true},{"id":"8516e73d-bda5-44c0-8575-4c79136d1a6e","policy_number":"POL-1002","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"2500.00","is_active":true}]
-07:20:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-07:20:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
-  request : {'policy_id': '9bf97a1c-18dc-4056-857e-a52daa069ae3', 'amount': '250.00', 'description': 'QA cd9d2c1d Wall would grow state avoid cut.', 'incident_date': '2026-08-27', 'status': 'PAID', 'is_admin': True}
-  response: {"id":"f43714ec-1f42-42f2-a24f-f42c531a1cd9","reference":"CLM-7E88EF32","policy_id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","claimant_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","amount":"250.00","description":"QA cd9d2c1d Wall would grow state avoid cut.","incident_date":"2026-08-27","status":"DRAFT","created_at":"2026-09-03T07:20:55.079898Z","updated_at":"2026-09-03T07:20:55.079898Z","withdrawn_at":null,"decided_by_id":null}
-07:20:55 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_unknown_field_does_not_change_the_claim

@@ -1,0 +1,31 @@
+07:22:50 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it
+07:22:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","policy_number":"POL-1001","holder_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","coverage_limit":"10000.00","is_active":true},{"id":"a3d1756e-d35d-4a39-9b5e-035fba3c3f81","policy_number":"POL-1002","holder_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","coverage_limit":"2500.00","is_active":true}]
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('customer@example.com',)
+  rows: 1
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+07:22:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '9e6a26b6-67a8-4141-8896-e31f62659c7e', 'amount': '700.00', 'description': 'QA ee1acaaa Authority process clear.', 'incident_date': '2026-08-28'}
+  response: {"id":"3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4","reference":"CLM-1EF16067","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"700.00","description":"QA ee1acaaa Authority process clear.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:50.056381Z","updated_at":"2026-09-04T07:22:50.056381Z","withdrawn_at":null,"decided_by_id":null}
+07:22:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4/transitions "HTTP/1.1 200 OK"
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4","reference":"CLM-1EF16067","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"700.00","description":"QA ee1acaaa Authority process clear.","incident_date":"2026-08-28","status":"SUBMITTED","created_at":"2026-09-04T07:22:50.056381Z","updated_at":"2026-09-04T07:22:50.068394Z","withdrawn_at":null,"decided_by_id":null}
+07:22:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4/transitions "HTTP/1.1 200 OK"
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4","reference":"CLM-1EF16067","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"700.00","description":"QA ee1acaaa Authority process clear.","incident_date":"2026-08-28","status":"UNDER_REVIEW","created_at":"2026-09-04T07:22:50.056381Z","updated_at":"2026-09-04T07:22:50.080689Z","withdrawn_at":null,"decided_by_id":null}
+07:22:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4/transitions "HTTP/1.1 200 OK"
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4","reference":"CLM-1EF16067","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"700.00","description":"QA ee1acaaa Authority process clear.","incident_date":"2026-08-28","status":"APPROVED","created_at":"2026-09-04T07:22:50.056381Z","updated_at":"2026-09-04T07:22:50.092505Z","withdrawn_at":null,"decided_by_id":"4e2c7cc6-a661-48d3-bcd2-8ba24a77758b"}
+07:22:50 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('3c80ae2f-3b5f-4577-9941-f35d9f6ee6c4',)
+  rows: 4
+07:22:50 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it

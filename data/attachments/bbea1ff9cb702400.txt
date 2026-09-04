@@ -1,5 +1,0 @@
-07:21:05 DEBUG   [qa-9de9c69b89] claimdesk_qa.tests.conftest: start tests/ui/test_claim_form.py::test_invalid_amounts_are_rejected_with_a_visible_message[chromium-not-a-number]
-07:21:06 INFO    [qa-9de9c69b89] claimdesk_qa.claimdesk_qa.ui.base_page: Opening http://127.0.0.1:8000/claims/new
-07:21:06 DEBUG   [qa-9de9c69b89] claimdesk_qa.claimdesk_qa.api.client: GET http://127.0.0.1:8000/api/v1/policies -> 200 (20 ms)
-  response: [{"id":"9bf97a1c-18dc-4056-857e-a52daa069ae3","policy_number":"POL-1001","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"10000.00","is_active":true},{"id":"8516e73d-bda5-44c0-8575-4c79136d1a6e","policy_number":"POL-1002","holder_id":"0cd204c2-207d-47ad-b01a-73d6e9396d9f","coverage_limit":"2500.00","is_active":true}]
-07:21:06 DEBUG   [qa-9de9c69b89] claimdesk_qa.tests.conftest: end tests/ui/test_claim_form.py::test_invalid_amounts_are_rejected_with_a_visible_message[chromium-not-a-number]

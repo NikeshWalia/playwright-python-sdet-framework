@@ -1,0 +1,12 @@
+07:22:47 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim
+07:22:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:22:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","policy_number":"POL-1001","holder_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","coverage_limit":"10000.00","is_active":true},{"id":"a3d1756e-d35d-4a39-9b5e-035fba3c3f81","policy_number":"POL-1002","holder_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","coverage_limit":"2500.00","is_active":true}]
+07:22:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:22:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '9e6a26b6-67a8-4141-8896-e31f62659c7e', 'amount': '250.00', 'description': 'QA d2c19443 Court week painting appear century television.', 'incident_date': '2026-08-28'}
+  response: {"id":"533783b9-7ebc-44b4-84ab-c24d509fe4c0","reference":"CLM-EE26A206","policy_id":"9e6a26b6-67a8-4141-8896-e31f62659c7e","claimant_id":"e2bdfe42-75d5-4854-ae1f-93d697c863a5","amount":"250.00","description":"QA d2c19443 Court week painting appear century television.","incident_date":"2026-08-28","status":"DRAFT","created_at":"2026-09-04T07:22:47.388697Z","updated_at":"2026-09-04T07:22:47.388697Z","withdrawn_at":null,"decided_by_id":null}
+07:22:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/533783b9-7ebc-44b4-84ab-c24d509fe4c0 "HTTP/1.1 404 Not Found"
+07:22:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/533783b9-7ebc-44b4-84ab-c24d509fe4c0 -> 404 (9 ms)
+  response: {"detail":"Claim not found"}
+07:22:47 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim
