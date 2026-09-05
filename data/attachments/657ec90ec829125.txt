@@ -1,0 +1,14 @@
+07:04:38 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
+07:04:38 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:04:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","policy_number":"POL-1001","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"10000.00","is_active":true},{"id":"40c10fff-506d-41d1-a303-cd2997bd8c94","policy_number":"POL-1002","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"2500.00","is_active":true}]
+07:04:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:04:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'amount': '820.00', 'description': 'QA adf8d25b Prevent modern body people defense star nation.', 'incident_date': '2026-08-29'}
+  response: {"id":"2a3f681e-04d3-4dbb-b2fa-81fd61cf660f","reference":"CLM-6A7E6D0A","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"820.00","description":"QA adf8d25b Prevent modern body people defense star nation.","incident_date":"2026-08-29","status":"DRAFT","created_at":"2026-09-05T07:04:38.322128Z","updated_at":"2026-09-05T07:04:38.322128Z","withdrawn_at":null,"decided_by_id":null}
+07:04:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2a3f681e-04d3-4dbb-b2fa-81fd61cf660f/transitions "HTTP/1.1 200 OK"
+07:04:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2a3f681e-04d3-4dbb-b2fa-81fd61cf660f/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2a3f681e-04d3-4dbb-b2fa-81fd61cf660f","reference":"CLM-6A7E6D0A","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"820.00","description":"QA adf8d25b Prevent modern body people defense star nation.","incident_date":"2026-08-29","status":"SUBMITTED","created_at":"2026-09-05T07:04:38.322128Z","updated_at":"2026-09-05T07:04:38.336338Z","withdrawn_at":null,"decided_by_id":null}
+07:04:38 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/2a3f681e-04d3-4dbb-b2fa-81fd61cf660f
+07:04:38 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]

@@ -1,0 +1,28 @@
+07:04:31 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-approve]
+07:04:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","policy_number":"POL-1001","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"10000.00","is_active":true},{"id":"40c10fff-506d-41d1-a303-cd2997bd8c94","policy_number":"POL-1002","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"2500.00","is_active":true}]
+07:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'amount': '100.00', 'description': 'QA c836cd12 Forget carry animal throughout address bar.', 'incident_date': '2026-08-29'}
+  response: {"id":"2814aa1f-e32f-4537-aaae-f3038797de0a","reference":"CLM-A83EA23A","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"100.00","description":"QA c836cd12 Forget carry animal throughout address bar.","incident_date":"2026-08-29","status":"DRAFT","created_at":"2026-09-05T07:04:31.311103Z","updated_at":"2026-09-05T07:04:31.311103Z","withdrawn_at":null,"decided_by_id":null}
+07:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a/transitions "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2814aa1f-e32f-4537-aaae-f3038797de0a","reference":"CLM-A83EA23A","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"100.00","description":"QA c836cd12 Forget carry animal throughout address bar.","incident_date":"2026-08-29","status":"SUBMITTED","created_at":"2026-09-05T07:04:31.311103Z","updated_at":"2026-09-05T07:04:31.322450Z","withdrawn_at":null,"decided_by_id":null}
+07:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a/transitions "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2814aa1f-e32f-4537-aaae-f3038797de0a","reference":"CLM-A83EA23A","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"100.00","description":"QA c836cd12 Forget carry animal throughout address bar.","incident_date":"2026-08-29","status":"UNDER_REVIEW","created_at":"2026-09-05T07:04:31.311103Z","updated_at":"2026-09-05T07:04:31.333034Z","withdrawn_at":null,"decided_by_id":null}
+07:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a/transitions "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a/transitions -> 200 (10 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"2814aa1f-e32f-4537-aaae-f3038797de0a","reference":"CLM-A83EA23A","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"100.00","description":"QA c836cd12 Forget carry animal throughout address bar.","incident_date":"2026-08-29","status":"REJECTED","created_at":"2026-09-05T07:04:31.311103Z","updated_at":"2026-09-05T07:04:31.341730Z","withdrawn_at":null,"decided_by_id":"e0e7bb5e-6e98-4ac9-a492-df8d056e3851"}
+07:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a/transitions "HTTP/1.1 409 Conflict"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a/transitions -> 409 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status REJECTED; it must be UNDER_REVIEW."}
+07:04:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2814aa1f-e32f-4537-aaae-f3038797de0a -> 200 (5 ms)
+  response: {"id":"2814aa1f-e32f-4537-aaae-f3038797de0a","reference":"CLM-A83EA23A","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"100.00","description":"QA c836cd12 Forget carry animal throughout address bar.","incident_date":"2026-08-29","status":"REJECTED","created_at":"2026-09-05T07:04:31.311103Z","updated_at":"2026-09-05T07:04:31.341730Z","withdrawn_at":null,"decided_by_id":"e0e7bb5e-6e98-4ac9-a492-df8d056e3851"}
+07:04:31 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-approve]

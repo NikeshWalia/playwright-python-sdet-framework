@@ -1,0 +1,23 @@
+07:04:31 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event
+07:04:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","policy_number":"POL-1001","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"10000.00","is_active":true},{"id":"40c10fff-506d-41d1-a303-cd2997bd8c94","policy_number":"POL-1002","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"2500.00","is_active":true}]
+07:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'amount': '300.00', 'description': 'QA 8501cbb0 Building laugh window lead card much.', 'incident_date': '2026-08-29'}
+  response: {"id":"5f66d2a0-9bae-4198-a21b-7f21e1933497","reference":"CLM-098DC8D4","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"300.00","description":"QA 8501cbb0 Building laugh window lead card much.","incident_date":"2026-08-29","status":"DRAFT","created_at":"2026-09-05T07:04:31.135033Z","updated_at":"2026-09-05T07:04:31.135033Z","withdrawn_at":null,"decided_by_id":null}
+07:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5f66d2a0-9bae-4198-a21b-7f21e1933497/transitions "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5f66d2a0-9bae-4198-a21b-7f21e1933497/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"5f66d2a0-9bae-4198-a21b-7f21e1933497","reference":"CLM-098DC8D4","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"300.00","description":"QA 8501cbb0 Building laugh window lead card much.","incident_date":"2026-08-29","status":"SUBMITTED","created_at":"2026-09-05T07:04:31.135033Z","updated_at":"2026-09-05T07:04:31.145952Z","withdrawn_at":null,"decided_by_id":null}
+07:04:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/5f66d2a0-9bae-4198-a21b-7f21e1933497/events "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/5f66d2a0-9bae-4198-a21b-7f21e1933497/events -> 200 (7 ms)
+  response: [{"id":"6b5eef01-7cc2-4747-82a2-3d0f1d371569","claim_id":"5f66d2a0-9bae-4198-a21b-7f21e1933497","actor_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-05T07:04:31.135033Z"},{"id":"36926d6c-6d82-41ec-a8f2-d4f42413a9da","claim_id":"5f66d2a0-9bae-4198-a21b-7f21e1933497","actor_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-05T07:04:31.145952Z"}]
+07:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5f66d2a0-9bae-4198-a21b-7f21e1933497/transitions "HTTP/1.1 409 Conflict"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5f66d2a0-9bae-4198-a21b-7f21e1933497/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+07:04:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/5f66d2a0-9bae-4198-a21b-7f21e1933497/events "HTTP/1.1 200 OK"
+07:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/5f66d2a0-9bae-4198-a21b-7f21e1933497/events -> 200 (7 ms)
+  response: [{"id":"6b5eef01-7cc2-4747-82a2-3d0f1d371569","claim_id":"5f66d2a0-9bae-4198-a21b-7f21e1933497","actor_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-05T07:04:31.135033Z"},{"id":"36926d6c-6d82-41ec-a8f2-d4f42413a9da","claim_id":"5f66d2a0-9bae-4198-a21b-7f21e1933497","actor_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-05T07:04:31.145952Z"}]
+07:04:31 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event

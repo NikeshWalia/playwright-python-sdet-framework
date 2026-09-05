@@ -1,0 +1,25 @@
+07:04:30 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:04:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:04:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","policy_number":"POL-1001","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"10000.00","is_active":true},{"id":"40c10fff-506d-41d1-a303-cd2997bd8c94","policy_number":"POL-1002","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"2500.00","is_active":true}]
+07:04:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:04:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'amount': '250.00', 'description': 'QA 08ef9344 Something beautiful several middle.', 'incident_date': '2026-08-29'}
+  response: {"id":"bc0d6d8f-19c7-4dbe-a489-4e75179a8a5c","reference":"CLM-9C7AAF96","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"250.00","description":"QA 08ef9344 Something beautiful several middle.","incident_date":"2026-08-29","status":"DRAFT","created_at":"2026-09-05T07:04:30.261929Z","updated_at":"2026-09-05T07:04:30.261929Z","withdrawn_at":null,"decided_by_id":null}
+07:04:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:04:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'amount': '250.00', 'description': 'QA be0e566b Room heavy new.', 'incident_date': '2026-08-29'}
+  response: {"id":"38e20086-0213-4ba1-b3e4-e42943e72fcd","reference":"CLM-E4712100","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"250.00","description":"QA be0e566b Room heavy new.","incident_date":"2026-08-29","status":"DRAFT","created_at":"2026-09-05T07:04:30.272440Z","updated_at":"2026-09-05T07:04:30.272440Z","withdrawn_at":null,"decided_by_id":null}
+07:04:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:04:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'amount': '250.00', 'description': 'QA 9f56282b House shoulder four wonder enjoy sell writer.', 'incident_date': '2026-08-29'}
+  response: {"id":"29615317-853f-40f6-9b7a-04d0cafcb93a","reference":"CLM-B7316FE3","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"250.00","description":"QA 9f56282b House shoulder four wonder enjoy sell writer.","incident_date":"2026-08-29","status":"DRAFT","created_at":"2026-09-05T07:04:30.282380Z","updated_at":"2026-09-05T07:04:30.282380Z","withdrawn_at":null,"decided_by_id":null}
+07:04:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:04:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'amount': '250.00', 'description': 'QA e9de3db0 Walk building green.', 'incident_date': '2026-08-29'}
+  response: {"id":"f882f68e-4d56-4a33-b6bf-4a15876db125","reference":"CLM-069E8584","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"250.00","description":"QA e9de3db0 Walk building green.","incident_date":"2026-08-29","status":"DRAFT","created_at":"2026-09-05T07:04:30.293585Z","updated_at":"2026-09-05T07:04:30.293585Z","withdrawn_at":null,"decided_by_id":null}
+07:04:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:04:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'amount': '250.00', 'description': 'QA 1451af32 Consumer word lay draw whether should table.', 'incident_date': '2026-08-29'}
+  response: {"id":"b266dec7-a8a9-442b-9d6a-f6be913a5fe1","reference":"CLM-B0664C46","policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","claimant_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","amount":"250.00","description":"QA 1451af32 Consumer word lay draw whether should table.","incident_date":"2026-08-29","status":"DRAFT","created_at":"2026-09-05T07:04:30.302702Z","updated_at":"2026-09-05T07:04:30.302702Z","withdrawn_at":null,"decided_by_id":null}
+07:04:30 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
