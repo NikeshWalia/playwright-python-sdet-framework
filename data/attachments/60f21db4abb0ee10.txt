@@ -1,0 +1,10 @@
+07:16:03 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]
+07:16:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:16:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"c148e8f5-4032-4252-974f-8776c1cfbee0","policy_number":"POL-1001","holder_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","coverage_limit":"10000.00","is_active":true},{"id":"0376ca57-8dd4-4c3e-99cd-8e1009e5b1ce","policy_number":"POL-1002","holder_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","coverage_limit":"2500.00","is_active":true}]
+07:16:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:16:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (19 ms)
+  request : {'policy_id': 'c148e8f5-4032-4252-974f-8776c1cfbee0', 'amount': '640.00', 'description': 'QA 24f88905 Challenge scene task find model situation avoid.', 'incident_date': '2026-08-30'}
+  response: {"id":"af5416d2-e042-449b-b08a-0513ae5f2758","reference":"CLM-6DCAB369","policy_id":"c148e8f5-4032-4252-974f-8776c1cfbee0","claimant_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","amount":"640.00","description":"QA 24f88905 Challenge scene task find model situation avoid.","incident_date":"2026-08-30","status":"DRAFT","created_at":"2026-09-06T07:16:03.504434Z","updated_at":"2026-09-06T07:16:03.504434Z","withdrawn_at":null,"decided_by_id":null}
+07:16:03 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/af5416d2-e042-449b-b08a-0513ae5f2758
+07:16:03 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]

@@ -1,9 +1,0 @@
-07:04:30 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[amount]
-07:04:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-07:04:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
-  response: [{"id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","policy_number":"POL-1001","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"10000.00","is_active":true},{"id":"40c10fff-506d-41d1-a303-cd2997bd8c94","policy_number":"POL-1002","holder_id":"e1485d04-db20-4a78-886f-ed26f217c0fb","coverage_limit":"2500.00","is_active":true}]
-07:04:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-07:04:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (6 ms)
-  request : {'policy_id': 'a3933793-4bfe-4df3-b013-57e9ef20b3b8', 'description': 'QA 0feb40e0 Mrs strong while mind book.', 'incident_date': '2026-08-29'}
-  response: {"detail":[{"type":"missing","loc":["body","amount"],"msg":"Field required","input":{"policy_id":"a3933793-4bfe-4df3-b013-57e9ef20b3b8","description":"QA 0feb40e0 Mrs strong while mind book.","incident_date":"2026-08-29"}}]}
-07:04:30 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[amount]

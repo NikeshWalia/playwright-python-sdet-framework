@@ -1,0 +1,28 @@
+07:15:55 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout
+07:15:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:15:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"c148e8f5-4032-4252-974f-8776c1cfbee0","policy_number":"POL-1001","holder_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","coverage_limit":"10000.00","is_active":true},{"id":"0376ca57-8dd4-4c3e-99cd-8e1009e5b1ce","policy_number":"POL-1002","holder_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","coverage_limit":"2500.00","is_active":true}]
+07:15:55 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:15:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:15:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'c148e8f5-4032-4252-974f-8776c1cfbee0', 'amount': '800.00', 'description': 'QA 1ccc6477 Such hair recently walk.', 'incident_date': '2026-08-30'}
+  response: {"id":"82c0378f-d2c6-4b42-b49f-a632e61f00dd","reference":"CLM-84E32134","policy_id":"c148e8f5-4032-4252-974f-8776c1cfbee0","claimant_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","amount":"800.00","description":"QA 1ccc6477 Such hair recently walk.","incident_date":"2026-08-30","status":"DRAFT","created_at":"2026-09-06T07:15:55.895641Z","updated_at":"2026-09-06T07:15:55.895641Z","withdrawn_at":null,"decided_by_id":null}
+07:15:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/82c0378f-d2c6-4b42-b49f-a632e61f00dd/transitions "HTTP/1.1 200 OK"
+07:15:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/82c0378f-d2c6-4b42-b49f-a632e61f00dd/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"82c0378f-d2c6-4b42-b49f-a632e61f00dd","reference":"CLM-84E32134","policy_id":"c148e8f5-4032-4252-974f-8776c1cfbee0","claimant_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","amount":"800.00","description":"QA 1ccc6477 Such hair recently walk.","incident_date":"2026-08-30","status":"SUBMITTED","created_at":"2026-09-06T07:15:55.895641Z","updated_at":"2026-09-06T07:15:55.907740Z","withdrawn_at":null,"decided_by_id":null}
+07:15:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/82c0378f-d2c6-4b42-b49f-a632e61f00dd/transitions "HTTP/1.1 200 OK"
+07:15:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/82c0378f-d2c6-4b42-b49f-a632e61f00dd/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"82c0378f-d2c6-4b42-b49f-a632e61f00dd","reference":"CLM-84E32134","policy_id":"c148e8f5-4032-4252-974f-8776c1cfbee0","claimant_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","amount":"800.00","description":"QA 1ccc6477 Such hair recently walk.","incident_date":"2026-08-30","status":"UNDER_REVIEW","created_at":"2026-09-06T07:15:55.895641Z","updated_at":"2026-09-06T07:15:55.918551Z","withdrawn_at":null,"decided_by_id":null}
+07:15:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/82c0378f-d2c6-4b42-b49f-a632e61f00dd/transitions "HTTP/1.1 200 OK"
+07:15:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/82c0378f-d2c6-4b42-b49f-a632e61f00dd/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"82c0378f-d2c6-4b42-b49f-a632e61f00dd","reference":"CLM-84E32134","policy_id":"c148e8f5-4032-4252-974f-8776c1cfbee0","claimant_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","amount":"800.00","description":"QA 1ccc6477 Such hair recently walk.","incident_date":"2026-08-30","status":"APPROVED","created_at":"2026-09-06T07:15:55.895641Z","updated_at":"2026-09-06T07:15:55.928637Z","withdrawn_at":null,"decided_by_id":"5e5754d2-05cf-4fba-bfec-4352acfbc8d5"}
+07:15:55 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('82c0378f-d2c6-4b42-b49f-a632e61f00dd',)
+  rows: 0
+07:15:55 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('82c0378f-d2c6-4b42-b49f-a632e61f00dd',)
+  rows: 1
+07:15:55 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout

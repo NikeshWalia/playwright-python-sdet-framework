@@ -1,0 +1,2 @@
+07:16:05 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_flakiness.py::test_api_and_database_tests_are_never_retried[api]
+07:16:05 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_flakiness.py::test_api_and_database_tests_are_never_retried[api]

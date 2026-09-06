@@ -1,5 +1,0 @@
-07:04:29 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_auth.py::test_the_correlation_id_is_echoed_back
-07:04:29 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/auth/me "HTTP/1.1 200 OK"
-07:04:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/auth/me -> 200 (4 ms)
-  response: {"id":"e1485d04-db20-4a78-886f-ed26f217c0fb","email":"customer@example.com","full_name":"Casey Customer","role":"CUSTOMER","is_active":true,"created_at":"2026-09-05T07:04:26.597683Z"}
-07:04:29 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_auth.py::test_the_correlation_id_is_echoed_back

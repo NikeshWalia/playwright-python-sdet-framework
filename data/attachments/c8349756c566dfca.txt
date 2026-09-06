@@ -1,0 +1,19 @@
+07:15:59 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_deactivating_a_user_immediately_ends_their_browser_session[chromium]
+07:15:59 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:15:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/users "HTTP/1.1 201 Created"
+07:15:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/users -> 201 (113 ms)
+  request : {'email': 'qa+70ea6f1b@example.com', 'full_name': 'Elizabeth Stephens', 'role': 'CUSTOMER', 'password': 'Passw0rd!e2e-session'}
+  response: {"id":"b0c3bfcc-2850-4451-b63c-930d902251f8","email":"qa+70ea6f1b@example.com","full_name":"Elizabeth Stephens","role":"CUSTOMER","is_active":true,"created_at":"2026-09-06T07:15:59.823744Z"}
+07:16:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:16:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (89 ms)
+  request : {'email': 'qa+70ea6f1b@example.com', 'password': 'Passw0rd!e2e-session'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMGMzYmZjYy0yODUwLTQ0NTEtYjYzYy05MzBkOTAyMjUxZjgiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3ODg2Nzg5NjAsImV4cCI6MTc4ODY4MjU2MH0.67pd6JtHmhBnH8bz1kjBIYQKQ_4HVFfjOw4Uf1q1rFQ","token_type":"bearer","expires_in":3600}
+07:16:00 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:16:00 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/users/b0c3bfcc-2850-4451-b63c-930d902251f8 "HTTP/1.1 200 OK"
+07:16:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/users/b0c3bfcc-2850-4451-b63c-930d902251f8 -> 200 (35 ms)
+  request : {'is_active': False}
+  response: {"id":"b0c3bfcc-2850-4451-b63c-930d902251f8","email":"qa+70ea6f1b@example.com","full_name":"Elizabeth Stephens","role":"CUSTOMER","is_active":false,"created_at":"2026-09-06T07:15:59.823744Z"}
+07:16:00 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('qa+70ea6f1b@example.com',)
+  rows: 1
+07:16:00 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_deactivating_a_user_immediately_ends_their_browser_session[chromium]

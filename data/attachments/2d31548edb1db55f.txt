@@ -1,0 +1,9 @@
+07:15:53 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_the_smallest_payable_amount_is_accepted
+07:15:53 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:15:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"c148e8f5-4032-4252-974f-8776c1cfbee0","policy_number":"POL-1001","holder_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","coverage_limit":"10000.00","is_active":true},{"id":"0376ca57-8dd4-4c3e-99cd-8e1009e5b1ce","policy_number":"POL-1002","holder_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","coverage_limit":"2500.00","is_active":true}]
+07:15:53 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:15:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'c148e8f5-4032-4252-974f-8776c1cfbee0', 'amount': '0.01', 'description': 'QA 1b972612 And very per blood hotel rest imagine later.', 'incident_date': '2026-08-30'}
+  response: {"id":"6d1ac985-3714-42f0-bcc6-c2889b0b0bcb","reference":"CLM-08032E5D","policy_id":"c148e8f5-4032-4252-974f-8776c1cfbee0","claimant_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","amount":"0.01","description":"QA 1b972612 And very per blood hotel rest imagine later.","incident_date":"2026-08-30","status":"DRAFT","created_at":"2026-09-06T07:15:53.432604Z","updated_at":"2026-09-06T07:15:53.432604Z","withdrawn_at":null,"decided_by_id":null}
+07:15:53 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_the_smallest_payable_amount_is_accepted

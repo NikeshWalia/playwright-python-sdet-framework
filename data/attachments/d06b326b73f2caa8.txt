@@ -1,0 +1,9 @@
+07:15:53 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]
+07:15:53 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:15:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"c148e8f5-4032-4252-974f-8776c1cfbee0","policy_number":"POL-1001","holder_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","coverage_limit":"10000.00","is_active":true},{"id":"0376ca57-8dd4-4c3e-99cd-8e1009e5b1ce","policy_number":"POL-1002","holder_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","coverage_limit":"2500.00","is_active":true}]
+07:15:53 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:15:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': 'c148e8f5-4032-4252-974f-8776c1cfbee0', 'amount': '١٢٣', 'description': 'QA c141a579 House million us hospital process.', 'incident_date': '2026-08-30'}
+  response: {"id":"740a43dc-3b1d-4baf-8c95-fa53f7ab8cc1","reference":"CLM-B3A1B0A5","policy_id":"c148e8f5-4032-4252-974f-8776c1cfbee0","claimant_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","amount":"123.00","description":"QA c141a579 House million us hospital process.","incident_date":"2026-08-30","status":"DRAFT","created_at":"2026-09-06T07:15:53.682781Z","updated_at":"2026-09-06T07:15:53.682781Z","withdrawn_at":null,"decided_by_id":null}
+07:15:53 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]
