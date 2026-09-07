@@ -1,0 +1,12 @@
+07:29:48 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_one_cent_under_the_coverage_limit_is_accepted
+07:29:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","policy_number":"POL-1001","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"10000.00","is_active":true},{"id":"dccf0c18-5f77-43c7-ae2a-68fbc6d3824c","policy_number":"POL-1002","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"2500.00","is_active":true}]
+07:29:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","policy_number":"POL-1001","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"10000.00","is_active":true},{"id":"dccf0c18-5f77-43c7-ae2a-68fbc6d3824c","policy_number":"POL-1002","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"2500.00","is_active":true}]
+07:29:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'dccf0c18-5f77-43c7-ae2a-68fbc6d3824c', 'amount': '2499.99', 'description': 'QA 5c7c326c Add particular season north we serious put.', 'incident_date': '2026-08-31'}
+  response: {"id":"224f6661-b0d5-4ced-8f5c-343f14abf7b0","reference":"CLM-75378F1B","policy_id":"dccf0c18-5f77-43c7-ae2a-68fbc6d3824c","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"2499.99","description":"QA 5c7c326c Add particular season north we serious put.","incident_date":"2026-08-31","status":"DRAFT","created_at":"2026-09-07T07:29:48.580020Z","updated_at":"2026-09-07T07:29:48.580020Z","withdrawn_at":null,"decided_by_id":null}
+07:29:48 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_one_cent_under_the_coverage_limit_is_accepted

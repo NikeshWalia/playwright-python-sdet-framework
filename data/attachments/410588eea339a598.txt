@@ -1,0 +1,28 @@
+07:29:50 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_refused_transition_writes_no_audit_row
+07:29:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:29:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","policy_number":"POL-1001","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"10000.00","is_active":true},{"id":"dccf0c18-5f77-43c7-ae2a-68fbc6d3824c","policy_number":"POL-1002","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"2500.00","is_active":true}]
+07:29:50 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:29:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:29:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'eb8af3ab-d317-4de9-b7c4-fd11d202d5a3', 'amount': '700.00', 'description': 'QA 5ffe84c2 Customer degree really red during easy six.', 'incident_date': '2026-08-31'}
+  response: {"id":"cae24bc9-58b9-48e2-b143-31249a3f3b2f","reference":"CLM-EDA78BA9","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"700.00","description":"QA 5ffe84c2 Customer degree really red during easy six.","incident_date":"2026-08-31","status":"DRAFT","created_at":"2026-09-07T07:29:50.505229Z","updated_at":"2026-09-07T07:29:50.505229Z","withdrawn_at":null,"decided_by_id":null}
+07:29:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cae24bc9-58b9-48e2-b143-31249a3f3b2f/transitions "HTTP/1.1 200 OK"
+07:29:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cae24bc9-58b9-48e2-b143-31249a3f3b2f/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"cae24bc9-58b9-48e2-b143-31249a3f3b2f","reference":"CLM-EDA78BA9","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"700.00","description":"QA 5ffe84c2 Customer degree really red during easy six.","incident_date":"2026-08-31","status":"SUBMITTED","created_at":"2026-09-07T07:29:50.505229Z","updated_at":"2026-09-07T07:29:50.517277Z","withdrawn_at":null,"decided_by_id":null}
+07:29:50 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('cae24bc9-58b9-48e2-b143-31249a3f3b2f',)
+  rows: 1
+07:29:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cae24bc9-58b9-48e2-b143-31249a3f3b2f/transitions "HTTP/1.1 409 Conflict"
+07:29:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cae24bc9-58b9-48e2-b143-31249a3f3b2f/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+07:29:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cae24bc9-58b9-48e2-b143-31249a3f3b2f/transitions "HTTP/1.1 409 Conflict"
+07:29:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cae24bc9-58b9-48e2-b143-31249a3f3b2f/transitions -> 409 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+07:29:50 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('cae24bc9-58b9-48e2-b143-31249a3f3b2f',)
+  rows: 1
+07:29:50 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_refused_transition_writes_no_audit_row

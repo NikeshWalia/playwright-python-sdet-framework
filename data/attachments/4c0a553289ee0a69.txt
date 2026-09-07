@@ -1,0 +1,16 @@
+07:29:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[DRAFT-submit-SUBMITTED]
+07:29:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","policy_number":"POL-1001","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"10000.00","is_active":true},{"id":"dccf0c18-5f77-43c7-ae2a-68fbc6d3824c","policy_number":"POL-1002","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"2500.00","is_active":true}]
+07:29:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': 'eb8af3ab-d317-4de9-b7c4-fd11d202d5a3', 'amount': '100.00', 'description': 'QA 059a8fa2 Serve forget pattern consider finally social grow.', 'incident_date': '2026-08-31'}
+  response: {"id":"b91f4fc3-8647-41b6-b82b-88a5d0919fa9","reference":"CLM-C91B39D0","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"100.00","description":"QA 059a8fa2 Serve forget pattern consider finally social grow.","incident_date":"2026-08-31","status":"DRAFT","created_at":"2026-09-07T07:29:49.373106Z","updated_at":"2026-09-07T07:29:49.373106Z","withdrawn_at":null,"decided_by_id":null}
+07:29:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/b91f4fc3-8647-41b6-b82b-88a5d0919fa9 "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/b91f4fc3-8647-41b6-b82b-88a5d0919fa9 -> 200 (6 ms)
+  response: {"id":"b91f4fc3-8647-41b6-b82b-88a5d0919fa9","reference":"CLM-C91B39D0","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"100.00","description":"QA 059a8fa2 Serve forget pattern consider finally social grow.","incident_date":"2026-08-31","status":"DRAFT","created_at":"2026-09-07T07:29:49.373106Z","updated_at":"2026-09-07T07:29:49.373106Z","withdrawn_at":null,"decided_by_id":null}
+07:29:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b91f4fc3-8647-41b6-b82b-88a5d0919fa9/transitions "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b91f4fc3-8647-41b6-b82b-88a5d0919fa9/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b91f4fc3-8647-41b6-b82b-88a5d0919fa9","reference":"CLM-C91B39D0","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"100.00","description":"QA 059a8fa2 Serve forget pattern consider finally social grow.","incident_date":"2026-08-31","status":"SUBMITTED","created_at":"2026-09-07T07:29:49.373106Z","updated_at":"2026-09-07T07:29:49.391036Z","withdrawn_at":null,"decided_by_id":null}
+07:29:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[DRAFT-submit-SUBMITTED]

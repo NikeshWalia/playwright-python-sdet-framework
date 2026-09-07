@@ -1,0 +1,28 @@
+07:29:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-start_review]
+07:29:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","policy_number":"POL-1001","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"10000.00","is_active":true},{"id":"dccf0c18-5f77-43c7-ae2a-68fbc6d3824c","policy_number":"POL-1002","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"2500.00","is_active":true}]
+07:29:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'eb8af3ab-d317-4de9-b7c4-fd11d202d5a3', 'amount': '100.00', 'description': 'QA 7d7a0570 Western another quite music wait.', 'incident_date': '2026-08-31'}
+  response: {"id":"459438a1-2dfc-44bd-b3a6-7b44a5d92286","reference":"CLM-F6F8E51B","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"100.00","description":"QA 7d7a0570 Western another quite music wait.","incident_date":"2026-08-31","status":"DRAFT","created_at":"2026-09-07T07:29:49.775897Z","updated_at":"2026-09-07T07:29:49.775897Z","withdrawn_at":null,"decided_by_id":null}
+07:29:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286/transitions "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"459438a1-2dfc-44bd-b3a6-7b44a5d92286","reference":"CLM-F6F8E51B","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"100.00","description":"QA 7d7a0570 Western another quite music wait.","incident_date":"2026-08-31","status":"SUBMITTED","created_at":"2026-09-07T07:29:49.775897Z","updated_at":"2026-09-07T07:29:49.787412Z","withdrawn_at":null,"decided_by_id":null}
+07:29:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286/transitions "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"459438a1-2dfc-44bd-b3a6-7b44a5d92286","reference":"CLM-F6F8E51B","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"100.00","description":"QA 7d7a0570 Western another quite music wait.","incident_date":"2026-08-31","status":"UNDER_REVIEW","created_at":"2026-09-07T07:29:49.775897Z","updated_at":"2026-09-07T07:29:49.798512Z","withdrawn_at":null,"decided_by_id":null}
+07:29:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286/transitions "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"459438a1-2dfc-44bd-b3a6-7b44a5d92286","reference":"CLM-F6F8E51B","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"100.00","description":"QA 7d7a0570 Western another quite music wait.","incident_date":"2026-08-31","status":"APPROVED","created_at":"2026-09-07T07:29:49.775897Z","updated_at":"2026-09-07T07:29:49.808089Z","withdrawn_at":null,"decided_by_id":"000a4efe-cd19-4150-ad50-1275578862b4"}
+07:29:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286/transitions "HTTP/1.1 409 Conflict"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286/transitions -> 409 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status APPROVED; it must be SUBMITTED."}
+07:29:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286 "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/459438a1-2dfc-44bd-b3a6-7b44a5d92286 -> 200 (6 ms)
+  response: {"id":"459438a1-2dfc-44bd-b3a6-7b44a5d92286","reference":"CLM-F6F8E51B","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"100.00","description":"QA 7d7a0570 Western another quite music wait.","incident_date":"2026-08-31","status":"APPROVED","created_at":"2026-09-07T07:29:49.775897Z","updated_at":"2026-09-07T07:29:49.808089Z","withdrawn_at":null,"decided_by_id":"000a4efe-cd19-4150-ad50-1275578862b4"}
+07:29:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-start_review]

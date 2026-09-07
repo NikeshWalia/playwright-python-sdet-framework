@@ -1,0 +1,24 @@
+07:29:48 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[far-above-limit]
+07:29:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","policy_number":"POL-1001","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"10000.00","is_active":true},{"id":"dccf0c18-5f77-43c7-ae2a-68fbc6d3824c","policy_number":"POL-1002","holder_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","coverage_limit":"2500.00","is_active":true}]
+07:29:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'eb8af3ab-d317-4de9-b7c4-fd11d202d5a3', 'amount': '9999.99', 'description': 'QA 4e952602 Question various cultural.', 'incident_date': '2026-08-31'}
+  response: {"id":"7b2a768f-6870-48b3-921e-f4bcd1264047","reference":"CLM-23F5E425","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"9999.99","description":"QA 4e952602 Question various cultural.","incident_date":"2026-08-31","status":"DRAFT","created_at":"2026-09-07T07:29:48.857638Z","updated_at":"2026-09-07T07:29:48.857638Z","withdrawn_at":null,"decided_by_id":null}
+07:29:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7b2a768f-6870-48b3-921e-f4bcd1264047/transitions "HTTP/1.1 200 OK"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7b2a768f-6870-48b3-921e-f4bcd1264047/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7b2a768f-6870-48b3-921e-f4bcd1264047","reference":"CLM-23F5E425","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"9999.99","description":"QA 4e952602 Question various cultural.","incident_date":"2026-08-31","status":"SUBMITTED","created_at":"2026-09-07T07:29:48.857638Z","updated_at":"2026-09-07T07:29:48.868981Z","withdrawn_at":null,"decided_by_id":null}
+07:29:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7b2a768f-6870-48b3-921e-f4bcd1264047/transitions "HTTP/1.1 200 OK"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7b2a768f-6870-48b3-921e-f4bcd1264047/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7b2a768f-6870-48b3-921e-f4bcd1264047","reference":"CLM-23F5E425","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"9999.99","description":"QA 4e952602 Question various cultural.","incident_date":"2026-08-31","status":"UNDER_REVIEW","created_at":"2026-09-07T07:29:48.857638Z","updated_at":"2026-09-07T07:29:48.879178Z","withdrawn_at":null,"decided_by_id":null}
+07:29:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7b2a768f-6870-48b3-921e-f4bcd1264047/transitions "HTTP/1.1 403 Forbidden"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7b2a768f-6870-48b3-921e-f4bcd1264047/transitions -> 403 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 9999.99 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+07:29:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/7b2a768f-6870-48b3-921e-f4bcd1264047 "HTTP/1.1 200 OK"
+07:29:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/7b2a768f-6870-48b3-921e-f4bcd1264047 -> 200 (4 ms)
+  response: {"id":"7b2a768f-6870-48b3-921e-f4bcd1264047","reference":"CLM-23F5E425","policy_id":"eb8af3ab-d317-4de9-b7c4-fd11d202d5a3","claimant_id":"a5802cf2-7e2b-4b59-9d70-6f6eb23e926f","amount":"9999.99","description":"QA 4e952602 Question various cultural.","incident_date":"2026-08-31","status":"UNDER_REVIEW","created_at":"2026-09-07T07:29:48.857638Z","updated_at":"2026-09-07T07:29:48.879178Z","withdrawn_at":null,"decided_by_id":null}
+07:29:48 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[far-above-limit]

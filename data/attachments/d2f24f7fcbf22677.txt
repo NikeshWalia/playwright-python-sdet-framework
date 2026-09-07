@@ -1,5 +1,0 @@
-07:15:54 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
-07:15:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
-07:15:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (8 ms)
-  response: {"items":[{"id":"e94a5bac-3d3c-425a-9b0e-e139b0da1566","reference":"CLM-F9CD3BCA","policy_id":"c148e8f5-4032-4252-974f-8776c1cfbee0","claimant_id":"dec9311a-c168-45c9-8a63-42e725c2a65d","amount":"250.00","description":"QA bfd4dad3 Focus commercial seven recently.","incident_date":"2026-08-30","status":"DRAFT","created_at":"2026-09-06T07:15:54.221723Z","updated_at":"2026-09-06T07:15:54.221723Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":49}
-07:15:54 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]

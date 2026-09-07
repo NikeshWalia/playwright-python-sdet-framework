@@ -1,1 +1,0 @@
-07:16:05 INFO    [qa-5bac4a979c] claimdesk_qa.claimdesk_qa.core.readiness: service became ready after 0.00s (1 attempt(s)): HTTP 200
