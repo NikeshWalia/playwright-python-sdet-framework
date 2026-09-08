@@ -1,0 +1,32 @@
+07:23:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-pay]
+07:23:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","policy_number":"POL-1001","holder_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","coverage_limit":"10000.00","is_active":true},{"id":"1c642671-ca6f-47ed-a609-84a2ebe879e1","policy_number":"POL-1002","holder_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","coverage_limit":"2500.00","is_active":true}]
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'bf0ffb3a-ba71-4d49-935e-1c46097c01e1', 'amount': '100.00', 'description': 'QA 6bcda4f2 Should film trial remember carry factor receive sign.', 'incident_date': '2026-09-01'}
+  response: {"id":"f55ac181-3d8a-4451-a629-c4c1d70feb31","reference":"CLM-E7C28FDE","policy_id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","claimant_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","amount":"100.00","description":"QA 6bcda4f2 Should film trial remember carry factor receive sign.","incident_date":"2026-09-01","status":"DRAFT","created_at":"2026-09-08T07:23:14.134031Z","updated_at":"2026-09-08T07:23:14.134031Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"f55ac181-3d8a-4451-a629-c4c1d70feb31","reference":"CLM-E7C28FDE","policy_id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","claimant_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","amount":"100.00","description":"QA 6bcda4f2 Should film trial remember carry factor receive sign.","incident_date":"2026-09-01","status":"SUBMITTED","created_at":"2026-09-08T07:23:14.134031Z","updated_at":"2026-09-08T07:23:14.143507Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"f55ac181-3d8a-4451-a629-c4c1d70feb31","reference":"CLM-E7C28FDE","policy_id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","claimant_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","amount":"100.00","description":"QA 6bcda4f2 Should film trial remember carry factor receive sign.","incident_date":"2026-09-01","status":"UNDER_REVIEW","created_at":"2026-09-08T07:23:14.134031Z","updated_at":"2026-09-08T07:23:14.153787Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"f55ac181-3d8a-4451-a629-c4c1d70feb31","reference":"CLM-E7C28FDE","policy_id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","claimant_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","amount":"100.00","description":"QA 6bcda4f2 Should film trial remember carry factor receive sign.","incident_date":"2026-09-01","status":"APPROVED","created_at":"2026-09-08T07:23:14.134031Z","updated_at":"2026-09-08T07:23:14.164330Z","withdrawn_at":null,"decided_by_id":"ef705835-348c-4b4b-bce2-62aaafb05d7b"}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"f55ac181-3d8a-4451-a629-c4c1d70feb31","reference":"CLM-E7C28FDE","policy_id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","claimant_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","amount":"100.00","description":"QA 6bcda4f2 Should film trial remember carry factor receive sign.","incident_date":"2026-09-01","status":"PAID","created_at":"2026-09-08T07:23:14.134031Z","updated_at":"2026-09-08T07:23:14.173490Z","withdrawn_at":null,"decided_by_id":"ef705835-348c-4b4b-bce2-62aaafb05d7b"}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions "HTTP/1.1 409 Conflict"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+07:23:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31 "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/f55ac181-3d8a-4451-a629-c4c1d70feb31 -> 200 (4 ms)
+  response: {"id":"f55ac181-3d8a-4451-a629-c4c1d70feb31","reference":"CLM-E7C28FDE","policy_id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","claimant_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","amount":"100.00","description":"QA 6bcda4f2 Should film trial remember carry factor receive sign.","incident_date":"2026-09-01","status":"PAID","created_at":"2026-09-08T07:23:14.134031Z","updated_at":"2026-09-08T07:23:14.173490Z","withdrawn_at":null,"decided_by_id":"ef705835-348c-4b4b-bce2-62aaafb05d7b"}
+07:23:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-pay]

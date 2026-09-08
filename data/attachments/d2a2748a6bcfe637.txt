@@ -1,0 +1,10 @@
+07:23:17 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]
+07:23:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:23:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","policy_number":"POL-1001","holder_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","coverage_limit":"10000.00","is_active":true},{"id":"1c642671-ca6f-47ed-a609-84a2ebe879e1","policy_number":"POL-1002","holder_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","coverage_limit":"2500.00","is_active":true}]
+07:23:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:23:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (16 ms)
+  request : {'policy_id': 'bf0ffb3a-ba71-4d49-935e-1c46097c01e1', 'amount': '432.10', 'description': 'QA 6c6bd6ee Increase process space clearly.', 'incident_date': '2026-09-01'}
+  response: {"id":"01b89813-f7a4-488d-b247-5f1195e1230f","reference":"CLM-18E056C4","policy_id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","claimant_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","amount":"432.10","description":"QA 6c6bd6ee Increase process space clearly.","incident_date":"2026-09-01","status":"DRAFT","created_at":"2026-09-08T07:23:17.823067Z","updated_at":"2026-09-08T07:23:17.823067Z","withdrawn_at":null,"decided_by_id":null}
+07:23:17 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:23:18 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]

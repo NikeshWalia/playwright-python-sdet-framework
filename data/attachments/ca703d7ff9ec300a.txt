@@ -1,2 +1,0 @@
-19:29:59 DEBUG   [qa-3814eea133] claimdesk_qa.tests.conftest: start tests/framework/test_recording.py::test_nothing_is_recorded_outside_a_test
-19:29:59 DEBUG   [qa-3814eea133] claimdesk_qa.tests.conftest: end tests/framework/test_recording.py::test_nothing_is_recorded_outside_a_test

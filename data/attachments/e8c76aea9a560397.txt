@@ -1,0 +1,17 @@
+07:23:14 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_a_rejected_write_leaves_no_row
+07:23:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","policy_number":"POL-1001","holder_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","coverage_limit":"10000.00","is_active":true},{"id":"1c642671-ca6f-47ed-a609-84a2ebe879e1","policy_number":"POL-1002","holder_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","coverage_limit":"2500.00","is_active":true}]
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (8 ms)
+  request : {'policy_id': 'bf0ffb3a-ba71-4d49-935e-1c46097c01e1', 'amount': '-1.00', 'description': 'rejected-cd9b1ae5 this claim must never be stored', 'incident_date': '2026-09-01'}
+  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"-1.00","ctx":{"gt":0}}]}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
+  request : {'policy_id': 'bf0ffb3a-ba71-4d49-935e-1c46097c01e1', 'amount': '1.234', 'description': 'rejected-cd9b1ae5 this claim must never be stored', 'incident_date': '2026-09-01'}
+  response: {"detail":[{"type":"decimal_max_places","loc":["body","amount"],"msg":"Decimal input should have no more than 2 decimal places","input":"1.234","ctx":{"decimal_places":2}}]}
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claims WHERE description LIKE %s
+  params: ('%rejected-cd9b1ae5%',)
+  rows: 1
+07:23:14 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_a_rejected_write_leaves_no_row
