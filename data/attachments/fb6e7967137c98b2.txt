@@ -1,0 +1,24 @@
+07:31:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-pay]
+07:31:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:31:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"2b256c4d-44dd-4585-ada6-11f8ae5a5051","policy_number":"POL-1001","holder_id":"c7145c32-2472-4c61-a32e-493193c0c488","coverage_limit":"10000.00","is_active":true},{"id":"2dddb88e-39f8-4df1-9b63-33a1fd520cd9","policy_number":"POL-1002","holder_id":"c7145c32-2472-4c61-a32e-493193c0c488","coverage_limit":"2500.00","is_active":true}]
+07:31:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:31:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '2b256c4d-44dd-4585-ada6-11f8ae5a5051', 'amount': '100.00', 'description': 'QA 832c34db Develop mother food person hospital TV pattern.', 'incident_date': '2026-09-02'}
+  response: {"id":"8808f487-db8c-42e6-8e96-613ec6b5a5af","reference":"CLM-3C7D5CE9","policy_id":"2b256c4d-44dd-4585-ada6-11f8ae5a5051","claimant_id":"c7145c32-2472-4c61-a32e-493193c0c488","amount":"100.00","description":"QA 832c34db Develop mother food person hospital TV pattern.","incident_date":"2026-09-02","status":"DRAFT","created_at":"2026-09-09T07:31:49.360989Z","updated_at":"2026-09-09T07:31:49.360989Z","withdrawn_at":null,"decided_by_id":null}
+07:31:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8808f487-db8c-42e6-8e96-613ec6b5a5af/transitions "HTTP/1.1 200 OK"
+07:31:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8808f487-db8c-42e6-8e96-613ec6b5a5af/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"8808f487-db8c-42e6-8e96-613ec6b5a5af","reference":"CLM-3C7D5CE9","policy_id":"2b256c4d-44dd-4585-ada6-11f8ae5a5051","claimant_id":"c7145c32-2472-4c61-a32e-493193c0c488","amount":"100.00","description":"QA 832c34db Develop mother food person hospital TV pattern.","incident_date":"2026-09-02","status":"SUBMITTED","created_at":"2026-09-09T07:31:49.360989Z","updated_at":"2026-09-09T07:31:49.373241Z","withdrawn_at":null,"decided_by_id":null}
+07:31:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8808f487-db8c-42e6-8e96-613ec6b5a5af/transitions "HTTP/1.1 200 OK"
+07:31:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8808f487-db8c-42e6-8e96-613ec6b5a5af/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"8808f487-db8c-42e6-8e96-613ec6b5a5af","reference":"CLM-3C7D5CE9","policy_id":"2b256c4d-44dd-4585-ada6-11f8ae5a5051","claimant_id":"c7145c32-2472-4c61-a32e-493193c0c488","amount":"100.00","description":"QA 832c34db Develop mother food person hospital TV pattern.","incident_date":"2026-09-02","status":"UNDER_REVIEW","created_at":"2026-09-09T07:31:49.360989Z","updated_at":"2026-09-09T07:31:49.384548Z","withdrawn_at":null,"decided_by_id":null}
+07:31:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8808f487-db8c-42e6-8e96-613ec6b5a5af/transitions "HTTP/1.1 409 Conflict"
+07:31:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8808f487-db8c-42e6-8e96-613ec6b5a5af/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status UNDER_REVIEW; it must be APPROVED."}
+07:31:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/8808f487-db8c-42e6-8e96-613ec6b5a5af "HTTP/1.1 200 OK"
+07:31:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/8808f487-db8c-42e6-8e96-613ec6b5a5af -> 200 (6 ms)
+  response: {"id":"8808f487-db8c-42e6-8e96-613ec6b5a5af","reference":"CLM-3C7D5CE9","policy_id":"2b256c4d-44dd-4585-ada6-11f8ae5a5051","claimant_id":"c7145c32-2472-4c61-a32e-493193c0c488","amount":"100.00","description":"QA 832c34db Develop mother food person hospital TV pattern.","incident_date":"2026-09-02","status":"UNDER_REVIEW","created_at":"2026-09-09T07:31:49.360989Z","updated_at":"2026-09-09T07:31:49.384548Z","withdrawn_at":null,"decided_by_id":null}
+07:31:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-pay]

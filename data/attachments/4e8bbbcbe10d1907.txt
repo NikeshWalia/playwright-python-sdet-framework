@@ -1,9 +1,0 @@
-07:23:12 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[impossible-month]
-07:23:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-07:23:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
-  response: [{"id":"bf0ffb3a-ba71-4d49-935e-1c46097c01e1","policy_number":"POL-1001","holder_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","coverage_limit":"10000.00","is_active":true},{"id":"1c642671-ca6f-47ed-a609-84a2ebe879e1","policy_number":"POL-1002","holder_id":"32d84bd9-0ec8-42e9-958c-7e4011ac0304","coverage_limit":"2500.00","is_active":true}]
-07:23:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-07:23:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (7 ms)
-  request : {'policy_id': 'bf0ffb3a-ba71-4d49-935e-1c46097c01e1', 'amount': '250.00', 'description': 'QA f5177729 Home allow rate edge day either.', 'incident_date': '2026-13-01'}
-  response: {"detail":[{"type":"date_from_datetime_parsing","loc":["body","incident_date"],"msg":"Input should be a valid date or datetime, month value is outside expected range of 1-12","input":"2026-13-01","ctx":{"error":"month value is outside expected range of 1-12"}}]}
-07:23:12 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[impossible-month]

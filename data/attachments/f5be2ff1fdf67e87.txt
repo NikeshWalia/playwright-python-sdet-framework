@@ -1,0 +1,2 @@
+07:31:57 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_settings.py::test_trailing_slash_is_stripped_from_urls
+07:31:57 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_settings.py::test_trailing_slash_is_stripped_from_urls

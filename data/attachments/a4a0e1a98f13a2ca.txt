@@ -1,0 +1,9 @@
+07:31:46 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[comma-decimal-separator]
+07:31:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:31:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"2b256c4d-44dd-4585-ada6-11f8ae5a5051","policy_number":"POL-1001","holder_id":"c7145c32-2472-4c61-a32e-493193c0c488","coverage_limit":"10000.00","is_active":true},{"id":"2dddb88e-39f8-4df1-9b63-33a1fd520cd9","policy_number":"POL-1002","holder_id":"c7145c32-2472-4c61-a32e-493193c0c488","coverage_limit":"2500.00","is_active":true}]
+07:31:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+07:31:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
+  request : {'policy_id': '2b256c4d-44dd-4585-ada6-11f8ae5a5051', 'amount': '12,50', 'description': 'QA 1e4e53d4 Maybe design upon first.', 'incident_date': '2026-09-02'}
+  response: {"detail":[{"type":"decimal_parsing","loc":["body","amount"],"msg":"Input should be a valid decimal","input":"12,50"}]}
+07:31:47 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[comma-decimal-separator]
