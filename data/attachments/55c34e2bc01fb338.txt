@@ -1,0 +1,10 @@
+07:28:22 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_opening_a_claim_from_the_table_navigates_to_its_detail_page[chromium]
+07:28:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:28:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (13 ms)
+  response: [{"id":"11ff37ac-6cfd-45f2-8175-f855e721b8b0","policy_number":"POL-1001","holder_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","coverage_limit":"10000.00","is_active":true},{"id":"0a23b7d4-fc28-40ab-8308-a1c3dc8a6c6b","policy_number":"POL-1002","holder_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","coverage_limit":"2500.00","is_active":true}]
+07:28:22 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:28:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '11ff37ac-6cfd-45f2-8175-f855e721b8b0', 'amount': '250.00', 'description': 'QA 715bed92 Strategy natural trouble light.', 'incident_date': '2026-09-03'}
+  response: {"id":"b03927ae-93e7-4c99-9459-7914309c4c6a","reference":"CLM-B21C4D09","policy_id":"11ff37ac-6cfd-45f2-8175-f855e721b8b0","claimant_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","amount":"250.00","description":"QA 715bed92 Strategy natural trouble light.","incident_date":"2026-09-03","status":"DRAFT","created_at":"2026-09-10T07:28:22.635485Z","updated_at":"2026-09-10T07:28:22.635485Z","withdrawn_at":null,"decided_by_id":null}
+07:28:22 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:28:23 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_opening_a_claim_from_the_table_navigates_to_its_detail_page[chromium]

@@ -1,0 +1,21 @@
+07:28:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_the_approving_actor_is_recorded_on_the_claim
+07:28:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:28:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"11ff37ac-6cfd-45f2-8175-f855e721b8b0","policy_number":"POL-1001","holder_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","coverage_limit":"10000.00","is_active":true},{"id":"0a23b7d4-fc28-40ab-8308-a1c3dc8a6c6b","policy_number":"POL-1002","holder_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","coverage_limit":"2500.00","is_active":true}]
+07:28:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:28:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '11ff37ac-6cfd-45f2-8175-f855e721b8b0', 'amount': '300.00', 'description': 'QA 2440f05d Instead marriage player beyond daughter individual up.', 'incident_date': '2026-09-03'}
+  response: {"id":"4009d5d6-3e4f-47d6-aa54-95cb1b989cad","reference":"CLM-38F8C630","policy_id":"11ff37ac-6cfd-45f2-8175-f855e721b8b0","claimant_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","amount":"300.00","description":"QA 2440f05d Instead marriage player beyond daughter individual up.","incident_date":"2026-09-03","status":"DRAFT","created_at":"2026-09-10T07:28:14.737578Z","updated_at":"2026-09-10T07:28:14.737578Z","withdrawn_at":null,"decided_by_id":null}
+07:28:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4009d5d6-3e4f-47d6-aa54-95cb1b989cad/transitions "HTTP/1.1 200 OK"
+07:28:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4009d5d6-3e4f-47d6-aa54-95cb1b989cad/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"4009d5d6-3e4f-47d6-aa54-95cb1b989cad","reference":"CLM-38F8C630","policy_id":"11ff37ac-6cfd-45f2-8175-f855e721b8b0","claimant_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","amount":"300.00","description":"QA 2440f05d Instead marriage player beyond daughter individual up.","incident_date":"2026-09-03","status":"SUBMITTED","created_at":"2026-09-10T07:28:14.737578Z","updated_at":"2026-09-10T07:28:14.750804Z","withdrawn_at":null,"decided_by_id":null}
+07:28:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4009d5d6-3e4f-47d6-aa54-95cb1b989cad/transitions "HTTP/1.1 200 OK"
+07:28:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4009d5d6-3e4f-47d6-aa54-95cb1b989cad/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"4009d5d6-3e4f-47d6-aa54-95cb1b989cad","reference":"CLM-38F8C630","policy_id":"11ff37ac-6cfd-45f2-8175-f855e721b8b0","claimant_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","amount":"300.00","description":"QA 2440f05d Instead marriage player beyond daughter individual up.","incident_date":"2026-09-03","status":"UNDER_REVIEW","created_at":"2026-09-10T07:28:14.737578Z","updated_at":"2026-09-10T07:28:14.761879Z","withdrawn_at":null,"decided_by_id":null}
+07:28:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4009d5d6-3e4f-47d6-aa54-95cb1b989cad/transitions "HTTP/1.1 200 OK"
+07:28:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4009d5d6-3e4f-47d6-aa54-95cb1b989cad/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"4009d5d6-3e4f-47d6-aa54-95cb1b989cad","reference":"CLM-38F8C630","policy_id":"11ff37ac-6cfd-45f2-8175-f855e721b8b0","claimant_id":"00d3180f-cd50-46c0-a3a4-8f2e4a1c83c6","amount":"300.00","description":"QA 2440f05d Instead marriage player beyond daughter individual up.","incident_date":"2026-09-03","status":"APPROVED","created_at":"2026-09-10T07:28:14.737578Z","updated_at":"2026-09-10T07:28:14.773889Z","withdrawn_at":null,"decided_by_id":"ce2cdadb-1863-448b-b519-f599da3673e5"}
+07:28:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_the_approving_actor_is_recorded_on_the_claim
