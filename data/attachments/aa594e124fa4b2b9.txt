@@ -1,0 +1,20 @@
+07:26:12 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]
+07:26:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:26:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"03d4b549-8b3d-429e-9891-ce8c3c5281f2","policy_number":"POL-1001","holder_id":"1bfd6172-030d-4835-8df2-d2daf5fd086d","coverage_limit":"10000.00","is_active":true},{"id":"d4cde27d-8af4-40e6-aebd-528a674a1052","policy_number":"POL-1002","holder_id":"1bfd6172-030d-4835-8df2-d2daf5fd086d","coverage_limit":"2500.00","is_active":true}]
+07:26:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:26:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '03d4b549-8b3d-429e-9891-ce8c3c5281f2', 'amount': '100.00', 'description': 'QA 780a32ae Job force possible again heart cup hand.', 'incident_date': '2026-09-04'}
+  response: {"id":"d48d37e3-9894-48ac-a6b7-f81d45725d51","reference":"CLM-68FF22C2","policy_id":"03d4b549-8b3d-429e-9891-ce8c3c5281f2","claimant_id":"1bfd6172-030d-4835-8df2-d2daf5fd086d","amount":"100.00","description":"QA 780a32ae Job force possible again heart cup hand.","incident_date":"2026-09-04","status":"DRAFT","created_at":"2026-09-11T07:26:12.036657Z","updated_at":"2026-09-11T07:26:12.036657Z","withdrawn_at":null,"decided_by_id":null}
+07:26:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d48d37e3-9894-48ac-a6b7-f81d45725d51/transitions "HTTP/1.1 200 OK"
+07:26:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d48d37e3-9894-48ac-a6b7-f81d45725d51/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"d48d37e3-9894-48ac-a6b7-f81d45725d51","reference":"CLM-68FF22C2","policy_id":"03d4b549-8b3d-429e-9891-ce8c3c5281f2","claimant_id":"1bfd6172-030d-4835-8df2-d2daf5fd086d","amount":"100.00","description":"QA 780a32ae Job force possible again heart cup hand.","incident_date":"2026-09-04","status":"SUBMITTED","created_at":"2026-09-11T07:26:12.036657Z","updated_at":"2026-09-11T07:26:12.049279Z","withdrawn_at":null,"decided_by_id":null}
+07:26:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d48d37e3-9894-48ac-a6b7-f81d45725d51/transitions "HTTP/1.1 409 Conflict"
+07:26:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d48d37e3-9894-48ac-a6b7-f81d45725d51/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+07:26:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/d48d37e3-9894-48ac-a6b7-f81d45725d51 "HTTP/1.1 200 OK"
+07:26:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/d48d37e3-9894-48ac-a6b7-f81d45725d51 -> 200 (5 ms)
+  response: {"id":"d48d37e3-9894-48ac-a6b7-f81d45725d51","reference":"CLM-68FF22C2","policy_id":"03d4b549-8b3d-429e-9891-ce8c3c5281f2","claimant_id":"1bfd6172-030d-4835-8df2-d2daf5fd086d","amount":"100.00","description":"QA 780a32ae Job force possible again heart cup hand.","incident_date":"2026-09-04","status":"SUBMITTED","created_at":"2026-09-11T07:26:12.036657Z","updated_at":"2026-09-11T07:26:12.049279Z","withdrawn_at":null,"decided_by_id":null}
+07:26:12 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]

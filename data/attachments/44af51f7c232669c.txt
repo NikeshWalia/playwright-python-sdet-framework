@@ -1,0 +1,9 @@
+07:26:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[far-future]
+07:26:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:26:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"03d4b549-8b3d-429e-9891-ce8c3c5281f2","policy_number":"POL-1001","holder_id":"1bfd6172-030d-4835-8df2-d2daf5fd086d","coverage_limit":"10000.00","is_active":true},{"id":"d4cde27d-8af4-40e6-aebd-528a674a1052","policy_number":"POL-1002","holder_id":"1bfd6172-030d-4835-8df2-d2daf5fd086d","coverage_limit":"2500.00","is_active":true}]
+07:26:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+07:26:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (5 ms)
+  request : {'policy_id': '03d4b549-8b3d-429e-9891-ce8c3c5281f2', 'amount': '250.00', 'description': 'QA 9449dfc0 Remain building power work eight.', 'incident_date': '2099-01-01'}
+  response: {"detail":[{"type":"value_error","loc":["body","incident_date"],"msg":"Value error, Incident date cannot be in the future.","input":"2099-01-01","ctx":{"error":{}}}]}
+07:26:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[far-future]
