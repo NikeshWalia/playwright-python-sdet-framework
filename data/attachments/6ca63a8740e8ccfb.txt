@@ -1,0 +1,10 @@
+07:18:59 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_never_sees_another_customers_claim[chromium]
+07:18:59 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:18:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"e52ff039-f80e-401f-858f-0ab3909cfd86","policy_number":"POL-1001","holder_id":"954b451e-8b6c-4791-9071-791c684e3ad6","coverage_limit":"10000.00","is_active":true},{"id":"99cacb37-b3f8-44e9-b06e-5c850545da57","policy_number":"POL-1002","holder_id":"954b451e-8b6c-4791-9071-791c684e3ad6","coverage_limit":"2500.00","is_active":true}]
+07:18:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:18:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (19 ms)
+  request : {'policy_id': 'e52ff039-f80e-401f-858f-0ab3909cfd86', 'amount': '250.00', 'description': 'QA 14c62088 Put benefit step black stop.', 'incident_date': '2026-09-05'}
+  response: {"id":"a63e806c-3bbb-4b88-a9a2-980e88a3397c","reference":"CLM-92C2D62F","policy_id":"e52ff039-f80e-401f-858f-0ab3909cfd86","claimant_id":"954b451e-8b6c-4791-9071-791c684e3ad6","amount":"250.00","description":"QA 14c62088 Put benefit step black stop.","incident_date":"2026-09-05","status":"DRAFT","created_at":"2026-09-12T07:18:59.279729Z","updated_at":"2026-09-12T07:18:59.279729Z","withdrawn_at":null,"decided_by_id":null}
+07:18:59 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:18:59 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_never_sees_another_customers_claim[chromium]

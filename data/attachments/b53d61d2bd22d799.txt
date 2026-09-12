@@ -1,0 +1,10 @@
+07:19:02 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_opening_a_claim_from_the_table_navigates_to_its_detail_page[chromium]
+07:19:02 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:19:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (17 ms)
+  response: [{"id":"e52ff039-f80e-401f-858f-0ab3909cfd86","policy_number":"POL-1001","holder_id":"954b451e-8b6c-4791-9071-791c684e3ad6","coverage_limit":"10000.00","is_active":true},{"id":"99cacb37-b3f8-44e9-b06e-5c850545da57","policy_number":"POL-1002","holder_id":"954b451e-8b6c-4791-9071-791c684e3ad6","coverage_limit":"2500.00","is_active":true}]
+07:19:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:19:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': 'e52ff039-f80e-401f-858f-0ab3909cfd86', 'amount': '250.00', 'description': 'QA b2798f52 Middle technology shake miss trial majority.', 'incident_date': '2026-09-05'}
+  response: {"id":"5cf5b380-e351-4f73-92ec-e89248b2de65","reference":"CLM-56DD77FD","policy_id":"e52ff039-f80e-401f-858f-0ab3909cfd86","claimant_id":"954b451e-8b6c-4791-9071-791c684e3ad6","amount":"250.00","description":"QA b2798f52 Middle technology shake miss trial majority.","incident_date":"2026-09-05","status":"DRAFT","created_at":"2026-09-12T07:19:02.750949Z","updated_at":"2026-09-12T07:19:02.750949Z","withdrawn_at":null,"decided_by_id":null}
+07:19:02 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:19:03 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_opening_a_claim_from_the_table_navigates_to_its_detail_page[chromium]
