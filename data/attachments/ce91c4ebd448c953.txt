@@ -1,0 +1,36 @@
+07:37:03 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_edited
+07:37:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"630ec917-e1c3-409d-a418-4e4b919cb398","policy_number":"POL-1001","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"10000.00","is_active":true},{"id":"01b70fe1-1b17-4241-b6b4-fdcfc8c1c5f9","policy_number":"POL-1002","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"2500.00","is_active":true}]
+07:37:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '630ec917-e1c3-409d-a418-4e4b919cb398', 'amount': '300.00', 'description': 'QA 48d68420 When outside require eight official recently.', 'incident_date': '2026-09-06'}
+  response: {"id":"29cf3272-12c7-4b42-80ae-967695d8fca7","reference":"CLM-A5D7F2A5","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"300.00","description":"QA 48d68420 When outside require eight official recently.","incident_date":"2026-09-06","status":"DRAFT","created_at":"2026-09-13T07:37:03.249166Z","updated_at":"2026-09-13T07:37:03.249166Z","withdrawn_at":null,"decided_by_id":null}
+07:37:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7/transitions "HTTP/1.1 200 OK"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"29cf3272-12c7-4b42-80ae-967695d8fca7","reference":"CLM-A5D7F2A5","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"300.00","description":"QA 48d68420 When outside require eight official recently.","incident_date":"2026-09-06","status":"SUBMITTED","created_at":"2026-09-13T07:37:03.249166Z","updated_at":"2026-09-13T07:37:03.260890Z","withdrawn_at":null,"decided_by_id":null}
+07:37:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7/transitions "HTTP/1.1 200 OK"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"29cf3272-12c7-4b42-80ae-967695d8fca7","reference":"CLM-A5D7F2A5","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"300.00","description":"QA 48d68420 When outside require eight official recently.","incident_date":"2026-09-06","status":"UNDER_REVIEW","created_at":"2026-09-13T07:37:03.249166Z","updated_at":"2026-09-13T07:37:03.271839Z","withdrawn_at":null,"decided_by_id":null}
+07:37:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7/transitions "HTTP/1.1 200 OK"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"29cf3272-12c7-4b42-80ae-967695d8fca7","reference":"CLM-A5D7F2A5","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"300.00","description":"QA 48d68420 When outside require eight official recently.","incident_date":"2026-09-06","status":"APPROVED","created_at":"2026-09-13T07:37:03.249166Z","updated_at":"2026-09-13T07:37:03.281393Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7/transitions "HTTP/1.1 200 OK"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"29cf3272-12c7-4b42-80ae-967695d8fca7","reference":"CLM-A5D7F2A5","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"300.00","description":"QA 48d68420 When outside require eight official recently.","incident_date":"2026-09-06","status":"PAID","created_at":"2026-09-13T07:37:03.249166Z","updated_at":"2026-09-13T07:37:03.292341Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:03 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7 "HTTP/1.1 409 Conflict"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7 -> 409 (6 ms)
+  request : {'description': 'changed after payment'}
+  response: {"detail":"A claim in status PAID can no longer be edited."}
+07:37:03 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7 "HTTP/1.1 409 Conflict"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7 -> 409 (6 ms)
+  request : {'amount': '1.00'}
+  response: {"detail":"A claim in status PAID can no longer be edited."}
+07:37:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7 "HTTP/1.1 200 OK"
+07:37:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/29cf3272-12c7-4b42-80ae-967695d8fca7 -> 200 (7 ms)
+  response: {"id":"29cf3272-12c7-4b42-80ae-967695d8fca7","reference":"CLM-A5D7F2A5","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"300.00","description":"QA 48d68420 When outside require eight official recently.","incident_date":"2026-09-06","status":"PAID","created_at":"2026-09-13T07:37:03.249166Z","updated_at":"2026-09-13T07:37:03.292341Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:03 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_edited

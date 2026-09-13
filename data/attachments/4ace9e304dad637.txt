@@ -1,2 +1,0 @@
-19:19:05 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_recording.py::test_entries_are_captured_in_order_and_kept_apart
-19:19:05 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_recording.py::test_entries_are_captured_in_order_and_kept_apart

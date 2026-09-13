@@ -1,0 +1,2 @@
+07:37:12 DEBUG    claimdesk_qa.tests.conftest start tests/framework/test_clock.py::test_tomorrow_is_the_first_refused_date
+07:37:12 DEBUG    claimdesk_qa.tests.conftest end tests/framework/test_clock.py::test_tomorrow_is_the_first_refused_date

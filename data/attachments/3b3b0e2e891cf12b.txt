@@ -1,0 +1,26 @@
+07:37:11 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+07:37:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:37:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"630ec917-e1c3-409d-a418-4e4b919cb398","policy_number":"POL-1001","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"10000.00","is_active":true},{"id":"01b70fe1-1b17-4241-b6b4-fdcfc8c1c5f9","policy_number":"POL-1002","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"2500.00","is_active":true}]
+07:37:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:37:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '630ec917-e1c3-409d-a418-4e4b919cb398', 'amount': '410.00', 'description': 'QA 1ad04ef5 Even trade focus.', 'incident_date': '2026-09-06'}
+  response: {"id":"5234b6a0-5d6f-4bdc-9232-a1e31a052501","reference":"CLM-63CA1565","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 1ad04ef5 Even trade focus.","incident_date":"2026-09-06","status":"DRAFT","created_at":"2026-09-13T07:37:11.389813Z","updated_at":"2026-09-13T07:37:11.389813Z","withdrawn_at":null,"decided_by_id":null}
+07:37:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501/transitions "HTTP/1.1 200 OK"
+07:37:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"5234b6a0-5d6f-4bdc-9232-a1e31a052501","reference":"CLM-63CA1565","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 1ad04ef5 Even trade focus.","incident_date":"2026-09-06","status":"SUBMITTED","created_at":"2026-09-13T07:37:11.389813Z","updated_at":"2026-09-13T07:37:11.401832Z","withdrawn_at":null,"decided_by_id":null}
+07:37:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501/transitions "HTTP/1.1 200 OK"
+07:37:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"5234b6a0-5d6f-4bdc-9232-a1e31a052501","reference":"CLM-63CA1565","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 1ad04ef5 Even trade focus.","incident_date":"2026-09-06","status":"UNDER_REVIEW","created_at":"2026-09-13T07:37:11.389813Z","updated_at":"2026-09-13T07:37:11.410561Z","withdrawn_at":null,"decided_by_id":null}
+07:37:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501/transitions "HTTP/1.1 200 OK"
+07:37:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501/transitions -> 200 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"5234b6a0-5d6f-4bdc-9232-a1e31a052501","reference":"CLM-63CA1565","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 1ad04ef5 Even trade focus.","incident_date":"2026-09-06","status":"APPROVED","created_at":"2026-09-13T07:37:11.389813Z","updated_at":"2026-09-13T07:37:11.418174Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501/transitions "HTTP/1.1 200 OK"
+07:37:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"5234b6a0-5d6f-4bdc-9232-a1e31a052501","reference":"CLM-63CA1565","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 1ad04ef5 Even trade focus.","incident_date":"2026-09-06","status":"PAID","created_at":"2026-09-13T07:37:11.389813Z","updated_at":"2026-09-13T07:37:11.425761Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:11 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/5234b6a0-5d6f-4bdc-9232-a1e31a052501
+07:37:11 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]

@@ -1,5 +1,0 @@
-07:18:53 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
-07:18:53 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
-07:18:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (6 ms)
-  response: {"items":[{"id":"62f2a854-e6f3-48ff-8081-b7ef19f57c14","reference":"CLM-D7B28C04","policy_id":"e52ff039-f80e-401f-858f-0ab3909cfd86","claimant_id":"954b451e-8b6c-4791-9071-791c684e3ad6","amount":"250.00","description":"QA 7c9d09ff Hospital appear organization they population PM.","incident_date":"2026-09-05","status":"WITHDRAWN","created_at":"2026-09-12T07:18:53.142906Z","updated_at":"2026-09-12T07:18:53.153035Z","withdrawn_at":"2026-09-12T07:18:53.155230Z","decided_by_id":null}],"page":1,"size":50,"total":1}
-07:18:53 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]

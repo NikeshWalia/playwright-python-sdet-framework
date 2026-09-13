@@ -1,0 +1,31 @@
+07:37:04 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
+07:37:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"630ec917-e1c3-409d-a418-4e4b919cb398","policy_number":"POL-1001","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"10000.00","is_active":true},{"id":"01b70fe1-1b17-4241-b6b4-fdcfc8c1c5f9","policy_number":"POL-1002","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"2500.00","is_active":true}]
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '630ec917-e1c3-409d-a418-4e4b919cb398', 'amount': '800.00', 'description': 'QA e059c5ce Assume old young growth ten.', 'incident_date': '2026-09-06'}
+  response: {"id":"f4dbcc2d-0ec0-4326-b235-296d90e477a6","reference":"CLM-E3C45DD7","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA e059c5ce Assume old young growth ten.","incident_date":"2026-09-06","status":"DRAFT","created_at":"2026-09-13T07:37:04.349862Z","updated_at":"2026-09-13T07:37:04.349862Z","withdrawn_at":null,"decided_by_id":null}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f4dbcc2d-0ec0-4326-b235-296d90e477a6/transitions "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f4dbcc2d-0ec0-4326-b235-296d90e477a6/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"f4dbcc2d-0ec0-4326-b235-296d90e477a6","reference":"CLM-E3C45DD7","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA e059c5ce Assume old young growth ten.","incident_date":"2026-09-06","status":"SUBMITTED","created_at":"2026-09-13T07:37:04.349862Z","updated_at":"2026-09-13T07:37:04.361698Z","withdrawn_at":null,"decided_by_id":null}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f4dbcc2d-0ec0-4326-b235-296d90e477a6/transitions "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f4dbcc2d-0ec0-4326-b235-296d90e477a6/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"f4dbcc2d-0ec0-4326-b235-296d90e477a6","reference":"CLM-E3C45DD7","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA e059c5ce Assume old young growth ten.","incident_date":"2026-09-06","status":"UNDER_REVIEW","created_at":"2026-09-13T07:37:04.349862Z","updated_at":"2026-09-13T07:37:04.373155Z","withdrawn_at":null,"decided_by_id":null}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f4dbcc2d-0ec0-4326-b235-296d90e477a6/transitions "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f4dbcc2d-0ec0-4326-b235-296d90e477a6/transitions -> 200 (11 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"f4dbcc2d-0ec0-4326-b235-296d90e477a6","reference":"CLM-E3C45DD7","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA e059c5ce Assume old young growth ten.","incident_date":"2026-09-06","status":"REJECTED","created_at":"2026-09-13T07:37:04.349862Z","updated_at":"2026-09-13T07:37:04.384374Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('f4dbcc2d-0ec0-4326-b235-296d90e477a6',)
+  rows: 1
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('f4dbcc2d-0ec0-4326-b235-296d90e477a6',)
+  rows: 1
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('f4dbcc2d-0ec0-4326-b235-296d90e477a6',)
+  rows: 1
+07:37:04 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid

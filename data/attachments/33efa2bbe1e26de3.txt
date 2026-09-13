@@ -1,0 +1,43 @@
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (80 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmY2E5OWNiNi05M2ZmLTQxMDktYWM0ZC1lYzk5YmRhOWYwNDMiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3ODkyODUwMjUsImV4cCI6MTc4OTI4ODYyNX0.QWX-hYHXssX7fNJZD45FdC8Yy8ivX61CAm2MJdPmyd0","token_type":"bearer","expires_in":3600}
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (82 ms)
+  request : {'email': 'adjuster@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmYzAxNGJiZS1lMTI5LTRjOWQtOWI2ZS0xMjYwN2RkMmU4ZDUiLCJyb2xlIjoiQURKVVNURVIiLCJpYXQiOjE3ODkyODUwMjUsImV4cCI6MTc4OTI4ODYyNX0.mmeE6MSsPwoS2Da8PKcG3zo6OK8-7lrtrHzFXIiIxbY","token_type":"bearer","expires_in":3600}
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (74 ms)
+  request : {'email': 'admin@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1YTQ3OTIzNS0wZjY3LTQ0M2EtOGViNi03YmI2NTY3MDljMmYiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3ODkyODUwMjUsImV4cCI6MTc4OTI4ODYyNX0.QI-JKr8SExQYPc8FTdQrxrjCYLS3Fig4KDwiVGH2miU","token_type":"bearer","expires_in":3600}
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (71 ms)
+  request : {'email': 'other.customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0NWJkMjhjZC01NzE1LTRkMjktYmY1ZS1mZmY1ZjNiY2NmYzgiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3ODkyODUwMjUsImV4cCI6MTc4OTI4ODYyNX0.oFE59JhsiZZj0LiN50eD_vqAPA90AYZTSu9efIk1HPc","token_type":"bearer","expires_in":3600}
+07:37:05 INFO     claimdesk_qa.tests._fixtures.browser Prepared storage states for customer, adjuster, admin, other_customer
+07:37:05 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+07:37:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (12 ms)
+  response: [{"id":"630ec917-e1c3-409d-a418-4e4b919cb398","policy_number":"POL-1001","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"10000.00","is_active":true},{"id":"01b70fe1-1b17-4241-b6b4-fdcfc8c1c5f9","policy_number":"POL-1002","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"2500.00","is_active":true}]
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (22 ms)
+  request : {'policy_id': '630ec917-e1c3-409d-a418-4e4b919cb398', 'amount': '410.00', 'description': 'QA 6bf0e5f0 Bill country professor say dinner.', 'incident_date': '2026-09-06'}
+  response: {"id":"61cdba67-f571-4255-9c15-32b7972eac33","reference":"CLM-3DAD2783","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 6bf0e5f0 Bill country professor say dinner.","incident_date":"2026-09-06","status":"DRAFT","created_at":"2026-09-13T07:37:05.891593Z","updated_at":"2026-09-13T07:37:05.891593Z","withdrawn_at":null,"decided_by_id":null}
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/61cdba67-f571-4255-9c15-32b7972eac33/transitions "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/61cdba67-f571-4255-9c15-32b7972eac33/transitions -> 200 (31 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"61cdba67-f571-4255-9c15-32b7972eac33","reference":"CLM-3DAD2783","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 6bf0e5f0 Bill country professor say dinner.","incident_date":"2026-09-06","status":"SUBMITTED","created_at":"2026-09-13T07:37:05.891593Z","updated_at":"2026-09-13T07:37:05.908734Z","withdrawn_at":null,"decided_by_id":null}
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/61cdba67-f571-4255-9c15-32b7972eac33/transitions "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/61cdba67-f571-4255-9c15-32b7972eac33/transitions -> 200 (30 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"61cdba67-f571-4255-9c15-32b7972eac33","reference":"CLM-3DAD2783","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 6bf0e5f0 Bill country professor say dinner.","incident_date":"2026-09-06","status":"UNDER_REVIEW","created_at":"2026-09-13T07:37:05.891593Z","updated_at":"2026-09-13T07:37:05.951868Z","withdrawn_at":null,"decided_by_id":null}
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/61cdba67-f571-4255-9c15-32b7972eac33/transitions "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/61cdba67-f571-4255-9c15-32b7972eac33/transitions -> 200 (13 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"61cdba67-f571-4255-9c15-32b7972eac33","reference":"CLM-3DAD2783","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 6bf0e5f0 Bill country professor say dinner.","incident_date":"2026-09-06","status":"APPROVED","created_at":"2026-09-13T07:37:05.891593Z","updated_at":"2026-09-13T07:37:05.971917Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/61cdba67-f571-4255-9c15-32b7972eac33/transitions "HTTP/1.1 200 OK"
+07:37:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/61cdba67-f571-4255-9c15-32b7972eac33/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"61cdba67-f571-4255-9c15-32b7972eac33","reference":"CLM-3DAD2783","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"410.00","description":"QA 6bf0e5f0 Bill country professor say dinner.","incident_date":"2026-09-06","status":"PAID","created_at":"2026-09-13T07:37:05.891593Z","updated_at":"2026-09-13T07:37:05.984794Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:05 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/61cdba67-f571-4255-9c15-32b7972eac33
+07:37:06 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

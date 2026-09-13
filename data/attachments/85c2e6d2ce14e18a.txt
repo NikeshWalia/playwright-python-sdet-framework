@@ -1,0 +1,40 @@
+07:37:04 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
+07:37:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"630ec917-e1c3-409d-a418-4e4b919cb398","policy_number":"POL-1001","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"10000.00","is_active":true},{"id":"01b70fe1-1b17-4241-b6b4-fdcfc8c1c5f9","policy_number":"POL-1002","holder_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","coverage_limit":"2500.00","is_active":true}]
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '630ec917-e1c3-409d-a418-4e4b919cb398', 'amount': '800.00', 'description': 'QA 593eb7d7 Three of do hundred.', 'incident_date': '2026-09-06'}
+  response: {"id":"0d334672-1f4f-48a0-9c14-9b059c7f595d","reference":"CLM-7F5C51FD","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA 593eb7d7 Three of do hundred.","incident_date":"2026-09-06","status":"DRAFT","created_at":"2026-09-13T07:37:04.168763Z","updated_at":"2026-09-13T07:37:04.168763Z","withdrawn_at":null,"decided_by_id":null}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"0d334672-1f4f-48a0-9c14-9b059c7f595d","reference":"CLM-7F5C51FD","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA 593eb7d7 Three of do hundred.","incident_date":"2026-09-06","status":"SUBMITTED","created_at":"2026-09-13T07:37:04.168763Z","updated_at":"2026-09-13T07:37:04.181742Z","withdrawn_at":null,"decided_by_id":null}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"0d334672-1f4f-48a0-9c14-9b059c7f595d","reference":"CLM-7F5C51FD","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA 593eb7d7 Three of do hundred.","incident_date":"2026-09-06","status":"UNDER_REVIEW","created_at":"2026-09-13T07:37:04.168763Z","updated_at":"2026-09-13T07:37:04.194035Z","withdrawn_at":null,"decided_by_id":null}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"0d334672-1f4f-48a0-9c14-9b059c7f595d","reference":"CLM-7F5C51FD","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA 593eb7d7 Three of do hundred.","incident_date":"2026-09-06","status":"APPROVED","created_at":"2026-09-13T07:37:04.168763Z","updated_at":"2026-09-13T07:37:04.205355Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions "HTTP/1.1 200 OK"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions -> 200 (13 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"0d334672-1f4f-48a0-9c14-9b059c7f595d","reference":"CLM-7F5C51FD","policy_id":"630ec917-e1c3-409d-a418-4e4b919cb398","claimant_id":"fca99cb6-93ff-4109-ac4d-ec99bda9f043","amount":"800.00","description":"QA 593eb7d7 Three of do hundred.","incident_date":"2026-09-06","status":"PAID","created_at":"2026-09-13T07:37:04.168763Z","updated_at":"2026-09-13T07:37:04.216217Z","withdrawn_at":null,"decided_by_id":"fc014bbe-e129-4c9d-9b6e-12607dd2e8d5"}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions "HTTP/1.1 409 Conflict"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+07:37:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions "HTTP/1.1 409 Conflict"
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d334672-1f4f-48a0-9c14-9b059c7f595d/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('0d334672-1f4f-48a0-9c14-9b059c7f595d',)
+  rows: 1
+07:37:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('0d334672-1f4f-48a0-9c14-9b059c7f595d',)
+  rows: 1
+07:37:04 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
