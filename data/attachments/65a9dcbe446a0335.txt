@@ -1,0 +1,12 @@
+08:03:56 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_a_created_claim_can_be_read_back_unchanged
+08:03:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","policy_number":"POL-1001","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"10000.00","is_active":true},{"id":"c738fed2-380e-4367-9322-5c45fbf78e6e","policy_number":"POL-1002","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"2500.00","is_active":true}]
+08:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '99.99', 'description': 'QA 58534704 Room against little meet.', 'incident_date': '2026-09-07'}
+  response: {"id":"20e459bd-1348-441e-8e9c-8f34c5869215","reference":"CLM-C79FF6AB","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"99.99","description":"QA 58534704 Room against little meet.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:56.062534Z","updated_at":"2026-09-14T08:03:56.062534Z","withdrawn_at":null,"decided_by_id":null}
+08:03:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/20e459bd-1348-441e-8e9c-8f34c5869215 "HTTP/1.1 200 OK"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/20e459bd-1348-441e-8e9c-8f34c5869215 -> 200 (6 ms)
+  response: {"id":"20e459bd-1348-441e-8e9c-8f34c5869215","reference":"CLM-C79FF6AB","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"99.99","description":"QA 58534704 Room against little meet.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:56.062534Z","updated_at":"2026-09-14T08:03:56.062534Z","withdrawn_at":null,"decided_by_id":null}
+08:03:56 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_a_created_claim_can_be_read_back_unchanged

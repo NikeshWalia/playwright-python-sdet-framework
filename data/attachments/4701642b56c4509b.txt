@@ -1,0 +1,24 @@
+08:03:55 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]
+08:03:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:03:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","policy_number":"POL-1001","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"10000.00","is_active":true},{"id":"c738fed2-380e-4367-9322-5c45fbf78e6e","policy_number":"POL-1002","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"2500.00","is_active":true}]
+08:03:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '5000.01', 'description': 'QA 76c5f4bd Green available least medical between tax despite.', 'incident_date': '2026-09-07'}
+  response: {"id":"88bd15c1-8705-408a-b621-94976856c2bf","reference":"CLM-DC63DB5D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"5000.01","description":"QA 76c5f4bd Green available least medical between tax despite.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:55.731796Z","updated_at":"2026-09-14T08:03:55.731796Z","withdrawn_at":null,"decided_by_id":null}
+08:03:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/88bd15c1-8705-408a-b621-94976856c2bf/transitions "HTTP/1.1 200 OK"
+08:03:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/88bd15c1-8705-408a-b621-94976856c2bf/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"88bd15c1-8705-408a-b621-94976856c2bf","reference":"CLM-DC63DB5D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"5000.01","description":"QA 76c5f4bd Green available least medical between tax despite.","incident_date":"2026-09-07","status":"SUBMITTED","created_at":"2026-09-14T08:03:55.731796Z","updated_at":"2026-09-14T08:03:55.744561Z","withdrawn_at":null,"decided_by_id":null}
+08:03:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/88bd15c1-8705-408a-b621-94976856c2bf/transitions "HTTP/1.1 200 OK"
+08:03:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/88bd15c1-8705-408a-b621-94976856c2bf/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"88bd15c1-8705-408a-b621-94976856c2bf","reference":"CLM-DC63DB5D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"5000.01","description":"QA 76c5f4bd Green available least medical between tax despite.","incident_date":"2026-09-07","status":"UNDER_REVIEW","created_at":"2026-09-14T08:03:55.731796Z","updated_at":"2026-09-14T08:03:55.756930Z","withdrawn_at":null,"decided_by_id":null}
+08:03:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/88bd15c1-8705-408a-b621-94976856c2bf/transitions "HTTP/1.1 403 Forbidden"
+08:03:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/88bd15c1-8705-408a-b621-94976856c2bf/transitions -> 403 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 5000.01 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+08:03:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/88bd15c1-8705-408a-b621-94976856c2bf "HTTP/1.1 200 OK"
+08:03:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/88bd15c1-8705-408a-b621-94976856c2bf -> 200 (5 ms)
+  response: {"id":"88bd15c1-8705-408a-b621-94976856c2bf","reference":"CLM-DC63DB5D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"5000.01","description":"QA 76c5f4bd Green available least medical between tax despite.","incident_date":"2026-09-07","status":"UNDER_REVIEW","created_at":"2026-09-14T08:03:55.731796Z","updated_at":"2026-09-14T08:03:55.756930Z","withdrawn_at":null,"decided_by_id":null}
+08:03:55 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]

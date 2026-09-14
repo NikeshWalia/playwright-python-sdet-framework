@@ -1,0 +1,32 @@
+08:03:57 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row
+08:03:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","policy_number":"POL-1001","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"10000.00","is_active":true},{"id":"c738fed2-380e-4367-9322-5c45fbf78e6e","policy_number":"POL-1002","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"2500.00","is_active":true}]
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:03:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '700.00', 'description': 'QA 9f01e43b Century support may safe letter.', 'incident_date': '2026-09-07'}
+  response: {"id":"b904397b-9d3f-44d8-bb84-88e96258548c","reference":"CLM-90FC709C","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"700.00","description":"QA 9f01e43b Century support may safe letter.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:57.718376Z","updated_at":"2026-09-14T08:03:57.718376Z","withdrawn_at":null,"decided_by_id":null}
+08:03:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b904397b-9d3f-44d8-bb84-88e96258548c/transitions "HTTP/1.1 200 OK"
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b904397b-9d3f-44d8-bb84-88e96258548c/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b904397b-9d3f-44d8-bb84-88e96258548c","reference":"CLM-90FC709C","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"700.00","description":"QA 9f01e43b Century support may safe letter.","incident_date":"2026-09-07","status":"SUBMITTED","created_at":"2026-09-14T08:03:57.718376Z","updated_at":"2026-09-14T08:03:57.732994Z","withdrawn_at":null,"decided_by_id":null}
+08:03:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b904397b-9d3f-44d8-bb84-88e96258548c/transitions "HTTP/1.1 200 OK"
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b904397b-9d3f-44d8-bb84-88e96258548c/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b904397b-9d3f-44d8-bb84-88e96258548c","reference":"CLM-90FC709C","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"700.00","description":"QA 9f01e43b Century support may safe letter.","incident_date":"2026-09-07","status":"UNDER_REVIEW","created_at":"2026-09-14T08:03:57.718376Z","updated_at":"2026-09-14T08:03:57.745765Z","withdrawn_at":null,"decided_by_id":null}
+08:03:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b904397b-9d3f-44d8-bb84-88e96258548c/transitions "HTTP/1.1 200 OK"
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b904397b-9d3f-44d8-bb84-88e96258548c/transitions -> 200 (12 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"b904397b-9d3f-44d8-bb84-88e96258548c","reference":"CLM-90FC709C","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"700.00","description":"QA 9f01e43b Century support may safe letter.","incident_date":"2026-09-07","status":"APPROVED","created_at":"2026-09-14T08:03:57.718376Z","updated_at":"2026-09-14T08:03:57.755714Z","withdrawn_at":null,"decided_by_id":"654f71a4-a158-46bc-828b-d47a5781ce80"}
+08:03:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b904397b-9d3f-44d8-bb84-88e96258548c/transitions "HTTP/1.1 200 OK"
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b904397b-9d3f-44d8-bb84-88e96258548c/transitions -> 200 (15 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"b904397b-9d3f-44d8-bb84-88e96258548c","reference":"CLM-90FC709C","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"700.00","description":"QA 9f01e43b Century support may safe letter.","incident_date":"2026-09-07","status":"PAID","created_at":"2026-09-14T08:03:57.718376Z","updated_at":"2026-09-14T08:03:57.769153Z","withdrawn_at":null,"decided_by_id":"654f71a4-a158-46bc-828b-d47a5781ce80"}
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('b904397b-9d3f-44d8-bb84-88e96258548c',)
+  rows: 5
+08:03:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('b904397b-9d3f-44d8-bb84-88e96258548c',)
+  rows: 1
+08:03:57 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row

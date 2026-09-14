@@ -1,0 +1,25 @@
+08:03:56 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+08:03:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","policy_number":"POL-1001","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"10000.00","is_active":true},{"id":"c738fed2-380e-4367-9322-5c45fbf78e6e","policy_number":"POL-1002","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"2500.00","is_active":true}]
+08:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '250.00', 'description': 'QA ec10dd47 Again traditional may win like.', 'incident_date': '2026-09-07'}
+  response: {"id":"141bf1d0-a796-4039-9765-8bcab94f026a","reference":"CLM-AE7FA96E","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"250.00","description":"QA ec10dd47 Again traditional may win like.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:56.100948Z","updated_at":"2026-09-14T08:03:56.100948Z","withdrawn_at":null,"decided_by_id":null}
+08:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '250.00', 'description': 'QA 5b8efcf4 Very parent anyone world color.', 'incident_date': '2026-09-07'}
+  response: {"id":"36a36eb4-4b0c-41e6-8ab9-3066e80d3e23","reference":"CLM-0D894563","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"250.00","description":"QA 5b8efcf4 Very parent anyone world color.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:56.112204Z","updated_at":"2026-09-14T08:03:56.112204Z","withdrawn_at":null,"decided_by_id":null}
+08:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '250.00', 'description': 'QA f3863192 Exactly list maintain pretty show detail policy.', 'incident_date': '2026-09-07'}
+  response: {"id":"186a948c-b1c6-4059-b10f-fd9073e66b24","reference":"CLM-95D8CDC1","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"250.00","description":"QA f3863192 Exactly list maintain pretty show detail policy.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:56.125851Z","updated_at":"2026-09-14T08:03:56.125851Z","withdrawn_at":null,"decided_by_id":null}
+08:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (18 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '250.00', 'description': 'QA 3df9e201 Care give receive no.', 'incident_date': '2026-09-07'}
+  response: {"id":"2df3e2a9-5d5e-4ebd-b2a9-0e3c4bf7e1fd","reference":"CLM-EDF5756C","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"250.00","description":"QA 3df9e201 Care give receive no.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:56.141362Z","updated_at":"2026-09-14T08:03:56.141362Z","withdrawn_at":null,"decided_by_id":null}
+08:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (16 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '250.00', 'description': 'QA 0db41baf Tax truth court treat blue forward white.', 'incident_date': '2026-09-07'}
+  response: {"id":"be40a06f-31cf-4864-b277-62d494c10bc0","reference":"CLM-488B370A","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"250.00","description":"QA 0db41baf Tax truth court treat blue forward white.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:56.158170Z","updated_at":"2026-09-14T08:03:56.158170Z","withdrawn_at":null,"decided_by_id":null}
+08:03:56 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

@@ -1,0 +1,12 @@
+08:03:54 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event
+08:03:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:03:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","policy_number":"POL-1001","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"10000.00","is_active":true},{"id":"c738fed2-380e-4367-9322-5c45fbf78e6e","policy_number":"POL-1002","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"2500.00","is_active":true}]
+08:03:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:03:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '250.00', 'description': 'QA 273af540 Specific best care chair.', 'incident_date': '2026-09-07'}
+  response: {"id":"2a7aa172-3eee-446f-ae63-a3990e59a998","reference":"CLM-5DDC9025","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"250.00","description":"QA 273af540 Specific best care chair.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:03:54.516537Z","updated_at":"2026-09-14T08:03:54.516537Z","withdrawn_at":null,"decided_by_id":null}
+08:03:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2a7aa172-3eee-446f-ae63-a3990e59a998/events "HTTP/1.1 200 OK"
+08:03:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2a7aa172-3eee-446f-ae63-a3990e59a998/events -> 200 (78 ms)
+  response: [{"id":"72ebe544-35a5-4860-9529-a9b2a791b85f","claim_id":"2a7aa172-3eee-446f-ae63-a3990e59a998","actor_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-14T08:03:54.516537Z"}]
+08:03:54 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event

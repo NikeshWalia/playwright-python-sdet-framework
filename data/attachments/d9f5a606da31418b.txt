@@ -1,0 +1,10 @@
+08:04:01 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_never_sees_another_customers_claim[chromium]
+08:04:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:04:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (12 ms)
+  response: [{"id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","policy_number":"POL-1001","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"10000.00","is_active":true},{"id":"c738fed2-380e-4367-9322-5c45fbf78e6e","policy_number":"POL-1002","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"2500.00","is_active":true}]
+08:04:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:04:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (22 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '250.00', 'description': 'QA aa3a5638 Risk by statement already material around.', 'incident_date': '2026-09-07'}
+  response: {"id":"20cae137-668f-4582-b7c2-1ab8603fe864","reference":"CLM-1689ED83","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"250.00","description":"QA aa3a5638 Risk by statement already material around.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:04:01.669520Z","updated_at":"2026-09-14T08:04:01.669520Z","withdrawn_at":null,"decided_by_id":null}
+08:04:01 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+08:04:01 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_never_sees_another_customers_claim[chromium]

@@ -1,0 +1,26 @@
+08:04:06 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+08:04:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:04:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (13 ms)
+  response: [{"id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","policy_number":"POL-1001","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"10000.00","is_active":true},{"id":"c738fed2-380e-4367-9322-5c45fbf78e6e","policy_number":"POL-1002","holder_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","coverage_limit":"2500.00","is_active":true}]
+08:04:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:04:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': 'e5c2395d-ecd0-4be9-a0f0-e79ee2313988', 'amount': '410.00', 'description': 'QA abc3ea1a Such couple course long.', 'incident_date': '2026-09-07'}
+  response: {"id":"2aab6f74-5f2e-4777-8417-0c706f1f0694","reference":"CLM-3066407D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"410.00","description":"QA abc3ea1a Such couple course long.","incident_date":"2026-09-07","status":"DRAFT","created_at":"2026-09-14T08:04:06.817888Z","updated_at":"2026-09-14T08:04:06.817888Z","withdrawn_at":null,"decided_by_id":null}
+08:04:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694/transitions "HTTP/1.1 200 OK"
+08:04:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2aab6f74-5f2e-4777-8417-0c706f1f0694","reference":"CLM-3066407D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"410.00","description":"QA abc3ea1a Such couple course long.","incident_date":"2026-09-07","status":"SUBMITTED","created_at":"2026-09-14T08:04:06.817888Z","updated_at":"2026-09-14T08:04:06.833457Z","withdrawn_at":null,"decided_by_id":null}
+08:04:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694/transitions "HTTP/1.1 200 OK"
+08:04:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2aab6f74-5f2e-4777-8417-0c706f1f0694","reference":"CLM-3066407D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"410.00","description":"QA abc3ea1a Such couple course long.","incident_date":"2026-09-07","status":"UNDER_REVIEW","created_at":"2026-09-14T08:04:06.817888Z","updated_at":"2026-09-14T08:04:06.845304Z","withdrawn_at":null,"decided_by_id":null}
+08:04:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694/transitions "HTTP/1.1 200 OK"
+08:04:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"2aab6f74-5f2e-4777-8417-0c706f1f0694","reference":"CLM-3066407D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"410.00","description":"QA abc3ea1a Such couple course long.","incident_date":"2026-09-07","status":"APPROVED","created_at":"2026-09-14T08:04:06.817888Z","updated_at":"2026-09-14T08:04:06.856161Z","withdrawn_at":null,"decided_by_id":"654f71a4-a158-46bc-828b-d47a5781ce80"}
+08:04:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694/transitions "HTTP/1.1 200 OK"
+08:04:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"2aab6f74-5f2e-4777-8417-0c706f1f0694","reference":"CLM-3066407D","policy_id":"e5c2395d-ecd0-4be9-a0f0-e79ee2313988","claimant_id":"0b308a91-fbf9-40c5-bc03-5014f6eaf7c8","amount":"410.00","description":"QA abc3ea1a Such couple course long.","incident_date":"2026-09-07","status":"PAID","created_at":"2026-09-14T08:04:06.817888Z","updated_at":"2026-09-14T08:04:06.866489Z","withdrawn_at":null,"decided_by_id":"654f71a4-a158-46bc-828b-d47a5781ce80"}
+08:04:06 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/2aab6f74-5f2e-4777-8417-0c706f1f0694
+08:04:07 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
