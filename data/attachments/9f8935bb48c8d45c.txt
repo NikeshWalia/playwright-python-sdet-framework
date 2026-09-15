@@ -1,0 +1,23 @@
+07:58:41 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event
+07:58:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","policy_number":"POL-1001","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"10000.00","is_active":true},{"id":"5ae5549c-5804-487e-80e7-8f184b9ad212","policy_number":"POL-1002","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"2500.00","is_active":true}]
+07:58:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '300.00', 'description': 'QA ac48eda7 Room house member institution.', 'incident_date': '2026-09-08'}
+  response: {"id":"eaf09957-18b9-4ec2-bb6a-29ddd54b9ade","reference":"CLM-F10A88F9","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"300.00","description":"QA ac48eda7 Room house member institution.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:41.252974Z","updated_at":"2026-09-15T07:58:41.252974Z","withdrawn_at":null,"decided_by_id":null}
+07:58:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/eaf09957-18b9-4ec2-bb6a-29ddd54b9ade/transitions "HTTP/1.1 200 OK"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/eaf09957-18b9-4ec2-bb6a-29ddd54b9ade/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"eaf09957-18b9-4ec2-bb6a-29ddd54b9ade","reference":"CLM-F10A88F9","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"300.00","description":"QA ac48eda7 Room house member institution.","incident_date":"2026-09-08","status":"SUBMITTED","created_at":"2026-09-15T07:58:41.252974Z","updated_at":"2026-09-15T07:58:41.264969Z","withdrawn_at":null,"decided_by_id":null}
+07:58:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/eaf09957-18b9-4ec2-bb6a-29ddd54b9ade/events "HTTP/1.1 200 OK"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/eaf09957-18b9-4ec2-bb6a-29ddd54b9ade/events -> 200 (6 ms)
+  response: [{"id":"2f346887-8c8f-4ae0-a027-7a6bc9defcd4","claim_id":"eaf09957-18b9-4ec2-bb6a-29ddd54b9ade","actor_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-15T07:58:41.252974Z"},{"id":"62144dbd-229f-4f97-973b-9a34b9aad752","claim_id":"eaf09957-18b9-4ec2-bb6a-29ddd54b9ade","actor_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-15T07:58:41.264969Z"}]
+07:58:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/eaf09957-18b9-4ec2-bb6a-29ddd54b9ade/transitions "HTTP/1.1 409 Conflict"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/eaf09957-18b9-4ec2-bb6a-29ddd54b9ade/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+07:58:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/eaf09957-18b9-4ec2-bb6a-29ddd54b9ade/events "HTTP/1.1 200 OK"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/eaf09957-18b9-4ec2-bb6a-29ddd54b9ade/events -> 200 (8 ms)
+  response: [{"id":"2f346887-8c8f-4ae0-a027-7a6bc9defcd4","claim_id":"eaf09957-18b9-4ec2-bb6a-29ddd54b9ade","actor_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-15T07:58:41.252974Z"},{"id":"62144dbd-229f-4f97-973b-9a34b9aad752","claim_id":"eaf09957-18b9-4ec2-bb6a-29ddd54b9ade","actor_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-15T07:58:41.264969Z"}]
+07:58:41 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event

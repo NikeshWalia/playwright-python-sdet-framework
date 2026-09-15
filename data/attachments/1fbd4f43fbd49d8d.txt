@@ -1,0 +1,21 @@
+07:58:40 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit
+07:58:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","policy_number":"POL-1001","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"10000.00","is_active":true},{"id":"5ae5549c-5804-487e-80e7-8f184b9ad212","policy_number":"POL-1002","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"2500.00","is_active":true}]
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '5000.01', 'description': 'QA e140831f Attention record light determine word.', 'incident_date': '2026-09-08'}
+  response: {"id":"f7932f3b-10b3-44b4-84c0-bb9a35c2cee8","reference":"CLM-89FA8EC6","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"5000.01","description":"QA e140831f Attention record light determine word.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:40.097505Z","updated_at":"2026-09-15T07:58:40.097505Z","withdrawn_at":null,"decided_by_id":null}
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7932f3b-10b3-44b4-84c0-bb9a35c2cee8/transitions "HTTP/1.1 200 OK"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7932f3b-10b3-44b4-84c0-bb9a35c2cee8/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"f7932f3b-10b3-44b4-84c0-bb9a35c2cee8","reference":"CLM-89FA8EC6","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"5000.01","description":"QA e140831f Attention record light determine word.","incident_date":"2026-09-08","status":"SUBMITTED","created_at":"2026-09-15T07:58:40.097505Z","updated_at":"2026-09-15T07:58:40.108559Z","withdrawn_at":null,"decided_by_id":null}
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7932f3b-10b3-44b4-84c0-bb9a35c2cee8/transitions "HTTP/1.1 200 OK"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7932f3b-10b3-44b4-84c0-bb9a35c2cee8/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"f7932f3b-10b3-44b4-84c0-bb9a35c2cee8","reference":"CLM-89FA8EC6","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"5000.01","description":"QA e140831f Attention record light determine word.","incident_date":"2026-09-08","status":"UNDER_REVIEW","created_at":"2026-09-15T07:58:40.097505Z","updated_at":"2026-09-15T07:58:40.116422Z","withdrawn_at":null,"decided_by_id":null}
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7932f3b-10b3-44b4-84c0-bb9a35c2cee8/transitions "HTTP/1.1 200 OK"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7932f3b-10b3-44b4-84c0-bb9a35c2cee8/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"f7932f3b-10b3-44b4-84c0-bb9a35c2cee8","reference":"CLM-89FA8EC6","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"5000.01","description":"QA e140831f Attention record light determine word.","incident_date":"2026-09-08","status":"APPROVED","created_at":"2026-09-15T07:58:40.097505Z","updated_at":"2026-09-15T07:58:40.124842Z","withdrawn_at":null,"decided_by_id":"a0762351-68d1-4798-88a8-7a5b8f92c979"}
+07:58:40 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit

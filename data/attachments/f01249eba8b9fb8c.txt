@@ -1,0 +1,28 @@
+07:58:41 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout
+07:58:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","policy_number":"POL-1001","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"10000.00","is_active":true},{"id":"5ae5549c-5804-487e-80e7-8f184b9ad212","policy_number":"POL-1002","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"2500.00","is_active":true}]
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:58:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '800.00', 'description': 'QA e977bd3b Although thousand run water fish window mean.', 'incident_date': '2026-09-08'}
+  response: {"id":"34b9d2fe-9728-4c77-9e30-a13e7428a4ad","reference":"CLM-CFB7778D","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"800.00","description":"QA e977bd3b Although thousand run water fish window mean.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:41.912153Z","updated_at":"2026-09-15T07:58:41.912153Z","withdrawn_at":null,"decided_by_id":null}
+07:58:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/34b9d2fe-9728-4c77-9e30-a13e7428a4ad/transitions "HTTP/1.1 200 OK"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/34b9d2fe-9728-4c77-9e30-a13e7428a4ad/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"34b9d2fe-9728-4c77-9e30-a13e7428a4ad","reference":"CLM-CFB7778D","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"800.00","description":"QA e977bd3b Although thousand run water fish window mean.","incident_date":"2026-09-08","status":"SUBMITTED","created_at":"2026-09-15T07:58:41.912153Z","updated_at":"2026-09-15T07:58:41.924060Z","withdrawn_at":null,"decided_by_id":null}
+07:58:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/34b9d2fe-9728-4c77-9e30-a13e7428a4ad/transitions "HTTP/1.1 200 OK"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/34b9d2fe-9728-4c77-9e30-a13e7428a4ad/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"34b9d2fe-9728-4c77-9e30-a13e7428a4ad","reference":"CLM-CFB7778D","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"800.00","description":"QA e977bd3b Although thousand run water fish window mean.","incident_date":"2026-09-08","status":"UNDER_REVIEW","created_at":"2026-09-15T07:58:41.912153Z","updated_at":"2026-09-15T07:58:41.935270Z","withdrawn_at":null,"decided_by_id":null}
+07:58:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/34b9d2fe-9728-4c77-9e30-a13e7428a4ad/transitions "HTTP/1.1 200 OK"
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/34b9d2fe-9728-4c77-9e30-a13e7428a4ad/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"34b9d2fe-9728-4c77-9e30-a13e7428a4ad","reference":"CLM-CFB7778D","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"800.00","description":"QA e977bd3b Although thousand run water fish window mean.","incident_date":"2026-09-08","status":"APPROVED","created_at":"2026-09-15T07:58:41.912153Z","updated_at":"2026-09-15T07:58:41.947204Z","withdrawn_at":null,"decided_by_id":"7cc53771-a9a5-46cd-a869-7d7c803dafad"}
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('34b9d2fe-9728-4c77-9e30-a13e7428a4ad',)
+  rows: 0
+07:58:41 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('34b9d2fe-9728-4c77-9e30-a13e7428a4ad',)
+  rows: 1
+07:58:41 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout

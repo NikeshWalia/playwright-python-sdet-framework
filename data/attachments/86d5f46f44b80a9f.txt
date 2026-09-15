@@ -1,0 +1,43 @@
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (94 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMDY3NTk2MS0zZjY1LTRmNTEtYTBiNS04YzJiNGFkNmRmNzYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3ODk0NTkxMjMsImV4cCI6MTc4OTQ2MjcyM30.95ylK85kT2UjoXcY3ZOZqArHcSQJcGx-WMxCepOTrGY","token_type":"bearer","expires_in":3600}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (81 ms)
+  request : {'email': 'adjuster@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Y2M1Mzc3MS1hOWE1LTQ2Y2QtYTg2OS03ZDdjODAzZGFmYWQiLCJyb2xlIjoiQURKVVNURVIiLCJpYXQiOjE3ODk0NTkxMjMsImV4cCI6MTc4OTQ2MjcyM30.jYPHDZrnik7JPVUL6-zqN43wKwiZLHDk7O2-ykDEoR8","token_type":"bearer","expires_in":3600}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (72 ms)
+  request : {'email': 'admin@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhMDc2MjM1MS02OGQxLTQ3OTgtODhhOC03YTViOGY5MmM5NzkiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3ODk0NTkxMjMsImV4cCI6MTc4OTQ2MjcyM30.--G1sif05Ts5IQGGQFZNhkdM7CGMqtNtMHr6y_T-33I","token_type":"bearer","expires_in":3600}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (71 ms)
+  request : {'email': 'other.customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMWYwMjE3Yy1iMjc3LTRjMzQtYjJiZC1kNzZiNzBhMDY0ZmEiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3ODk0NTkxMjMsImV4cCI6MTc4OTQ2MjcyM30.SPN8e9gsyh-FNYQI3XZEIGa8BOYIq56qUw8phQt-SsA","token_type":"bearer","expires_in":3600}
+07:58:43 INFO     claimdesk_qa.tests._fixtures.browser Prepared storage states for customer, adjuster, admin, other_customer
+07:58:43 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+07:58:43 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","policy_number":"POL-1001","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"10000.00","is_active":true},{"id":"5ae5549c-5804-487e-80e7-8f184b9ad212","policy_number":"POL-1002","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"2500.00","is_active":true}]
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '410.00', 'description': 'QA ab355b13 Student may fine stage.', 'incident_date': '2026-09-08'}
+  response: {"id":"40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47","reference":"CLM-705354B9","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"410.00","description":"QA ab355b13 Student may fine stage.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:43.486122Z","updated_at":"2026-09-15T07:58:43.486122Z","withdrawn_at":null,"decided_by_id":null}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47/transitions "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47","reference":"CLM-705354B9","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"410.00","description":"QA ab355b13 Student may fine stage.","incident_date":"2026-09-08","status":"SUBMITTED","created_at":"2026-09-15T07:58:43.486122Z","updated_at":"2026-09-15T07:58:43.502643Z","withdrawn_at":null,"decided_by_id":null}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47/transitions "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47","reference":"CLM-705354B9","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"410.00","description":"QA ab355b13 Student may fine stage.","incident_date":"2026-09-08","status":"UNDER_REVIEW","created_at":"2026-09-15T07:58:43.486122Z","updated_at":"2026-09-15T07:58:43.516437Z","withdrawn_at":null,"decided_by_id":null}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47/transitions "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47","reference":"CLM-705354B9","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"410.00","description":"QA ab355b13 Student may fine stage.","incident_date":"2026-09-08","status":"APPROVED","created_at":"2026-09-15T07:58:43.486122Z","updated_at":"2026-09-15T07:58:43.527984Z","withdrawn_at":null,"decided_by_id":"7cc53771-a9a5-46cd-a869-7d7c803dafad"}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47/transitions "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47/transitions -> 200 (27 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47","reference":"CLM-705354B9","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"410.00","description":"QA ab355b13 Student may fine stage.","incident_date":"2026-09-08","status":"PAID","created_at":"2026-09-15T07:58:43.486122Z","updated_at":"2026-09-15T07:58:43.538827Z","withdrawn_at":null,"decided_by_id":"7cc53771-a9a5-46cd-a869-7d7c803dafad"}
+07:58:43 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/40bfd5d9-ca36-4e1e-b6d7-3a1182f68f47
+07:58:43 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

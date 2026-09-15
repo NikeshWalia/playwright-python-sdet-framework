@@ -1,0 +1,25 @@
+07:58:40 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:58:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","policy_number":"POL-1001","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"10000.00","is_active":true},{"id":"5ae5549c-5804-487e-80e7-8f184b9ad212","policy_number":"POL-1002","holder_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","coverage_limit":"2500.00","is_active":true}]
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '250.00', 'description': 'QA b28cd8db Buy coach color yes boy race country describe.', 'incident_date': '2026-09-08'}
+  response: {"id":"2532601c-f663-4f20-b256-f43659b45e6b","reference":"CLM-FA823BD9","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"250.00","description":"QA b28cd8db Buy coach color yes boy race country describe.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:40.278918Z","updated_at":"2026-09-15T07:58:40.278918Z","withdrawn_at":null,"decided_by_id":null}
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '250.00', 'description': 'QA 2794b04b Figure figure develop former idea together.', 'incident_date': '2026-09-08'}
+  response: {"id":"c2ef4be1-ce78-47c3-978a-759d445504d7","reference":"CLM-6D8A0E8E","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"250.00","description":"QA 2794b04b Figure figure develop former idea together.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:40.288196Z","updated_at":"2026-09-15T07:58:40.288196Z","withdrawn_at":null,"decided_by_id":null}
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '250.00', 'description': 'QA 46f7c5fd Now serious land soon skill shoulder big animal.', 'incident_date': '2026-09-08'}
+  response: {"id":"4fe7084b-a788-4c9a-ad2b-e34f81520d91","reference":"CLM-9D172A6C","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"250.00","description":"QA 46f7c5fd Now serious land soon skill shoulder big animal.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:40.298731Z","updated_at":"2026-09-15T07:58:40.298731Z","withdrawn_at":null,"decided_by_id":null}
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '250.00', 'description': 'QA 14f6d04b Budget listen four cold else water recognize.', 'incident_date': '2026-09-08'}
+  response: {"id":"ab6087b8-e875-430f-bcc9-73df0d84a5d6","reference":"CLM-3E310B82","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"250.00","description":"QA 14f6d04b Budget listen four cold else water recognize.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:40.309257Z","updated_at":"2026-09-15T07:58:40.309257Z","withdrawn_at":null,"decided_by_id":null}
+07:58:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '6cf86edc-dd2c-4622-acd9-fe164fdd04d6', 'amount': '250.00', 'description': 'QA f9c62348 Few challenge worry exactly.', 'incident_date': '2026-09-08'}
+  response: {"id":"030163b7-215c-4c6f-a55c-32edd20ee5ef","reference":"CLM-8A480AA3","policy_id":"6cf86edc-dd2c-4622-acd9-fe164fdd04d6","claimant_id":"10675961-3f65-4f51-a0b5-8c2b4ad6df76","amount":"250.00","description":"QA f9c62348 Few challenge worry exactly.","incident_date":"2026-09-08","status":"DRAFT","created_at":"2026-09-15T07:58:40.320774Z","updated_at":"2026-09-15T07:58:40.320774Z","withdrawn_at":null,"decided_by_id":null}
+07:58:40 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
