@@ -1,0 +1,25 @@
+07:51:32 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:51:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:51:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"40c9ad9c-fe0f-4ddc-9291-ffcba88540ed","policy_number":"POL-1001","holder_id":"667b6eff-3165-42e6-b125-7b68ebdbd6d1","coverage_limit":"10000.00","is_active":true},{"id":"72d770ea-2223-43db-be41-614f38ba5da9","policy_number":"POL-1002","holder_id":"667b6eff-3165-42e6-b125-7b68ebdbd6d1","coverage_limit":"2500.00","is_active":true}]
+07:51:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:51:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '40c9ad9c-fe0f-4ddc-9291-ffcba88540ed', 'amount': '250.00', 'description': 'QA 6651aa39 Attack executive baby join rock.', 'incident_date': '2026-09-09'}
+  response: {"id":"3a06fb02-6581-442e-b705-aaba26a4e072","reference":"CLM-71BD3AFB","policy_id":"40c9ad9c-fe0f-4ddc-9291-ffcba88540ed","claimant_id":"667b6eff-3165-42e6-b125-7b68ebdbd6d1","amount":"250.00","description":"QA 6651aa39 Attack executive baby join rock.","incident_date":"2026-09-09","status":"DRAFT","created_at":"2026-09-16T07:51:32.154207Z","updated_at":"2026-09-16T07:51:32.154207Z","withdrawn_at":null,"decided_by_id":null}
+07:51:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:51:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '40c9ad9c-fe0f-4ddc-9291-ffcba88540ed', 'amount': '250.00', 'description': 'QA 37099772 Side series pull rule form theory necessary.', 'incident_date': '2026-09-09'}
+  response: {"id":"a45b48b0-10bb-4b41-a88d-99108694fe7c","reference":"CLM-6D9B6040","policy_id":"40c9ad9c-fe0f-4ddc-9291-ffcba88540ed","claimant_id":"667b6eff-3165-42e6-b125-7b68ebdbd6d1","amount":"250.00","description":"QA 37099772 Side series pull rule form theory necessary.","incident_date":"2026-09-09","status":"DRAFT","created_at":"2026-09-16T07:51:32.163894Z","updated_at":"2026-09-16T07:51:32.163894Z","withdrawn_at":null,"decided_by_id":null}
+07:51:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:51:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '40c9ad9c-fe0f-4ddc-9291-ffcba88540ed', 'amount': '250.00', 'description': 'QA dc8da238 Expect generation feeling help on entire from minute.', 'incident_date': '2026-09-09'}
+  response: {"id":"6db7fe2a-8299-446f-b585-4ca33f856d55","reference":"CLM-7285F6C9","policy_id":"40c9ad9c-fe0f-4ddc-9291-ffcba88540ed","claimant_id":"667b6eff-3165-42e6-b125-7b68ebdbd6d1","amount":"250.00","description":"QA dc8da238 Expect generation feeling help on entire from minute.","incident_date":"2026-09-09","status":"DRAFT","created_at":"2026-09-16T07:51:32.172407Z","updated_at":"2026-09-16T07:51:32.172407Z","withdrawn_at":null,"decided_by_id":null}
+07:51:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:51:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '40c9ad9c-fe0f-4ddc-9291-ffcba88540ed', 'amount': '250.00', 'description': 'QA 9da46648 Sort collection collection walk.', 'incident_date': '2026-09-09'}
+  response: {"id":"90fea223-8021-4bc5-a7e4-61d0be20719e","reference":"CLM-AADCFE18","policy_id":"40c9ad9c-fe0f-4ddc-9291-ffcba88540ed","claimant_id":"667b6eff-3165-42e6-b125-7b68ebdbd6d1","amount":"250.00","description":"QA 9da46648 Sort collection collection walk.","incident_date":"2026-09-09","status":"DRAFT","created_at":"2026-09-16T07:51:32.181982Z","updated_at":"2026-09-16T07:51:32.181982Z","withdrawn_at":null,"decided_by_id":null}
+07:51:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:51:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '40c9ad9c-fe0f-4ddc-9291-ffcba88540ed', 'amount': '250.00', 'description': 'QA 1b4bdbea Central me major join.', 'incident_date': '2026-09-09'}
+  response: {"id":"e3114515-4729-4f55-a496-050f566d4390","reference":"CLM-D07E8917","policy_id":"40c9ad9c-fe0f-4ddc-9291-ffcba88540ed","claimant_id":"667b6eff-3165-42e6-b125-7b68ebdbd6d1","amount":"250.00","description":"QA 1b4bdbea Central me major join.","incident_date":"2026-09-09","status":"DRAFT","created_at":"2026-09-16T07:51:32.192497Z","updated_at":"2026-09-16T07:51:32.192497Z","withdrawn_at":null,"decided_by_id":null}
+07:51:32 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
