@@ -1,0 +1,28 @@
+07:56:19 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_refused_transition_writes_no_audit_row
+07:56:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","policy_number":"POL-1001","holder_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","coverage_limit":"10000.00","is_active":true},{"id":"18e8c0c7-ad2e-46fa-8c00-4d8599af1d12","policy_number":"POL-1002","holder_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","coverage_limit":"2500.00","is_active":true}]
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '90f296fa-a9be-4651-8ae7-eadc1889b2a5', 'amount': '700.00', 'description': 'QA 47291284 History green by worry up million.', 'incident_date': '2026-09-10'}
+  response: {"id":"0efc8738-a4be-4535-8cb4-dc954d04aa5f","reference":"CLM-59219041","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"700.00","description":"QA 47291284 History green by worry up million.","incident_date":"2026-09-10","status":"DRAFT","created_at":"2026-09-17T07:56:19.602141Z","updated_at":"2026-09-17T07:56:19.602141Z","withdrawn_at":null,"decided_by_id":null}
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0efc8738-a4be-4535-8cb4-dc954d04aa5f/transitions "HTTP/1.1 200 OK"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0efc8738-a4be-4535-8cb4-dc954d04aa5f/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"0efc8738-a4be-4535-8cb4-dc954d04aa5f","reference":"CLM-59219041","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"700.00","description":"QA 47291284 History green by worry up million.","incident_date":"2026-09-10","status":"SUBMITTED","created_at":"2026-09-17T07:56:19.602141Z","updated_at":"2026-09-17T07:56:19.612013Z","withdrawn_at":null,"decided_by_id":null}
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('0efc8738-a4be-4535-8cb4-dc954d04aa5f',)
+  rows: 1
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0efc8738-a4be-4535-8cb4-dc954d04aa5f/transitions "HTTP/1.1 409 Conflict"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0efc8738-a4be-4535-8cb4-dc954d04aa5f/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0efc8738-a4be-4535-8cb4-dc954d04aa5f/transitions "HTTP/1.1 409 Conflict"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0efc8738-a4be-4535-8cb4-dc954d04aa5f/transitions -> 409 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('0efc8738-a4be-4535-8cb4-dc954d04aa5f',)
+  rows: 1
+07:56:19 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_refused_transition_writes_no_audit_row

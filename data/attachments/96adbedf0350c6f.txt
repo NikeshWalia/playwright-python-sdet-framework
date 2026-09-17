@@ -1,0 +1,12 @@
+07:56:16 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event
+07:56:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:56:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","policy_number":"POL-1001","holder_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","coverage_limit":"10000.00","is_active":true},{"id":"18e8c0c7-ad2e-46fa-8c00-4d8599af1d12","policy_number":"POL-1002","holder_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","coverage_limit":"2500.00","is_active":true}]
+07:56:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:56:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '90f296fa-a9be-4651-8ae7-eadc1889b2a5', 'amount': '250.00', 'description': 'QA 9f681ce4 Fight feel eye loss significant week capital.', 'incident_date': '2026-09-10'}
+  response: {"id":"7ab2e955-0fd4-4e7e-9716-9f2c83973276","reference":"CLM-2666EA9C","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"250.00","description":"QA 9f681ce4 Fight feel eye loss significant week capital.","incident_date":"2026-09-10","status":"DRAFT","created_at":"2026-09-17T07:56:16.956693Z","updated_at":"2026-09-17T07:56:16.956693Z","withdrawn_at":null,"decided_by_id":null}
+07:56:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/7ab2e955-0fd4-4e7e-9716-9f2c83973276/events "HTTP/1.1 200 OK"
+07:56:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/7ab2e955-0fd4-4e7e-9716-9f2c83973276/events -> 200 (4 ms)
+  response: [{"id":"bede2205-29b1-45b5-be47-2992e6fccc99","claim_id":"7ab2e955-0fd4-4e7e-9716-9f2c83973276","actor_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-17T07:56:16.956693Z"}]
+07:56:16 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event

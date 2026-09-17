@@ -1,0 +1,32 @@
+07:56:19 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_paying_the_same_claim_twice_is_refused
+07:56:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","policy_number":"POL-1001","holder_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","coverage_limit":"10000.00","is_active":true},{"id":"18e8c0c7-ad2e-46fa-8c00-4d8599af1d12","policy_number":"POL-1002","holder_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","coverage_limit":"2500.00","is_active":true}]
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '90f296fa-a9be-4651-8ae7-eadc1889b2a5', 'amount': '300.00', 'description': 'QA 28257069 Director group deal seem.', 'incident_date': '2026-09-10'}
+  response: {"id":"44b834c1-e072-404f-9d71-6599881abc23","reference":"CLM-5917347E","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"300.00","description":"QA 28257069 Director group deal seem.","incident_date":"2026-09-10","status":"DRAFT","created_at":"2026-09-17T07:56:19.020652Z","updated_at":"2026-09-17T07:56:19.020652Z","withdrawn_at":null,"decided_by_id":null}
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions "HTTP/1.1 200 OK"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"44b834c1-e072-404f-9d71-6599881abc23","reference":"CLM-5917347E","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"300.00","description":"QA 28257069 Director group deal seem.","incident_date":"2026-09-10","status":"SUBMITTED","created_at":"2026-09-17T07:56:19.020652Z","updated_at":"2026-09-17T07:56:19.029070Z","withdrawn_at":null,"decided_by_id":null}
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions "HTTP/1.1 200 OK"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"44b834c1-e072-404f-9d71-6599881abc23","reference":"CLM-5917347E","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"300.00","description":"QA 28257069 Director group deal seem.","incident_date":"2026-09-10","status":"UNDER_REVIEW","created_at":"2026-09-17T07:56:19.020652Z","updated_at":"2026-09-17T07:56:19.037991Z","withdrawn_at":null,"decided_by_id":null}
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions "HTTP/1.1 200 OK"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"44b834c1-e072-404f-9d71-6599881abc23","reference":"CLM-5917347E","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"300.00","description":"QA 28257069 Director group deal seem.","incident_date":"2026-09-10","status":"APPROVED","created_at":"2026-09-17T07:56:19.020652Z","updated_at":"2026-09-17T07:56:19.046152Z","withdrawn_at":null,"decided_by_id":"87b5d617-cf98-4867-95a5-9bf5bf32ca6f"}
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions "HTTP/1.1 200 OK"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions -> 200 (13 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"44b834c1-e072-404f-9d71-6599881abc23","reference":"CLM-5917347E","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"300.00","description":"QA 28257069 Director group deal seem.","incident_date":"2026-09-10","status":"PAID","created_at":"2026-09-17T07:56:19.020652Z","updated_at":"2026-09-17T07:56:19.056792Z","withdrawn_at":null,"decided_by_id":"87b5d617-cf98-4867-95a5-9bf5bf32ca6f"}
+07:56:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions "HTTP/1.1 409 Conflict"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+07:56:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/payout "HTTP/1.1 200 OK"
+07:56:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/44b834c1-e072-404f-9d71-6599881abc23/payout -> 200 (8 ms)
+  response: {"id":"1abddfb3-46cf-438e-9463-38f3dda6839c","claim_id":"44b834c1-e072-404f-9d71-6599881abc23","amount":"300.00","paid_by_id":"87b5d617-cf98-4867-95a5-9bf5bf32ca6f","paid_at":"2026-09-17T07:56:19.056792Z"}
+07:56:19 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_paying_the_same_claim_twice_is_refused
