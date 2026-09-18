@@ -1,9 +1,0 @@
-07:56:18 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_incident_dated_today_is_accepted
-07:56:18 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-07:56:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
-  response: [{"id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","policy_number":"POL-1001","holder_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","coverage_limit":"10000.00","is_active":true},{"id":"18e8c0c7-ad2e-46fa-8c00-4d8599af1d12","policy_number":"POL-1002","holder_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","coverage_limit":"2500.00","is_active":true}]
-07:56:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-07:56:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
-  request : {'policy_id': '90f296fa-a9be-4651-8ae7-eadc1889b2a5', 'amount': '250.00', 'description': 'QA 510cb940 Traditional pretty describe piece maybe.', 'incident_date': '2026-09-17'}
-  response: {"id":"8e2d0aeb-2679-4cff-9e59-07776c98492a","reference":"CLM-A2A2393F","policy_id":"90f296fa-a9be-4651-8ae7-eadc1889b2a5","claimant_id":"55dc896e-eef6-469f-ba3c-a22e966c1f60","amount":"250.00","description":"QA 510cb940 Traditional pretty describe piece maybe.","incident_date":"2026-09-17","status":"DRAFT","created_at":"2026-09-17T07:56:18.062193Z","updated_at":"2026-09-17T07:56:18.062193Z","withdrawn_at":null,"decided_by_id":null}
-07:56:18 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_incident_dated_today_is_accepted

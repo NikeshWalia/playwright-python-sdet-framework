@@ -1,0 +1,19 @@
+07:34:40 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_withdrawing_a_claim_is_a_soft_delete
+07:34:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:34:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"1e0dbf0c-5995-47ce-abeb-633b9a430546","policy_number":"POL-1001","holder_id":"27ccd917-74bb-42a8-9731-f0cb3b4a8df9","coverage_limit":"10000.00","is_active":true},{"id":"6eec16ef-f1c8-4b54-8079-7a1f41f17169","policy_number":"POL-1002","holder_id":"27ccd917-74bb-42a8-9731-f0cb3b4a8df9","coverage_limit":"2500.00","is_active":true}]
+07:34:40 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:34:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:34:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '1e0dbf0c-5995-47ce-abeb-633b9a430546', 'amount': '250.00', 'description': 'QA 47402920 Step candidate what save.', 'incident_date': '2026-09-11'}
+  response: {"id":"e396e321-3de6-49af-a4c3-8e7fbd277abf","reference":"CLM-67413820","policy_id":"1e0dbf0c-5995-47ce-abeb-633b9a430546","claimant_id":"27ccd917-74bb-42a8-9731-f0cb3b4a8df9","amount":"250.00","description":"QA 47402920 Step candidate what save.","incident_date":"2026-09-11","status":"DRAFT","created_at":"2026-09-18T07:34:40.365153Z","updated_at":"2026-09-18T07:34:40.365153Z","withdrawn_at":null,"decided_by_id":null}
+07:34:40 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/e396e321-3de6-49af-a4c3-8e7fbd277abf "HTTP/1.1 204 No Content"
+07:34:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/e396e321-3de6-49af-a4c3-8e7fbd277abf -> 204 (7 ms)
+  response: 
+07:34:40 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claims WHERE id = %s
+  params: ('e396e321-3de6-49af-a4c3-8e7fbd277abf',)
+  rows: 1
+07:34:40 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('e396e321-3de6-49af-a4c3-8e7fbd277abf',)
+  rows: 1
+07:34:40 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_withdrawing_a_claim_is_a_soft_delete
