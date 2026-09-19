@@ -1,0 +1,9 @@
+07:29:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_amounts_with_more_than_two_decimal_places_are_rejected_not_rounded[three-decimals-rounds-up]
+07:29:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"f68eaef9-19c5-48d3-882e-35a662461799","policy_number":"POL-1001","holder_id":"b9732afb-3df5-45db-800c-0d9839e31ec1","coverage_limit":"10000.00","is_active":true},{"id":"2f28e6f0-3e06-4bf4-b89f-74597ad075e1","policy_number":"POL-1002","holder_id":"b9732afb-3df5-45db-800c-0d9839e31ec1","coverage_limit":"2500.00","is_active":true}]
+07:29:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+07:29:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (5 ms)
+  request : {'policy_id': 'f68eaef9-19c5-48d3-882e-35a662461799', 'amount': '1.005', 'description': 'QA 5d9056eb Garden such personal same travel.', 'incident_date': '2026-09-12'}
+  response: {"detail":[{"type":"decimal_max_places","loc":["body","amount"],"msg":"Decimal input should have no more than 2 decimal places","input":"1.005","ctx":{"decimal_places":2}}]}
+07:29:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_amounts_with_more_than_two_decimal_places_are_rejected_not_rounded[three-decimals-rounds-up]

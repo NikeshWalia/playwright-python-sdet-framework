@@ -1,0 +1,13 @@
+07:29:51 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_an_unknown_action_is_rejected
+07:29:51 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:29:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"f68eaef9-19c5-48d3-882e-35a662461799","policy_number":"POL-1001","holder_id":"b9732afb-3df5-45db-800c-0d9839e31ec1","coverage_limit":"10000.00","is_active":true},{"id":"2f28e6f0-3e06-4bf4-b89f-74597ad075e1","policy_number":"POL-1002","holder_id":"b9732afb-3df5-45db-800c-0d9839e31ec1","coverage_limit":"2500.00","is_active":true}]
+07:29:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:29:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': 'f68eaef9-19c5-48d3-882e-35a662461799', 'amount': '250.00', 'description': 'QA 1eb81f9d Practice reality exist light there government.', 'incident_date': '2026-09-12'}
+  response: {"id":"ec542410-1423-4aa6-82a7-06578ab31a09","reference":"CLM-31B6C147","policy_id":"f68eaef9-19c5-48d3-882e-35a662461799","claimant_id":"b9732afb-3df5-45db-800c-0d9839e31ec1","amount":"250.00","description":"QA 1eb81f9d Practice reality exist light there government.","incident_date":"2026-09-12","status":"DRAFT","created_at":"2026-09-19T07:29:51.226691Z","updated_at":"2026-09-19T07:29:51.226691Z","withdrawn_at":null,"decided_by_id":null}
+07:29:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ec542410-1423-4aa6-82a7-06578ab31a09/transitions "HTTP/1.1 422 Unprocessable Entity"
+07:29:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ec542410-1423-4aa6-82a7-06578ab31a09/transitions -> 422 (4 ms)
+  request : {'action': 'teleport', 'note': None}
+  response: {"detail":[{"type":"enum","loc":["body","action"],"msg":"Input should be 'submit', 'start_review', 'approve', 'reject' or 'pay'","input":"teleport","ctx":{"expected":"'submit', 'start_review', 'approve', 'reject' or 'pay'"}}]}
+07:29:51 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_an_unknown_action_is_rejected
