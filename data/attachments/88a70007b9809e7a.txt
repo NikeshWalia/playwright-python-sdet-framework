@@ -1,0 +1,25 @@
+07:53:15 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:53:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"f8b13cd8-5c5c-4a57-bb2e-735323b1aee4","policy_number":"POL-1001","holder_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","coverage_limit":"10000.00","is_active":true},{"id":"50422bdd-dcfb-4862-8c87-ff0343e108a6","policy_number":"POL-1002","holder_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","coverage_limit":"2500.00","is_active":true}]
+07:53:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f8b13cd8-5c5c-4a57-bb2e-735323b1aee4', 'amount': '250.00', 'description': 'QA 448a9b48 Wind use half where box nature the.', 'incident_date': '2026-09-13'}
+  response: {"id":"8998b1ed-5f0c-43ad-8cd1-935c3834c294","reference":"CLM-D6833740","policy_id":"f8b13cd8-5c5c-4a57-bb2e-735323b1aee4","claimant_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","amount":"250.00","description":"QA 448a9b48 Wind use half where box nature the.","incident_date":"2026-09-13","status":"DRAFT","created_at":"2026-09-20T07:53:15.901260Z","updated_at":"2026-09-20T07:53:15.901260Z","withdrawn_at":null,"decided_by_id":null}
+07:53:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': 'f8b13cd8-5c5c-4a57-bb2e-735323b1aee4', 'amount': '250.00', 'description': 'QA 6b103497 Resource another significant major central support water.', 'incident_date': '2026-09-13'}
+  response: {"id":"1e0103f3-022c-455e-8654-ec197c71113d","reference":"CLM-B609FAAD","policy_id":"f8b13cd8-5c5c-4a57-bb2e-735323b1aee4","claimant_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","amount":"250.00","description":"QA 6b103497 Resource another significant major central support water.","incident_date":"2026-09-13","status":"DRAFT","created_at":"2026-09-20T07:53:15.907888Z","updated_at":"2026-09-20T07:53:15.907888Z","withdrawn_at":null,"decided_by_id":null}
+07:53:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f8b13cd8-5c5c-4a57-bb2e-735323b1aee4', 'amount': '250.00', 'description': 'QA 3d4ffdc7 Father baby else determine own increase protect.', 'incident_date': '2026-09-13'}
+  response: {"id":"491314e4-8fac-4f0f-ad33-e4c1872c844f","reference":"CLM-AEF3DDF5","policy_id":"f8b13cd8-5c5c-4a57-bb2e-735323b1aee4","claimant_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","amount":"250.00","description":"QA 3d4ffdc7 Father baby else determine own increase protect.","incident_date":"2026-09-13","status":"DRAFT","created_at":"2026-09-20T07:53:15.914242Z","updated_at":"2026-09-20T07:53:15.914242Z","withdrawn_at":null,"decided_by_id":null}
+07:53:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f8b13cd8-5c5c-4a57-bb2e-735323b1aee4', 'amount': '250.00', 'description': 'QA c5c3dad0 Social win plant level institution information.', 'incident_date': '2026-09-13'}
+  response: {"id":"165cdb07-2410-44e5-aa31-1dd1ed894366","reference":"CLM-47EEF8F7","policy_id":"f8b13cd8-5c5c-4a57-bb2e-735323b1aee4","claimant_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","amount":"250.00","description":"QA c5c3dad0 Social win plant level institution information.","incident_date":"2026-09-13","status":"DRAFT","created_at":"2026-09-20T07:53:15.920784Z","updated_at":"2026-09-20T07:53:15.920784Z","withdrawn_at":null,"decided_by_id":null}
+07:53:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': 'f8b13cd8-5c5c-4a57-bb2e-735323b1aee4', 'amount': '250.00', 'description': 'QA 2b80a27d Art left to attention indeed soldier.', 'incident_date': '2026-09-13'}
+  response: {"id":"db7eeec1-8e07-4ee8-9ce8-0a7ed9f35fe3","reference":"CLM-0526A8D4","policy_id":"f8b13cd8-5c5c-4a57-bb2e-735323b1aee4","claimant_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","amount":"250.00","description":"QA 2b80a27d Art left to attention indeed soldier.","incident_date":"2026-09-13","status":"DRAFT","created_at":"2026-09-20T07:53:15.927150Z","updated_at":"2026-09-20T07:53:15.927150Z","withdrawn_at":null,"decided_by_id":null}
+07:53:15 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

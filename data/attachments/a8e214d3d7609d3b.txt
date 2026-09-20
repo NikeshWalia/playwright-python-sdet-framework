@@ -1,0 +1,12 @@
+07:53:15 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_amount_exactly_at_the_coverage_limit_is_accepted
+07:53:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"f8b13cd8-5c5c-4a57-bb2e-735323b1aee4","policy_number":"POL-1001","holder_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","coverage_limit":"10000.00","is_active":true},{"id":"50422bdd-dcfb-4862-8c87-ff0343e108a6","policy_number":"POL-1002","holder_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","coverage_limit":"2500.00","is_active":true}]
+07:53:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (2 ms)
+  response: [{"id":"f8b13cd8-5c5c-4a57-bb2e-735323b1aee4","policy_number":"POL-1001","holder_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","coverage_limit":"10000.00","is_active":true},{"id":"50422bdd-dcfb-4862-8c87-ff0343e108a6","policy_number":"POL-1002","holder_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","coverage_limit":"2500.00","is_active":true}]
+07:53:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:53:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '50422bdd-dcfb-4862-8c87-ff0343e108a6', 'amount': '2500.00', 'description': 'QA 3f9c078d Benefit line hope quite.', 'incident_date': '2026-09-13'}
+  response: {"id":"0f0d105e-33af-4164-883a-b66e7817bcb2","reference":"CLM-75B1EC36","policy_id":"50422bdd-dcfb-4862-8c87-ff0343e108a6","claimant_id":"bb313eac-6f77-46b2-884b-f17a993fd3db","amount":"2500.00","description":"QA 3f9c078d Benefit line hope quite.","incident_date":"2026-09-13","status":"DRAFT","created_at":"2026-09-20T07:53:15.520018Z","updated_at":"2026-09-20T07:53:15.520018Z","withdrawn_at":null,"decided_by_id":null}
+07:53:15 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_amount_exactly_at_the_coverage_limit_is_accepted
