@@ -1,0 +1,24 @@
+08:09:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]
+08:09:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:09:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"a6b651bf-ceff-45d4-976d-8950859e6d66","policy_number":"POL-1001","holder_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","coverage_limit":"10000.00","is_active":true},{"id":"189c8d19-9fe5-444f-906e-fac2e48e6bf0","policy_number":"POL-1002","holder_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","coverage_limit":"2500.00","is_active":true}]
+08:09:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:09:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'a6b651bf-ceff-45d4-976d-8950859e6d66', 'amount': '5000.01', 'description': 'QA e4352672 Quite probably activity clear institution significant adult.', 'incident_date': '2026-09-14'}
+  response: {"id":"af7c7535-617e-4270-8f51-59e53949ecbc","reference":"CLM-3FC736A1","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"5000.01","description":"QA e4352672 Quite probably activity clear institution significant adult.","incident_date":"2026-09-14","status":"DRAFT","created_at":"2026-09-21T08:09:04.108688Z","updated_at":"2026-09-21T08:09:04.108688Z","withdrawn_at":null,"decided_by_id":null}
+08:09:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af7c7535-617e-4270-8f51-59e53949ecbc/transitions "HTTP/1.1 200 OK"
+08:09:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af7c7535-617e-4270-8f51-59e53949ecbc/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"af7c7535-617e-4270-8f51-59e53949ecbc","reference":"CLM-3FC736A1","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"5000.01","description":"QA e4352672 Quite probably activity clear institution significant adult.","incident_date":"2026-09-14","status":"SUBMITTED","created_at":"2026-09-21T08:09:04.108688Z","updated_at":"2026-09-21T08:09:04.119843Z","withdrawn_at":null,"decided_by_id":null}
+08:09:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af7c7535-617e-4270-8f51-59e53949ecbc/transitions "HTTP/1.1 200 OK"
+08:09:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af7c7535-617e-4270-8f51-59e53949ecbc/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"af7c7535-617e-4270-8f51-59e53949ecbc","reference":"CLM-3FC736A1","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"5000.01","description":"QA e4352672 Quite probably activity clear institution significant adult.","incident_date":"2026-09-14","status":"UNDER_REVIEW","created_at":"2026-09-21T08:09:04.108688Z","updated_at":"2026-09-21T08:09:04.128345Z","withdrawn_at":null,"decided_by_id":null}
+08:09:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af7c7535-617e-4270-8f51-59e53949ecbc/transitions "HTTP/1.1 403 Forbidden"
+08:09:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af7c7535-617e-4270-8f51-59e53949ecbc/transitions -> 403 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 5000.01 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+08:09:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/af7c7535-617e-4270-8f51-59e53949ecbc "HTTP/1.1 200 OK"
+08:09:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/af7c7535-617e-4270-8f51-59e53949ecbc -> 200 (4 ms)
+  response: {"id":"af7c7535-617e-4270-8f51-59e53949ecbc","reference":"CLM-3FC736A1","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"5000.01","description":"QA e4352672 Quite probably activity clear institution significant adult.","incident_date":"2026-09-14","status":"UNDER_REVIEW","created_at":"2026-09-21T08:09:04.108688Z","updated_at":"2026-09-21T08:09:04.128345Z","withdrawn_at":null,"decided_by_id":null}
+08:09:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]

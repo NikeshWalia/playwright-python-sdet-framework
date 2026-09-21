@@ -1,0 +1,12 @@
+08:09:03 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_the_owner_can_read_their_own_claim
+08:09:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:09:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"a6b651bf-ceff-45d4-976d-8950859e6d66","policy_number":"POL-1001","holder_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","coverage_limit":"10000.00","is_active":true},{"id":"189c8d19-9fe5-444f-906e-fac2e48e6bf0","policy_number":"POL-1002","holder_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","coverage_limit":"2500.00","is_active":true}]
+08:09:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:09:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'a6b651bf-ceff-45d4-976d-8950859e6d66', 'amount': '250.00', 'description': 'QA f0159b17 Something able politics spend would perform once.', 'incident_date': '2026-09-14'}
+  response: {"id":"e80623ba-ea9c-4f61-a7e1-1c2e851fa75f","reference":"CLM-CB42E41B","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"250.00","description":"QA f0159b17 Something able politics spend would perform once.","incident_date":"2026-09-14","status":"DRAFT","created_at":"2026-09-21T08:09:03.607496Z","updated_at":"2026-09-21T08:09:03.607496Z","withdrawn_at":null,"decided_by_id":null}
+08:09:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/e80623ba-ea9c-4f61-a7e1-1c2e851fa75f "HTTP/1.1 200 OK"
+08:09:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/e80623ba-ea9c-4f61-a7e1-1c2e851fa75f -> 200 (5 ms)
+  response: {"id":"e80623ba-ea9c-4f61-a7e1-1c2e851fa75f","reference":"CLM-CB42E41B","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"250.00","description":"QA f0159b17 Something able politics spend would perform once.","incident_date":"2026-09-14","status":"DRAFT","created_at":"2026-09-21T08:09:03.607496Z","updated_at":"2026-09-21T08:09:03.607496Z","withdrawn_at":null,"decided_by_id":null}
+08:09:03 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_the_owner_can_read_their_own_claim

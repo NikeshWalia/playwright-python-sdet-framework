@@ -1,0 +1,32 @@
+08:09:05 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-start_review]
+08:09:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:09:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"a6b651bf-ceff-45d4-976d-8950859e6d66","policy_number":"POL-1001","holder_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","coverage_limit":"10000.00","is_active":true},{"id":"189c8d19-9fe5-444f-906e-fac2e48e6bf0","policy_number":"POL-1002","holder_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","coverage_limit":"2500.00","is_active":true}]
+08:09:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:09:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'a6b651bf-ceff-45d4-976d-8950859e6d66', 'amount': '100.00', 'description': 'QA 56178daf Enough agency current nothing.', 'incident_date': '2026-09-14'}
+  response: {"id":"7820b9e6-e0da-45e8-b45c-c0fd932f3674","reference":"CLM-2A378DE3","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"100.00","description":"QA 56178daf Enough agency current nothing.","incident_date":"2026-09-14","status":"DRAFT","created_at":"2026-09-21T08:09:05.261542Z","updated_at":"2026-09-21T08:09:05.261542Z","withdrawn_at":null,"decided_by_id":null}
+08:09:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions "HTTP/1.1 200 OK"
+08:09:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7820b9e6-e0da-45e8-b45c-c0fd932f3674","reference":"CLM-2A378DE3","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"100.00","description":"QA 56178daf Enough agency current nothing.","incident_date":"2026-09-14","status":"SUBMITTED","created_at":"2026-09-21T08:09:05.261542Z","updated_at":"2026-09-21T08:09:05.272909Z","withdrawn_at":null,"decided_by_id":null}
+08:09:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions "HTTP/1.1 200 OK"
+08:09:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7820b9e6-e0da-45e8-b45c-c0fd932f3674","reference":"CLM-2A378DE3","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"100.00","description":"QA 56178daf Enough agency current nothing.","incident_date":"2026-09-14","status":"UNDER_REVIEW","created_at":"2026-09-21T08:09:05.261542Z","updated_at":"2026-09-21T08:09:05.283102Z","withdrawn_at":null,"decided_by_id":null}
+08:09:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions "HTTP/1.1 200 OK"
+08:09:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"7820b9e6-e0da-45e8-b45c-c0fd932f3674","reference":"CLM-2A378DE3","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"100.00","description":"QA 56178daf Enough agency current nothing.","incident_date":"2026-09-14","status":"APPROVED","created_at":"2026-09-21T08:09:05.261542Z","updated_at":"2026-09-21T08:09:05.292050Z","withdrawn_at":null,"decided_by_id":"dbe2f454-5688-4adb-9288-8c1097242118"}
+08:09:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions "HTTP/1.1 200 OK"
+08:09:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions -> 200 (13 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"7820b9e6-e0da-45e8-b45c-c0fd932f3674","reference":"CLM-2A378DE3","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"100.00","description":"QA 56178daf Enough agency current nothing.","incident_date":"2026-09-14","status":"PAID","created_at":"2026-09-21T08:09:05.261542Z","updated_at":"2026-09-21T08:09:05.303639Z","withdrawn_at":null,"decided_by_id":"dbe2f454-5688-4adb-9288-8c1097242118"}
+08:09:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions "HTTP/1.1 409 Conflict"
+08:09:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674/transitions -> 409 (5 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status PAID; it must be SUBMITTED."}
+08:09:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674 "HTTP/1.1 200 OK"
+08:09:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/7820b9e6-e0da-45e8-b45c-c0fd932f3674 -> 200 (6 ms)
+  response: {"id":"7820b9e6-e0da-45e8-b45c-c0fd932f3674","reference":"CLM-2A378DE3","policy_id":"a6b651bf-ceff-45d4-976d-8950859e6d66","claimant_id":"90dd15e1-5a16-4b62-a2d8-9cdf3dd72ef4","amount":"100.00","description":"QA 56178daf Enough agency current nothing.","incident_date":"2026-09-14","status":"PAID","created_at":"2026-09-21T08:09:05.261542Z","updated_at":"2026-09-21T08:09:05.303639Z","withdrawn_at":null,"decided_by_id":"dbe2f454-5688-4adb-9288-8c1097242118"}
+08:09:05 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-start_review]
