@@ -1,0 +1,26 @@
+07:54:20 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+07:54:20 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:54:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (11 ms)
+  response: [{"id":"19cf136f-0266-4bba-ad36-99879dee55a9","policy_number":"POL-1001","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"10000.00","is_active":true},{"id":"92c67f24-56cc-479a-be9f-2ee1ece02c3e","policy_number":"POL-1002","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"2500.00","is_active":true}]
+07:54:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:54:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': '19cf136f-0266-4bba-ad36-99879dee55a9', 'amount': '410.00', 'description': 'QA 6c63bc03 Force just court allow.', 'incident_date': '2026-09-15'}
+  response: {"id":"350773a5-7b1a-45de-a5c0-52eaef07085c","reference":"CLM-1A60E005","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"410.00","description":"QA 6c63bc03 Force just court allow.","incident_date":"2026-09-15","status":"DRAFT","created_at":"2026-09-22T07:54:20.682608Z","updated_at":"2026-09-22T07:54:20.682608Z","withdrawn_at":null,"decided_by_id":null}
+07:54:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/350773a5-7b1a-45de-a5c0-52eaef07085c/transitions "HTTP/1.1 200 OK"
+07:54:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/350773a5-7b1a-45de-a5c0-52eaef07085c/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"350773a5-7b1a-45de-a5c0-52eaef07085c","reference":"CLM-1A60E005","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"410.00","description":"QA 6c63bc03 Force just court allow.","incident_date":"2026-09-15","status":"SUBMITTED","created_at":"2026-09-22T07:54:20.682608Z","updated_at":"2026-09-22T07:54:20.696096Z","withdrawn_at":null,"decided_by_id":null}
+07:54:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/350773a5-7b1a-45de-a5c0-52eaef07085c/transitions "HTTP/1.1 200 OK"
+07:54:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/350773a5-7b1a-45de-a5c0-52eaef07085c/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"350773a5-7b1a-45de-a5c0-52eaef07085c","reference":"CLM-1A60E005","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"410.00","description":"QA 6c63bc03 Force just court allow.","incident_date":"2026-09-15","status":"UNDER_REVIEW","created_at":"2026-09-22T07:54:20.682608Z","updated_at":"2026-09-22T07:54:20.709219Z","withdrawn_at":null,"decided_by_id":null}
+07:54:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/350773a5-7b1a-45de-a5c0-52eaef07085c/transitions "HTTP/1.1 200 OK"
+07:54:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/350773a5-7b1a-45de-a5c0-52eaef07085c/transitions -> 200 (13 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"350773a5-7b1a-45de-a5c0-52eaef07085c","reference":"CLM-1A60E005","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"410.00","description":"QA 6c63bc03 Force just court allow.","incident_date":"2026-09-15","status":"APPROVED","created_at":"2026-09-22T07:54:20.682608Z","updated_at":"2026-09-22T07:54:20.722424Z","withdrawn_at":null,"decided_by_id":"71fa721d-fc89-4798-8789-4b83afed3239"}
+07:54:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/350773a5-7b1a-45de-a5c0-52eaef07085c/transitions "HTTP/1.1 200 OK"
+07:54:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/350773a5-7b1a-45de-a5c0-52eaef07085c/transitions -> 200 (24 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"350773a5-7b1a-45de-a5c0-52eaef07085c","reference":"CLM-1A60E005","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"410.00","description":"QA 6c63bc03 Force just court allow.","incident_date":"2026-09-15","status":"PAID","created_at":"2026-09-22T07:54:20.682608Z","updated_at":"2026-09-22T07:54:20.739742Z","withdrawn_at":null,"decided_by_id":"71fa721d-fc89-4798-8789-4b83afed3239"}
+07:54:20 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/350773a5-7b1a-45de-a5c0-52eaef07085c
+07:54:20 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

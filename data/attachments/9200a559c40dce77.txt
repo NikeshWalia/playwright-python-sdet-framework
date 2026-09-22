@@ -1,0 +1,10 @@
+07:54:16 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]
+07:54:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:54:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"19cf136f-0266-4bba-ad36-99879dee55a9","policy_number":"POL-1001","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"10000.00","is_active":true},{"id":"92c67f24-56cc-479a-be9f-2ee1ece02c3e","policy_number":"POL-1002","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"2500.00","is_active":true}]
+07:54:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:54:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (26 ms)
+  request : {'policy_id': '19cf136f-0266-4bba-ad36-99879dee55a9', 'amount': '432.10', 'description': 'QA a4a509b8 Too make happy send again amount.', 'incident_date': '2026-09-15'}
+  response: {"id":"865a4e45-b06d-48f2-92a7-b83a12eefd8e","reference":"CLM-35F6EBC2","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"432.10","description":"QA a4a509b8 Too make happy send again amount.","incident_date":"2026-09-15","status":"DRAFT","created_at":"2026-09-22T07:54:16.319307Z","updated_at":"2026-09-22T07:54:16.319307Z","withdrawn_at":null,"decided_by_id":null}
+07:54:16 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:54:16 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]

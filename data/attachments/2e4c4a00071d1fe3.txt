@@ -1,0 +1,13 @@
+07:54:11 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_an_unknown_action_is_rejected
+07:54:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:54:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"19cf136f-0266-4bba-ad36-99879dee55a9","policy_number":"POL-1001","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"10000.00","is_active":true},{"id":"92c67f24-56cc-479a-be9f-2ee1ece02c3e","policy_number":"POL-1002","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"2500.00","is_active":true}]
+07:54:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:54:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '19cf136f-0266-4bba-ad36-99879dee55a9', 'amount': '250.00', 'description': 'QA e7873e21 Again former enter small structure continue share science.', 'incident_date': '2026-09-15'}
+  response: {"id":"4bcaea73-921a-4fb7-b78f-bf596d0d7491","reference":"CLM-CB8295A1","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"250.00","description":"QA e7873e21 Again former enter small structure continue share science.","incident_date":"2026-09-15","status":"DRAFT","created_at":"2026-09-22T07:54:11.723523Z","updated_at":"2026-09-22T07:54:11.723523Z","withdrawn_at":null,"decided_by_id":null}
+07:54:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4bcaea73-921a-4fb7-b78f-bf596d0d7491/transitions "HTTP/1.1 422 Unprocessable Entity"
+07:54:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4bcaea73-921a-4fb7-b78f-bf596d0d7491/transitions -> 422 (6 ms)
+  request : {'action': 'teleport', 'note': None}
+  response: {"detail":[{"type":"enum","loc":["body","action"],"msg":"Input should be 'submit', 'start_review', 'approve', 'reject' or 'pay'","input":"teleport","ctx":{"expected":"'submit', 'start_review', 'approve', 'reject' or 'pay'"}}]}
+07:54:11 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_an_unknown_action_is_rejected

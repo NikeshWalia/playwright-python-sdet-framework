@@ -1,0 +1,32 @@
+07:54:12 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-approve]
+07:54:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:54:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"19cf136f-0266-4bba-ad36-99879dee55a9","policy_number":"POL-1001","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"10000.00","is_active":true},{"id":"92c67f24-56cc-479a-be9f-2ee1ece02c3e","policy_number":"POL-1002","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"2500.00","is_active":true}]
+07:54:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:54:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '19cf136f-0266-4bba-ad36-99879dee55a9', 'amount': '100.00', 'description': 'QA c65a67b9 More moment party long job.', 'incident_date': '2026-09-15'}
+  response: {"id":"3147b01d-0e54-4366-8153-7bf2d121f352","reference":"CLM-7213B4D5","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"100.00","description":"QA c65a67b9 More moment party long job.","incident_date":"2026-09-15","status":"DRAFT","created_at":"2026-09-22T07:54:12.278466Z","updated_at":"2026-09-22T07:54:12.278466Z","withdrawn_at":null,"decided_by_id":null}
+07:54:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions "HTTP/1.1 200 OK"
+07:54:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"3147b01d-0e54-4366-8153-7bf2d121f352","reference":"CLM-7213B4D5","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"100.00","description":"QA c65a67b9 More moment party long job.","incident_date":"2026-09-15","status":"SUBMITTED","created_at":"2026-09-22T07:54:12.278466Z","updated_at":"2026-09-22T07:54:12.292529Z","withdrawn_at":null,"decided_by_id":null}
+07:54:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions "HTTP/1.1 200 OK"
+07:54:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"3147b01d-0e54-4366-8153-7bf2d121f352","reference":"CLM-7213B4D5","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"100.00","description":"QA c65a67b9 More moment party long job.","incident_date":"2026-09-15","status":"UNDER_REVIEW","created_at":"2026-09-22T07:54:12.278466Z","updated_at":"2026-09-22T07:54:12.304822Z","withdrawn_at":null,"decided_by_id":null}
+07:54:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions "HTTP/1.1 200 OK"
+07:54:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions -> 200 (12 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"3147b01d-0e54-4366-8153-7bf2d121f352","reference":"CLM-7213B4D5","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"100.00","description":"QA c65a67b9 More moment party long job.","incident_date":"2026-09-15","status":"APPROVED","created_at":"2026-09-22T07:54:12.278466Z","updated_at":"2026-09-22T07:54:12.315013Z","withdrawn_at":null,"decided_by_id":"71fa721d-fc89-4798-8789-4b83afed3239"}
+07:54:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions "HTTP/1.1 200 OK"
+07:54:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"3147b01d-0e54-4366-8153-7bf2d121f352","reference":"CLM-7213B4D5","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"100.00","description":"QA c65a67b9 More moment party long job.","incident_date":"2026-09-15","status":"PAID","created_at":"2026-09-22T07:54:12.278466Z","updated_at":"2026-09-22T07:54:12.326896Z","withdrawn_at":null,"decided_by_id":"71fa721d-fc89-4798-8789-4b83afed3239"}
+07:54:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions "HTTP/1.1 409 Conflict"
+07:54:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352/transitions -> 409 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status PAID; it must be UNDER_REVIEW."}
+07:54:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352 "HTTP/1.1 200 OK"
+07:54:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/3147b01d-0e54-4366-8153-7bf2d121f352 -> 200 (7 ms)
+  response: {"id":"3147b01d-0e54-4366-8153-7bf2d121f352","reference":"CLM-7213B4D5","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"100.00","description":"QA c65a67b9 More moment party long job.","incident_date":"2026-09-15","status":"PAID","created_at":"2026-09-22T07:54:12.278466Z","updated_at":"2026-09-22T07:54:12.326896Z","withdrawn_at":null,"decided_by_id":"71fa721d-fc89-4798-8789-4b83afed3239"}
+07:54:12 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-approve]

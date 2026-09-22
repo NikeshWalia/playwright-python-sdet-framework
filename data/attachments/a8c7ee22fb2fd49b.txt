@@ -1,0 +1,12 @@
+07:54:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customers_list_never_includes_another_customers_claims
+07:54:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:54:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"19cf136f-0266-4bba-ad36-99879dee55a9","policy_number":"POL-1001","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"10000.00","is_active":true},{"id":"92c67f24-56cc-479a-be9f-2ee1ece02c3e","policy_number":"POL-1002","holder_id":"1c553103-c7c3-436c-bcac-dc20965501f7","coverage_limit":"2500.00","is_active":true}]
+07:54:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:54:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '19cf136f-0266-4bba-ad36-99879dee55a9', 'amount': '250.00', 'description': 'QA ed6d6b1e Admit small special standard hope appear teacher.', 'incident_date': '2026-09-15'}
+  response: {"id":"5df9a046-3035-417c-beca-279d2bcdc774","reference":"CLM-9EB0672C","policy_id":"19cf136f-0266-4bba-ad36-99879dee55a9","claimant_id":"1c553103-c7c3-436c-bcac-dc20965501f7","amount":"250.00","description":"QA ed6d6b1e Admit small special standard hope appear teacher.","incident_date":"2026-09-15","status":"DRAFT","created_at":"2026-09-22T07:54:10.147834Z","updated_at":"2026-09-22T07:54:10.147834Z","withdrawn_at":null,"decided_by_id":null}
+07:54:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?q=CLM-9EB0672C "HTTP/1.1 200 OK"
+07:54:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?q=CLM-9EB0672C -> 200 (8 ms)
+  response: {"items":[],"page":1,"size":20,"total":0}
+07:54:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customers_list_never_includes_another_customers_claims
