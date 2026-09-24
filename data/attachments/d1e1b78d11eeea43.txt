@@ -1,0 +1,34 @@
+07:46:09 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]
+07:46:09 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","policy_number":"POL-1001","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"10000.00","is_active":true},{"id":"bac1bea4-980f-4d9f-8c21-6f534e1afcc6","policy_number":"POL-1002","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"2500.00","is_active":true}]
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:46:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'b5a6f3f2-0de5-491a-8d29-0bc230d0769d', 'amount': '1975.25', 'description': 'QA b41dd14e Occur though structure side imagine.', 'incident_date': '2026-09-17'}
+  response: {"id":"90bf20aa-8e4e-4538-b14c-95e18c126598","reference":"CLM-6F8200B7","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"1975.25","description":"QA b41dd14e Occur though structure side imagine.","incident_date":"2026-09-17","status":"DRAFT","created_at":"2026-09-24T07:46:09.373521Z","updated_at":"2026-09-24T07:46:09.373521Z","withdrawn_at":null,"decided_by_id":null}
+07:46:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/90bf20aa-8e4e-4538-b14c-95e18c126598/transitions "HTTP/1.1 200 OK"
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/90bf20aa-8e4e-4538-b14c-95e18c126598/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"90bf20aa-8e4e-4538-b14c-95e18c126598","reference":"CLM-6F8200B7","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"1975.25","description":"QA b41dd14e Occur though structure side imagine.","incident_date":"2026-09-17","status":"SUBMITTED","created_at":"2026-09-24T07:46:09.373521Z","updated_at":"2026-09-24T07:46:09.383325Z","withdrawn_at":null,"decided_by_id":null}
+07:46:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/90bf20aa-8e4e-4538-b14c-95e18c126598/transitions "HTTP/1.1 200 OK"
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/90bf20aa-8e4e-4538-b14c-95e18c126598/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"90bf20aa-8e4e-4538-b14c-95e18c126598","reference":"CLM-6F8200B7","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"1975.25","description":"QA b41dd14e Occur though structure side imagine.","incident_date":"2026-09-17","status":"UNDER_REVIEW","created_at":"2026-09-24T07:46:09.373521Z","updated_at":"2026-09-24T07:46:09.391156Z","withdrawn_at":null,"decided_by_id":null}
+07:46:09 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/90bf20aa-8e4e-4538-b14c-95e18c126598
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('90bf20aa-8e4e-4538-b14c-95e18c126598',)
+  rows: 1
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('90bf20aa-8e4e-4538-b14c-95e18c126598',)
+  rows: 5
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('90bf20aa-8e4e-4538-b14c-95e18c126598',)
+  rows: 1
+07:46:09 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('90bf20aa-8e4e-4538-b14c-95e18c126598',)
+  rows: 1
+07:46:09 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]

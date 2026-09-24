@@ -1,0 +1,10 @@
+07:46:11 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]
+07:46:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","policy_number":"POL-1001","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"10000.00","is_active":true},{"id":"bac1bea4-980f-4d9f-8c21-6f534e1afcc6","policy_number":"POL-1002","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"2500.00","is_active":true}]
+07:46:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'b5a6f3f2-0de5-491a-8d29-0bc230d0769d', 'amount': '250.00', 'description': 'QA ea0e0fa0 Learn road arm feel.', 'incident_date': '2026-09-17'}
+  response: {"id":"c464d522-3ac1-499d-aedc-a5797a0948be","reference":"CLM-067AE8FE","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"250.00","description":"QA ea0e0fa0 Learn road arm feel.","incident_date":"2026-09-17","status":"DRAFT","created_at":"2026-09-24T07:46:11.535955Z","updated_at":"2026-09-24T07:46:11.535955Z","withdrawn_at":null,"decided_by_id":null}
+07:46:11 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:46:11 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]

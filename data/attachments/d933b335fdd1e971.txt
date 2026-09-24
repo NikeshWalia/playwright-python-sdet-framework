@@ -1,0 +1,32 @@
+07:46:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-pay]
+07:46:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","policy_number":"POL-1001","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"10000.00","is_active":true},{"id":"bac1bea4-980f-4d9f-8c21-6f534e1afcc6","policy_number":"POL-1002","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"2500.00","is_active":true}]
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'b5a6f3f2-0de5-491a-8d29-0bc230d0769d', 'amount': '100.00', 'description': 'QA 74a06051 Down school accept these office doctor because cell.', 'incident_date': '2026-09-17'}
+  response: {"id":"cc4483ae-29a2-4e20-9332-430e755fa8eb","reference":"CLM-DECD97E5","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"100.00","description":"QA 74a06051 Down school accept these office doctor because cell.","incident_date":"2026-09-17","status":"DRAFT","created_at":"2026-09-24T07:46:06.866622Z","updated_at":"2026-09-24T07:46:06.866622Z","withdrawn_at":null,"decided_by_id":null}
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"cc4483ae-29a2-4e20-9332-430e755fa8eb","reference":"CLM-DECD97E5","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"100.00","description":"QA 74a06051 Down school accept these office doctor because cell.","incident_date":"2026-09-17","status":"SUBMITTED","created_at":"2026-09-24T07:46:06.866622Z","updated_at":"2026-09-24T07:46:06.875425Z","withdrawn_at":null,"decided_by_id":null}
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"cc4483ae-29a2-4e20-9332-430e755fa8eb","reference":"CLM-DECD97E5","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"100.00","description":"QA 74a06051 Down school accept these office doctor because cell.","incident_date":"2026-09-17","status":"UNDER_REVIEW","created_at":"2026-09-24T07:46:06.866622Z","updated_at":"2026-09-24T07:46:06.884593Z","withdrawn_at":null,"decided_by_id":null}
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions -> 200 (28 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"cc4483ae-29a2-4e20-9332-430e755fa8eb","reference":"CLM-DECD97E5","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"100.00","description":"QA 74a06051 Down school accept these office doctor because cell.","incident_date":"2026-09-17","status":"APPROVED","created_at":"2026-09-24T07:46:06.866622Z","updated_at":"2026-09-24T07:46:06.892984Z","withdrawn_at":null,"decided_by_id":"7c0ea0b1-cc20-49fe-9f86-bd03cdd026d6"}
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"cc4483ae-29a2-4e20-9332-430e755fa8eb","reference":"CLM-DECD97E5","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"100.00","description":"QA 74a06051 Down school accept these office doctor because cell.","incident_date":"2026-09-17","status":"PAID","created_at":"2026-09-24T07:46:06.866622Z","updated_at":"2026-09-24T07:46:06.920696Z","withdrawn_at":null,"decided_by_id":"7c0ea0b1-cc20-49fe-9f86-bd03cdd026d6"}
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions "HTTP/1.1 409 Conflict"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+07:46:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/cc4483ae-29a2-4e20-9332-430e755fa8eb -> 200 (4 ms)
+  response: {"id":"cc4483ae-29a2-4e20-9332-430e755fa8eb","reference":"CLM-DECD97E5","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"100.00","description":"QA 74a06051 Down school accept these office doctor because cell.","incident_date":"2026-09-17","status":"PAID","created_at":"2026-09-24T07:46:06.866622Z","updated_at":"2026-09-24T07:46:06.920696Z","withdrawn_at":null,"decided_by_id":"7c0ea0b1-cc20-49fe-9f86-bd03cdd026d6"}
+07:46:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-pay]

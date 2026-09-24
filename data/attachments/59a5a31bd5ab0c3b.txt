@@ -1,0 +1,28 @@
+07:46:06 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout
+07:46:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","policy_number":"POL-1001","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"10000.00","is_active":true},{"id":"bac1bea4-980f-4d9f-8c21-6f534e1afcc6","policy_number":"POL-1002","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"2500.00","is_active":true}]
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (47 ms)
+  request : {'policy_id': 'b5a6f3f2-0de5-491a-8d29-0bc230d0769d', 'amount': '800.00', 'description': 'QA a0cea2f2 Mind different another majority whom.', 'incident_date': '2026-09-17'}
+  response: {"id":"aab564c9-4016-47ba-afd4-38d906b8cef6","reference":"CLM-72BB5ABC","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"800.00","description":"QA a0cea2f2 Mind different another majority whom.","incident_date":"2026-09-17","status":"DRAFT","created_at":"2026-09-24T07:46:06.500201Z","updated_at":"2026-09-24T07:46:06.500201Z","withdrawn_at":null,"decided_by_id":null}
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/aab564c9-4016-47ba-afd4-38d906b8cef6/transitions "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/aab564c9-4016-47ba-afd4-38d906b8cef6/transitions -> 200 (69 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"aab564c9-4016-47ba-afd4-38d906b8cef6","reference":"CLM-72BB5ABC","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"800.00","description":"QA a0cea2f2 Mind different another majority whom.","incident_date":"2026-09-17","status":"SUBMITTED","created_at":"2026-09-24T07:46:06.500201Z","updated_at":"2026-09-24T07:46:06.548536Z","withdrawn_at":null,"decided_by_id":null}
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/aab564c9-4016-47ba-afd4-38d906b8cef6/transitions "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/aab564c9-4016-47ba-afd4-38d906b8cef6/transitions -> 200 (39 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"aab564c9-4016-47ba-afd4-38d906b8cef6","reference":"CLM-72BB5ABC","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"800.00","description":"QA a0cea2f2 Mind different another majority whom.","incident_date":"2026-09-17","status":"UNDER_REVIEW","created_at":"2026-09-24T07:46:06.500201Z","updated_at":"2026-09-24T07:46:06.618838Z","withdrawn_at":null,"decided_by_id":null}
+07:46:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/aab564c9-4016-47ba-afd4-38d906b8cef6/transitions "HTTP/1.1 200 OK"
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/aab564c9-4016-47ba-afd4-38d906b8cef6/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"aab564c9-4016-47ba-afd4-38d906b8cef6","reference":"CLM-72BB5ABC","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"800.00","description":"QA a0cea2f2 Mind different another majority whom.","incident_date":"2026-09-17","status":"APPROVED","created_at":"2026-09-24T07:46:06.500201Z","updated_at":"2026-09-24T07:46:06.658016Z","withdrawn_at":null,"decided_by_id":"7c0ea0b1-cc20-49fe-9f86-bd03cdd026d6"}
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('aab564c9-4016-47ba-afd4-38d906b8cef6',)
+  rows: 0
+07:46:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('aab564c9-4016-47ba-afd4-38d906b8cef6',)
+  rows: 1
+07:46:06 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout

@@ -1,0 +1,12 @@
+07:46:02 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event
+07:46:02 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","policy_number":"POL-1001","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"10000.00","is_active":true},{"id":"bac1bea4-980f-4d9f-8c21-6f534e1afcc6","policy_number":"POL-1002","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"2500.00","is_active":true}]
+07:46:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': 'b5a6f3f2-0de5-491a-8d29-0bc230d0769d', 'amount': '250.00', 'description': 'QA eba560af Fear catch make newspaper.', 'incident_date': '2026-09-17'}
+  response: {"id":"eb350505-ae18-4343-a24c-cf04a3882c30","reference":"CLM-AD079A30","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"250.00","description":"QA eba560af Fear catch make newspaper.","incident_date":"2026-09-17","status":"DRAFT","created_at":"2026-09-24T07:46:02.165424Z","updated_at":"2026-09-24T07:46:02.165424Z","withdrawn_at":null,"decided_by_id":null}
+07:46:02 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/eb350505-ae18-4343-a24c-cf04a3882c30/events "HTTP/1.1 200 OK"
+07:46:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/eb350505-ae18-4343-a24c-cf04a3882c30/events -> 200 (4 ms)
+  response: [{"id":"67e9873f-baa0-4edd-bb88-26adc7e5828a","claim_id":"eb350505-ae18-4343-a24c-cf04a3882c30","actor_id":"48d6f500-25e6-40d6-8655-60aee376560d","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-24T07:46:02.165424Z"}]
+07:46:02 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event

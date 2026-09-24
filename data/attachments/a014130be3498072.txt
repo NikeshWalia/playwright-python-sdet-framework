@@ -1,0 +1,28 @@
+07:46:07 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_the_approving_actor_is_recorded_against_the_claim
+07:46:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","policy_number":"POL-1001","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"10000.00","is_active":true},{"id":"bac1bea4-980f-4d9f-8c21-6f534e1afcc6","policy_number":"POL-1002","holder_id":"48d6f500-25e6-40d6-8655-60aee376560d","coverage_limit":"2500.00","is_active":true}]
+07:46:07 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:46:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': 'b5a6f3f2-0de5-491a-8d29-0bc230d0769d', 'amount': '900.00', 'description': 'QA ecb638ca Great actually never view yard tough.', 'incident_date': '2026-09-17'}
+  response: {"id":"d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a","reference":"CLM-FBC43D77","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"900.00","description":"QA ecb638ca Great actually never view yard tough.","incident_date":"2026-09-17","status":"DRAFT","created_at":"2026-09-24T07:46:07.083572Z","updated_at":"2026-09-24T07:46:07.083572Z","withdrawn_at":null,"decided_by_id":null}
+07:46:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a/transitions "HTTP/1.1 200 OK"
+07:46:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a","reference":"CLM-FBC43D77","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"900.00","description":"QA ecb638ca Great actually never view yard tough.","incident_date":"2026-09-17","status":"SUBMITTED","created_at":"2026-09-24T07:46:07.083572Z","updated_at":"2026-09-24T07:46:07.099836Z","withdrawn_at":null,"decided_by_id":null}
+07:46:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a/transitions "HTTP/1.1 200 OK"
+07:46:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a","reference":"CLM-FBC43D77","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"900.00","description":"QA ecb638ca Great actually never view yard tough.","incident_date":"2026-09-17","status":"UNDER_REVIEW","created_at":"2026-09-24T07:46:07.083572Z","updated_at":"2026-09-24T07:46:07.108984Z","withdrawn_at":null,"decided_by_id":null}
+07:46:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a/transitions "HTTP/1.1 200 OK"
+07:46:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a","reference":"CLM-FBC43D77","policy_id":"b5a6f3f2-0de5-491a-8d29-0bc230d0769d","claimant_id":"48d6f500-25e6-40d6-8655-60aee376560d","amount":"900.00","description":"QA ecb638ca Great actually never view yard tough.","incident_date":"2026-09-17","status":"APPROVED","created_at":"2026-09-24T07:46:07.083572Z","updated_at":"2026-09-24T07:46:07.117704Z","withdrawn_at":null,"decided_by_id":"7c0ea0b1-cc20-49fe-9f86-bd03cdd026d6"}
+07:46:07 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('d17ee21e-c7f7-4e91-9f09-27eebf5b2b4a',)
+  rows: 1
+07:46:07 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+07:46:07 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_the_approving_actor_is_recorded_against_the_claim
