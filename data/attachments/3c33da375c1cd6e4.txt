@@ -1,0 +1,28 @@
+08:06:40 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-start_review]
+08:06:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:06:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","policy_number":"POL-1001","holder_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","coverage_limit":"10000.00","is_active":true},{"id":"06a0dec3-356b-4510-82c9-2c628ee0bdc0","policy_number":"POL-1002","holder_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","coverage_limit":"2500.00","is_active":true}]
+08:06:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:06:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '64c309fc-c695-4a96-a21f-f333eec0d1a4', 'amount': '100.00', 'description': 'QA 87ce317e Member when build late.', 'incident_date': '2026-09-18'}
+  response: {"id":"5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f","reference":"CLM-DD82B726","policy_id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","claimant_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","amount":"100.00","description":"QA 87ce317e Member when build late.","incident_date":"2026-09-18","status":"DRAFT","created_at":"2026-09-25T08:06:40.251391Z","updated_at":"2026-09-25T08:06:40.251391Z","withdrawn_at":null,"decided_by_id":null}
+08:06:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f/transitions "HTTP/1.1 200 OK"
+08:06:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f","reference":"CLM-DD82B726","policy_id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","claimant_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","amount":"100.00","description":"QA 87ce317e Member when build late.","incident_date":"2026-09-18","status":"SUBMITTED","created_at":"2026-09-25T08:06:40.251391Z","updated_at":"2026-09-25T08:06:40.263661Z","withdrawn_at":null,"decided_by_id":null}
+08:06:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f/transitions "HTTP/1.1 200 OK"
+08:06:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f","reference":"CLM-DD82B726","policy_id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","claimant_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","amount":"100.00","description":"QA 87ce317e Member when build late.","incident_date":"2026-09-18","status":"UNDER_REVIEW","created_at":"2026-09-25T08:06:40.251391Z","updated_at":"2026-09-25T08:06:40.274830Z","withdrawn_at":null,"decided_by_id":null}
+08:06:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f/transitions "HTTP/1.1 200 OK"
+08:06:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f/transitions -> 200 (11 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f","reference":"CLM-DD82B726","policy_id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","claimant_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","amount":"100.00","description":"QA 87ce317e Member when build late.","incident_date":"2026-09-18","status":"REJECTED","created_at":"2026-09-25T08:06:40.251391Z","updated_at":"2026-09-25T08:06:40.285024Z","withdrawn_at":null,"decided_by_id":"255eabdb-b7ef-409a-94ca-fd561ae5f732"}
+08:06:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f/transitions "HTTP/1.1 409 Conflict"
+08:06:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f/transitions -> 409 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status REJECTED; it must be SUBMITTED."}
+08:06:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f "HTTP/1.1 200 OK"
+08:06:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f -> 200 (5 ms)
+  response: {"id":"5f7eb5e6-ff7c-43d0-a31b-6dc38bdaeb2f","reference":"CLM-DD82B726","policy_id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","claimant_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","amount":"100.00","description":"QA 87ce317e Member when build late.","incident_date":"2026-09-18","status":"REJECTED","created_at":"2026-09-25T08:06:40.251391Z","updated_at":"2026-09-25T08:06:40.285024Z","withdrawn_at":null,"decided_by_id":"255eabdb-b7ef-409a-94ca-fd561ae5f732"}
+08:06:40 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-start_review]

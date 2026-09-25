@@ -1,0 +1,9 @@
+08:06:38 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]
+08:06:38 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:06:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","policy_number":"POL-1001","holder_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","coverage_limit":"10000.00","is_active":true},{"id":"06a0dec3-356b-4510-82c9-2c628ee0bdc0","policy_number":"POL-1002","holder_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","coverage_limit":"2500.00","is_active":true}]
+08:06:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:06:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '64c309fc-c695-4a96-a21f-f333eec0d1a4', 'amount': '١٢٣', 'description': 'QA 5d3717d6 Reduce wish treatment green look.', 'incident_date': '2026-09-18'}
+  response: {"id":"0e0d907c-fe73-4e99-a2a7-54ad1bd7ad42","reference":"CLM-5BBAC8F0","policy_id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","claimant_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","amount":"123.00","description":"QA 5d3717d6 Reduce wish treatment green look.","incident_date":"2026-09-18","status":"DRAFT","created_at":"2026-09-25T08:06:38.983398Z","updated_at":"2026-09-25T08:06:38.983398Z","withdrawn_at":null,"decided_by_id":null}
+08:06:38 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]
