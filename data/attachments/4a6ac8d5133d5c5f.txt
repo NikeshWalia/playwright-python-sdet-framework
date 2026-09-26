@@ -1,0 +1,14 @@
+07:57:15 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
+07:57:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","policy_number":"POL-1001","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"10000.00","is_active":true},{"id":"59b02d6e-5fa7-433e-a74d-cd8fcc814bdf","policy_number":"POL-1002","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"2500.00","is_active":true}]
+07:57:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (22 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '820.00', 'description': 'QA 215165cb Pull goal court side.', 'incident_date': '2026-09-19'}
+  response: {"id":"17127f12-670d-49e0-827e-94412d00f455","reference":"CLM-753E81C6","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"820.00","description":"QA 215165cb Pull goal court side.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:15.455975Z","updated_at":"2026-09-26T07:57:15.455975Z","withdrawn_at":null,"decided_by_id":null}
+07:57:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/17127f12-670d-49e0-827e-94412d00f455/transitions "HTTP/1.1 200 OK"
+07:57:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/17127f12-670d-49e0-827e-94412d00f455/transitions -> 200 (16 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"17127f12-670d-49e0-827e-94412d00f455","reference":"CLM-753E81C6","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"820.00","description":"QA 215165cb Pull goal court side.","incident_date":"2026-09-19","status":"SUBMITTED","created_at":"2026-09-26T07:57:15.455975Z","updated_at":"2026-09-26T07:57:15.474994Z","withdrawn_at":null,"decided_by_id":null}
+07:57:15 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/17127f12-670d-49e0-827e-94412d00f455
+07:57:15 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]

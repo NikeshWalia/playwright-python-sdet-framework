@@ -1,0 +1,28 @@
+07:57:08 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-pay]
+07:57:08 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","policy_number":"POL-1001","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"10000.00","is_active":true},{"id":"59b02d6e-5fa7-433e-a74d-cd8fcc814bdf","policy_number":"POL-1002","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"2500.00","is_active":true}]
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '100.00', 'description': 'QA 6415fe37 Anything action before despite seat director.', 'incident_date': '2026-09-19'}
+  response: {"id":"dc0fcd0b-4592-4498-9b31-0cb5e9609e2a","reference":"CLM-B2A1CA05","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"100.00","description":"QA 6415fe37 Anything action before despite seat director.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:08.687324Z","updated_at":"2026-09-26T07:57:08.687324Z","withdrawn_at":null,"decided_by_id":null}
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a/transitions "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"dc0fcd0b-4592-4498-9b31-0cb5e9609e2a","reference":"CLM-B2A1CA05","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"100.00","description":"QA 6415fe37 Anything action before despite seat director.","incident_date":"2026-09-19","status":"SUBMITTED","created_at":"2026-09-26T07:57:08.687324Z","updated_at":"2026-09-26T07:57:08.698668Z","withdrawn_at":null,"decided_by_id":null}
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a/transitions "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"dc0fcd0b-4592-4498-9b31-0cb5e9609e2a","reference":"CLM-B2A1CA05","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"100.00","description":"QA 6415fe37 Anything action before despite seat director.","incident_date":"2026-09-19","status":"UNDER_REVIEW","created_at":"2026-09-26T07:57:08.687324Z","updated_at":"2026-09-26T07:57:08.710888Z","withdrawn_at":null,"decided_by_id":null}
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a/transitions "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a/transitions -> 200 (9 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"dc0fcd0b-4592-4498-9b31-0cb5e9609e2a","reference":"CLM-B2A1CA05","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"100.00","description":"QA 6415fe37 Anything action before despite seat director.","incident_date":"2026-09-19","status":"REJECTED","created_at":"2026-09-26T07:57:08.687324Z","updated_at":"2026-09-26T07:57:08.722999Z","withdrawn_at":null,"decided_by_id":"893a3f9c-6b2f-405c-a462-d774bf119634"}
+07:57:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a/transitions "HTTP/1.1 409 Conflict"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status REJECTED; it must be APPROVED."}
+07:57:08 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a "HTTP/1.1 200 OK"
+07:57:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/dc0fcd0b-4592-4498-9b31-0cb5e9609e2a -> 200 (5 ms)
+  response: {"id":"dc0fcd0b-4592-4498-9b31-0cb5e9609e2a","reference":"CLM-B2A1CA05","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"100.00","description":"QA 6415fe37 Anything action before despite seat director.","incident_date":"2026-09-19","status":"REJECTED","created_at":"2026-09-26T07:57:08.687324Z","updated_at":"2026-09-26T07:57:08.722999Z","withdrawn_at":null,"decided_by_id":"893a3f9c-6b2f-405c-a462-d774bf119634"}
+07:57:08 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-pay]

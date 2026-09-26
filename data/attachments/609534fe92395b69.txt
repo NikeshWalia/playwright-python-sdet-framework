@@ -1,0 +1,26 @@
+07:57:16 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+07:57:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (21 ms)
+  response: [{"id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","policy_number":"POL-1001","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"10000.00","is_active":true},{"id":"59b02d6e-5fa7-433e-a74d-cd8fcc814bdf","policy_number":"POL-1002","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"2500.00","is_active":true}]
+07:57:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (18 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '410.00', 'description': 'QA 6d4fb3b4 Training standard we door.', 'incident_date': '2026-09-19'}
+  response: {"id":"cf23c0e7-26a3-4ea1-b785-d743f98b1c09","reference":"CLM-4BE2D140","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"410.00","description":"QA 6d4fb3b4 Training standard we door.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:16.382161Z","updated_at":"2026-09-26T07:57:16.382161Z","withdrawn_at":null,"decided_by_id":null}
+07:57:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09/transitions "HTTP/1.1 200 OK"
+07:57:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09/transitions -> 200 (14 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"cf23c0e7-26a3-4ea1-b785-d743f98b1c09","reference":"CLM-4BE2D140","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"410.00","description":"QA 6d4fb3b4 Training standard we door.","incident_date":"2026-09-19","status":"SUBMITTED","created_at":"2026-09-26T07:57:16.382161Z","updated_at":"2026-09-26T07:57:16.399096Z","withdrawn_at":null,"decided_by_id":null}
+07:57:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09/transitions "HTTP/1.1 200 OK"
+07:57:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"cf23c0e7-26a3-4ea1-b785-d743f98b1c09","reference":"CLM-4BE2D140","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"410.00","description":"QA 6d4fb3b4 Training standard we door.","incident_date":"2026-09-19","status":"UNDER_REVIEW","created_at":"2026-09-26T07:57:16.382161Z","updated_at":"2026-09-26T07:57:16.414131Z","withdrawn_at":null,"decided_by_id":null}
+07:57:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09/transitions "HTTP/1.1 200 OK"
+07:57:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09/transitions -> 200 (13 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"cf23c0e7-26a3-4ea1-b785-d743f98b1c09","reference":"CLM-4BE2D140","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"410.00","description":"QA 6d4fb3b4 Training standard we door.","incident_date":"2026-09-19","status":"APPROVED","created_at":"2026-09-26T07:57:16.382161Z","updated_at":"2026-09-26T07:57:16.427305Z","withdrawn_at":null,"decided_by_id":"893a3f9c-6b2f-405c-a462-d774bf119634"}
+07:57:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09/transitions "HTTP/1.1 200 OK"
+07:57:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09/transitions -> 200 (19 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"cf23c0e7-26a3-4ea1-b785-d743f98b1c09","reference":"CLM-4BE2D140","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"410.00","description":"QA 6d4fb3b4 Training standard we door.","incident_date":"2026-09-19","status":"PAID","created_at":"2026-09-26T07:57:16.382161Z","updated_at":"2026-09-26T07:57:16.442967Z","withdrawn_at":null,"decided_by_id":"893a3f9c-6b2f-405c-a462-d774bf119634"}
+07:57:16 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/cf23c0e7-26a3-4ea1-b785-d743f98b1c09
+07:57:16 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

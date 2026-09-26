@@ -1,0 +1,25 @@
+07:57:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:57:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","policy_number":"POL-1001","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"10000.00","is_active":true},{"id":"59b02d6e-5fa7-433e-a74d-cd8fcc814bdf","policy_number":"POL-1002","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"2500.00","is_active":true}]
+07:57:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '250.00', 'description': 'QA c691a4a6 Lay American develop reduce.', 'incident_date': '2026-09-19'}
+  response: {"id":"4ea78b62-c07d-4a03-94a8-643030c636b7","reference":"CLM-5BCD25ED","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"250.00","description":"QA c691a4a6 Lay American develop reduce.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:06.733415Z","updated_at":"2026-09-26T07:57:06.733415Z","withdrawn_at":null,"decided_by_id":null}
+07:57:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '250.00', 'description': 'QA f42e863c Clear instead term public painting form your.', 'incident_date': '2026-09-19'}
+  response: {"id":"b6e93786-baf7-46e7-a04d-5757a4796146","reference":"CLM-1631D9E0","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"250.00","description":"QA f42e863c Clear instead term public painting form your.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:06.743915Z","updated_at":"2026-09-26T07:57:06.743915Z","withdrawn_at":null,"decided_by_id":null}
+07:57:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '250.00', 'description': 'QA 732cd92c Old drop surface just own including year.', 'incident_date': '2026-09-19'}
+  response: {"id":"ad289f68-467f-4990-83d4-691614e73e88","reference":"CLM-6321F792","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"250.00","description":"QA 732cd92c Old drop surface just own including year.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:06.754868Z","updated_at":"2026-09-26T07:57:06.754868Z","withdrawn_at":null,"decided_by_id":null}
+07:57:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '250.00', 'description': 'QA a2f7e332 Sea power when perhaps great less laugh.', 'incident_date': '2026-09-19'}
+  response: {"id":"80c06b90-2111-4ed0-a7fc-28d81ab1f291","reference":"CLM-575ACFF7","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"250.00","description":"QA a2f7e332 Sea power when perhaps great less laugh.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:06.765394Z","updated_at":"2026-09-26T07:57:06.765394Z","withdrawn_at":null,"decided_by_id":null}
+07:57:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '250.00', 'description': 'QA 58b502b5 Glass heavy health man live away agreement expert.', 'incident_date': '2026-09-19'}
+  response: {"id":"85634212-121f-439f-b28a-9c2690c4e782","reference":"CLM-E8A844DE","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"250.00","description":"QA 58b502b5 Glass heavy health man live away agreement expert.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:06.777184Z","updated_at":"2026-09-26T07:57:06.777184Z","withdrawn_at":null,"decided_by_id":null}
+07:57:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

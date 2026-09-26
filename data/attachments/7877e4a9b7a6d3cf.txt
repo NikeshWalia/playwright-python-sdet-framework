@@ -1,0 +1,12 @@
+07:57:05 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim
+07:57:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","policy_number":"POL-1001","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"10000.00","is_active":true},{"id":"59b02d6e-5fa7-433e-a74d-cd8fcc814bdf","policy_number":"POL-1002","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"2500.00","is_active":true}]
+07:57:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '250.00', 'description': 'QA fff3031d Drop serious anyone born past attorney able.', 'incident_date': '2026-09-19'}
+  response: {"id":"57972e16-9bd0-4873-b2b5-d411a9e2004d","reference":"CLM-4D1FD0B5","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"250.00","description":"QA fff3031d Drop serious anyone born past attorney able.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:05.825473Z","updated_at":"2026-09-26T07:57:05.825473Z","withdrawn_at":null,"decided_by_id":null}
+07:57:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/57972e16-9bd0-4873-b2b5-d411a9e2004d "HTTP/1.1 404 Not Found"
+07:57:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/57972e16-9bd0-4873-b2b5-d411a9e2004d -> 404 (5 ms)
+  response: {"detail":"Claim not found"}
+07:57:05 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim

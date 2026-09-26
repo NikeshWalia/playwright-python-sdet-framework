@@ -1,0 +1,23 @@
+07:57:07 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event
+07:57:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:57:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","policy_number":"POL-1001","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"10000.00","is_active":true},{"id":"59b02d6e-5fa7-433e-a74d-cd8fcc814bdf","policy_number":"POL-1002","holder_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","coverage_limit":"2500.00","is_active":true}]
+07:57:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:57:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '328b1294-2cf6-4133-9fb6-6aa5f1fb564b', 'amount': '300.00', 'description': 'QA 97d4900f Law interest idea method end dinner.', 'incident_date': '2026-09-19'}
+  response: {"id":"64cc0cc1-a3f9-4156-8223-6bbb50a939c1","reference":"CLM-5EC9FAB4","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"300.00","description":"QA 97d4900f Law interest idea method end dinner.","incident_date":"2026-09-19","status":"DRAFT","created_at":"2026-09-26T07:57:07.829346Z","updated_at":"2026-09-26T07:57:07.829346Z","withdrawn_at":null,"decided_by_id":null}
+07:57:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/64cc0cc1-a3f9-4156-8223-6bbb50a939c1/transitions "HTTP/1.1 200 OK"
+07:57:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/64cc0cc1-a3f9-4156-8223-6bbb50a939c1/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"64cc0cc1-a3f9-4156-8223-6bbb50a939c1","reference":"CLM-5EC9FAB4","policy_id":"328b1294-2cf6-4133-9fb6-6aa5f1fb564b","claimant_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","amount":"300.00","description":"QA 97d4900f Law interest idea method end dinner.","incident_date":"2026-09-19","status":"SUBMITTED","created_at":"2026-09-26T07:57:07.829346Z","updated_at":"2026-09-26T07:57:07.841397Z","withdrawn_at":null,"decided_by_id":null}
+07:57:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/64cc0cc1-a3f9-4156-8223-6bbb50a939c1/events "HTTP/1.1 200 OK"
+07:57:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/64cc0cc1-a3f9-4156-8223-6bbb50a939c1/events -> 200 (8 ms)
+  response: [{"id":"45f17d38-b246-4c5e-97f6-77401b130041","claim_id":"64cc0cc1-a3f9-4156-8223-6bbb50a939c1","actor_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-26T07:57:07.829346Z"},{"id":"ba666946-7b85-4f3f-88b2-27a06683545c","claim_id":"64cc0cc1-a3f9-4156-8223-6bbb50a939c1","actor_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-26T07:57:07.841397Z"}]
+07:57:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/64cc0cc1-a3f9-4156-8223-6bbb50a939c1/transitions "HTTP/1.1 409 Conflict"
+07:57:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/64cc0cc1-a3f9-4156-8223-6bbb50a939c1/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+07:57:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/64cc0cc1-a3f9-4156-8223-6bbb50a939c1/events "HTTP/1.1 200 OK"
+07:57:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/64cc0cc1-a3f9-4156-8223-6bbb50a939c1/events -> 200 (9 ms)
+  response: [{"id":"45f17d38-b246-4c5e-97f6-77401b130041","claim_id":"64cc0cc1-a3f9-4156-8223-6bbb50a939c1","actor_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-26T07:57:07.829346Z"},{"id":"ba666946-7b85-4f3f-88b2-27a06683545c","claim_id":"64cc0cc1-a3f9-4156-8223-6bbb50a939c1","actor_id":"affab0ce-9b9f-4230-a8d8-15663f90cda6","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-26T07:57:07.841397Z"}]
+07:57:07 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event

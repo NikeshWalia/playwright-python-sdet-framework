@@ -1,9 +1,0 @@
-08:06:38 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]
-08:06:38 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-08:06:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
-  response: [{"id":"64c309fc-c695-4a96-a21f-f333eec0d1a4","policy_number":"POL-1001","holder_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","coverage_limit":"10000.00","is_active":true},{"id":"06a0dec3-356b-4510-82c9-2c628ee0bdc0","policy_number":"POL-1002","holder_id":"5f2fe94f-df47-4c3f-972d-72f0626fa894","coverage_limit":"2500.00","is_active":true}]
-08:06:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-08:06:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (5 ms)
-  request : {'policy_id': '64c309fc-c695-4a96-a21f-f333eec0d1a4', 'amount': '0', 'description': 'QA b4653d36 Whole performance guess sport Congress.', 'incident_date': '2026-09-18'}
-  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"0","ctx":{"gt":0}}]}
-08:06:38 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]
