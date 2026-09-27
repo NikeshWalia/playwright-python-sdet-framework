@@ -1,0 +1,9 @@
+08:29:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]
+08:29:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","policy_number":"POL-1001","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"10000.00","is_active":true},{"id":"93827847-7279-4016-b341-23e2e12c845a","policy_number":"POL-1002","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"2500.00","is_active":true}]
+08:29:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (5 ms)
+  request : {'policy_id': '4a0025b6-342c-4ccc-bfbb-d25bb665471f', 'amount': '0', 'description': 'QA 2ed500c6 Peace measure kind various letter almost leg.', 'incident_date': '2026-09-20'}
+  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"0","ctx":{"gt":0}}]}
+08:29:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]

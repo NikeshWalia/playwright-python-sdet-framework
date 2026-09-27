@@ -1,0 +1,28 @@
+08:29:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-reject]
+08:29:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","policy_number":"POL-1001","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"10000.00","is_active":true},{"id":"93827847-7279-4016-b341-23e2e12c845a","policy_number":"POL-1002","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"2500.00","is_active":true}]
+08:29:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:29:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '4a0025b6-342c-4ccc-bfbb-d25bb665471f', 'amount': '100.00', 'description': 'QA 88cee4ff International could third sport really.', 'incident_date': '2026-09-20'}
+  response: {"id":"4fa576c5-7a7a-4bc0-aca2-075714f8f7d7","reference":"CLM-AC8141DB","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"100.00","description":"QA 88cee4ff International could third sport really.","incident_date":"2026-09-20","status":"DRAFT","created_at":"2026-09-27T08:29:06.996604Z","updated_at":"2026-09-27T08:29:06.996604Z","withdrawn_at":null,"decided_by_id":null}
+08:29:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7/transitions "HTTP/1.1 200 OK"
+08:29:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"4fa576c5-7a7a-4bc0-aca2-075714f8f7d7","reference":"CLM-AC8141DB","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"100.00","description":"QA 88cee4ff International could third sport really.","incident_date":"2026-09-20","status":"SUBMITTED","created_at":"2026-09-27T08:29:06.996604Z","updated_at":"2026-09-27T08:29:07.007710Z","withdrawn_at":null,"decided_by_id":null}
+08:29:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7/transitions "HTTP/1.1 200 OK"
+08:29:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"4fa576c5-7a7a-4bc0-aca2-075714f8f7d7","reference":"CLM-AC8141DB","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"100.00","description":"QA 88cee4ff International could third sport really.","incident_date":"2026-09-20","status":"UNDER_REVIEW","created_at":"2026-09-27T08:29:06.996604Z","updated_at":"2026-09-27T08:29:07.016593Z","withdrawn_at":null,"decided_by_id":null}
+08:29:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7/transitions "HTTP/1.1 200 OK"
+08:29:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7/transitions -> 200 (11 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"4fa576c5-7a7a-4bc0-aca2-075714f8f7d7","reference":"CLM-AC8141DB","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"100.00","description":"QA 88cee4ff International could third sport really.","incident_date":"2026-09-20","status":"REJECTED","created_at":"2026-09-27T08:29:06.996604Z","updated_at":"2026-09-27T08:29:07.027927Z","withdrawn_at":null,"decided_by_id":"0b0e339e-712c-42bc-ad5f-3e8d25eecd14"}
+08:29:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7/transitions "HTTP/1.1 409 Conflict"
+08:29:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7/transitions -> 409 (5 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status REJECTED; it must be UNDER_REVIEW."}
+08:29:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7 "HTTP/1.1 200 OK"
+08:29:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/4fa576c5-7a7a-4bc0-aca2-075714f8f7d7 -> 200 (4 ms)
+  response: {"id":"4fa576c5-7a7a-4bc0-aca2-075714f8f7d7","reference":"CLM-AC8141DB","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"100.00","description":"QA 88cee4ff International could third sport really.","incident_date":"2026-09-20","status":"REJECTED","created_at":"2026-09-27T08:29:06.996604Z","updated_at":"2026-09-27T08:29:07.027927Z","withdrawn_at":null,"decided_by_id":"0b0e339e-712c-42bc-ad5f-3e8d25eecd14"}
+08:29:07 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-reject]

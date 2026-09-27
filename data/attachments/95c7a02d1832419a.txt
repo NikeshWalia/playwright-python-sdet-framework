@@ -1,0 +1,14 @@
+08:29:14 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
+08:29:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","policy_number":"POL-1001","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"10000.00","is_active":true},{"id":"93827847-7279-4016-b341-23e2e12c845a","policy_number":"POL-1002","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"2500.00","is_active":true}]
+08:29:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:29:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': '4a0025b6-342c-4ccc-bfbb-d25bb665471f', 'amount': '820.00', 'description': 'QA 0e98cc23 Hear act movie arrive close main newspaper.', 'incident_date': '2026-09-20'}
+  response: {"id":"cf0c2072-5bc9-4cd6-a6a5-49d364d6d5f6","reference":"CLM-E534AE82","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"820.00","description":"QA 0e98cc23 Hear act movie arrive close main newspaper.","incident_date":"2026-09-20","status":"DRAFT","created_at":"2026-09-27T08:29:14.555253Z","updated_at":"2026-09-27T08:29:14.555253Z","withdrawn_at":null,"decided_by_id":null}
+08:29:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cf0c2072-5bc9-4cd6-a6a5-49d364d6d5f6/transitions "HTTP/1.1 200 OK"
+08:29:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cf0c2072-5bc9-4cd6-a6a5-49d364d6d5f6/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"cf0c2072-5bc9-4cd6-a6a5-49d364d6d5f6","reference":"CLM-E534AE82","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"820.00","description":"QA 0e98cc23 Hear act movie arrive close main newspaper.","incident_date":"2026-09-20","status":"SUBMITTED","created_at":"2026-09-27T08:29:14.555253Z","updated_at":"2026-09-27T08:29:14.568151Z","withdrawn_at":null,"decided_by_id":null}
+08:29:14 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/cf0c2072-5bc9-4cd6-a6a5-49d364d6d5f6
+08:29:14 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]

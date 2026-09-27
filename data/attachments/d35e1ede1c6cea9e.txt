@@ -1,0 +1,12 @@
+08:29:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customers_list_never_includes_another_customers_claims
+08:29:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","policy_number":"POL-1001","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"10000.00","is_active":true},{"id":"93827847-7279-4016-b341-23e2e12c845a","policy_number":"POL-1002","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"2500.00","is_active":true}]
+08:29:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '4a0025b6-342c-4ccc-bfbb-d25bb665471f', 'amount': '250.00', 'description': 'QA a0200905 Because from smile this public.', 'incident_date': '2026-09-20'}
+  response: {"id":"f4e1a627-9a49-4cd8-ba98-ead2441a1267","reference":"CLM-D7EF1761","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"250.00","description":"QA a0200905 Because from smile this public.","incident_date":"2026-09-20","status":"DRAFT","created_at":"2026-09-27T08:29:04.778638Z","updated_at":"2026-09-27T08:29:04.778638Z","withdrawn_at":null,"decided_by_id":null}
+08:29:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?q=CLM-D7EF1761 "HTTP/1.1 200 OK"
+08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?q=CLM-D7EF1761 -> 200 (8 ms)
+  response: {"items":[],"page":1,"size":20,"total":0}
+08:29:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customers_list_never_includes_another_customers_claims

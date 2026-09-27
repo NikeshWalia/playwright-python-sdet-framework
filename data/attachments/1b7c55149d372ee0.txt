@@ -1,0 +1,12 @@
+08:29:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_searching_finds_a_claim_the_test_created_itself
+08:29:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","policy_number":"POL-1001","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"10000.00","is_active":true},{"id":"93827847-7279-4016-b341-23e2e12c845a","policy_number":"POL-1002","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"2500.00","is_active":true}]
+08:29:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '4a0025b6-342c-4ccc-bfbb-d25bb665471f', 'amount': '250.00', 'description': 'QA 2f9a8f1e Later region area other election organization suddenly.', 'incident_date': '2026-09-20'}
+  response: {"id":"5ac6d584-f74e-4950-8f0c-b284c510b858","reference":"CLM-878817EF","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"250.00","description":"QA 2f9a8f1e Later region area other election organization suddenly.","incident_date":"2026-09-20","status":"DRAFT","created_at":"2026-09-27T08:29:04.378868Z","updated_at":"2026-09-27T08:29:04.378868Z","withdrawn_at":null,"decided_by_id":null}
+08:29:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?q=2f9a8f1e "HTTP/1.1 200 OK"
+08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?q=2f9a8f1e -> 200 (22 ms)
+  response: {"items":[{"id":"5ac6d584-f74e-4950-8f0c-b284c510b858","reference":"CLM-878817EF","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"250.00","description":"QA 2f9a8f1e Later region area other election organization suddenly.","incident_date":"2026-09-20","status":"DRAFT","created_at":"2026-09-27T08:29:04.378868Z","updated_at":"2026-09-27T08:29:04.378868Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":20,"total":1}
+08:29:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_searching_finds_a_claim_the_test_created_itself

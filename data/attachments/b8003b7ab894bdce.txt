@@ -1,0 +1,23 @@
+08:29:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event
+08:29:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:29:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","policy_number":"POL-1001","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"10000.00","is_active":true},{"id":"93827847-7279-4016-b341-23e2e12c845a","policy_number":"POL-1002","holder_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","coverage_limit":"2500.00","is_active":true}]
+08:29:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:29:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '4a0025b6-342c-4ccc-bfbb-d25bb665471f', 'amount': '300.00', 'description': 'QA b1950c26 Put majority use clear discussion eat buy.', 'incident_date': '2026-09-20'}
+  response: {"id":"579e5a73-8a5d-4ee0-87c0-d52b4a913338","reference":"CLM-FF472D9C","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"300.00","description":"QA b1950c26 Put majority use clear discussion eat buy.","incident_date":"2026-09-20","status":"DRAFT","created_at":"2026-09-27T08:29:06.586759Z","updated_at":"2026-09-27T08:29:06.586759Z","withdrawn_at":null,"decided_by_id":null}
+08:29:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/579e5a73-8a5d-4ee0-87c0-d52b4a913338/transitions "HTTP/1.1 200 OK"
+08:29:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/579e5a73-8a5d-4ee0-87c0-d52b4a913338/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"579e5a73-8a5d-4ee0-87c0-d52b4a913338","reference":"CLM-FF472D9C","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"300.00","description":"QA b1950c26 Put majority use clear discussion eat buy.","incident_date":"2026-09-20","status":"SUBMITTED","created_at":"2026-09-27T08:29:06.586759Z","updated_at":"2026-09-27T08:29:06.599763Z","withdrawn_at":null,"decided_by_id":null}
+08:29:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/579e5a73-8a5d-4ee0-87c0-d52b4a913338/events "HTTP/1.1 200 OK"
+08:29:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/579e5a73-8a5d-4ee0-87c0-d52b4a913338/events -> 200 (8 ms)
+  response: [{"id":"0718fa04-aee8-4fe1-a20a-1981e2ff42c1","claim_id":"579e5a73-8a5d-4ee0-87c0-d52b4a913338","actor_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-27T08:29:06.586759Z"},{"id":"c81b59fb-6173-4332-9d61-66d63bec37b9","claim_id":"579e5a73-8a5d-4ee0-87c0-d52b4a913338","actor_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-27T08:29:06.599763Z"}]
+08:29:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/579e5a73-8a5d-4ee0-87c0-d52b4a913338/transitions "HTTP/1.1 409 Conflict"
+08:29:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/579e5a73-8a5d-4ee0-87c0-d52b4a913338/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+08:29:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/579e5a73-8a5d-4ee0-87c0-d52b4a913338/events "HTTP/1.1 200 OK"
+08:29:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/579e5a73-8a5d-4ee0-87c0-d52b4a913338/events -> 200 (7 ms)
+  response: [{"id":"0718fa04-aee8-4fe1-a20a-1981e2ff42c1","claim_id":"579e5a73-8a5d-4ee0-87c0-d52b4a913338","actor_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-27T08:29:06.586759Z"},{"id":"c81b59fb-6173-4332-9d61-66d63bec37b9","claim_id":"579e5a73-8a5d-4ee0-87c0-d52b4a913338","actor_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-27T08:29:06.599763Z"}]
+08:29:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event
