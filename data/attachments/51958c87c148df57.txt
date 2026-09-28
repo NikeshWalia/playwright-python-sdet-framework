@@ -1,0 +1,14 @@
+08:54:05 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
+08:54:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:54:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"eaef4bcf-8e26-43b7-8a44-606e813c5d05","policy_number":"POL-1001","holder_id":"3ececd0f-5a1d-497a-8c19-014a848c417f","coverage_limit":"10000.00","is_active":true},{"id":"c74d4583-540c-4258-bc40-bfc9f7a78271","policy_number":"POL-1002","holder_id":"3ececd0f-5a1d-497a-8c19-014a848c417f","coverage_limit":"2500.00","is_active":true}]
+08:54:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:54:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (16 ms)
+  request : {'policy_id': 'eaef4bcf-8e26-43b7-8a44-606e813c5d05', 'amount': '820.00', 'description': 'QA fa6b0d13 Score enough mind fly trip price note.', 'incident_date': '2026-09-21'}
+  response: {"id":"fa2e296a-4dad-49eb-9385-c6b1f7a410ff","reference":"CLM-1DAA578D","policy_id":"eaef4bcf-8e26-43b7-8a44-606e813c5d05","claimant_id":"3ececd0f-5a1d-497a-8c19-014a848c417f","amount":"820.00","description":"QA fa6b0d13 Score enough mind fly trip price note.","incident_date":"2026-09-21","status":"DRAFT","created_at":"2026-09-28T08:54:05.665189Z","updated_at":"2026-09-28T08:54:05.665189Z","withdrawn_at":null,"decided_by_id":null}
+08:54:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fa2e296a-4dad-49eb-9385-c6b1f7a410ff/transitions "HTTP/1.1 200 OK"
+08:54:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fa2e296a-4dad-49eb-9385-c6b1f7a410ff/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"fa2e296a-4dad-49eb-9385-c6b1f7a410ff","reference":"CLM-1DAA578D","policy_id":"eaef4bcf-8e26-43b7-8a44-606e813c5d05","claimant_id":"3ececd0f-5a1d-497a-8c19-014a848c417f","amount":"820.00","description":"QA fa6b0d13 Score enough mind fly trip price note.","incident_date":"2026-09-21","status":"SUBMITTED","created_at":"2026-09-28T08:54:05.665189Z","updated_at":"2026-09-28T08:54:05.679741Z","withdrawn_at":null,"decided_by_id":null}
+08:54:05 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/fa2e296a-4dad-49eb-9385-c6b1f7a410ff
+08:54:06 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]

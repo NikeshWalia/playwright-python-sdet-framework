@@ -1,5 +1,0 @@
-08:29:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
-08:29:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
-08:29:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (6 ms)
-  response: {"items":[{"id":"01b8d506-fa2d-4d3b-a1f2-fe4140ba78a1","reference":"CLM-B017F97D","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"250.00","description":"QA eccaf8e0 High mean piece control reflect.","incident_date":"2026-09-20","status":"WITHDRAWN","created_at":"2026-09-27T08:29:04.103152Z","updated_at":"2026-09-27T08:29:04.113568Z","withdrawn_at":"2026-09-27T08:29:04.115513Z","decided_by_id":null}],"page":1,"size":50,"total":1}
-08:29:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]

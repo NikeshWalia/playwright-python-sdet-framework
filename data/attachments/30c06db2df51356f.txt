@@ -1,0 +1,33 @@
+08:53:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+08:53:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (90 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzZWNlY2QwZi01YTFkLTQ5N2EtOGMxOS0wMTRhODQ4YzQxN2YiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTA1ODU2MzksImV4cCI6MTc5MDU4OTIzOX0.w3ub500ByZXk_g7ZMRl5RHXDuzlza8PxNCSWSzJsAdY","token_type":"bearer","expires_in":3600}
+08:54:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+08:54:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (75 ms)
+  request : {'email': 'adjuster@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OGNlY2I2NS0wM2UwLTRlZjgtOGYzYi02Y2NkMTdjZDQ2OTAiLCJyb2xlIjoiQURKVVNURVIiLCJpYXQiOjE3OTA1ODU2NDAsImV4cCI6MTc5MDU4OTI0MH0.8_4ZcXUpVQHqji-phuF5UJvGdClqxqFwjQQ7bXJ1J7c","token_type":"bearer","expires_in":3600}
+08:54:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+08:54:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (77 ms)
+  request : {'email': 'admin@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjc1NThmZC0zZTNjLTRjODgtOWY3Mi05ODNhZTc1NTNjOWQiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3OTA1ODU2NDAsImV4cCI6MTc5MDU4OTI0MH0.P_17QtzTAW66G2IeWIPEWhdfWmOc1nRF_zZmBFwabyg","token_type":"bearer","expires_in":3600}
+08:54:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+08:54:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (76 ms)
+  request : {'email': 'other.customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMWJiYTkxOS03YTkxLTQxNTgtODU1Ni02NThiMDQ2MGI1MDYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTA1ODU2NDAsImV4cCI6MTc5MDU4OTI0MH0.WE-YUJY82iNNeicyQuXy-NbcIILPtQEWmshQAXk1D9g","token_type":"bearer","expires_in":3600}
+08:54:00 INFO     claimdesk_qa.tests._fixtures.browser Prepared storage states for customer, adjuster, admin, other_customer
+08:54:00 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_filed_in_the_browser_is_visible_to_the_api_and_the_database[chromium]
+08:54:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:54:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"eaef4bcf-8e26-43b7-8a44-606e813c5d05","policy_number":"POL-1001","holder_id":"3ececd0f-5a1d-497a-8c19-014a848c417f","coverage_limit":"10000.00","is_active":true},{"id":"c74d4583-540c-4258-bc40-bfc9f7a78271","policy_number":"POL-1002","holder_id":"3ececd0f-5a1d-497a-8c19-014a848c417f","coverage_limit":"2500.00","is_active":true}]
+08:54:00 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:54:00 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/new
+08:54:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?q=CLM-32C0F48B "HTTP/1.1 200 OK"
+08:54:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?q=CLM-32C0F48B -> 200 (11 ms)
+  response: {"items":[{"id":"1726df9c-cd6e-4445-8e73-dfd9d6cd8a09","reference":"CLM-32C0F48B","policy_id":"eaef4bcf-8e26-43b7-8a44-606e813c5d05","claimant_id":"3ececd0f-5a1d-497a-8c19-014a848c417f","amount":"3456.78","description":"QA 8e513ad3 Out fast stuff sing college history.","incident_date":"2026-09-21","status":"DRAFT","created_at":"2026-09-28T08:54:00.617544Z","updated_at":"2026-09-28T08:54:00.617544Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":20,"total":1}
+08:54:00 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE reference = %s
+  params: ('CLM-32C0F48B',)
+  rows: 1
+08:54:00 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('1726df9c-cd6e-4445-8e73-dfd9d6cd8a09',)
+  rows: 1
+08:54:00 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_filed_in_the_browser_is_visible_to_the_api_and_the_database[chromium]

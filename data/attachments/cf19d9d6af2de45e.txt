@@ -1,5 +1,0 @@
-08:29:05 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
-08:29:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
-08:29:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (8 ms)
-  response: {"items":[{"id":"c6511639-857f-47ee-87d6-532cedbc4774","reference":"CLM-27543065","policy_id":"4a0025b6-342c-4ccc-bfbb-d25bb665471f","claimant_id":"603be0e5-28ee-4201-b0f4-8a5f9dd72b6f","amount":"250.00","description":"QA 03112cad Pull language generation center trial natural must bit.","incident_date":"2026-09-20","status":"DRAFT","created_at":"2026-09-27T08:29:05.586942Z","updated_at":"2026-09-27T08:29:05.586942Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":55}
-08:29:05 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
