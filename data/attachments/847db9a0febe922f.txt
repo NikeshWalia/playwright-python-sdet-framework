@@ -1,0 +1,28 @@
+08:55:12 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout
+08:55:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","policy_number":"POL-1001","holder_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","coverage_limit":"10000.00","is_active":true},{"id":"f9660da8-9459-4d58-b0f7-599502d5c984","policy_number":"POL-1002","holder_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","coverage_limit":"2500.00","is_active":true}]
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:55:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '2e5be6cd-b8e2-4975-a76f-f7e66a019834', 'amount': '800.00', 'description': 'QA f8c1dcd8 Authority we respond she economic without.', 'incident_date': '2026-09-22'}
+  response: {"id":"d402bf82-3f6c-4795-8227-4492d532061d","reference":"CLM-D62127D3","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"800.00","description":"QA f8c1dcd8 Authority we respond she economic without.","incident_date":"2026-09-22","status":"DRAFT","created_at":"2026-09-29T08:55:12.445656Z","updated_at":"2026-09-29T08:55:12.445656Z","withdrawn_at":null,"decided_by_id":null}
+08:55:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d402bf82-3f6c-4795-8227-4492d532061d/transitions "HTTP/1.1 200 OK"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d402bf82-3f6c-4795-8227-4492d532061d/transitions -> 200 (5 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"d402bf82-3f6c-4795-8227-4492d532061d","reference":"CLM-D62127D3","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"800.00","description":"QA f8c1dcd8 Authority we respond she economic without.","incident_date":"2026-09-22","status":"SUBMITTED","created_at":"2026-09-29T08:55:12.445656Z","updated_at":"2026-09-29T08:55:12.452261Z","withdrawn_at":null,"decided_by_id":null}
+08:55:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d402bf82-3f6c-4795-8227-4492d532061d/transitions "HTTP/1.1 200 OK"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d402bf82-3f6c-4795-8227-4492d532061d/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"d402bf82-3f6c-4795-8227-4492d532061d","reference":"CLM-D62127D3","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"800.00","description":"QA f8c1dcd8 Authority we respond she economic without.","incident_date":"2026-09-22","status":"UNDER_REVIEW","created_at":"2026-09-29T08:55:12.445656Z","updated_at":"2026-09-29T08:55:12.457567Z","withdrawn_at":null,"decided_by_id":null}
+08:55:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d402bf82-3f6c-4795-8227-4492d532061d/transitions "HTTP/1.1 200 OK"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d402bf82-3f6c-4795-8227-4492d532061d/transitions -> 200 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"d402bf82-3f6c-4795-8227-4492d532061d","reference":"CLM-D62127D3","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"800.00","description":"QA f8c1dcd8 Authority we respond she economic without.","incident_date":"2026-09-22","status":"APPROVED","created_at":"2026-09-29T08:55:12.445656Z","updated_at":"2026-09-29T08:55:12.463688Z","withdrawn_at":null,"decided_by_id":"c3fb9ac4-8a31-493c-a014-49da157b58d9"}
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('d402bf82-3f6c-4795-8227-4492d532061d',)
+  rows: 0
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('d402bf82-3f6c-4795-8227-4492d532061d',)
+  rows: 1
+08:55:12 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout

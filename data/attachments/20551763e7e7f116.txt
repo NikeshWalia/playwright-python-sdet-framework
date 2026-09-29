@@ -1,0 +1,25 @@
+08:55:11 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+08:55:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:55:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","policy_number":"POL-1001","holder_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","coverage_limit":"10000.00","is_active":true},{"id":"f9660da8-9459-4d58-b0f7-599502d5c984","policy_number":"POL-1002","holder_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","coverage_limit":"2500.00","is_active":true}]
+08:55:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:55:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '2e5be6cd-b8e2-4975-a76f-f7e66a019834', 'amount': '250.00', 'description': 'QA eb6f20b7 Clearly value do factor can sell on.', 'incident_date': '2026-09-22'}
+  response: {"id":"6845c9f0-cb67-498c-a6d9-cac01e43e5b1","reference":"CLM-97B12F1C","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"250.00","description":"QA eb6f20b7 Clearly value do factor can sell on.","incident_date":"2026-09-22","status":"DRAFT","created_at":"2026-09-29T08:55:11.502271Z","updated_at":"2026-09-29T08:55:11.502271Z","withdrawn_at":null,"decided_by_id":null}
+08:55:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:55:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '2e5be6cd-b8e2-4975-a76f-f7e66a019834', 'amount': '250.00', 'description': 'QA de1ea25a Agree project garden huge late doctor Congress.', 'incident_date': '2026-09-22'}
+  response: {"id":"b9d6f12d-6be6-4824-8902-a2de81bcad1e","reference":"CLM-ABF6AE62","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"250.00","description":"QA de1ea25a Agree project garden huge late doctor Congress.","incident_date":"2026-09-22","status":"DRAFT","created_at":"2026-09-29T08:55:11.508725Z","updated_at":"2026-09-29T08:55:11.508725Z","withdrawn_at":null,"decided_by_id":null}
+08:55:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:55:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '2e5be6cd-b8e2-4975-a76f-f7e66a019834', 'amount': '250.00', 'description': 'QA 8dde9dae Believe kitchen someone them.', 'incident_date': '2026-09-22'}
+  response: {"id":"22037161-072a-4648-bc9e-b6d2f940aa7c","reference":"CLM-DA4EC97C","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"250.00","description":"QA 8dde9dae Believe kitchen someone them.","incident_date":"2026-09-22","status":"DRAFT","created_at":"2026-09-29T08:55:11.514252Z","updated_at":"2026-09-29T08:55:11.514252Z","withdrawn_at":null,"decided_by_id":null}
+08:55:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:55:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '2e5be6cd-b8e2-4975-a76f-f7e66a019834', 'amount': '250.00', 'description': 'QA d4f4437a City pattern network system past relationship painting factor.', 'incident_date': '2026-09-22'}
+  response: {"id":"4a4326ac-f315-4445-bb9d-2c9f98fea708","reference":"CLM-435B4E9F","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"250.00","description":"QA d4f4437a City pattern network system past relationship painting factor.","incident_date":"2026-09-22","status":"DRAFT","created_at":"2026-09-29T08:55:11.520184Z","updated_at":"2026-09-29T08:55:11.520184Z","withdrawn_at":null,"decided_by_id":null}
+08:55:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:55:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '2e5be6cd-b8e2-4975-a76f-f7e66a019834', 'amount': '250.00', 'description': 'QA abcafa2a Yourself especially back pass recently real bar.', 'incident_date': '2026-09-22'}
+  response: {"id":"1ea28742-b794-40a1-b9f2-f45aad3865b9","reference":"CLM-2C70C278","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"250.00","description":"QA abcafa2a Yourself especially back pass recently real bar.","incident_date":"2026-09-22","status":"DRAFT","created_at":"2026-09-29T08:55:11.527142Z","updated_at":"2026-09-29T08:55:11.527142Z","withdrawn_at":null,"decided_by_id":null}
+08:55:11 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

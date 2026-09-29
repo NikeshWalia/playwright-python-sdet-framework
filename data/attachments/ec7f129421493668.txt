@@ -1,0 +1,23 @@
+08:55:12 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event
+08:55:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","policy_number":"POL-1001","holder_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","coverage_limit":"10000.00","is_active":true},{"id":"f9660da8-9459-4d58-b0f7-599502d5c984","policy_number":"POL-1002","holder_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","coverage_limit":"2500.00","is_active":true}]
+08:55:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '2e5be6cd-b8e2-4975-a76f-f7e66a019834', 'amount': '300.00', 'description': 'QA f1408949 Oil increase truth no full.', 'incident_date': '2026-09-22'}
+  response: {"id":"46f2f28f-deb7-479b-8c69-c4d9292a6e33","reference":"CLM-4AC59CDE","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"300.00","description":"QA f1408949 Oil increase truth no full.","incident_date":"2026-09-22","status":"DRAFT","created_at":"2026-09-29T08:55:12.013977Z","updated_at":"2026-09-29T08:55:12.013977Z","withdrawn_at":null,"decided_by_id":null}
+08:55:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/46f2f28f-deb7-479b-8c69-c4d9292a6e33/transitions "HTTP/1.1 200 OK"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/46f2f28f-deb7-479b-8c69-c4d9292a6e33/transitions -> 200 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"46f2f28f-deb7-479b-8c69-c4d9292a6e33","reference":"CLM-4AC59CDE","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"300.00","description":"QA f1408949 Oil increase truth no full.","incident_date":"2026-09-22","status":"SUBMITTED","created_at":"2026-09-29T08:55:12.013977Z","updated_at":"2026-09-29T08:55:12.020118Z","withdrawn_at":null,"decided_by_id":null}
+08:55:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/46f2f28f-deb7-479b-8c69-c4d9292a6e33/events "HTTP/1.1 200 OK"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/46f2f28f-deb7-479b-8c69-c4d9292a6e33/events -> 200 (4 ms)
+  response: [{"id":"22aad45c-b532-4bd1-b6ab-bbc716622f06","claim_id":"46f2f28f-deb7-479b-8c69-c4d9292a6e33","actor_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-29T08:55:12.013977Z"},{"id":"14bc9f23-72c1-49ae-ac55-7bf01ba5aade","claim_id":"46f2f28f-deb7-479b-8c69-c4d9292a6e33","actor_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-29T08:55:12.020118Z"}]
+08:55:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/46f2f28f-deb7-479b-8c69-c4d9292a6e33/transitions "HTTP/1.1 409 Conflict"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/46f2f28f-deb7-479b-8c69-c4d9292a6e33/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+08:55:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/46f2f28f-deb7-479b-8c69-c4d9292a6e33/events "HTTP/1.1 200 OK"
+08:55:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/46f2f28f-deb7-479b-8c69-c4d9292a6e33/events -> 200 (5 ms)
+  response: [{"id":"22aad45c-b532-4bd1-b6ab-bbc716622f06","claim_id":"46f2f28f-deb7-479b-8c69-c4d9292a6e33","actor_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-09-29T08:55:12.013977Z"},{"id":"14bc9f23-72c1-49ae-ac55-7bf01ba5aade","claim_id":"46f2f28f-deb7-479b-8c69-c4d9292a6e33","actor_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-09-29T08:55:12.020118Z"}]
+08:55:12 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event

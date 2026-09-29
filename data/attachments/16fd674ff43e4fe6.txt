@@ -1,0 +1,5 @@
+08:55:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
+08:55:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
+08:55:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (4 ms)
+  response: {"items":[{"id":"99b9a2af-c0e6-47f8-acff-aecb6b39703f","reference":"CLM-4782D02F","policy_id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","claimant_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","amount":"250.00","description":"QA 93963b08 Third wish local civil your represent.","incident_date":"2026-09-22","status":"WITHDRAWN","created_at":"2026-09-29T08:55:10.692557Z","updated_at":"2026-09-29T08:55:10.702328Z","withdrawn_at":"2026-09-29T08:55:10.703701Z","decided_by_id":null}],"page":1,"size":50,"total":1}
+08:55:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
