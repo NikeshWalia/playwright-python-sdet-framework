@@ -1,0 +1,32 @@
+08:54:26 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-submit]
+08:54:26 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","policy_number":"POL-1001","holder_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","coverage_limit":"10000.00","is_active":true},{"id":"d7f397ac-d1fb-4f85-8512-e264cb037f5a","policy_number":"POL-1002","holder_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","coverage_limit":"2500.00","is_active":true}]
+08:54:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '895fc497-1c4d-4b43-988a-5eb6b0af4c03', 'amount': '100.00', 'description': 'QA 2e33f0f4 High follow true science well election season.', 'incident_date': '2026-09-23'}
+  response: {"id":"0dc28ef8-990e-43f2-9642-9ad019a56d95","reference":"CLM-FAE24A8B","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"100.00","description":"QA 2e33f0f4 High follow true science well election season.","incident_date":"2026-09-23","status":"DRAFT","created_at":"2026-09-30T08:54:26.239765Z","updated_at":"2026-09-30T08:54:26.239765Z","withdrawn_at":null,"decided_by_id":null}
+08:54:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions "HTTP/1.1 200 OK"
+08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"0dc28ef8-990e-43f2-9642-9ad019a56d95","reference":"CLM-FAE24A8B","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"100.00","description":"QA 2e33f0f4 High follow true science well election season.","incident_date":"2026-09-23","status":"SUBMITTED","created_at":"2026-09-30T08:54:26.239765Z","updated_at":"2026-09-30T08:54:26.252768Z","withdrawn_at":null,"decided_by_id":null}
+08:54:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions "HTTP/1.1 200 OK"
+08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions -> 200 (14 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"0dc28ef8-990e-43f2-9642-9ad019a56d95","reference":"CLM-FAE24A8B","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"100.00","description":"QA 2e33f0f4 High follow true science well election season.","incident_date":"2026-09-23","status":"UNDER_REVIEW","created_at":"2026-09-30T08:54:26.239765Z","updated_at":"2026-09-30T08:54:26.267632Z","withdrawn_at":null,"decided_by_id":null}
+08:54:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions "HTTP/1.1 200 OK"
+08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"0dc28ef8-990e-43f2-9642-9ad019a56d95","reference":"CLM-FAE24A8B","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"100.00","description":"QA 2e33f0f4 High follow true science well election season.","incident_date":"2026-09-23","status":"APPROVED","created_at":"2026-09-30T08:54:26.239765Z","updated_at":"2026-09-30T08:54:26.280788Z","withdrawn_at":null,"decided_by_id":"f2b64c88-c6f3-44bf-8d07-1c72ef6c6b3b"}
+08:54:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions "HTTP/1.1 200 OK"
+08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions -> 200 (15 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"0dc28ef8-990e-43f2-9642-9ad019a56d95","reference":"CLM-FAE24A8B","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"100.00","description":"QA 2e33f0f4 High follow true science well election season.","incident_date":"2026-09-23","status":"PAID","created_at":"2026-09-30T08:54:26.239765Z","updated_at":"2026-09-30T08:54:26.292177Z","withdrawn_at":null,"decided_by_id":"f2b64c88-c6f3-44bf-8d07-1c72ef6c6b3b"}
+08:54:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions "HTTP/1.1 409 Conflict"
+08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95/transitions -> 409 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status PAID; it must be DRAFT."}
+08:54:26 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95 "HTTP/1.1 200 OK"
+08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/0dc28ef8-990e-43f2-9642-9ad019a56d95 -> 200 (5 ms)
+  response: {"id":"0dc28ef8-990e-43f2-9642-9ad019a56d95","reference":"CLM-FAE24A8B","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"100.00","description":"QA 2e33f0f4 High follow true science well election season.","incident_date":"2026-09-23","status":"PAID","created_at":"2026-09-30T08:54:26.239765Z","updated_at":"2026-09-30T08:54:26.292177Z","withdrawn_at":null,"decided_by_id":"f2b64c88-c6f3-44bf-8d07-1c72ef6c6b3b"}
+08:54:26 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-submit]

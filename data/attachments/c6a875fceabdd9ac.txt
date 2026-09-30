@@ -1,9 +1,0 @@
-08:55:11 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_amounts_with_more_than_two_decimal_places_are_rejected_not_rounded[three-decimals-rounds-up]
-08:55:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-08:55:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
-  response: [{"id":"2e5be6cd-b8e2-4975-a76f-f7e66a019834","policy_number":"POL-1001","holder_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","coverage_limit":"10000.00","is_active":true},{"id":"f9660da8-9459-4d58-b0f7-599502d5c984","policy_number":"POL-1002","holder_id":"9ac3aac8-7756-4d53-a3e2-1385abe5cd5e","coverage_limit":"2500.00","is_active":true}]
-08:55:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-08:55:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (3 ms)
-  request : {'policy_id': '2e5be6cd-b8e2-4975-a76f-f7e66a019834', 'amount': '1.005', 'description': 'QA 00cd981b Reach right hour for environmental news apply far.', 'incident_date': '2026-09-22'}
-  response: {"detail":[{"type":"decimal_max_places","loc":["body","amount"],"msg":"Decimal input should have no more than 2 decimal places","input":"1.005","ctx":{"decimal_places":2}}]}
-08:55:11 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_amounts_with_more_than_two_decimal_places_are_rejected_not_rounded[three-decimals-rounds-up]

@@ -1,0 +1,35 @@
+08:54:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+08:54:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (84 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MWNiZGYxOS1lNWM1LTQwMmYtYTUzNC0zODEyODU2ZDJjNzgiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTA3NTg0NjksImV4cCI6MTc5MDc2MjA2OX0.NaeMyQKoKGhiPesg-m_Q75k11eL5zhvHFJ21YHa3mQE","token_type":"bearer","expires_in":3600}
+08:54:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+08:54:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (91 ms)
+  request : {'email': 'adjuster@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmMmI2NGM4OC1jNmYzLTQ0YmYtOGQwNy0xYzcyZWY2YzZiM2IiLCJyb2xlIjoiQURKVVNURVIiLCJpYXQiOjE3OTA3NTg0NjksImV4cCI6MTc5MDc2MjA2OX0.J8jdwLnqk7WXG383LG8UO-xRNhbBYvXc-eFJW5rJVjo","token_type":"bearer","expires_in":3600}
+08:54:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+08:54:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (82 ms)
+  request : {'email': 'admin@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YjQ3ZWYzNi1kMmI0LTQxZmYtOTE2My01MTUwNmJkY2FjOTYiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3OTA3NTg0NjksImV4cCI6MTc5MDc2MjA2OX0.hFyUNMWG5vhM8pqQJHtuYMyjQCc2M0mxcX03aI0ReJc","token_type":"bearer","expires_in":3600}
+08:54:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+08:54:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (78 ms)
+  request : {'email': 'other.customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmNTkyZDA0MC04NTY3LTQzYTgtYmEzOC1jYjU1OGNiOTA5NjciLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTA3NTg0NjksImV4cCI6MTc5MDc2MjA2OX0.6x-Zk0WG05C67FCDGFsgNvGTC6c9XxA9y14oOpwMiKc","token_type":"bearer","expires_in":3600}
+08:54:29 INFO     claimdesk_qa.tests._fixtures.browser Prepared storage states for customer, adjuster, admin, other_customer
+08:54:29 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]
+08:54:29 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:54:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","policy_number":"POL-1001","holder_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","coverage_limit":"10000.00","is_active":true},{"id":"d7f397ac-d1fb-4f85-8512-e264cb037f5a","policy_number":"POL-1002","holder_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","coverage_limit":"2500.00","is_active":true}]
+08:54:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:54:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (20 ms)
+  request : {'policy_id': '895fc497-1c4d-4b43-988a-5eb6b0af4c03', 'amount': '5000.01', 'description': 'QA 91d50323 Film likely rest story discover third.', 'incident_date': '2026-09-23'}
+  response: {"id":"68faa2d3-acad-41f9-a519-734027b08807","reference":"CLM-99CD9DFC","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"5000.01","description":"QA 91d50323 Film likely rest story discover third.","incident_date":"2026-09-23","status":"DRAFT","created_at":"2026-09-30T08:54:29.829004Z","updated_at":"2026-09-30T08:54:29.829004Z","withdrawn_at":null,"decided_by_id":null}
+08:54:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/68faa2d3-acad-41f9-a519-734027b08807/transitions "HTTP/1.1 200 OK"
+08:54:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/68faa2d3-acad-41f9-a519-734027b08807/transitions -> 200 (14 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"68faa2d3-acad-41f9-a519-734027b08807","reference":"CLM-99CD9DFC","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"5000.01","description":"QA 91d50323 Film likely rest story discover third.","incident_date":"2026-09-23","status":"SUBMITTED","created_at":"2026-09-30T08:54:29.829004Z","updated_at":"2026-09-30T08:54:29.848512Z","withdrawn_at":null,"decided_by_id":null}
+08:54:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/68faa2d3-acad-41f9-a519-734027b08807/transitions "HTTP/1.1 200 OK"
+08:54:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/68faa2d3-acad-41f9-a519-734027b08807/transitions -> 200 (19 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"68faa2d3-acad-41f9-a519-734027b08807","reference":"CLM-99CD9DFC","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"5000.01","description":"QA 91d50323 Film likely rest story discover third.","incident_date":"2026-09-23","status":"UNDER_REVIEW","created_at":"2026-09-30T08:54:29.829004Z","updated_at":"2026-09-30T08:54:29.865311Z","withdrawn_at":null,"decided_by_id":null}
+08:54:29 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/68faa2d3-acad-41f9-a519-734027b08807
+08:54:30 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]

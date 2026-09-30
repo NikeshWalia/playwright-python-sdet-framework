@@ -1,0 +1,5 @@
+08:54:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
+08:54:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
+08:54:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (8 ms)
+  response: {"items":[{"id":"945dc323-8cef-4d17-9572-1f7c06253b8c","reference":"CLM-262FD189","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"250.00","description":"QA 5f897b85 Maybe interview Mr movement light research which.","incident_date":"2026-09-23","status":"WITHDRAWN","created_at":"2026-09-30T08:54:24.315874Z","updated_at":"2026-09-30T08:54:24.652879Z","withdrawn_at":"2026-09-30T08:54:24.656247Z","decided_by_id":null}],"page":1,"size":50,"total":1}
+08:54:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
