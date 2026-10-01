@@ -1,0 +1,28 @@
+09:18:44 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-submit]
+09:18:44 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","policy_number":"POL-1001","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"10000.00","is_active":true},{"id":"3eb08a97-62d0-4a11-aaa3-543f95bd224a","policy_number":"POL-1002","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"2500.00","is_active":true}]
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '100.00', 'description': 'QA 4fa338a4 Help production task exist structure.', 'incident_date': '2026-09-24'}
+  response: {"id":"84a3b7f9-badd-4333-9f2b-81d7cb10add7","reference":"CLM-E335BEC5","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4fa338a4 Help production task exist structure.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:44.627593Z","updated_at":"2026-10-01T09:18:44.627593Z","withdrawn_at":null,"decided_by_id":null}
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7/transitions "HTTP/1.1 200 OK"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"84a3b7f9-badd-4333-9f2b-81d7cb10add7","reference":"CLM-E335BEC5","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4fa338a4 Help production task exist structure.","incident_date":"2026-09-24","status":"SUBMITTED","created_at":"2026-10-01T09:18:44.627593Z","updated_at":"2026-10-01T09:18:44.636676Z","withdrawn_at":null,"decided_by_id":null}
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7/transitions "HTTP/1.1 200 OK"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"84a3b7f9-badd-4333-9f2b-81d7cb10add7","reference":"CLM-E335BEC5","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4fa338a4 Help production task exist structure.","incident_date":"2026-09-24","status":"UNDER_REVIEW","created_at":"2026-10-01T09:18:44.627593Z","updated_at":"2026-10-01T09:18:44.645066Z","withdrawn_at":null,"decided_by_id":null}
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7/transitions "HTTP/1.1 200 OK"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7/transitions -> 200 (7 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"84a3b7f9-badd-4333-9f2b-81d7cb10add7","reference":"CLM-E335BEC5","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4fa338a4 Help production task exist structure.","incident_date":"2026-09-24","status":"REJECTED","created_at":"2026-10-01T09:18:44.627593Z","updated_at":"2026-10-01T09:18:44.653006Z","withdrawn_at":null,"decided_by_id":"7fa6a7a3-7cb1-4535-aced-4609e0173850"}
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7/transitions "HTTP/1.1 409 Conflict"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7/transitions -> 409 (4 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status REJECTED; it must be DRAFT."}
+09:18:44 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7 "HTTP/1.1 200 OK"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/84a3b7f9-badd-4333-9f2b-81d7cb10add7 -> 200 (3 ms)
+  response: {"id":"84a3b7f9-badd-4333-9f2b-81d7cb10add7","reference":"CLM-E335BEC5","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4fa338a4 Help production task exist structure.","incident_date":"2026-09-24","status":"REJECTED","created_at":"2026-10-01T09:18:44.627593Z","updated_at":"2026-10-01T09:18:44.653006Z","withdrawn_at":null,"decided_by_id":"7fa6a7a3-7cb1-4535-aced-4609e0173850"}
+09:18:44 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-submit]

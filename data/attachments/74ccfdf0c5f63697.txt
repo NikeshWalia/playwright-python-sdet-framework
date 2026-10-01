@@ -1,0 +1,10 @@
+09:18:52 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_never_sees_another_customers_claim[chromium]
+09:18:52 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:18:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (16 ms)
+  response: [{"id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","policy_number":"POL-1001","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"10000.00","is_active":true},{"id":"3eb08a97-62d0-4a11-aaa3-543f95bd224a","policy_number":"POL-1002","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"2500.00","is_active":true}]
+09:18:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '250.00', 'description': 'QA 9b855167 Expect while it trouble Mr film soon.', 'incident_date': '2026-09-24'}
+  response: {"id":"99700d65-3e97-4823-8c7b-f0ca3fc6bd96","reference":"CLM-651206EC","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"250.00","description":"QA 9b855167 Expect while it trouble Mr film soon.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:52.232717Z","updated_at":"2026-10-01T09:18:52.232717Z","withdrawn_at":null,"decided_by_id":null}
+09:18:52 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+09:18:52 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_never_sees_another_customers_claim[chromium]

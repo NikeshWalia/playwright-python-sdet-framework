@@ -1,0 +1,26 @@
+09:18:56 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+09:18:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:18:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","policy_number":"POL-1001","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"10000.00","is_active":true},{"id":"3eb08a97-62d0-4a11-aaa3-543f95bd224a","policy_number":"POL-1002","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"2500.00","is_active":true}]
+09:18:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (57 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '410.00', 'description': 'QA b55c837b Certainly little participant pass.', 'incident_date': '2026-09-24'}
+  response: {"id":"bb22c832-4cfd-402f-8027-f71d6ed83d60","reference":"CLM-CACA0CCF","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"410.00","description":"QA b55c837b Certainly little participant pass.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:56.298399Z","updated_at":"2026-10-01T09:18:56.298399Z","withdrawn_at":null,"decided_by_id":null}
+09:18:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60/transitions "HTTP/1.1 200 OK"
+09:18:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"bb22c832-4cfd-402f-8027-f71d6ed83d60","reference":"CLM-CACA0CCF","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"410.00","description":"QA b55c837b Certainly little participant pass.","incident_date":"2026-09-24","status":"SUBMITTED","created_at":"2026-10-01T09:18:56.298399Z","updated_at":"2026-10-01T09:18:56.351996Z","withdrawn_at":null,"decided_by_id":null}
+09:18:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60/transitions "HTTP/1.1 200 OK"
+09:18:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60/transitions -> 200 (15 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"bb22c832-4cfd-402f-8027-f71d6ed83d60","reference":"CLM-CACA0CCF","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"410.00","description":"QA b55c837b Certainly little participant pass.","incident_date":"2026-09-24","status":"UNDER_REVIEW","created_at":"2026-10-01T09:18:56.298399Z","updated_at":"2026-10-01T09:18:56.365561Z","withdrawn_at":null,"decided_by_id":null}
+09:18:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60/transitions "HTTP/1.1 200 OK"
+09:18:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60/transitions -> 200 (12 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"bb22c832-4cfd-402f-8027-f71d6ed83d60","reference":"CLM-CACA0CCF","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"410.00","description":"QA b55c837b Certainly little participant pass.","incident_date":"2026-09-24","status":"APPROVED","created_at":"2026-10-01T09:18:56.298399Z","updated_at":"2026-10-01T09:18:56.378836Z","withdrawn_at":null,"decided_by_id":"7fa6a7a3-7cb1-4535-aced-4609e0173850"}
+09:18:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60/transitions "HTTP/1.1 200 OK"
+09:18:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"bb22c832-4cfd-402f-8027-f71d6ed83d60","reference":"CLM-CACA0CCF","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"410.00","description":"QA b55c837b Certainly little participant pass.","incident_date":"2026-09-24","status":"PAID","created_at":"2026-10-01T09:18:56.298399Z","updated_at":"2026-10-01T09:18:56.389959Z","withdrawn_at":null,"decided_by_id":"7fa6a7a3-7cb1-4535-aced-4609e0173850"}
+09:18:56 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/bb22c832-4cfd-402f-8027-f71d6ed83d60
+09:18:56 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]

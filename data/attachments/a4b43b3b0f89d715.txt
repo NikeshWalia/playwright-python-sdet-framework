@@ -1,0 +1,32 @@
+09:18:45 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-reject]
+09:18:45 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:18:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","policy_number":"POL-1001","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"10000.00","is_active":true},{"id":"3eb08a97-62d0-4a11-aaa3-543f95bd224a","policy_number":"POL-1002","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"2500.00","is_active":true}]
+09:18:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '100.00', 'description': 'QA 4f22f1be Forget forget board state prepare alone.', 'incident_date': '2026-09-24'}
+  response: {"id":"b583a5f9-ff19-4bd0-92a5-0759a6cfbac5","reference":"CLM-236CCA80","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4f22f1be Forget forget board state prepare alone.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:45.551229Z","updated_at":"2026-10-01T09:18:45.551229Z","withdrawn_at":null,"decided_by_id":null}
+09:18:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions "HTTP/1.1 200 OK"
+09:18:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b583a5f9-ff19-4bd0-92a5-0759a6cfbac5","reference":"CLM-236CCA80","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4f22f1be Forget forget board state prepare alone.","incident_date":"2026-09-24","status":"SUBMITTED","created_at":"2026-10-01T09:18:45.551229Z","updated_at":"2026-10-01T09:18:45.561900Z","withdrawn_at":null,"decided_by_id":null}
+09:18:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions "HTTP/1.1 200 OK"
+09:18:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b583a5f9-ff19-4bd0-92a5-0759a6cfbac5","reference":"CLM-236CCA80","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4f22f1be Forget forget board state prepare alone.","incident_date":"2026-09-24","status":"UNDER_REVIEW","created_at":"2026-10-01T09:18:45.551229Z","updated_at":"2026-10-01T09:18:45.570574Z","withdrawn_at":null,"decided_by_id":null}
+09:18:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions "HTTP/1.1 200 OK"
+09:18:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"b583a5f9-ff19-4bd0-92a5-0759a6cfbac5","reference":"CLM-236CCA80","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4f22f1be Forget forget board state prepare alone.","incident_date":"2026-09-24","status":"APPROVED","created_at":"2026-10-01T09:18:45.551229Z","updated_at":"2026-10-01T09:18:45.579702Z","withdrawn_at":null,"decided_by_id":"7fa6a7a3-7cb1-4535-aced-4609e0173850"}
+09:18:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions "HTTP/1.1 200 OK"
+09:18:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"b583a5f9-ff19-4bd0-92a5-0759a6cfbac5","reference":"CLM-236CCA80","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4f22f1be Forget forget board state prepare alone.","incident_date":"2026-09-24","status":"PAID","created_at":"2026-10-01T09:18:45.551229Z","updated_at":"2026-10-01T09:18:45.588532Z","withdrawn_at":null,"decided_by_id":"7fa6a7a3-7cb1-4535-aced-4609e0173850"}
+09:18:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions "HTTP/1.1 409 Conflict"
+09:18:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5/transitions -> 409 (6 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status PAID; it must be UNDER_REVIEW."}
+09:18:45 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5 "HTTP/1.1 200 OK"
+09:18:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/b583a5f9-ff19-4bd0-92a5-0759a6cfbac5 -> 200 (4 ms)
+  response: {"id":"b583a5f9-ff19-4bd0-92a5-0759a6cfbac5","reference":"CLM-236CCA80","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"100.00","description":"QA 4f22f1be Forget forget board state prepare alone.","incident_date":"2026-09-24","status":"PAID","created_at":"2026-10-01T09:18:45.551229Z","updated_at":"2026-10-01T09:18:45.588532Z","withdrawn_at":null,"decided_by_id":"7fa6a7a3-7cb1-4535-aced-4609e0173850"}
+09:18:45 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-reject]

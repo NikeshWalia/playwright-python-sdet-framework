@@ -1,9 +1,0 @@
-08:54:26 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_incident_dated_today_is_accepted
-08:54:26 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
-  response: [{"id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","policy_number":"POL-1001","holder_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","coverage_limit":"10000.00","is_active":true},{"id":"d7f397ac-d1fb-4f85-8512-e264cb037f5a","policy_number":"POL-1002","holder_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","coverage_limit":"2500.00","is_active":true}]
-08:54:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-08:54:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
-  request : {'policy_id': '895fc497-1c4d-4b43-988a-5eb6b0af4c03', 'amount': '250.00', 'description': 'QA 652818f8 Young property police business economic lead.', 'incident_date': '2026-09-30'}
-  response: {"id":"d541cb74-bc26-4a6d-a9fd-f5989b1ed22a","reference":"CLM-8B8BD9B2","policy_id":"895fc497-1c4d-4b43-988a-5eb6b0af4c03","claimant_id":"51cbdf19-e5c5-402f-a534-3812856d2c78","amount":"250.00","description":"QA 652818f8 Young property police business economic lead.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-09-30T08:54:26.267867Z","updated_at":"2026-09-30T08:54:26.267867Z","withdrawn_at":null,"decided_by_id":null}
-08:54:26 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_incident_dated_today_is_accepted

@@ -1,0 +1,25 @@
+09:18:44 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+09:18:44 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","policy_number":"POL-1001","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"10000.00","is_active":true},{"id":"3eb08a97-62d0-4a11-aaa3-543f95bd224a","policy_number":"POL-1002","holder_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","coverage_limit":"2500.00","is_active":true}]
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '250.00', 'description': 'QA 3dd8c7f4 Thus feel city list drive.', 'incident_date': '2026-09-24'}
+  response: {"id":"15ffadfa-9885-41ad-bf95-346772f9ff5e","reference":"CLM-3354051B","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"250.00","description":"QA 3dd8c7f4 Thus feel city list drive.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:44.319071Z","updated_at":"2026-10-01T09:18:44.319071Z","withdrawn_at":null,"decided_by_id":null}
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (25 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '250.00', 'description': 'QA acafbbf7 Exactly information maybe experience buy somebody off color.', 'incident_date': '2026-09-24'}
+  response: {"id":"20e3d4cb-b80c-4bc3-b41a-01bd272b9394","reference":"CLM-778D4307","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"250.00","description":"QA acafbbf7 Exactly information maybe experience buy somebody off color.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:44.335508Z","updated_at":"2026-10-01T09:18:44.335508Z","withdrawn_at":null,"decided_by_id":null}
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '250.00', 'description': 'QA c7ced4f9 Themselves what dog administration tree dinner.', 'incident_date': '2026-09-24'}
+  response: {"id":"d57c09ae-772a-43b2-a3eb-456827955f34","reference":"CLM-48969BA0","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"250.00","description":"QA c7ced4f9 Themselves what dog administration tree dinner.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:44.352818Z","updated_at":"2026-10-01T09:18:44.352818Z","withdrawn_at":null,"decided_by_id":null}
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (18 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '250.00', 'description': 'QA 7dfab7bc A thousand certainly.', 'incident_date': '2026-09-24'}
+  response: {"id":"869114d1-d69c-4d79-8842-7bb54c7760af","reference":"CLM-075C1553","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"250.00","description":"QA 7dfab7bc A thousand certainly.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:44.363084Z","updated_at":"2026-10-01T09:18:44.363084Z","withdrawn_at":null,"decided_by_id":null}
+09:18:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:18:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28', 'amount': '250.00', 'description': 'QA f023c6e3 Happy can significant surface seven.', 'incident_date': '2026-09-24'}
+  response: {"id":"5bb6bdd2-1113-461a-84f5-c28b19fdc9ce","reference":"CLM-88536F4D","policy_id":"2a43b1f0-ce33-4f9d-a6c9-ed1d5d1bee28","claimant_id":"be49ef0b-1e4b-4f53-8bfd-cf38c6da4fd2","amount":"250.00","description":"QA f023c6e3 Happy can significant surface seven.","incident_date":"2026-09-24","status":"DRAFT","created_at":"2026-10-01T09:18:44.381815Z","updated_at":"2026-10-01T09:18:44.381815Z","withdrawn_at":null,"decided_by_id":null}
+09:18:44 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
