@@ -1,0 +1,9 @@
+08:51:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]
+08:51:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:51:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"9d280858-7498-47bd-89e8-d3f560e7f262","policy_number":"POL-1001","holder_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","coverage_limit":"10000.00","is_active":true},{"id":"b3e6cee9-d504-48f6-8c40-006a7cd95cb7","policy_number":"POL-1002","holder_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","coverage_limit":"2500.00","is_active":true}]
+08:51:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+08:51:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (7 ms)
+  request : {'policy_id': '9d280858-7498-47bd-89e8-d3f560e7f262', 'amount': '0', 'description': 'QA cf44c0a8 Seven certainly seven example skin lawyer focus.', 'incident_date': '2026-09-25'}
+  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"0","ctx":{"gt":0}}]}
+08:51:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]

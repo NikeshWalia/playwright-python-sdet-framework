@@ -1,0 +1,31 @@
+08:51:38 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it
+08:51:38 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"9d280858-7498-47bd-89e8-d3f560e7f262","policy_number":"POL-1001","holder_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","coverage_limit":"10000.00","is_active":true},{"id":"b3e6cee9-d504-48f6-8c40-006a7cd95cb7","policy_number":"POL-1002","holder_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","coverage_limit":"2500.00","is_active":true}]
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('customer@example.com',)
+  rows: 1
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+08:51:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '9d280858-7498-47bd-89e8-d3f560e7f262', 'amount': '700.00', 'description': 'QA 52973890 Send down free candidate dream for.', 'incident_date': '2026-09-25'}
+  response: {"id":"13545f4a-c20b-42ab-9e03-f2b8b86e36f6","reference":"CLM-3CD812D4","policy_id":"9d280858-7498-47bd-89e8-d3f560e7f262","claimant_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","amount":"700.00","description":"QA 52973890 Send down free candidate dream for.","incident_date":"2026-09-25","status":"DRAFT","created_at":"2026-10-02T08:51:38.576227Z","updated_at":"2026-10-02T08:51:38.576227Z","withdrawn_at":null,"decided_by_id":null}
+08:51:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/13545f4a-c20b-42ab-9e03-f2b8b86e36f6/transitions "HTTP/1.1 200 OK"
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/13545f4a-c20b-42ab-9e03-f2b8b86e36f6/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"13545f4a-c20b-42ab-9e03-f2b8b86e36f6","reference":"CLM-3CD812D4","policy_id":"9d280858-7498-47bd-89e8-d3f560e7f262","claimant_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","amount":"700.00","description":"QA 52973890 Send down free candidate dream for.","incident_date":"2026-09-25","status":"SUBMITTED","created_at":"2026-10-02T08:51:38.576227Z","updated_at":"2026-10-02T08:51:38.589849Z","withdrawn_at":null,"decided_by_id":null}
+08:51:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/13545f4a-c20b-42ab-9e03-f2b8b86e36f6/transitions "HTTP/1.1 200 OK"
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/13545f4a-c20b-42ab-9e03-f2b8b86e36f6/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"13545f4a-c20b-42ab-9e03-f2b8b86e36f6","reference":"CLM-3CD812D4","policy_id":"9d280858-7498-47bd-89e8-d3f560e7f262","claimant_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","amount":"700.00","description":"QA 52973890 Send down free candidate dream for.","incident_date":"2026-09-25","status":"UNDER_REVIEW","created_at":"2026-10-02T08:51:38.576227Z","updated_at":"2026-10-02T08:51:38.603647Z","withdrawn_at":null,"decided_by_id":null}
+08:51:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/13545f4a-c20b-42ab-9e03-f2b8b86e36f6/transitions "HTTP/1.1 200 OK"
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/13545f4a-c20b-42ab-9e03-f2b8b86e36f6/transitions -> 200 (14 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"13545f4a-c20b-42ab-9e03-f2b8b86e36f6","reference":"CLM-3CD812D4","policy_id":"9d280858-7498-47bd-89e8-d3f560e7f262","claimant_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","amount":"700.00","description":"QA 52973890 Send down free candidate dream for.","incident_date":"2026-09-25","status":"APPROVED","created_at":"2026-10-02T08:51:38.576227Z","updated_at":"2026-10-02T08:51:38.617580Z","withdrawn_at":null,"decided_by_id":"5c632a3b-b991-4980-b288-182bf51e1002"}
+08:51:38 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('13545f4a-c20b-42ab-9e03-f2b8b86e36f6',)
+  rows: 4
+08:51:38 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it
