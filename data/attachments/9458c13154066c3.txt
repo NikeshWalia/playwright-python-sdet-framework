@@ -1,0 +1,31 @@
+08:28:18 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
+08:28:18 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"d0796461-608a-46a2-9f3b-ab254ffc36e3","policy_number":"POL-1001","holder_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","coverage_limit":"10000.00","is_active":true},{"id":"aa4cbc7b-d6e4-4abc-b7f0-34f0e16d3d4e","policy_number":"POL-1002","holder_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","coverage_limit":"2500.00","is_active":true}]
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:28:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'd0796461-608a-46a2-9f3b-ab254ffc36e3', 'amount': '800.00', 'description': 'QA 36d419de Claim land last really.', 'incident_date': '2026-09-26'}
+  response: {"id":"3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69","reference":"CLM-9CC1DA6F","policy_id":"d0796461-608a-46a2-9f3b-ab254ffc36e3","claimant_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","amount":"800.00","description":"QA 36d419de Claim land last really.","incident_date":"2026-09-26","status":"DRAFT","created_at":"2026-10-03T08:28:18.141819Z","updated_at":"2026-10-03T08:28:18.141819Z","withdrawn_at":null,"decided_by_id":null}
+08:28:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69/transitions "HTTP/1.1 200 OK"
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69","reference":"CLM-9CC1DA6F","policy_id":"d0796461-608a-46a2-9f3b-ab254ffc36e3","claimant_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","amount":"800.00","description":"QA 36d419de Claim land last really.","incident_date":"2026-09-26","status":"SUBMITTED","created_at":"2026-10-03T08:28:18.141819Z","updated_at":"2026-10-03T08:28:18.151235Z","withdrawn_at":null,"decided_by_id":null}
+08:28:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69/transitions "HTTP/1.1 200 OK"
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69","reference":"CLM-9CC1DA6F","policy_id":"d0796461-608a-46a2-9f3b-ab254ffc36e3","claimant_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","amount":"800.00","description":"QA 36d419de Claim land last really.","incident_date":"2026-09-26","status":"UNDER_REVIEW","created_at":"2026-10-03T08:28:18.141819Z","updated_at":"2026-10-03T08:28:18.158705Z","withdrawn_at":null,"decided_by_id":null}
+08:28:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69/transitions "HTTP/1.1 200 OK"
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69/transitions -> 200 (7 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69","reference":"CLM-9CC1DA6F","policy_id":"d0796461-608a-46a2-9f3b-ab254ffc36e3","claimant_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","amount":"800.00","description":"QA 36d419de Claim land last really.","incident_date":"2026-09-26","status":"REJECTED","created_at":"2026-10-03T08:28:18.141819Z","updated_at":"2026-10-03T08:28:18.164843Z","withdrawn_at":null,"decided_by_id":"07ecd90a-538f-4edf-ada8-b391397ad287"}
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69',)
+  rows: 1
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69',)
+  rows: 1
+08:28:18 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('3a3fce74-d85a-4c8b-b1f2-40f6d57dfc69',)
+  rows: 1
+08:28:18 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid

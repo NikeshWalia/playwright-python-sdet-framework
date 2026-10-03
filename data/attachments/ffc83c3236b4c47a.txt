@@ -1,0 +1,12 @@
+08:28:15 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim
+08:28:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:28:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"d0796461-608a-46a2-9f3b-ab254ffc36e3","policy_number":"POL-1001","holder_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","coverage_limit":"10000.00","is_active":true},{"id":"aa4cbc7b-d6e4-4abc-b7f0-34f0e16d3d4e","policy_number":"POL-1002","holder_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","coverage_limit":"2500.00","is_active":true}]
+08:28:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:28:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'd0796461-608a-46a2-9f3b-ab254ffc36e3', 'amount': '250.00', 'description': 'QA d82a00f8 Form reveal authority morning.', 'incident_date': '2026-09-26'}
+  response: {"id":"ccdbe010-f79f-4266-a7c7-cf500b8241be","reference":"CLM-1670908C","policy_id":"d0796461-608a-46a2-9f3b-ab254ffc36e3","claimant_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","amount":"250.00","description":"QA d82a00f8 Form reveal authority morning.","incident_date":"2026-09-26","status":"DRAFT","created_at":"2026-10-03T08:28:15.108014Z","updated_at":"2026-10-03T08:28:15.108014Z","withdrawn_at":null,"decided_by_id":null}
+08:28:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ccdbe010-f79f-4266-a7c7-cf500b8241be "HTTP/1.1 404 Not Found"
+08:28:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ccdbe010-f79f-4266-a7c7-cf500b8241be -> 404 (4 ms)
+  response: {"detail":"Claim not found"}
+08:28:15 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim

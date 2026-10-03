@@ -1,9 +1,0 @@
-08:51:36 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[impossible-day]
-08:51:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-08:51:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
-  response: [{"id":"9d280858-7498-47bd-89e8-d3f560e7f262","policy_number":"POL-1001","holder_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","coverage_limit":"10000.00","is_active":true},{"id":"b3e6cee9-d504-48f6-8c40-006a7cd95cb7","policy_number":"POL-1002","holder_id":"3951ad31-585b-4ce4-a23c-52eef3b640c9","coverage_limit":"2500.00","is_active":true}]
-08:51:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-08:51:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (8 ms)
-  request : {'policy_id': '9d280858-7498-47bd-89e8-d3f560e7f262', 'amount': '250.00', 'description': 'QA 52c1ce66 Enough miss prepare song town represent debate.', 'incident_date': '2026-02-30'}
-  response: {"detail":[{"type":"date_from_datetime_parsing","loc":["body","incident_date"],"msg":"Input should be a valid date or datetime, day value is outside expected range","input":"2026-02-30","ctx":{"error":"day value is outside expected range"}}]}
-08:51:36 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[impossible-day]

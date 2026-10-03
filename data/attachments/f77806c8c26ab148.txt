@@ -1,0 +1,5 @@
+08:28:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
+08:28:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
+08:28:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (14 ms)
+  response: {"items":[{"id":"f3eba0ca-34c6-4ddf-87c9-5ce0bf567541","reference":"CLM-4B8C5240","policy_id":"d0796461-608a-46a2-9f3b-ab254ffc36e3","claimant_id":"bf7deabd-9676-45ca-a446-b4182a76fc3c","amount":"250.00","description":"QA 309e4973 Card huge manager page cause mention pressure.","incident_date":"2026-09-26","status":"WITHDRAWN","created_at":"2026-10-03T08:28:14.606699Z","updated_at":"2026-10-03T08:28:14.613758Z","withdrawn_at":"2026-10-03T08:28:14.615180Z","decided_by_id":null}],"page":1,"size":50,"total":1}
+08:28:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
