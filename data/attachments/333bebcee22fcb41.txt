@@ -1,0 +1,35 @@
+08:41:02 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_paying_a_claim_writes_exactly_one_payout_for_the_right_amount
+08:41:02 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","policy_number":"POL-1001","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"10000.00","is_active":true},{"id":"dcc9062e-887b-44ed-8b60-77f4b451bad1","policy_number":"POL-1002","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"2500.00","is_active":true}]
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:41:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'f9665f2e-dfd8-471c-989b-0503ea4bcc21', 'amount': '2345.67', 'description': 'QA 33095846 Front news wonder many southern.', 'incident_date': '2026-09-27'}
+  response: {"id":"737b7cbb-2c23-42e1-b184-bc895d578431","reference":"CLM-8940B78D","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"2345.67","description":"QA 33095846 Front news wonder many southern.","incident_date":"2026-09-27","status":"DRAFT","created_at":"2026-10-04T08:41:02.166932Z","updated_at":"2026-10-04T08:41:02.166932Z","withdrawn_at":null,"decided_by_id":null}
+08:41:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/737b7cbb-2c23-42e1-b184-bc895d578431/transitions "HTTP/1.1 200 OK"
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/737b7cbb-2c23-42e1-b184-bc895d578431/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"737b7cbb-2c23-42e1-b184-bc895d578431","reference":"CLM-8940B78D","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"2345.67","description":"QA 33095846 Front news wonder many southern.","incident_date":"2026-09-27","status":"SUBMITTED","created_at":"2026-10-04T08:41:02.166932Z","updated_at":"2026-10-04T08:41:02.178280Z","withdrawn_at":null,"decided_by_id":null}
+08:41:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/737b7cbb-2c23-42e1-b184-bc895d578431/transitions "HTTP/1.1 200 OK"
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/737b7cbb-2c23-42e1-b184-bc895d578431/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"737b7cbb-2c23-42e1-b184-bc895d578431","reference":"CLM-8940B78D","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"2345.67","description":"QA 33095846 Front news wonder many southern.","incident_date":"2026-09-27","status":"UNDER_REVIEW","created_at":"2026-10-04T08:41:02.166932Z","updated_at":"2026-10-04T08:41:02.189059Z","withdrawn_at":null,"decided_by_id":null}
+08:41:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/737b7cbb-2c23-42e1-b184-bc895d578431/transitions "HTTP/1.1 200 OK"
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/737b7cbb-2c23-42e1-b184-bc895d578431/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"737b7cbb-2c23-42e1-b184-bc895d578431","reference":"CLM-8940B78D","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"2345.67","description":"QA 33095846 Front news wonder many southern.","incident_date":"2026-09-27","status":"APPROVED","created_at":"2026-10-04T08:41:02.166932Z","updated_at":"2026-10-04T08:41:02.199811Z","withdrawn_at":null,"decided_by_id":"702af988-d61e-4311-9d39-dc6e9d1f0e09"}
+08:41:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/737b7cbb-2c23-42e1-b184-bc895d578431/transitions "HTTP/1.1 200 OK"
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/737b7cbb-2c23-42e1-b184-bc895d578431/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"737b7cbb-2c23-42e1-b184-bc895d578431","reference":"CLM-8940B78D","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"2345.67","description":"QA 33095846 Front news wonder many southern.","incident_date":"2026-09-27","status":"PAID","created_at":"2026-10-04T08:41:02.166932Z","updated_at":"2026-10-04T08:41:02.208575Z","withdrawn_at":null,"decided_by_id":"702af988-d61e-4311-9d39-dc6e9d1f0e09"}
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('737b7cbb-2c23-42e1-b184-bc895d578431',)
+  rows: 1
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+08:41:02 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('737b7cbb-2c23-42e1-b184-bc895d578431',)
+  rows: 1
+08:41:02 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_paying_a_claim_writes_exactly_one_payout_for_the_right_amount

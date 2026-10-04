@@ -1,0 +1,32 @@
+08:41:01 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_paying_the_same_claim_twice_is_refused
+08:41:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","policy_number":"POL-1001","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"10000.00","is_active":true},{"id":"dcc9062e-887b-44ed-8b60-77f4b451bad1","policy_number":"POL-1002","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"2500.00","is_active":true}]
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'f9665f2e-dfd8-471c-989b-0503ea4bcc21', 'amount': '300.00', 'description': 'QA 82b91a59 Leave race second her political among.', 'incident_date': '2026-09-27'}
+  response: {"id":"3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf","reference":"CLM-416C871B","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"300.00","description":"QA 82b91a59 Leave race second her political among.","incident_date":"2026-09-27","status":"DRAFT","created_at":"2026-10-04T08:41:01.538027Z","updated_at":"2026-10-04T08:41:01.538027Z","withdrawn_at":null,"decided_by_id":null}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf","reference":"CLM-416C871B","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"300.00","description":"QA 82b91a59 Leave race second her political among.","incident_date":"2026-09-27","status":"SUBMITTED","created_at":"2026-10-04T08:41:01.538027Z","updated_at":"2026-10-04T08:41:01.551180Z","withdrawn_at":null,"decided_by_id":null}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf","reference":"CLM-416C871B","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"300.00","description":"QA 82b91a59 Leave race second her political among.","incident_date":"2026-09-27","status":"UNDER_REVIEW","created_at":"2026-10-04T08:41:01.538027Z","updated_at":"2026-10-04T08:41:01.563580Z","withdrawn_at":null,"decided_by_id":null}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf","reference":"CLM-416C871B","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"300.00","description":"QA 82b91a59 Leave race second her political among.","incident_date":"2026-09-27","status":"APPROVED","created_at":"2026-10-04T08:41:01.538027Z","updated_at":"2026-10-04T08:41:01.574250Z","withdrawn_at":null,"decided_by_id":"702af988-d61e-4311-9d39-dc6e9d1f0e09"}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions -> 200 (12 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf","reference":"CLM-416C871B","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"300.00","description":"QA 82b91a59 Leave race second her political among.","incident_date":"2026-09-27","status":"PAID","created_at":"2026-10-04T08:41:01.538027Z","updated_at":"2026-10-04T08:41:01.585225Z","withdrawn_at":null,"decided_by_id":"702af988-d61e-4311-9d39-dc6e9d1f0e09"}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions "HTTP/1.1 409 Conflict"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+08:41:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/payout "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf/payout -> 200 (6 ms)
+  response: {"id":"58a84d41-b9cf-4e2d-a193-b4b9fd32cd11","claim_id":"3d9cadd3-c8b0-4c2c-9c5b-c97520c0b5cf","amount":"300.00","paid_by_id":"702af988-d61e-4311-9d39-dc6e9d1f0e09","paid_at":"2026-10-04T08:41:01.585225Z"}
+08:41:01 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_paying_the_same_claim_twice_is_refused

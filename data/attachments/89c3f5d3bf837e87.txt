@@ -1,0 +1,9 @@
+08:40:59 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero-decimals]
+08:40:59 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:40:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","policy_number":"POL-1001","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"10000.00","is_active":true},{"id":"dcc9062e-887b-44ed-8b60-77f4b451bad1","policy_number":"POL-1002","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"2500.00","is_active":true}]
+08:40:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+08:40:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
+  request : {'policy_id': 'f9665f2e-dfd8-471c-989b-0503ea4bcc21', 'amount': '0.00', 'description': 'QA a88f6964 Heart community us whole.', 'incident_date': '2026-09-27'}
+  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"0.00","ctx":{"gt":0}}]}
+08:40:59 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero-decimals]

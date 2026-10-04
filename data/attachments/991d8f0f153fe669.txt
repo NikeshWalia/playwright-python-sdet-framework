@@ -1,0 +1,9 @@
+08:41:00 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]
+08:41:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:41:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","policy_number":"POL-1001","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"10000.00","is_active":true},{"id":"dcc9062e-887b-44ed-8b60-77f4b451bad1","policy_number":"POL-1002","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"2500.00","is_active":true}]
+08:41:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:41:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'f9665f2e-dfd8-471c-989b-0503ea4bcc21', 'amount': '١٢٣', 'description': 'QA e6442317 Join shake edge though computer too.', 'incident_date': '2026-09-27'}
+  response: {"id":"bc86e797-b3a3-41c6-9345-a6aee64dba7d","reference":"CLM-94DEA9A2","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"123.00","description":"QA e6442317 Join shake edge though computer too.","incident_date":"2026-09-27","status":"DRAFT","created_at":"2026-10-04T08:41:00.164528Z","updated_at":"2026-10-04T08:41:00.164528Z","withdrawn_at":null,"decided_by_id":null}
+08:41:00 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]

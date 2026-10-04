@@ -1,0 +1,32 @@
+08:41:01 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-submit]
+08:41:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","policy_number":"POL-1001","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"10000.00","is_active":true},{"id":"dcc9062e-887b-44ed-8b60-77f4b451bad1","policy_number":"POL-1002","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"2500.00","is_active":true}]
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'f9665f2e-dfd8-471c-989b-0503ea4bcc21', 'amount': '100.00', 'description': 'QA b64b0f2a Hear night Congress.', 'incident_date': '2026-09-27'}
+  response: {"id":"b886ace7-23f4-4638-ab4f-a20e585af489","reference":"CLM-D6A592C6","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"100.00","description":"QA b64b0f2a Hear night Congress.","incident_date":"2026-09-27","status":"DRAFT","created_at":"2026-10-04T08:41:01.148570Z","updated_at":"2026-10-04T08:41:01.148570Z","withdrawn_at":null,"decided_by_id":null}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b886ace7-23f4-4638-ab4f-a20e585af489","reference":"CLM-D6A592C6","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"100.00","description":"QA b64b0f2a Hear night Congress.","incident_date":"2026-09-27","status":"SUBMITTED","created_at":"2026-10-04T08:41:01.148570Z","updated_at":"2026-10-04T08:41:01.157918Z","withdrawn_at":null,"decided_by_id":null}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b886ace7-23f4-4638-ab4f-a20e585af489","reference":"CLM-D6A592C6","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"100.00","description":"QA b64b0f2a Hear night Congress.","incident_date":"2026-09-27","status":"UNDER_REVIEW","created_at":"2026-10-04T08:41:01.148570Z","updated_at":"2026-10-04T08:41:01.166739Z","withdrawn_at":null,"decided_by_id":null}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"b886ace7-23f4-4638-ab4f-a20e585af489","reference":"CLM-D6A592C6","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"100.00","description":"QA b64b0f2a Hear night Congress.","incident_date":"2026-09-27","status":"APPROVED","created_at":"2026-10-04T08:41:01.148570Z","updated_at":"2026-10-04T08:41:01.175232Z","withdrawn_at":null,"decided_by_id":"702af988-d61e-4311-9d39-dc6e9d1f0e09"}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions -> 200 (15 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"b886ace7-23f4-4638-ab4f-a20e585af489","reference":"CLM-D6A592C6","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"100.00","description":"QA b64b0f2a Hear night Congress.","incident_date":"2026-09-27","status":"PAID","created_at":"2026-10-04T08:41:01.148570Z","updated_at":"2026-10-04T08:41:01.187306Z","withdrawn_at":null,"decided_by_id":"702af988-d61e-4311-9d39-dc6e9d1f0e09"}
+08:41:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions "HTTP/1.1 409 Conflict"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489/transitions -> 409 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status PAID; it must be DRAFT."}
+08:41:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489 "HTTP/1.1 200 OK"
+08:41:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/b886ace7-23f4-4638-ab4f-a20e585af489 -> 200 (7 ms)
+  response: {"id":"b886ace7-23f4-4638-ab4f-a20e585af489","reference":"CLM-D6A592C6","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"100.00","description":"QA b64b0f2a Hear night Congress.","incident_date":"2026-09-27","status":"PAID","created_at":"2026-10-04T08:41:01.148570Z","updated_at":"2026-10-04T08:41:01.187306Z","withdrawn_at":null,"decided_by_id":"702af988-d61e-4311-9d39-dc6e9d1f0e09"}
+08:41:01 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-submit]

@@ -1,0 +1,24 @@
+08:41:00 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]
+08:41:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:41:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","policy_number":"POL-1001","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"10000.00","is_active":true},{"id":"dcc9062e-887b-44ed-8b60-77f4b451bad1","policy_number":"POL-1002","holder_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","coverage_limit":"2500.00","is_active":true}]
+08:41:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:41:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'f9665f2e-dfd8-471c-989b-0503ea4bcc21', 'amount': '5000.01', 'description': 'QA 780f7247 Bit money top exist himself service each.', 'incident_date': '2026-09-27'}
+  response: {"id":"b3cea0d0-8579-4402-9d3b-47a4924bb457","reference":"CLM-D63E05AA","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"5000.01","description":"QA 780f7247 Bit money top exist himself service each.","incident_date":"2026-09-27","status":"DRAFT","created_at":"2026-10-04T08:41:00.433378Z","updated_at":"2026-10-04T08:41:00.433378Z","withdrawn_at":null,"decided_by_id":null}
+08:41:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b3cea0d0-8579-4402-9d3b-47a4924bb457/transitions "HTTP/1.1 200 OK"
+08:41:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b3cea0d0-8579-4402-9d3b-47a4924bb457/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b3cea0d0-8579-4402-9d3b-47a4924bb457","reference":"CLM-D63E05AA","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"5000.01","description":"QA 780f7247 Bit money top exist himself service each.","incident_date":"2026-09-27","status":"SUBMITTED","created_at":"2026-10-04T08:41:00.433378Z","updated_at":"2026-10-04T08:41:00.443503Z","withdrawn_at":null,"decided_by_id":null}
+08:41:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b3cea0d0-8579-4402-9d3b-47a4924bb457/transitions "HTTP/1.1 200 OK"
+08:41:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b3cea0d0-8579-4402-9d3b-47a4924bb457/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b3cea0d0-8579-4402-9d3b-47a4924bb457","reference":"CLM-D63E05AA","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"5000.01","description":"QA 780f7247 Bit money top exist himself service each.","incident_date":"2026-09-27","status":"UNDER_REVIEW","created_at":"2026-10-04T08:41:00.433378Z","updated_at":"2026-10-04T08:41:00.452587Z","withdrawn_at":null,"decided_by_id":null}
+08:41:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b3cea0d0-8579-4402-9d3b-47a4924bb457/transitions "HTTP/1.1 403 Forbidden"
+08:41:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b3cea0d0-8579-4402-9d3b-47a4924bb457/transitions -> 403 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 5000.01 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+08:41:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/b3cea0d0-8579-4402-9d3b-47a4924bb457 "HTTP/1.1 200 OK"
+08:41:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/b3cea0d0-8579-4402-9d3b-47a4924bb457 -> 200 (4 ms)
+  response: {"id":"b3cea0d0-8579-4402-9d3b-47a4924bb457","reference":"CLM-D63E05AA","policy_id":"f9665f2e-dfd8-471c-989b-0503ea4bcc21","claimant_id":"051d5e3a-8aa3-46bd-a91b-f1c54dd09dca","amount":"5000.01","description":"QA 780f7247 Bit money top exist himself service each.","incident_date":"2026-09-27","status":"UNDER_REVIEW","created_at":"2026-10-04T08:41:00.433378Z","updated_at":"2026-10-04T08:41:00.452587Z","withdrawn_at":null,"decided_by_id":null}
+08:41:00 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]
