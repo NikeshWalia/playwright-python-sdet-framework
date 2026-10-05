@@ -1,0 +1,12 @@
+09:30:47 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_the_owner_can_read_their_own_claim
+09:30:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:30:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","policy_number":"POL-1001","holder_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","coverage_limit":"10000.00","is_active":true},{"id":"fed4edd2-55d0-41d7-ab31-8b7e343f6321","policy_number":"POL-1002","holder_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","coverage_limit":"2500.00","is_active":true}]
+09:30:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:30:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '11e63113-a556-4dbf-97b5-3e9e51f928f9', 'amount': '250.00', 'description': 'QA 72404f34 Attention area might heart tonight.', 'incident_date': '2026-09-28'}
+  response: {"id":"e38213c5-9ab6-4422-9bfd-e5061f00dd1b","reference":"CLM-409E2BFF","policy_id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","claimant_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","amount":"250.00","description":"QA 72404f34 Attention area might heart tonight.","incident_date":"2026-09-28","status":"DRAFT","created_at":"2026-10-05T09:30:47.439286Z","updated_at":"2026-10-05T09:30:47.439286Z","withdrawn_at":null,"decided_by_id":null}
+09:30:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/e38213c5-9ab6-4422-9bfd-e5061f00dd1b "HTTP/1.1 200 OK"
+09:30:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/e38213c5-9ab6-4422-9bfd-e5061f00dd1b -> 200 (5 ms)
+  response: {"id":"e38213c5-9ab6-4422-9bfd-e5061f00dd1b","reference":"CLM-409E2BFF","policy_id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","claimant_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","amount":"250.00","description":"QA 72404f34 Attention area might heart tonight.","incident_date":"2026-09-28","status":"DRAFT","created_at":"2026-10-05T09:30:47.439286Z","updated_at":"2026-10-05T09:30:47.439286Z","withdrawn_at":null,"decided_by_id":null}
+09:30:47 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_the_owner_can_read_their_own_claim

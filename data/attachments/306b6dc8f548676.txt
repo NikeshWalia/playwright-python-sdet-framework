@@ -1,0 +1,26 @@
+09:30:57 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+09:30:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:30:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","policy_number":"POL-1001","holder_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","coverage_limit":"10000.00","is_active":true},{"id":"fed4edd2-55d0-41d7-ab31-8b7e343f6321","policy_number":"POL-1002","holder_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","coverage_limit":"2500.00","is_active":true}]
+09:30:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:30:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '11e63113-a556-4dbf-97b5-3e9e51f928f9', 'amount': '410.00', 'description': 'QA 4628b1b4 Fight sense paper recent figure we far.', 'incident_date': '2026-09-28'}
+  response: {"id":"42278e5e-8c98-4f4e-ae03-6527890d5c97","reference":"CLM-DEE03E39","policy_id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","claimant_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","amount":"410.00","description":"QA 4628b1b4 Fight sense paper recent figure we far.","incident_date":"2026-09-28","status":"DRAFT","created_at":"2026-10-05T09:30:57.522732Z","updated_at":"2026-10-05T09:30:57.522732Z","withdrawn_at":null,"decided_by_id":null}
+09:30:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97/transitions "HTTP/1.1 200 OK"
+09:30:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97/transitions -> 200 (16 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"42278e5e-8c98-4f4e-ae03-6527890d5c97","reference":"CLM-DEE03E39","policy_id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","claimant_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","amount":"410.00","description":"QA 4628b1b4 Fight sense paper recent figure we far.","incident_date":"2026-09-28","status":"SUBMITTED","created_at":"2026-10-05T09:30:57.522732Z","updated_at":"2026-10-05T09:30:57.537061Z","withdrawn_at":null,"decided_by_id":null}
+09:30:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97/transitions "HTTP/1.1 200 OK"
+09:30:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"42278e5e-8c98-4f4e-ae03-6527890d5c97","reference":"CLM-DEE03E39","policy_id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","claimant_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","amount":"410.00","description":"QA 4628b1b4 Fight sense paper recent figure we far.","incident_date":"2026-09-28","status":"UNDER_REVIEW","created_at":"2026-10-05T09:30:57.522732Z","updated_at":"2026-10-05T09:30:57.552652Z","withdrawn_at":null,"decided_by_id":null}
+09:30:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97/transitions "HTTP/1.1 200 OK"
+09:30:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"42278e5e-8c98-4f4e-ae03-6527890d5c97","reference":"CLM-DEE03E39","policy_id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","claimant_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","amount":"410.00","description":"QA 4628b1b4 Fight sense paper recent figure we far.","incident_date":"2026-09-28","status":"APPROVED","created_at":"2026-10-05T09:30:57.522732Z","updated_at":"2026-10-05T09:30:57.561317Z","withdrawn_at":null,"decided_by_id":"2793f464-250a-434b-8407-0035545d1a0c"}
+09:30:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97/transitions "HTTP/1.1 200 OK"
+09:30:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97/transitions -> 200 (9 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"42278e5e-8c98-4f4e-ae03-6527890d5c97","reference":"CLM-DEE03E39","policy_id":"11e63113-a556-4dbf-97b5-3e9e51f928f9","claimant_id":"e7c5f3c8-e32c-4a12-9184-b13ca90d6b51","amount":"410.00","description":"QA 4628b1b4 Fight sense paper recent figure we far.","incident_date":"2026-09-28","status":"PAID","created_at":"2026-10-05T09:30:57.522732Z","updated_at":"2026-10-05T09:30:57.569452Z","withdrawn_at":null,"decided_by_id":"2793f464-250a-434b-8407-0035545d1a0c"}
+09:30:57 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/42278e5e-8c98-4f4e-ae03-6527890d5c97
+09:30:57 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
