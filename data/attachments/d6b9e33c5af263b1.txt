@@ -1,0 +1,21 @@
+09:16:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[one-cent-below-limit]
+09:16:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"a9f8826b-7268-4938-8a67-949b70a5a60c","policy_number":"POL-1001","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"10000.00","is_active":true},{"id":"117450f9-0870-4152-8b9c-5f7a0620d721","policy_number":"POL-1002","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"2500.00","is_active":true}]
+09:16:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (42 ms)
+  request : {'policy_id': 'a9f8826b-7268-4938-8a67-949b70a5a60c', 'amount': '4999.99', 'description': 'QA 8b512df2 About office book pressure very.', 'incident_date': '2026-09-29'}
+  response: {"id":"b8a2368b-734f-4e90-a241-16a930edd3a2","reference":"CLM-561869A7","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"4999.99","description":"QA 8b512df2 About office book pressure very.","incident_date":"2026-09-29","status":"DRAFT","created_at":"2026-10-06T09:16:06.905625Z","updated_at":"2026-10-06T09:16:06.905625Z","withdrawn_at":null,"decided_by_id":null}
+09:16:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b8a2368b-734f-4e90-a241-16a930edd3a2/transitions "HTTP/1.1 200 OK"
+09:16:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b8a2368b-734f-4e90-a241-16a930edd3a2/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b8a2368b-734f-4e90-a241-16a930edd3a2","reference":"CLM-561869A7","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"4999.99","description":"QA 8b512df2 About office book pressure very.","incident_date":"2026-09-29","status":"SUBMITTED","created_at":"2026-10-06T09:16:06.905625Z","updated_at":"2026-10-06T09:16:06.949054Z","withdrawn_at":null,"decided_by_id":null}
+09:16:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b8a2368b-734f-4e90-a241-16a930edd3a2/transitions "HTTP/1.1 200 OK"
+09:16:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b8a2368b-734f-4e90-a241-16a930edd3a2/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b8a2368b-734f-4e90-a241-16a930edd3a2","reference":"CLM-561869A7","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"4999.99","description":"QA 8b512df2 About office book pressure very.","incident_date":"2026-09-29","status":"UNDER_REVIEW","created_at":"2026-10-06T09:16:06.905625Z","updated_at":"2026-10-06T09:16:06.956045Z","withdrawn_at":null,"decided_by_id":null}
+09:16:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b8a2368b-734f-4e90-a241-16a930edd3a2/transitions "HTTP/1.1 200 OK"
+09:16:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b8a2368b-734f-4e90-a241-16a930edd3a2/transitions -> 200 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"b8a2368b-734f-4e90-a241-16a930edd3a2","reference":"CLM-561869A7","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"4999.99","description":"QA 8b512df2 About office book pressure very.","incident_date":"2026-09-29","status":"APPROVED","created_at":"2026-10-06T09:16:06.905625Z","updated_at":"2026-10-06T09:16:06.963735Z","withdrawn_at":null,"decided_by_id":"ef775ab1-b89c-4f70-8563-82dc709e3dd7"}
+09:16:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[one-cent-below-limit]

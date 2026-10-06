@@ -1,0 +1,43 @@
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (71 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2ODg2NWFkNC02ZmEzLTQxMjUtYWU4Yi05OTY0MDQyNjc1YmYiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTEyNzgxNzAsImV4cCI6MTc5MTI4MTc3MH0.cRUEUML7bpSX0wQktLK656VCTQuqch52ufXX0swftfg","token_type":"bearer","expires_in":3600}
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (67 ms)
+  request : {'email': 'adjuster@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlZjc3NWFiMS1iODljLTRmNzAtODU2My04MmRjNzA5ZTNkZDciLCJyb2xlIjoiQURKVVNURVIiLCJpYXQiOjE3OTEyNzgxNzAsImV4cCI6MTc5MTI4MTc3MH0.ei8KaplWcjW9OuRyN068Su9CAsTOcrsB_rz-9u0oolA","token_type":"bearer","expires_in":3600}
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (66 ms)
+  request : {'email': 'admin@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiMmM2ODk2Yi0wNjI5LTRlZGEtODdkOC00ZDQ2ZDA0ZmQxYjQiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3OTEyNzgxNzAsImV4cCI6MTc5MTI4MTc3MH0.gy5z4da_ZPhA_h-h1HUOKq9tpBtwlUNjb--_c0WSpS4","token_type":"bearer","expires_in":3600}
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (64 ms)
+  request : {'email': 'other.customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkN2U2OTY0Ny02ZGMwLTQ4ZWYtYmU3Mi02MjJlOWNjNGIxMzAiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTEyNzgxNzAsImV4cCI6MTc5MTI4MTc3MH0.3oNQS0Fj9esUs9PeYpkHGC4gl0XF-5CqIdDbcpDk2QY","token_type":"bearer","expires_in":3600}
+09:16:10 INFO     claimdesk_qa.tests._fixtures.browser Prepared storage states for customer, adjuster, admin, other_customer
+09:16:10 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+09:16:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (12 ms)
+  response: [{"id":"a9f8826b-7268-4938-8a67-949b70a5a60c","policy_number":"POL-1001","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"10000.00","is_active":true},{"id":"117450f9-0870-4152-8b9c-5f7a0620d721","policy_number":"POL-1002","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"2500.00","is_active":true}]
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (20 ms)
+  request : {'policy_id': 'a9f8826b-7268-4938-8a67-949b70a5a60c', 'amount': '410.00', 'description': 'QA 7237edfd Everybody century difficult way low join physical.', 'incident_date': '2026-09-29'}
+  response: {"id":"7d97f40b-e68d-4135-a518-b6095ec8bbc5","reference":"CLM-5B663943","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"410.00","description":"QA 7237edfd Everybody century difficult way low join physical.","incident_date":"2026-09-29","status":"DRAFT","created_at":"2026-10-06T09:16:10.921931Z","updated_at":"2026-10-06T09:16:10.921931Z","withdrawn_at":null,"decided_by_id":null}
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5/transitions "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7d97f40b-e68d-4135-a518-b6095ec8bbc5","reference":"CLM-5B663943","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"410.00","description":"QA 7237edfd Everybody century difficult way low join physical.","incident_date":"2026-09-29","status":"SUBMITTED","created_at":"2026-10-06T09:16:10.921931Z","updated_at":"2026-10-06T09:16:10.937735Z","withdrawn_at":null,"decided_by_id":null}
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5/transitions "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5/transitions -> 200 (32 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7d97f40b-e68d-4135-a518-b6095ec8bbc5","reference":"CLM-5B663943","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"410.00","description":"QA 7237edfd Everybody century difficult way low join physical.","incident_date":"2026-09-29","status":"UNDER_REVIEW","created_at":"2026-10-06T09:16:10.921931Z","updated_at":"2026-10-06T09:16:10.963142Z","withdrawn_at":null,"decided_by_id":null}
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5/transitions "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"7d97f40b-e68d-4135-a518-b6095ec8bbc5","reference":"CLM-5B663943","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"410.00","description":"QA 7237edfd Everybody century difficult way low join physical.","incident_date":"2026-09-29","status":"APPROVED","created_at":"2026-10-06T09:16:10.921931Z","updated_at":"2026-10-06T09:16:10.982131Z","withdrawn_at":null,"decided_by_id":"ef775ab1-b89c-4f70-8563-82dc709e3dd7"}
+09:16:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5/transitions "HTTP/1.1 200 OK"
+09:16:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"7d97f40b-e68d-4135-a518-b6095ec8bbc5","reference":"CLM-5B663943","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"410.00","description":"QA 7237edfd Everybody century difficult way low join physical.","incident_date":"2026-09-29","status":"PAID","created_at":"2026-10-06T09:16:10.921931Z","updated_at":"2026-10-06T09:16:10.991682Z","withdrawn_at":null,"decided_by_id":"ef775ab1-b89c-4f70-8563-82dc709e3dd7"}
+09:16:10 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/7d97f40b-e68d-4135-a518-b6095ec8bbc5
+09:16:11 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

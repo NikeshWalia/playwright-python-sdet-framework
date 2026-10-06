@@ -1,0 +1,9 @@
+09:16:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]
+09:16:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"a9f8826b-7268-4938-8a67-949b70a5a60c","policy_number":"POL-1001","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"10000.00","is_active":true},{"id":"117450f9-0870-4152-8b9c-5f7a0620d721","policy_number":"POL-1002","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"2500.00","is_active":true}]
+09:16:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'a9f8826b-7268-4938-8a67-949b70a5a60c', 'amount': '１２３', 'description': 'QA 1c986542 Find this necessary all far year help.', 'incident_date': '2026-09-29'}
+  response: {"id":"55e0d5af-23b1-4701-aac0-514272420146","reference":"CLM-2D450BFA","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"123.00","description":"QA 1c986542 Find this necessary all far year help.","incident_date":"2026-09-29","status":"DRAFT","created_at":"2026-10-06T09:16:06.648761Z","updated_at":"2026-10-06T09:16:06.648761Z","withdrawn_at":null,"decided_by_id":null}
+09:16:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]

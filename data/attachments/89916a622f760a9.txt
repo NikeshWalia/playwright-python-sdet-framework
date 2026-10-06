@@ -1,0 +1,34 @@
+09:16:11 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]
+09:16:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"a9f8826b-7268-4938-8a67-949b70a5a60c","policy_number":"POL-1001","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"10000.00","is_active":true},{"id":"117450f9-0870-4152-8b9c-5f7a0620d721","policy_number":"POL-1002","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"2500.00","is_active":true}]
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:16:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'a9f8826b-7268-4938-8a67-949b70a5a60c', 'amount': '1975.25', 'description': 'QA 2fa12229 Guy situation sister marriage stay.', 'incident_date': '2026-09-29'}
+  response: {"id":"090b97fc-37dd-45ce-a2eb-c576eb1db45e","reference":"CLM-BAE029C3","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"1975.25","description":"QA 2fa12229 Guy situation sister marriage stay.","incident_date":"2026-09-29","status":"DRAFT","created_at":"2026-10-06T09:16:11.408559Z","updated_at":"2026-10-06T09:16:11.408559Z","withdrawn_at":null,"decided_by_id":null}
+09:16:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/090b97fc-37dd-45ce-a2eb-c576eb1db45e/transitions "HTTP/1.1 200 OK"
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/090b97fc-37dd-45ce-a2eb-c576eb1db45e/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"090b97fc-37dd-45ce-a2eb-c576eb1db45e","reference":"CLM-BAE029C3","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"1975.25","description":"QA 2fa12229 Guy situation sister marriage stay.","incident_date":"2026-09-29","status":"SUBMITTED","created_at":"2026-10-06T09:16:11.408559Z","updated_at":"2026-10-06T09:16:11.417721Z","withdrawn_at":null,"decided_by_id":null}
+09:16:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/090b97fc-37dd-45ce-a2eb-c576eb1db45e/transitions "HTTP/1.1 200 OK"
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/090b97fc-37dd-45ce-a2eb-c576eb1db45e/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"090b97fc-37dd-45ce-a2eb-c576eb1db45e","reference":"CLM-BAE029C3","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"1975.25","description":"QA 2fa12229 Guy situation sister marriage stay.","incident_date":"2026-09-29","status":"UNDER_REVIEW","created_at":"2026-10-06T09:16:11.408559Z","updated_at":"2026-10-06T09:16:11.430618Z","withdrawn_at":null,"decided_by_id":null}
+09:16:11 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/090b97fc-37dd-45ce-a2eb-c576eb1db45e
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('090b97fc-37dd-45ce-a2eb-c576eb1db45e',)
+  rows: 1
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('090b97fc-37dd-45ce-a2eb-c576eb1db45e',)
+  rows: 5
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('090b97fc-37dd-45ce-a2eb-c576eb1db45e',)
+  rows: 1
+09:16:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('090b97fc-37dd-45ce-a2eb-c576eb1db45e',)
+  rows: 1
+09:16:11 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]

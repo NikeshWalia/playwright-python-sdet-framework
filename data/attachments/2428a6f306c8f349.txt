@@ -1,0 +1,40 @@
+09:16:08 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
+09:16:08 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"a9f8826b-7268-4938-8a67-949b70a5a60c","policy_number":"POL-1001","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"10000.00","is_active":true},{"id":"117450f9-0870-4152-8b9c-5f7a0620d721","policy_number":"POL-1002","holder_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","coverage_limit":"2500.00","is_active":true}]
+09:16:08 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:16:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'a9f8826b-7268-4938-8a67-949b70a5a60c', 'amount': '800.00', 'description': 'QA 2a75348f Just building stay pick give.', 'incident_date': '2026-09-29'}
+  response: {"id":"7665dd6d-d258-4647-8dd4-c6a3e5fccb54","reference":"CLM-BE27BF84","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"800.00","description":"QA 2a75348f Just building stay pick give.","incident_date":"2026-09-29","status":"DRAFT","created_at":"2026-10-06T09:16:08.988456Z","updated_at":"2026-10-06T09:16:08.988456Z","withdrawn_at":null,"decided_by_id":null}
+09:16:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions "HTTP/1.1 200 OK"
+09:16:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7665dd6d-d258-4647-8dd4-c6a3e5fccb54","reference":"CLM-BE27BF84","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"800.00","description":"QA 2a75348f Just building stay pick give.","incident_date":"2026-09-29","status":"SUBMITTED","created_at":"2026-10-06T09:16:08.988456Z","updated_at":"2026-10-06T09:16:08.997154Z","withdrawn_at":null,"decided_by_id":null}
+09:16:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions "HTTP/1.1 200 OK"
+09:16:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions -> 200 (21 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7665dd6d-d258-4647-8dd4-c6a3e5fccb54","reference":"CLM-BE27BF84","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"800.00","description":"QA 2a75348f Just building stay pick give.","incident_date":"2026-09-29","status":"UNDER_REVIEW","created_at":"2026-10-06T09:16:08.988456Z","updated_at":"2026-10-06T09:16:09.004692Z","withdrawn_at":null,"decided_by_id":null}
+09:16:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions "HTTP/1.1 200 OK"
+09:16:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"7665dd6d-d258-4647-8dd4-c6a3e5fccb54","reference":"CLM-BE27BF84","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"800.00","description":"QA 2a75348f Just building stay pick give.","incident_date":"2026-09-29","status":"APPROVED","created_at":"2026-10-06T09:16:08.988456Z","updated_at":"2026-10-06T09:16:09.026224Z","withdrawn_at":null,"decided_by_id":"ef775ab1-b89c-4f70-8563-82dc709e3dd7"}
+09:16:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions "HTTP/1.1 200 OK"
+09:16:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"7665dd6d-d258-4647-8dd4-c6a3e5fccb54","reference":"CLM-BE27BF84","policy_id":"a9f8826b-7268-4938-8a67-949b70a5a60c","claimant_id":"68865ad4-6fa3-4125-ae8b-9964042675bf","amount":"800.00","description":"QA 2a75348f Just building stay pick give.","incident_date":"2026-09-29","status":"PAID","created_at":"2026-10-06T09:16:08.988456Z","updated_at":"2026-10-06T09:16:09.035185Z","withdrawn_at":null,"decided_by_id":"ef775ab1-b89c-4f70-8563-82dc709e3dd7"}
+09:16:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions "HTTP/1.1 409 Conflict"
+09:16:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+09:16:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions "HTTP/1.1 409 Conflict"
+09:16:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7665dd6d-d258-4647-8dd4-c6a3e5fccb54/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+09:16:09 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('7665dd6d-d258-4647-8dd4-c6a3e5fccb54',)
+  rows: 1
+09:16:09 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('7665dd6d-d258-4647-8dd4-c6a3e5fccb54',)
+  rows: 1
+09:16:09 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
