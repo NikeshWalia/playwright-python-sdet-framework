@@ -1,0 +1,12 @@
+09:06:22 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim
+09:06:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:06:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b4587be2-ee15-4509-8526-eef8aba33688","policy_number":"POL-1001","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"10000.00","is_active":true},{"id":"27e592ed-30a8-48b0-9c05-e22d75d081a1","policy_number":"POL-1002","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"2500.00","is_active":true}]
+09:06:22 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '250.00', 'description': 'QA 0f9cfd79 Difference energy source across young couple star.', 'incident_date': '2026-09-30'}
+  response: {"id":"0f1a4c5b-a598-457b-a6fb-2007a2b3f74b","reference":"CLM-86435C61","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"250.00","description":"QA 0f9cfd79 Difference energy source across young couple star.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:22.331189Z","updated_at":"2026-10-07T09:06:22.331189Z","withdrawn_at":null,"decided_by_id":null}
+09:06:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/0f1a4c5b-a598-457b-a6fb-2007a2b3f74b "HTTP/1.1 404 Not Found"
+09:06:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/0f1a4c5b-a598-457b-a6fb-2007a2b3f74b -> 404 (4 ms)
+  response: {"detail":"Claim not found"}
+09:06:22 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_read_another_customers_claim

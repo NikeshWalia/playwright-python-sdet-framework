@@ -1,0 +1,20 @@
+09:06:24 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_updating_a_draft_is_persisted
+09:06:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b4587be2-ee15-4509-8526-eef8aba33688","policy_number":"POL-1001","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"10000.00","is_active":true},{"id":"27e592ed-30a8-48b0-9c05-e22d75d081a1","policy_number":"POL-1002","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"2500.00","is_active":true}]
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '500.00', 'description': 'QA 64904af0 Director identify standard time.', 'incident_date': '2026-09-30'}
+  response: {"id":"dc52ba9e-8b6e-421c-9b25-8e25bf5578a8","reference":"CLM-35A4BFF7","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"500.00","description":"QA 64904af0 Director identify standard time.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:24.729530Z","updated_at":"2026-10-07T09:06:24.729530Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('dc52ba9e-8b6e-421c-9b25-8e25bf5578a8',)
+  rows: 1
+09:06:24 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/dc52ba9e-8b6e-421c-9b25-8e25bf5578a8 "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/dc52ba9e-8b6e-421c-9b25-8e25bf5578a8 -> 200 (7 ms)
+  request : {'description': 'Updated through the API'}
+  response: {"id":"dc52ba9e-8b6e-421c-9b25-8e25bf5578a8","reference":"CLM-35A4BFF7","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"500.00","description":"Updated through the API","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:24.729530Z","updated_at":"2026-10-07T09:06:24.740068Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('dc52ba9e-8b6e-421c-9b25-8e25bf5578a8',)
+  rows: 1
+09:06:24 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_updating_a_draft_is_persisted

@@ -1,0 +1,28 @@
+09:06:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-reject]
+09:06:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b4587be2-ee15-4509-8526-eef8aba33688","policy_number":"POL-1001","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"10000.00","is_active":true},{"id":"27e592ed-30a8-48b0-9c05-e22d75d081a1","policy_number":"POL-1002","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"2500.00","is_active":true}]
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '100.00', 'description': 'QA 9f20e950 Congress ask southern same edge front language.', 'incident_date': '2026-09-30'}
+  response: {"id":"ede27f29-53e9-4623-ad3f-220c2058acbc","reference":"CLM-48F6D41B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 9f20e950 Congress ask southern same edge front language.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:24.237232Z","updated_at":"2026-10-07T09:06:24.237232Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ede27f29-53e9-4623-ad3f-220c2058acbc","reference":"CLM-48F6D41B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 9f20e950 Congress ask southern same edge front language.","incident_date":"2026-09-30","status":"SUBMITTED","created_at":"2026-10-07T09:06:24.237232Z","updated_at":"2026-10-07T09:06:24.246736Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ede27f29-53e9-4623-ad3f-220c2058acbc","reference":"CLM-48F6D41B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 9f20e950 Congress ask southern same edge front language.","incident_date":"2026-09-30","status":"UNDER_REVIEW","created_at":"2026-10-07T09:06:24.237232Z","updated_at":"2026-10-07T09:06:24.255273Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"ede27f29-53e9-4623-ad3f-220c2058acbc","reference":"CLM-48F6D41B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 9f20e950 Congress ask southern same edge front language.","incident_date":"2026-09-30","status":"APPROVED","created_at":"2026-10-07T09:06:24.237232Z","updated_at":"2026-10-07T09:06:24.263702Z","withdrawn_at":null,"decided_by_id":"124e8f4c-7043-4538-ae33-9efb987a80d8"}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc/transitions "HTTP/1.1 409 Conflict"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc/transitions -> 409 (3 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status APPROVED; it must be UNDER_REVIEW."}
+09:06:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ede27f29-53e9-4623-ad3f-220c2058acbc -> 200 (3 ms)
+  response: {"id":"ede27f29-53e9-4623-ad3f-220c2058acbc","reference":"CLM-48F6D41B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 9f20e950 Congress ask southern same edge front language.","incident_date":"2026-09-30","status":"APPROVED","created_at":"2026-10-07T09:06:24.237232Z","updated_at":"2026-10-07T09:06:24.263702Z","withdrawn_at":null,"decided_by_id":"124e8f4c-7043-4538-ae33-9efb987a80d8"}
+09:06:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-reject]

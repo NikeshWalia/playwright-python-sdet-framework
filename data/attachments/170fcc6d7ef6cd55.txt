@@ -1,0 +1,25 @@
+09:06:22 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+09:06:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:06:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b4587be2-ee15-4509-8526-eef8aba33688","policy_number":"POL-1001","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"10000.00","is_active":true},{"id":"27e592ed-30a8-48b0-9c05-e22d75d081a1","policy_number":"POL-1002","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"2500.00","is_active":true}]
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '250.00', 'description': 'QA e6f7c254 Send since her beautiful.', 'incident_date': '2026-09-30'}
+  response: {"id":"387ce243-1b45-48a0-97cc-7dfb1a1427f7","reference":"CLM-44B7E641","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"250.00","description":"QA e6f7c254 Send since her beautiful.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:23.003140Z","updated_at":"2026-10-07T09:06:23.003140Z","withdrawn_at":null,"decided_by_id":null}
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '250.00', 'description': 'QA 27bf89e1 Edge onto business.', 'incident_date': '2026-09-30'}
+  response: {"id":"f6630f16-a7cf-42c0-a51c-4e2a0cedffa5","reference":"CLM-97BFFE7B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"250.00","description":"QA 27bf89e1 Edge onto business.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:23.012966Z","updated_at":"2026-10-07T09:06:23.012966Z","withdrawn_at":null,"decided_by_id":null}
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '250.00', 'description': 'QA c9f5fe4c Like teach draw same seat teach reality sign.', 'incident_date': '2026-09-30'}
+  response: {"id":"a4852f32-4106-4014-b76d-1d4a57b420d9","reference":"CLM-421A17DF","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"250.00","description":"QA c9f5fe4c Like teach draw same seat teach reality sign.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:23.021716Z","updated_at":"2026-10-07T09:06:23.021716Z","withdrawn_at":null,"decided_by_id":null}
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '250.00', 'description': 'QA 84f90113 Admit hair modern then could avoid piece drive.', 'incident_date': '2026-09-30'}
+  response: {"id":"a903ea5d-9aec-4969-a239-299a290220dd","reference":"CLM-68885E0C","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"250.00","description":"QA 84f90113 Admit hair modern then could avoid piece drive.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:23.038073Z","updated_at":"2026-10-07T09:06:23.038073Z","withdrawn_at":null,"decided_by_id":null}
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '250.00', 'description': 'QA e8f4dba1 Become sort authority idea imagine determine animal.', 'incident_date': '2026-09-30'}
+  response: {"id":"1b735a54-3abb-4122-b3ec-7c9183af23bf","reference":"CLM-6F84D6B5","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"250.00","description":"QA e8f4dba1 Become sort authority idea imagine determine animal.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:23.048684Z","updated_at":"2026-10-07T09:06:23.048684Z","withdrawn_at":null,"decided_by_id":null}
+09:06:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

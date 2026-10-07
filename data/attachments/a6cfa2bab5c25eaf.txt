@@ -1,0 +1,25 @@
+09:06:23 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[APPROVED-pay-PAID]
+09:06:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"b4587be2-ee15-4509-8526-eef8aba33688","policy_number":"POL-1001","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"10000.00","is_active":true},{"id":"27e592ed-30a8-48b0-9c05-e22d75d081a1","policy_number":"POL-1002","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"2500.00","is_active":true}]
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (31 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '100.00', 'description': 'QA a7de1bfd Realize another school left modern more key.', 'incident_date': '2026-09-30'}
+  response: {"id":"cfcb5a87-469e-456e-9761-cf4b545290cd","reference":"CLM-C672E9A4","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA a7de1bfd Realize another school left modern more key.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:23.393648Z","updated_at":"2026-10-07T09:06:23.393648Z","withdrawn_at":null,"decided_by_id":null}
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cfcb5a87-469e-456e-9761-cf4b545290cd/transitions "HTTP/1.1 200 OK"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cfcb5a87-469e-456e-9761-cf4b545290cd/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"cfcb5a87-469e-456e-9761-cf4b545290cd","reference":"CLM-C672E9A4","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA a7de1bfd Realize another school left modern more key.","incident_date":"2026-09-30","status":"SUBMITTED","created_at":"2026-10-07T09:06:23.393648Z","updated_at":"2026-10-07T09:06:23.425547Z","withdrawn_at":null,"decided_by_id":null}
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cfcb5a87-469e-456e-9761-cf4b545290cd/transitions "HTTP/1.1 200 OK"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cfcb5a87-469e-456e-9761-cf4b545290cd/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"cfcb5a87-469e-456e-9761-cf4b545290cd","reference":"CLM-C672E9A4","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA a7de1bfd Realize another school left modern more key.","incident_date":"2026-09-30","status":"UNDER_REVIEW","created_at":"2026-10-07T09:06:23.393648Z","updated_at":"2026-10-07T09:06:23.434595Z","withdrawn_at":null,"decided_by_id":null}
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cfcb5a87-469e-456e-9761-cf4b545290cd/transitions "HTTP/1.1 200 OK"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cfcb5a87-469e-456e-9761-cf4b545290cd/transitions -> 200 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"cfcb5a87-469e-456e-9761-cf4b545290cd","reference":"CLM-C672E9A4","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA a7de1bfd Realize another school left modern more key.","incident_date":"2026-09-30","status":"APPROVED","created_at":"2026-10-07T09:06:23.393648Z","updated_at":"2026-10-07T09:06:23.443008Z","withdrawn_at":null,"decided_by_id":"124e8f4c-7043-4538-ae33-9efb987a80d8"}
+09:06:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cfcb5a87-469e-456e-9761-cf4b545290cd/transitions "HTTP/1.1 200 OK"
+09:06:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cfcb5a87-469e-456e-9761-cf4b545290cd/transitions -> 200 (9 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"cfcb5a87-469e-456e-9761-cf4b545290cd","reference":"CLM-C672E9A4","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA a7de1bfd Realize another school left modern more key.","incident_date":"2026-09-30","status":"PAID","created_at":"2026-10-07T09:06:23.393648Z","updated_at":"2026-10-07T09:06:23.449411Z","withdrawn_at":null,"decided_by_id":"124e8f4c-7043-4538-ae33-9efb987a80d8"}
+09:06:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[APPROVED-pay-PAID]

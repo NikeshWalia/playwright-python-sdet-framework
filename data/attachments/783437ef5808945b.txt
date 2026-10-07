@@ -1,0 +1,28 @@
+09:06:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-reject]
+09:06:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b4587be2-ee15-4509-8526-eef8aba33688","policy_number":"POL-1001","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"10000.00","is_active":true},{"id":"27e592ed-30a8-48b0-9c05-e22d75d081a1","policy_number":"POL-1002","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"2500.00","is_active":true}]
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '100.00', 'description': 'QA 547969de Medical step letter middle game.', 'incident_date': '2026-09-30'}
+  response: {"id":"38fa4f83-14d1-4c19-9d77-9a0cd713dd1c","reference":"CLM-9CAB83EF","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 547969de Medical step letter middle game.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:24.296388Z","updated_at":"2026-10-07T09:06:24.296388Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"38fa4f83-14d1-4c19-9d77-9a0cd713dd1c","reference":"CLM-9CAB83EF","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 547969de Medical step letter middle game.","incident_date":"2026-09-30","status":"SUBMITTED","created_at":"2026-10-07T09:06:24.296388Z","updated_at":"2026-10-07T09:06:24.304988Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"38fa4f83-14d1-4c19-9d77-9a0cd713dd1c","reference":"CLM-9CAB83EF","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 547969de Medical step letter middle game.","incident_date":"2026-09-30","status":"UNDER_REVIEW","created_at":"2026-10-07T09:06:24.296388Z","updated_at":"2026-10-07T09:06:24.314253Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c/transitions -> 200 (8 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"38fa4f83-14d1-4c19-9d77-9a0cd713dd1c","reference":"CLM-9CAB83EF","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 547969de Medical step letter middle game.","incident_date":"2026-09-30","status":"REJECTED","created_at":"2026-10-07T09:06:24.296388Z","updated_at":"2026-10-07T09:06:24.323831Z","withdrawn_at":null,"decided_by_id":"124e8f4c-7043-4538-ae33-9efb987a80d8"}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c/transitions "HTTP/1.1 409 Conflict"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c/transitions -> 409 (7 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status REJECTED; it must be UNDER_REVIEW."}
+09:06:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/38fa4f83-14d1-4c19-9d77-9a0cd713dd1c -> 200 (4 ms)
+  response: {"id":"38fa4f83-14d1-4c19-9d77-9a0cd713dd1c","reference":"CLM-9CAB83EF","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 547969de Medical step letter middle game.","incident_date":"2026-09-30","status":"REJECTED","created_at":"2026-10-07T09:06:24.296388Z","updated_at":"2026-10-07T09:06:24.323831Z","withdrawn_at":null,"decided_by_id":"124e8f4c-7043-4538-ae33-9efb987a80d8"}
+09:06:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-reject]

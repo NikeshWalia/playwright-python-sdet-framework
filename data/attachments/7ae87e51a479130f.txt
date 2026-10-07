@@ -1,0 +1,20 @@
+09:06:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]
+09:06:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"b4587be2-ee15-4509-8526-eef8aba33688","policy_number":"POL-1001","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"10000.00","is_active":true},{"id":"27e592ed-30a8-48b0-9c05-e22d75d081a1","policy_number":"POL-1002","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"2500.00","is_active":true}]
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '100.00', 'description': 'QA 3c7ecec6 Return billion foot nature natural later.', 'incident_date': '2026-09-30'}
+  response: {"id":"b07417ef-9e34-4a31-9ac7-edfba4be57f9","reference":"CLM-76F80EC9","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 3c7ecec6 Return billion foot nature natural later.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:24.514265Z","updated_at":"2026-10-07T09:06:24.514265Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b07417ef-9e34-4a31-9ac7-edfba4be57f9/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b07417ef-9e34-4a31-9ac7-edfba4be57f9/transitions -> 200 (91 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b07417ef-9e34-4a31-9ac7-edfba4be57f9","reference":"CLM-76F80EC9","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 3c7ecec6 Return billion foot nature natural later.","incident_date":"2026-09-30","status":"SUBMITTED","created_at":"2026-10-07T09:06:24.514265Z","updated_at":"2026-10-07T09:06:24.522458Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b07417ef-9e34-4a31-9ac7-edfba4be57f9/transitions "HTTP/1.1 409 Conflict"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b07417ef-9e34-4a31-9ac7-edfba4be57f9/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+09:06:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/b07417ef-9e34-4a31-9ac7-edfba4be57f9 "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/b07417ef-9e34-4a31-9ac7-edfba4be57f9 -> 200 (4 ms)
+  response: {"id":"b07417ef-9e34-4a31-9ac7-edfba4be57f9","reference":"CLM-76F80EC9","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"100.00","description":"QA 3c7ecec6 Return billion foot nature natural later.","incident_date":"2026-09-30","status":"SUBMITTED","created_at":"2026-10-07T09:06:24.514265Z","updated_at":"2026-10-07T09:06:24.522458Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]

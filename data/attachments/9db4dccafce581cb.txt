@@ -1,0 +1,31 @@
+09:06:24 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it
+09:06:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b4587be2-ee15-4509-8526-eef8aba33688","policy_number":"POL-1001","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"10000.00","is_active":true},{"id":"27e592ed-30a8-48b0-9c05-e22d75d081a1","policy_number":"POL-1002","holder_id":"51449a8c-78d5-4bb4-bf75-15119741d269","coverage_limit":"2500.00","is_active":true}]
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('customer@example.com',)
+  rows: 1
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'b4587be2-ee15-4509-8526-eef8aba33688', 'amount': '700.00', 'description': 'QA cf53b667 Low tell fall change seat country.', 'incident_date': '2026-09-30'}
+  response: {"id":"20e82ac8-972c-4a39-8e54-07657be8bdbc","reference":"CLM-6022433B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"700.00","description":"QA cf53b667 Low tell fall change seat country.","incident_date":"2026-09-30","status":"DRAFT","created_at":"2026-10-07T09:06:24.113008Z","updated_at":"2026-10-07T09:06:24.113008Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/20e82ac8-972c-4a39-8e54-07657be8bdbc/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/20e82ac8-972c-4a39-8e54-07657be8bdbc/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"20e82ac8-972c-4a39-8e54-07657be8bdbc","reference":"CLM-6022433B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"700.00","description":"QA cf53b667 Low tell fall change seat country.","incident_date":"2026-09-30","status":"SUBMITTED","created_at":"2026-10-07T09:06:24.113008Z","updated_at":"2026-10-07T09:06:24.122233Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/20e82ac8-972c-4a39-8e54-07657be8bdbc/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/20e82ac8-972c-4a39-8e54-07657be8bdbc/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"20e82ac8-972c-4a39-8e54-07657be8bdbc","reference":"CLM-6022433B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"700.00","description":"QA cf53b667 Low tell fall change seat country.","incident_date":"2026-09-30","status":"UNDER_REVIEW","created_at":"2026-10-07T09:06:24.113008Z","updated_at":"2026-10-07T09:06:24.130954Z","withdrawn_at":null,"decided_by_id":null}
+09:06:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/20e82ac8-972c-4a39-8e54-07657be8bdbc/transitions "HTTP/1.1 200 OK"
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/20e82ac8-972c-4a39-8e54-07657be8bdbc/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"20e82ac8-972c-4a39-8e54-07657be8bdbc","reference":"CLM-6022433B","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"700.00","description":"QA cf53b667 Low tell fall change seat country.","incident_date":"2026-09-30","status":"APPROVED","created_at":"2026-10-07T09:06:24.113008Z","updated_at":"2026-10-07T09:06:24.140262Z","withdrawn_at":null,"decided_by_id":"124e8f4c-7043-4538-ae33-9efb987a80d8"}
+09:06:24 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('20e82ac8-972c-4a39-8e54-07657be8bdbc',)
+  rows: 4
+09:06:24 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it

@@ -1,0 +1,2 @@
+09:06:27 INFO    [-] claimdesk_qa.tests._fixtures.browser: Prepared storage states for customer, adjuster, admin, other_customer
+09:06:27 INFO    [qa-e3819d9d2b] claimdesk_qa.claimdesk_qa.ui.base_page: Opening http://127.0.0.1:8000/claims/44c807ec-0c78-4cc7-b77a-e443e845bc41
