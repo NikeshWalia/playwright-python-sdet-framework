@@ -1,0 +1,34 @@
+09:21:31 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]
+09:21:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (11 ms)
+  response: [{"id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","policy_number":"POL-1001","holder_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","coverage_limit":"10000.00","is_active":true},{"id":"e6448882-523c-4c34-8646-7a0d982c0bd9","policy_number":"POL-1002","holder_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","coverage_limit":"2500.00","is_active":true}]
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:21:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (19 ms)
+  request : {'policy_id': 'a8354e41-f4c4-4b0b-bd36-922131c7ebdc', 'amount': '1975.25', 'description': 'QA 5a51bf24 Sing ball management beyond care me whole.', 'incident_date': '2026-10-01'}
+  response: {"id":"897ea486-fa92-48dd-b984-7bb0c5899780","reference":"CLM-EA74CA12","policy_id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","claimant_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","amount":"1975.25","description":"QA 5a51bf24 Sing ball management beyond care me whole.","incident_date":"2026-10-01","status":"DRAFT","created_at":"2026-10-08T09:21:31.263544Z","updated_at":"2026-10-08T09:21:31.263544Z","withdrawn_at":null,"decided_by_id":null}
+09:21:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/897ea486-fa92-48dd-b984-7bb0c5899780/transitions "HTTP/1.1 200 OK"
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/897ea486-fa92-48dd-b984-7bb0c5899780/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"897ea486-fa92-48dd-b984-7bb0c5899780","reference":"CLM-EA74CA12","policy_id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","claimant_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","amount":"1975.25","description":"QA 5a51bf24 Sing ball management beyond care me whole.","incident_date":"2026-10-01","status":"SUBMITTED","created_at":"2026-10-08T09:21:31.263544Z","updated_at":"2026-10-08T09:21:31.283461Z","withdrawn_at":null,"decided_by_id":null}
+09:21:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/897ea486-fa92-48dd-b984-7bb0c5899780/transitions "HTTP/1.1 200 OK"
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/897ea486-fa92-48dd-b984-7bb0c5899780/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"897ea486-fa92-48dd-b984-7bb0c5899780","reference":"CLM-EA74CA12","policy_id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","claimant_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","amount":"1975.25","description":"QA 5a51bf24 Sing ball management beyond care me whole.","incident_date":"2026-10-01","status":"UNDER_REVIEW","created_at":"2026-10-08T09:21:31.263544Z","updated_at":"2026-10-08T09:21:31.296431Z","withdrawn_at":null,"decided_by_id":null}
+09:21:31 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/897ea486-fa92-48dd-b984-7bb0c5899780
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('897ea486-fa92-48dd-b984-7bb0c5899780',)
+  rows: 1
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('897ea486-fa92-48dd-b984-7bb0c5899780',)
+  rows: 5
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('897ea486-fa92-48dd-b984-7bb0c5899780',)
+  rows: 1
+09:21:31 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('897ea486-fa92-48dd-b984-7bb0c5899780',)
+  rows: 1
+09:21:31 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]

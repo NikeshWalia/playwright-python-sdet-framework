@@ -1,0 +1,24 @@
+09:21:26 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-submit]
+09:21:26 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:21:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","policy_number":"POL-1001","holder_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","coverage_limit":"10000.00","is_active":true},{"id":"e6448882-523c-4c34-8646-7a0d982c0bd9","policy_number":"POL-1002","holder_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","coverage_limit":"2500.00","is_active":true}]
+09:21:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:21:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'a8354e41-f4c4-4b0b-bd36-922131c7ebdc', 'amount': '100.00', 'description': 'QA 7b7bf1f2 Too research matter late sometimes.', 'incident_date': '2026-10-01'}
+  response: {"id":"4c37a02a-dc04-4c62-a31c-dc261e01359c","reference":"CLM-ABB6E99E","policy_id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","claimant_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","amount":"100.00","description":"QA 7b7bf1f2 Too research matter late sometimes.","incident_date":"2026-10-01","status":"DRAFT","created_at":"2026-10-08T09:21:26.782120Z","updated_at":"2026-10-08T09:21:26.782120Z","withdrawn_at":null,"decided_by_id":null}
+09:21:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4c37a02a-dc04-4c62-a31c-dc261e01359c/transitions "HTTP/1.1 200 OK"
+09:21:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4c37a02a-dc04-4c62-a31c-dc261e01359c/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"4c37a02a-dc04-4c62-a31c-dc261e01359c","reference":"CLM-ABB6E99E","policy_id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","claimant_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","amount":"100.00","description":"QA 7b7bf1f2 Too research matter late sometimes.","incident_date":"2026-10-01","status":"SUBMITTED","created_at":"2026-10-08T09:21:26.782120Z","updated_at":"2026-10-08T09:21:26.793882Z","withdrawn_at":null,"decided_by_id":null}
+09:21:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4c37a02a-dc04-4c62-a31c-dc261e01359c/transitions "HTTP/1.1 200 OK"
+09:21:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4c37a02a-dc04-4c62-a31c-dc261e01359c/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"4c37a02a-dc04-4c62-a31c-dc261e01359c","reference":"CLM-ABB6E99E","policy_id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","claimant_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","amount":"100.00","description":"QA 7b7bf1f2 Too research matter late sometimes.","incident_date":"2026-10-01","status":"UNDER_REVIEW","created_at":"2026-10-08T09:21:26.782120Z","updated_at":"2026-10-08T09:21:26.803934Z","withdrawn_at":null,"decided_by_id":null}
+09:21:26 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4c37a02a-dc04-4c62-a31c-dc261e01359c/transitions "HTTP/1.1 409 Conflict"
+09:21:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4c37a02a-dc04-4c62-a31c-dc261e01359c/transitions -> 409 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status UNDER_REVIEW; it must be DRAFT."}
+09:21:26 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/4c37a02a-dc04-4c62-a31c-dc261e01359c "HTTP/1.1 200 OK"
+09:21:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/4c37a02a-dc04-4c62-a31c-dc261e01359c -> 200 (6 ms)
+  response: {"id":"4c37a02a-dc04-4c62-a31c-dc261e01359c","reference":"CLM-ABB6E99E","policy_id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","claimant_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","amount":"100.00","description":"QA 7b7bf1f2 Too research matter late sometimes.","incident_date":"2026-10-01","status":"UNDER_REVIEW","created_at":"2026-10-08T09:21:26.782120Z","updated_at":"2026-10-08T09:21:26.803934Z","withdrawn_at":null,"decided_by_id":null}
+09:21:26 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-submit]

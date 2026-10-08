@@ -1,5 +1,0 @@
-09:06:22 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
-09:06:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
-09:06:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (4 ms)
-  response: {"items":[{"id":"9b9b3cdb-f777-4c3a-bdc3-79d6a6fd858f","reference":"CLM-5C012361","policy_id":"b4587be2-ee15-4509-8526-eef8aba33688","claimant_id":"51449a8c-78d5-4bb4-bf75-15119741d269","amount":"250.00","description":"QA 0979e4d4 Read quickly writer become current too.","incident_date":"2026-09-30","status":"WITHDRAWN","created_at":"2026-10-07T09:06:21.905903Z","updated_at":"2026-10-07T09:06:21.913638Z","withdrawn_at":"2026-10-07T09:06:21.915232Z","decided_by_id":null}],"page":1,"size":50,"total":1}
-09:06:22 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
