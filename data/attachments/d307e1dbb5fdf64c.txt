@@ -1,0 +1,28 @@
+09:29:13 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-approve]
+09:29:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","policy_number":"POL-1001","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"10000.00","is_active":true},{"id":"15a19714-fe8b-4f3e-8f80-6d903209a1a8","policy_number":"POL-1002","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"2500.00","is_active":true}]
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'cc78b396-3fec-43c7-ad01-a851f4c5fb22', 'amount': '100.00', 'description': 'QA b025afe0 Meeting join home above economy.', 'incident_date': '2026-10-02'}
+  response: {"id":"a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8","reference":"CLM-A83D87C5","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA b025afe0 Meeting join home above economy.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:13.468558Z","updated_at":"2026-10-09T09:29:13.468558Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8/transitions "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8","reference":"CLM-A83D87C5","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA b025afe0 Meeting join home above economy.","incident_date":"2026-10-02","status":"SUBMITTED","created_at":"2026-10-09T09:29:13.468558Z","updated_at":"2026-10-09T09:29:13.479224Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8/transitions "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8","reference":"CLM-A83D87C5","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA b025afe0 Meeting join home above economy.","incident_date":"2026-10-02","status":"UNDER_REVIEW","created_at":"2026-10-09T09:29:13.468558Z","updated_at":"2026-10-09T09:29:13.490465Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8/transitions "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8/transitions -> 200 (12 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8","reference":"CLM-A83D87C5","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA b025afe0 Meeting join home above economy.","incident_date":"2026-10-02","status":"APPROVED","created_at":"2026-10-09T09:29:13.468558Z","updated_at":"2026-10-09T09:29:13.500801Z","withdrawn_at":null,"decided_by_id":"a90877af-1b5f-4502-87ab-ffe634e348eb"}
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8/transitions "HTTP/1.1 409 Conflict"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8/transitions -> 409 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status APPROVED; it must be UNDER_REVIEW."}
+09:29:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8 "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8 -> 200 (5 ms)
+  response: {"id":"a60cb3e3-f9ca-4a2c-9fcd-4b8c70d644d8","reference":"CLM-A83D87C5","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA b025afe0 Meeting join home above economy.","incident_date":"2026-10-02","status":"APPROVED","created_at":"2026-10-09T09:29:13.468558Z","updated_at":"2026-10-09T09:29:13.500801Z","withdrawn_at":null,"decided_by_id":"a90877af-1b5f-4502-87ab-ffe634e348eb"}
+09:29:13 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-approve]

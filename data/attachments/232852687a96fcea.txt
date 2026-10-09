@@ -1,0 +1,24 @@
+09:29:12 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-submit]
+09:29:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:29:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","policy_number":"POL-1001","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"10000.00","is_active":true},{"id":"15a19714-fe8b-4f3e-8f80-6d903209a1a8","policy_number":"POL-1002","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"2500.00","is_active":true}]
+09:29:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:29:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'cc78b396-3fec-43c7-ad01-a851f4c5fb22', 'amount': '100.00', 'description': 'QA d6443d68 Artist prevent beautiful small trial.', 'incident_date': '2026-10-02'}
+  response: {"id":"7ea48687-dfae-44a5-bfcd-007bac2aa151","reference":"CLM-61DEFBB0","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA d6443d68 Artist prevent beautiful small trial.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:12.576941Z","updated_at":"2026-10-09T09:29:12.576941Z","withdrawn_at":null,"decided_by_id":null}
+09:29:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7ea48687-dfae-44a5-bfcd-007bac2aa151/transitions "HTTP/1.1 200 OK"
+09:29:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7ea48687-dfae-44a5-bfcd-007bac2aa151/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7ea48687-dfae-44a5-bfcd-007bac2aa151","reference":"CLM-61DEFBB0","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA d6443d68 Artist prevent beautiful small trial.","incident_date":"2026-10-02","status":"SUBMITTED","created_at":"2026-10-09T09:29:12.576941Z","updated_at":"2026-10-09T09:29:12.587768Z","withdrawn_at":null,"decided_by_id":null}
+09:29:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7ea48687-dfae-44a5-bfcd-007bac2aa151/transitions "HTTP/1.1 200 OK"
+09:29:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7ea48687-dfae-44a5-bfcd-007bac2aa151/transitions -> 200 (15 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7ea48687-dfae-44a5-bfcd-007bac2aa151","reference":"CLM-61DEFBB0","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA d6443d68 Artist prevent beautiful small trial.","incident_date":"2026-10-02","status":"UNDER_REVIEW","created_at":"2026-10-09T09:29:12.576941Z","updated_at":"2026-10-09T09:29:12.600368Z","withdrawn_at":null,"decided_by_id":null}
+09:29:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7ea48687-dfae-44a5-bfcd-007bac2aa151/transitions "HTTP/1.1 409 Conflict"
+09:29:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7ea48687-dfae-44a5-bfcd-007bac2aa151/transitions -> 409 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status UNDER_REVIEW; it must be DRAFT."}
+09:29:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/7ea48687-dfae-44a5-bfcd-007bac2aa151 "HTTP/1.1 200 OK"
+09:29:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/7ea48687-dfae-44a5-bfcd-007bac2aa151 -> 200 (7 ms)
+  response: {"id":"7ea48687-dfae-44a5-bfcd-007bac2aa151","reference":"CLM-61DEFBB0","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA d6443d68 Artist prevent beautiful small trial.","incident_date":"2026-10-02","status":"UNDER_REVIEW","created_at":"2026-10-09T09:29:12.576941Z","updated_at":"2026-10-09T09:29:12.600368Z","withdrawn_at":null,"decided_by_id":null}
+09:29:12 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-submit]

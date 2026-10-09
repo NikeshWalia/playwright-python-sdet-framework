@@ -1,0 +1,26 @@
+09:29:08 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+09:29:08 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:29:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (12 ms)
+  response: [{"id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","policy_number":"POL-1001","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"10000.00","is_active":true},{"id":"15a19714-fe8b-4f3e-8f80-6d903209a1a8","policy_number":"POL-1002","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"2500.00","is_active":true}]
+09:29:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:29:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (95 ms)
+  request : {'policy_id': 'cc78b396-3fec-43c7-ad01-a851f4c5fb22', 'amount': '410.00', 'description': 'QA a6b16967 Relate challenge technology form thing.', 'incident_date': '2026-10-02'}
+  response: {"id":"ca9851c9-0fc3-4d16-b518-b731a686a92b","reference":"CLM-4128A153","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"410.00","description":"QA a6b16967 Relate challenge technology form thing.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:08.877271Z","updated_at":"2026-10-09T09:29:08.877271Z","withdrawn_at":null,"decided_by_id":null}
+09:29:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b/transitions "HTTP/1.1 200 OK"
+09:29:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b/transitions -> 200 (94 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ca9851c9-0fc3-4d16-b518-b731a686a92b","reference":"CLM-4128A153","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"410.00","description":"QA a6b16967 Relate challenge technology form thing.","incident_date":"2026-10-02","status":"SUBMITTED","created_at":"2026-10-09T09:29:08.877271Z","updated_at":"2026-10-09T09:29:08.972563Z","withdrawn_at":null,"decided_by_id":null}
+09:29:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b/transitions "HTTP/1.1 200 OK"
+09:29:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b/transitions -> 200 (14 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ca9851c9-0fc3-4d16-b518-b731a686a92b","reference":"CLM-4128A153","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"410.00","description":"QA a6b16967 Relate challenge technology form thing.","incident_date":"2026-10-02","status":"UNDER_REVIEW","created_at":"2026-10-09T09:29:08.877271Z","updated_at":"2026-10-09T09:29:09.069691Z","withdrawn_at":null,"decided_by_id":null}
+09:29:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b/transitions "HTTP/1.1 200 OK"
+09:29:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"ca9851c9-0fc3-4d16-b518-b731a686a92b","reference":"CLM-4128A153","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"410.00","description":"QA a6b16967 Relate challenge technology form thing.","incident_date":"2026-10-02","status":"APPROVED","created_at":"2026-10-09T09:29:08.877271Z","updated_at":"2026-10-09T09:29:09.081690Z","withdrawn_at":null,"decided_by_id":"a90877af-1b5f-4502-87ab-ffe634e348eb"}
+09:29:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b/transitions "HTTP/1.1 200 OK"
+09:29:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b/transitions -> 200 (12 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"ca9851c9-0fc3-4d16-b518-b731a686a92b","reference":"CLM-4128A153","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"410.00","description":"QA a6b16967 Relate challenge technology form thing.","incident_date":"2026-10-02","status":"PAID","created_at":"2026-10-09T09:29:08.877271Z","updated_at":"2026-10-09T09:29:09.093094Z","withdrawn_at":null,"decided_by_id":"a90877af-1b5f-4502-87ab-ffe634e348eb"}
+09:29:09 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/ca9851c9-0fc3-4d16-b518-b731a686a92b
+09:29:09 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

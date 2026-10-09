@@ -1,0 +1,20 @@
+09:29:13 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-approve]
+09:29:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","policy_number":"POL-1001","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"10000.00","is_active":true},{"id":"15a19714-fe8b-4f3e-8f80-6d903209a1a8","policy_number":"POL-1002","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"2500.00","is_active":true}]
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'cc78b396-3fec-43c7-ad01-a851f4c5fb22', 'amount': '100.00', 'description': 'QA e8159aae Family seek seven government body.', 'incident_date': '2026-10-02'}
+  response: {"id":"ec478028-e47f-4afa-a9ec-928cc50fc3e8","reference":"CLM-0C5A44A9","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA e8159aae Family seek seven government body.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:13.400903Z","updated_at":"2026-10-09T09:29:13.400903Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ec478028-e47f-4afa-a9ec-928cc50fc3e8/transitions "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ec478028-e47f-4afa-a9ec-928cc50fc3e8/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ec478028-e47f-4afa-a9ec-928cc50fc3e8","reference":"CLM-0C5A44A9","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA e8159aae Family seek seven government body.","incident_date":"2026-10-02","status":"SUBMITTED","created_at":"2026-10-09T09:29:13.400903Z","updated_at":"2026-10-09T09:29:13.410553Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ec478028-e47f-4afa-a9ec-928cc50fc3e8/transitions "HTTP/1.1 409 Conflict"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ec478028-e47f-4afa-a9ec-928cc50fc3e8/transitions -> 409 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+09:29:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ec478028-e47f-4afa-a9ec-928cc50fc3e8 "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ec478028-e47f-4afa-a9ec-928cc50fc3e8 -> 200 (7 ms)
+  response: {"id":"ec478028-e47f-4afa-a9ec-928cc50fc3e8","reference":"CLM-0C5A44A9","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA e8159aae Family seek seven government body.","incident_date":"2026-10-02","status":"SUBMITTED","created_at":"2026-10-09T09:29:13.400903Z","updated_at":"2026-10-09T09:29:13.410553Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-approve]

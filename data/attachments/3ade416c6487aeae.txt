@@ -1,0 +1,10 @@
+09:29:12 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]
+09:29:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:29:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","policy_number":"POL-1001","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"10000.00","is_active":true},{"id":"15a19714-fe8b-4f3e-8f80-6d903209a1a8","policy_number":"POL-1002","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"2500.00","is_active":true}]
+09:29:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:29:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'cc78b396-3fec-43c7-ad01-a851f4c5fb22', 'amount': '250.00', 'description': 'QA 4c0a855a His less result group indeed scene.', 'incident_date': '2026-10-02'}
+  response: {"id":"1c81b185-9ba5-4673-afe7-20935438b39d","reference":"CLM-E5594E38","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"250.00","description":"QA 4c0a855a His less result group indeed scene.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:12.238069Z","updated_at":"2026-10-09T09:29:12.238069Z","withdrawn_at":null,"decided_by_id":null}
+09:29:12 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+09:29:12 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]

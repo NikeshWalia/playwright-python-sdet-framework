@@ -1,0 +1,29 @@
+09:29:15 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_the_audit_chain_has_no_gaps
+09:29:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:29:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","policy_number":"POL-1001","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"10000.00","is_active":true},{"id":"15a19714-fe8b-4f3e-8f80-6d903209a1a8","policy_number":"POL-1002","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"2500.00","is_active":true}]
+09:29:15 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:29:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:29:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': 'cc78b396-3fec-43c7-ad01-a851f4c5fb22', 'amount': '700.00', 'description': 'QA b32b72f7 Soldier be me alone argue score player.', 'incident_date': '2026-10-02'}
+  response: {"id":"b46d37e8-1def-4ce0-8032-e8d01509e882","reference":"CLM-05A24ED6","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"700.00","description":"QA b32b72f7 Soldier be me alone argue score player.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:15.443831Z","updated_at":"2026-10-09T09:29:15.443831Z","withdrawn_at":null,"decided_by_id":null}
+09:29:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b46d37e8-1def-4ce0-8032-e8d01509e882/transitions "HTTP/1.1 200 OK"
+09:29:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b46d37e8-1def-4ce0-8032-e8d01509e882/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b46d37e8-1def-4ce0-8032-e8d01509e882","reference":"CLM-05A24ED6","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"700.00","description":"QA b32b72f7 Soldier be me alone argue score player.","incident_date":"2026-10-02","status":"SUBMITTED","created_at":"2026-10-09T09:29:15.443831Z","updated_at":"2026-10-09T09:29:15.457569Z","withdrawn_at":null,"decided_by_id":null}
+09:29:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b46d37e8-1def-4ce0-8032-e8d01509e882/transitions "HTTP/1.1 200 OK"
+09:29:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b46d37e8-1def-4ce0-8032-e8d01509e882/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b46d37e8-1def-4ce0-8032-e8d01509e882","reference":"CLM-05A24ED6","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"700.00","description":"QA b32b72f7 Soldier be me alone argue score player.","incident_date":"2026-10-02","status":"UNDER_REVIEW","created_at":"2026-10-09T09:29:15.443831Z","updated_at":"2026-10-09T09:29:15.466719Z","withdrawn_at":null,"decided_by_id":null}
+09:29:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b46d37e8-1def-4ce0-8032-e8d01509e882/transitions "HTTP/1.1 200 OK"
+09:29:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b46d37e8-1def-4ce0-8032-e8d01509e882/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"b46d37e8-1def-4ce0-8032-e8d01509e882","reference":"CLM-05A24ED6","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"700.00","description":"QA b32b72f7 Soldier be me alone argue score player.","incident_date":"2026-10-02","status":"APPROVED","created_at":"2026-10-09T09:29:15.443831Z","updated_at":"2026-10-09T09:29:15.475162Z","withdrawn_at":null,"decided_by_id":"a90877af-1b5f-4502-87ab-ffe634e348eb"}
+09:29:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b46d37e8-1def-4ce0-8032-e8d01509e882/transitions "HTTP/1.1 200 OK"
+09:29:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b46d37e8-1def-4ce0-8032-e8d01509e882/transitions -> 200 (9 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"b46d37e8-1def-4ce0-8032-e8d01509e882","reference":"CLM-05A24ED6","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"700.00","description":"QA b32b72f7 Soldier be me alone argue score player.","incident_date":"2026-10-02","status":"PAID","created_at":"2026-10-09T09:29:15.443831Z","updated_at":"2026-10-09T09:29:15.484538Z","withdrawn_at":null,"decided_by_id":"a90877af-1b5f-4502-87ab-ffe634e348eb"}
+09:29:15 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('b46d37e8-1def-4ce0-8032-e8d01509e882',)
+  rows: 5
+09:29:15 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_the_audit_chain_has_no_gaps

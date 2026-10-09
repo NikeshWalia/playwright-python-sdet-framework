@@ -1,0 +1,13 @@
+09:29:16 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_money_is_stored_exactly
+09:29:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:29:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","policy_number":"POL-1001","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"10000.00","is_active":true},{"id":"15a19714-fe8b-4f3e-8f80-6d903209a1a8","policy_number":"POL-1002","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"2500.00","is_active":true}]
+09:29:16 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:29:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:29:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'cc78b396-3fec-43c7-ad01-a851f4c5fb22', 'amount': '1234.57', 'description': 'QA 9747ca66 Hair control reality sit go maintain small.', 'incident_date': '2026-10-02'}
+  response: {"id":"ae79cce2-4599-4175-801b-b512c7e574e1","reference":"CLM-D6E32A91","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"1234.57","description":"QA 9747ca66 Hair control reality sit go maintain small.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:16.025657Z","updated_at":"2026-10-09T09:29:16.025657Z","withdrawn_at":null,"decided_by_id":null}
+09:29:16 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('ae79cce2-4599-4175-801b-b512c7e574e1',)
+  rows: 1
+09:29:16 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_money_is_stored_exactly

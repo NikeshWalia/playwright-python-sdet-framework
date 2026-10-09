@@ -1,0 +1,19 @@
+09:29:13 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-reject]
+09:29:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","policy_number":"POL-1001","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"10000.00","is_active":true},{"id":"15a19714-fe8b-4f3e-8f80-6d903209a1a8","policy_number":"POL-1002","holder_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","coverage_limit":"2500.00","is_active":true}]
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'cc78b396-3fec-43c7-ad01-a851f4c5fb22', 'amount': '100.00', 'description': 'QA 2dcc8e84 Visit data use home guess live compare.', 'incident_date': '2026-10-02'}
+  response: {"id":"50cc5983-4eaa-442d-9bbf-1606c8408cb5","reference":"CLM-C74A929B","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA 2dcc8e84 Visit data use home guess live compare.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:13.758131Z","updated_at":"2026-10-09T09:29:13.758131Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/50cc5983-4eaa-442d-9bbf-1606c8408cb5 "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/50cc5983-4eaa-442d-9bbf-1606c8408cb5 -> 200 (4 ms)
+  response: {"id":"50cc5983-4eaa-442d-9bbf-1606c8408cb5","reference":"CLM-C74A929B","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA 2dcc8e84 Visit data use home guess live compare.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:13.758131Z","updated_at":"2026-10-09T09:29:13.758131Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/50cc5983-4eaa-442d-9bbf-1606c8408cb5/transitions "HTTP/1.1 409 Conflict"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/50cc5983-4eaa-442d-9bbf-1606c8408cb5/transitions -> 409 (5 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status DRAFT; it must be UNDER_REVIEW."}
+09:29:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/50cc5983-4eaa-442d-9bbf-1606c8408cb5 "HTTP/1.1 200 OK"
+09:29:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/50cc5983-4eaa-442d-9bbf-1606c8408cb5 -> 200 (4 ms)
+  response: {"id":"50cc5983-4eaa-442d-9bbf-1606c8408cb5","reference":"CLM-C74A929B","policy_id":"cc78b396-3fec-43c7-ad01-a851f4c5fb22","claimant_id":"b94473b7-2f57-4651-9d43-6ea08d5f0e60","amount":"100.00","description":"QA 2dcc8e84 Visit data use home guess live compare.","incident_date":"2026-10-02","status":"DRAFT","created_at":"2026-10-09T09:29:13.758131Z","updated_at":"2026-10-09T09:29:13.758131Z","withdrawn_at":null,"decided_by_id":null}
+09:29:13 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-reject]

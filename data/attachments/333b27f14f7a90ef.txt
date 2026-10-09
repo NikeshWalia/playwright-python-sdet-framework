@@ -1,9 +1,0 @@
-09:21:25 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_the_smallest_payable_amount_is_accepted
-09:21:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-09:21:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
-  response: [{"id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","policy_number":"POL-1001","holder_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","coverage_limit":"10000.00","is_active":true},{"id":"e6448882-523c-4c34-8646-7a0d982c0bd9","policy_number":"POL-1002","holder_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","coverage_limit":"2500.00","is_active":true}]
-09:21:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-09:21:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
-  request : {'policy_id': 'a8354e41-f4c4-4b0b-bd36-922131c7ebdc', 'amount': '0.01', 'description': 'QA 6e654c6d Get draw call need teacher.', 'incident_date': '2026-10-01'}
-  response: {"id":"b723e55b-2bf5-4c00-b2c3-a2e254f0e0ce","reference":"CLM-32EE47BD","policy_id":"a8354e41-f4c4-4b0b-bd36-922131c7ebdc","claimant_id":"059dde22-16d9-47d1-ba94-4a60b7d853aa","amount":"0.01","description":"QA 6e654c6d Get draw call need teacher.","incident_date":"2026-10-01","status":"DRAFT","created_at":"2026-10-08T09:21:25.763967Z","updated_at":"2026-10-08T09:21:25.763967Z","withdrawn_at":null,"decided_by_id":null}
-09:21:25 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_the_smallest_payable_amount_is_accepted
