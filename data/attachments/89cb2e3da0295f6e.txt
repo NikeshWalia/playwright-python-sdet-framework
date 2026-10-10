@@ -1,0 +1,5 @@
+08:49:50 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
+08:49:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
+08:49:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (3 ms)
+  response: {"items":[{"id":"7ebdb02d-3a84-40ed-a3af-19d1c4ad52f2","reference":"CLM-A259AF56","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"250.00","description":"QA fcbc54be Result director physical recent crime recently.","incident_date":"2026-10-03","status":"WITHDRAWN","created_at":"2026-10-10T08:49:50.393285Z","updated_at":"2026-10-10T08:49:50.401480Z","withdrawn_at":"2026-10-10T08:49:50.402752Z","decided_by_id":null}],"page":1,"size":50,"total":1}
+08:49:50 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]

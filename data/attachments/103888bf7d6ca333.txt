@@ -1,0 +1,25 @@
+08:49:51 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+08:49:51 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '250.00', 'description': 'QA c47e53ce Pay health hope also sure.', 'incident_date': '2026-10-03'}
+  response: {"id":"493fc021-5712-4221-9064-ad89c23dff75","reference":"CLM-9F378B71","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"250.00","description":"QA c47e53ce Pay health hope also sure.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.273715Z","updated_at":"2026-10-10T08:49:51.273715Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '250.00', 'description': 'QA 48ad37cc Source phone too conference direction.', 'incident_date': '2026-10-03'}
+  response: {"id":"a09de7b9-49a2-4f5a-8368-4b6a2972d534","reference":"CLM-B8E5C0FC","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"250.00","description":"QA 48ad37cc Source phone too conference direction.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.280244Z","updated_at":"2026-10-10T08:49:51.280244Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '250.00', 'description': 'QA 50fc5399 Politics push billion player these election car foreign.', 'incident_date': '2026-10-03'}
+  response: {"id":"d0019690-21ad-46d5-93b4-28bcb0dbc4ca","reference":"CLM-6FD85323","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"250.00","description":"QA 50fc5399 Politics push billion player these election car foreign.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.287061Z","updated_at":"2026-10-10T08:49:51.287061Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '250.00', 'description': 'QA 5cc5b722 Despite few government performance hope outside.', 'incident_date': '2026-10-03'}
+  response: {"id":"5b4161fe-d317-45c0-aa15-c6ac6e7aec80","reference":"CLM-B2D173FC","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"250.00","description":"QA 5cc5b722 Despite few government performance hope outside.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.292640Z","updated_at":"2026-10-10T08:49:51.292640Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '250.00', 'description': 'QA f0ea7e7c Trouble mission home movie beat.', 'incident_date': '2026-10-03'}
+  response: {"id":"7151d590-99c1-451b-bac6-c4cfa3328340","reference":"CLM-BF392690","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"250.00","description":"QA f0ea7e7c Trouble mission home movie beat.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.298469Z","updated_at":"2026-10-10T08:49:51.298469Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

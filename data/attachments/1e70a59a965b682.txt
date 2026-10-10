@@ -1,0 +1,24 @@
+08:49:57 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-start_review]
+08:49:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '100.00', 'description': 'QA 6929546d Radio easy record personal provide hour.', 'incident_date': '2026-10-03'}
+  response: {"id":"37167044-e59c-4e89-90ad-90ff66ce7465","reference":"CLM-D74AC7E6","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 6929546d Radio easy record personal provide hour.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:57.593829Z","updated_at":"2026-10-10T08:49:57.593829Z","withdrawn_at":null,"decided_by_id":null}
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/37167044-e59c-4e89-90ad-90ff66ce7465/transitions "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/37167044-e59c-4e89-90ad-90ff66ce7465/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"37167044-e59c-4e89-90ad-90ff66ce7465","reference":"CLM-D74AC7E6","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 6929546d Radio easy record personal provide hour.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:57.593829Z","updated_at":"2026-10-10T08:49:57.604099Z","withdrawn_at":null,"decided_by_id":null}
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/37167044-e59c-4e89-90ad-90ff66ce7465/transitions "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/37167044-e59c-4e89-90ad-90ff66ce7465/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"37167044-e59c-4e89-90ad-90ff66ce7465","reference":"CLM-D74AC7E6","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 6929546d Radio easy record personal provide hour.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:57.593829Z","updated_at":"2026-10-10T08:49:57.615085Z","withdrawn_at":null,"decided_by_id":null}
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/37167044-e59c-4e89-90ad-90ff66ce7465/transitions "HTTP/1.1 409 Conflict"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/37167044-e59c-4e89-90ad-90ff66ce7465/transitions -> 409 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status UNDER_REVIEW; it must be SUBMITTED."}
+08:49:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/37167044-e59c-4e89-90ad-90ff66ce7465 "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/37167044-e59c-4e89-90ad-90ff66ce7465 -> 200 (6 ms)
+  response: {"id":"37167044-e59c-4e89-90ad-90ff66ce7465","reference":"CLM-D74AC7E6","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 6929546d Radio easy record personal provide hour.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:57.593829Z","updated_at":"2026-10-10T08:49:57.615085Z","withdrawn_at":null,"decided_by_id":null}
+08:49:57 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-start_review]

@@ -1,0 +1,14 @@
+08:49:52 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
+08:49:52 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '820.00', 'description': 'QA 106d09b5 Worry toward size.', 'incident_date': '2026-10-03'}
+  response: {"id":"aa0680df-9d3c-4098-8ab0-1106924942ad","reference":"CLM-F62122AB","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"820.00","description":"QA 106d09b5 Worry toward size.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:52.821769Z","updated_at":"2026-10-10T08:49:52.821769Z","withdrawn_at":null,"decided_by_id":null}
+08:49:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/aa0680df-9d3c-4098-8ab0-1106924942ad/transitions "HTTP/1.1 200 OK"
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/aa0680df-9d3c-4098-8ab0-1106924942ad/transitions -> 200 (5 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"aa0680df-9d3c-4098-8ab0-1106924942ad","reference":"CLM-F62122AB","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"820.00","description":"QA 106d09b5 Worry toward size.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:52.821769Z","updated_at":"2026-10-10T08:49:52.827804Z","withdrawn_at":null,"decided_by_id":null}
+08:49:52 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/aa0680df-9d3c-4098-8ab0-1106924942ad
+08:49:53 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]

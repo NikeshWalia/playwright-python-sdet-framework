@@ -1,0 +1,31 @@
+08:49:58 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
+08:49:58 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:49:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '800.00', 'description': 'QA e25763c1 Its song training ask.', 'incident_date': '2026-10-03'}
+  response: {"id":"14043de2-3331-45a5-9d3a-d42c456aedf4","reference":"CLM-E37BEFF8","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA e25763c1 Its song training ask.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:58.029670Z","updated_at":"2026-10-10T08:49:58.029670Z","withdrawn_at":null,"decided_by_id":null}
+08:49:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/14043de2-3331-45a5-9d3a-d42c456aedf4/transitions "HTTP/1.1 200 OK"
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/14043de2-3331-45a5-9d3a-d42c456aedf4/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"14043de2-3331-45a5-9d3a-d42c456aedf4","reference":"CLM-E37BEFF8","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA e25763c1 Its song training ask.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:58.029670Z","updated_at":"2026-10-10T08:49:58.037019Z","withdrawn_at":null,"decided_by_id":null}
+08:49:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/14043de2-3331-45a5-9d3a-d42c456aedf4/transitions "HTTP/1.1 200 OK"
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/14043de2-3331-45a5-9d3a-d42c456aedf4/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"14043de2-3331-45a5-9d3a-d42c456aedf4","reference":"CLM-E37BEFF8","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA e25763c1 Its song training ask.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:58.029670Z","updated_at":"2026-10-10T08:49:58.044341Z","withdrawn_at":null,"decided_by_id":null}
+08:49:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/14043de2-3331-45a5-9d3a-d42c456aedf4/transitions "HTTP/1.1 200 OK"
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/14043de2-3331-45a5-9d3a-d42c456aedf4/transitions -> 200 (7 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"14043de2-3331-45a5-9d3a-d42c456aedf4","reference":"CLM-E37BEFF8","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA e25763c1 Its song training ask.","incident_date":"2026-10-03","status":"REJECTED","created_at":"2026-10-10T08:49:58.029670Z","updated_at":"2026-10-10T08:49:58.051120Z","withdrawn_at":null,"decided_by_id":"3230e323-9686-4d3d-af0a-9bd7de59d225"}
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('14043de2-3331-45a5-9d3a-d42c456aedf4',)
+  rows: 1
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('14043de2-3331-45a5-9d3a-d42c456aedf4',)
+  rows: 1
+08:49:58 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('14043de2-3331-45a5-9d3a-d42c456aedf4',)
+  rows: 1
+08:49:58 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid

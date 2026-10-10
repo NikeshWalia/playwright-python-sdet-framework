@@ -1,0 +1,40 @@
+08:49:59 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
+08:49:59 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:49:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '800.00', 'description': 'QA dfefc60b Animal little them meet occur should among.', 'incident_date': '2026-10-03'}
+  response: {"id":"42ddd9ca-bcde-4480-9fb9-13d75b2fb7da","reference":"CLM-1937584D","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA dfefc60b Animal little them meet occur should among.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:59.128112Z","updated_at":"2026-10-10T08:49:59.128112Z","withdrawn_at":null,"decided_by_id":null}
+08:49:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions "HTTP/1.1 200 OK"
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"42ddd9ca-bcde-4480-9fb9-13d75b2fb7da","reference":"CLM-1937584D","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA dfefc60b Animal little them meet occur should among.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:59.128112Z","updated_at":"2026-10-10T08:49:59.136608Z","withdrawn_at":null,"decided_by_id":null}
+08:49:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions "HTTP/1.1 200 OK"
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"42ddd9ca-bcde-4480-9fb9-13d75b2fb7da","reference":"CLM-1937584D","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA dfefc60b Animal little them meet occur should among.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:59.128112Z","updated_at":"2026-10-10T08:49:59.149376Z","withdrawn_at":null,"decided_by_id":null}
+08:49:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions "HTTP/1.1 200 OK"
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions -> 200 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"42ddd9ca-bcde-4480-9fb9-13d75b2fb7da","reference":"CLM-1937584D","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA dfefc60b Animal little them meet occur should among.","incident_date":"2026-10-03","status":"APPROVED","created_at":"2026-10-10T08:49:59.128112Z","updated_at":"2026-10-10T08:49:59.156447Z","withdrawn_at":null,"decided_by_id":"3230e323-9686-4d3d-af0a-9bd7de59d225"}
+08:49:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions "HTTP/1.1 200 OK"
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions -> 200 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"42ddd9ca-bcde-4480-9fb9-13d75b2fb7da","reference":"CLM-1937584D","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"800.00","description":"QA dfefc60b Animal little them meet occur should among.","incident_date":"2026-10-03","status":"PAID","created_at":"2026-10-10T08:49:59.128112Z","updated_at":"2026-10-10T08:49:59.163096Z","withdrawn_at":null,"decided_by_id":"3230e323-9686-4d3d-af0a-9bd7de59d225"}
+08:49:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions "HTTP/1.1 409 Conflict"
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions -> 409 (3 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+08:49:59 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions "HTTP/1.1 409 Conflict"
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/42ddd9ca-bcde-4480-9fb9-13d75b2fb7da/transitions -> 409 (3 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('42ddd9ca-bcde-4480-9fb9-13d75b2fb7da',)
+  rows: 1
+08:49:59 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('42ddd9ca-bcde-4480-9fb9-13d75b2fb7da',)
+  rows: 1
+08:49:59 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout

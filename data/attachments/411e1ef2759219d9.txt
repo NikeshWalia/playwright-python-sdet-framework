@@ -1,0 +1,34 @@
+08:49:52 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]
+08:49:52 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (14 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:49:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '1975.25', 'description': 'QA 467029e8 Daughter responsibility week seek have.', 'incident_date': '2026-10-03'}
+  response: {"id":"d3c8062c-b800-4e4c-8674-fd73b5859a47","reference":"CLM-985680C1","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"1975.25","description":"QA 467029e8 Daughter responsibility week seek have.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:52.452594Z","updated_at":"2026-10-10T08:49:52.452594Z","withdrawn_at":null,"decided_by_id":null}
+08:49:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d3c8062c-b800-4e4c-8674-fd73b5859a47/transitions "HTTP/1.1 200 OK"
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d3c8062c-b800-4e4c-8674-fd73b5859a47/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"d3c8062c-b800-4e4c-8674-fd73b5859a47","reference":"CLM-985680C1","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"1975.25","description":"QA 467029e8 Daughter responsibility week seek have.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:52.452594Z","updated_at":"2026-10-10T08:49:52.464854Z","withdrawn_at":null,"decided_by_id":null}
+08:49:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d3c8062c-b800-4e4c-8674-fd73b5859a47/transitions "HTTP/1.1 200 OK"
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d3c8062c-b800-4e4c-8674-fd73b5859a47/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"d3c8062c-b800-4e4c-8674-fd73b5859a47","reference":"CLM-985680C1","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"1975.25","description":"QA 467029e8 Daughter responsibility week seek have.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:52.452594Z","updated_at":"2026-10-10T08:49:52.475013Z","withdrawn_at":null,"decided_by_id":null}
+08:49:52 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/d3c8062c-b800-4e4c-8674-fd73b5859a47
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('d3c8062c-b800-4e4c-8674-fd73b5859a47',)
+  rows: 1
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('d3c8062c-b800-4e4c-8674-fd73b5859a47',)
+  rows: 5
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('d3c8062c-b800-4e4c-8674-fd73b5859a47',)
+  rows: 1
+08:49:52 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('d3c8062c-b800-4e4c-8674-fd73b5859a47',)
+  rows: 1
+08:49:52 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]

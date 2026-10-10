@@ -1,0 +1,21 @@
+08:49:51 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit
+08:49:51 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '5000.01', 'description': 'QA 2e12f5c8 Task personal how large job.', 'incident_date': '2026-10-03'}
+  response: {"id":"2b0d2bad-49a2-4ee9-b27e-f15ea9166466","reference":"CLM-BA238D5C","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"5000.01","description":"QA 2e12f5c8 Task personal how large job.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.155600Z","updated_at":"2026-10-10T08:49:51.155600Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2b0d2bad-49a2-4ee9-b27e-f15ea9166466/transitions "HTTP/1.1 200 OK"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2b0d2bad-49a2-4ee9-b27e-f15ea9166466/transitions -> 200 (5 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2b0d2bad-49a2-4ee9-b27e-f15ea9166466","reference":"CLM-BA238D5C","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"5000.01","description":"QA 2e12f5c8 Task personal how large job.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:51.155600Z","updated_at":"2026-10-10T08:49:51.162041Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2b0d2bad-49a2-4ee9-b27e-f15ea9166466/transitions "HTTP/1.1 200 OK"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2b0d2bad-49a2-4ee9-b27e-f15ea9166466/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2b0d2bad-49a2-4ee9-b27e-f15ea9166466","reference":"CLM-BA238D5C","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"5000.01","description":"QA 2e12f5c8 Task personal how large job.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:51.155600Z","updated_at":"2026-10-10T08:49:51.168150Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2b0d2bad-49a2-4ee9-b27e-f15ea9166466/transitions "HTTP/1.1 200 OK"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2b0d2bad-49a2-4ee9-b27e-f15ea9166466/transitions -> 200 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"2b0d2bad-49a2-4ee9-b27e-f15ea9166466","reference":"CLM-BA238D5C","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"5000.01","description":"QA 2e12f5c8 Task personal how large job.","incident_date":"2026-10-03","status":"APPROVED","created_at":"2026-10-10T08:49:51.155600Z","updated_at":"2026-10-10T08:49:51.174729Z","withdrawn_at":null,"decided_by_id":"b971e7e0-873c-49a5-a836-4e0ef043a737"}
+08:49:51 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit

@@ -1,0 +1,25 @@
+08:49:55 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
+08:49:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (106 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '750.00', 'description': 'QA 89656a3e Heart fund TV cup.', 'incident_date': '2026-10-03'}
+  response: {"id":"ce2a36cb-4d5c-4624-b736-d5f8728fe4f4","reference":"CLM-331B9FE4","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"750.00","description":"QA 89656a3e Heart fund TV cup.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:55.633919Z","updated_at":"2026-10-10T08:49:55.633919Z","withdrawn_at":null,"decided_by_id":null}
+08:49:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ce2a36cb-4d5c-4624-b736-d5f8728fe4f4/transitions "HTTP/1.1 200 OK"
+08:49:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ce2a36cb-4d5c-4624-b736-d5f8728fe4f4/transitions -> 200 (118 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ce2a36cb-4d5c-4624-b736-d5f8728fe4f4","reference":"CLM-331B9FE4","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"750.00","description":"QA 89656a3e Heart fund TV cup.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:55.633919Z","updated_at":"2026-10-10T08:49:55.740348Z","withdrawn_at":null,"decided_by_id":null}
+08:49:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ce2a36cb-4d5c-4624-b736-d5f8728fe4f4/transitions "HTTP/1.1 200 OK"
+08:49:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ce2a36cb-4d5c-4624-b736-d5f8728fe4f4/transitions -> 200 (110 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ce2a36cb-4d5c-4624-b736-d5f8728fe4f4","reference":"CLM-331B9FE4","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"750.00","description":"QA 89656a3e Heart fund TV cup.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:55.633919Z","updated_at":"2026-10-10T08:49:55.860044Z","withdrawn_at":null,"decided_by_id":null}
+08:49:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ce2a36cb-4d5c-4624-b736-d5f8728fe4f4/transitions "HTTP/1.1 200 OK"
+08:49:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ce2a36cb-4d5c-4624-b736-d5f8728fe4f4/transitions -> 200 (109 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"ce2a36cb-4d5c-4624-b736-d5f8728fe4f4","reference":"CLM-331B9FE4","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"750.00","description":"QA 89656a3e Heart fund TV cup.","incident_date":"2026-10-03","status":"APPROVED","created_at":"2026-10-10T08:49:55.633919Z","updated_at":"2026-10-10T08:49:55.969414Z","withdrawn_at":null,"decided_by_id":"3230e323-9686-4d3d-af0a-9bd7de59d225"}
+08:49:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ce2a36cb-4d5c-4624-b736-d5f8728fe4f4/transitions "HTTP/1.1 200 OK"
+08:49:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ce2a36cb-4d5c-4624-b736-d5f8728fe4f4/transitions -> 200 (79 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"ce2a36cb-4d5c-4624-b736-d5f8728fe4f4","reference":"CLM-331B9FE4","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"750.00","description":"QA 89656a3e Heart fund TV cup.","incident_date":"2026-10-03","status":"PAID","created_at":"2026-10-10T08:49:55.633919Z","updated_at":"2026-10-10T08:49:56.079806Z","withdrawn_at":null,"decided_by_id":"3230e323-9686-4d3d-af0a-9bd7de59d225"}
+08:49:56 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle

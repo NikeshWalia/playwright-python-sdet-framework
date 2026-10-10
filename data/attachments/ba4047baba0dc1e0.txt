@@ -1,0 +1,13 @@
+08:49:51 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_updating_a_draft_changes_only_the_field_sent
+08:49:51 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '410.00', 'description': 'QA 44962a56 Call goal majority culture town.', 'incident_date': '2026-10-03'}
+  response: {"id":"5b0db74a-a74e-4b99-bb59-880fece817e2","reference":"CLM-74B26183","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"410.00","description":"QA 44962a56 Call goal majority culture town.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.315940Z","updated_at":"2026-10-10T08:49:51.315940Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/5b0db74a-a74e-4b99-bb59-880fece817e2 "HTTP/1.1 200 OK"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/5b0db74a-a74e-4b99-bb59-880fece817e2 -> 200 (5 ms)
+  request : {'description': 'Updated description for the claim'}
+  response: {"id":"5b0db74a-a74e-4b99-bb59-880fece817e2","reference":"CLM-74B26183","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"410.00","description":"Updated description for the claim","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.315940Z","updated_at":"2026-10-10T08:49:51.321667Z","withdrawn_at":null,"decided_by_id":null}
+08:49:51 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_updating_a_draft_changes_only_the_field_sent

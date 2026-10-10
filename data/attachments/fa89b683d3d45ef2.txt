@@ -1,0 +1,5 @@
+08:49:51 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
+08:49:51 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
+08:49:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (5 ms)
+  response: {"items":[{"id":"21df979c-a500-48b0-8b43-99881a8c0c49","reference":"CLM-6E781022","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"1250.50","description":"QA f6795668 Professor sister there least yard upon.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:51.235036Z","updated_at":"2026-10-10T08:49:51.235036Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":50}
+08:49:51 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]

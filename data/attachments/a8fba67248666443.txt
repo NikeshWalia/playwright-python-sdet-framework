@@ -1,0 +1,17 @@
+08:49:56 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[SUBMITTED-start_review-UNDER_REVIEW]
+08:49:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (127 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '100.00', 'description': 'QA 44e887f2 Want data affect sound.', 'incident_date': '2026-10-03'}
+  response: {"id":"3af73fba-4f2a-4d63-8028-a9d94f73ca9e","reference":"CLM-DE4B5AB5","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 44e887f2 Want data affect sound.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:56.370889Z","updated_at":"2026-10-10T08:49:56.370889Z","withdrawn_at":null,"decided_by_id":null}
+08:49:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3af73fba-4f2a-4d63-8028-a9d94f73ca9e/transitions "HTTP/1.1 200 OK"
+08:49:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3af73fba-4f2a-4d63-8028-a9d94f73ca9e/transitions -> 200 (91 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"3af73fba-4f2a-4d63-8028-a9d94f73ca9e","reference":"CLM-DE4B5AB5","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 44e887f2 Want data affect sound.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:56.370889Z","updated_at":"2026-10-10T08:49:56.501254Z","withdrawn_at":null,"decided_by_id":null}
+08:49:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3af73fba-4f2a-4d63-8028-a9d94f73ca9e/transitions "HTTP/1.1 200 OK"
+08:49:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3af73fba-4f2a-4d63-8028-a9d94f73ca9e/transitions -> 200 (110 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"3af73fba-4f2a-4d63-8028-a9d94f73ca9e","reference":"CLM-DE4B5AB5","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 44e887f2 Want data affect sound.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:56.370889Z","updated_at":"2026-10-10T08:49:56.590142Z","withdrawn_at":null,"decided_by_id":null}
+08:49:56 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[SUBMITTED-start_review-UNDER_REVIEW]

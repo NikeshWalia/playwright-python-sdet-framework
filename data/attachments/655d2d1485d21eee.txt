@@ -1,0 +1,9 @@
+08:49:50 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_creating_a_claim_against_an_unknown_policy_is_rejected
+08:49:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 404 Not Found"
+08:49:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 404 (4 ms)
+  request : {'policy_id': '00000000-0000-0000-0000-000000000000', 'amount': '250.00', 'description': 'QA c210ba9d He both sometimes certain third environmental.', 'incident_date': '2026-10-03'}
+  response: {"detail":"Policy not found"}
+08:49:50 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_creating_a_claim_against_an_unknown_policy_is_rejected

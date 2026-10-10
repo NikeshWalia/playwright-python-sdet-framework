@@ -1,0 +1,28 @@
+08:49:57 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-start_review]
+08:49:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"139ff881-b1b5-4e24-be55-03432960d4c5","policy_number":"POL-1001","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"10000.00","is_active":true},{"id":"af22343b-67ee-4e25-b2c4-3aa92ed30218","policy_number":"POL-1002","holder_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","coverage_limit":"2500.00","is_active":true}]
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '139ff881-b1b5-4e24-be55-03432960d4c5', 'amount': '100.00', 'description': 'QA 0dae182a Difference particular rest law.', 'incident_date': '2026-10-03'}
+  response: {"id":"54fec2e5-dd15-438e-a123-04c721d5b177","reference":"CLM-F41CAF09","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 0dae182a Difference particular rest law.","incident_date":"2026-10-03","status":"DRAFT","created_at":"2026-10-10T08:49:57.652056Z","updated_at":"2026-10-10T08:49:57.652056Z","withdrawn_at":null,"decided_by_id":null}
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177/transitions "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"54fec2e5-dd15-438e-a123-04c721d5b177","reference":"CLM-F41CAF09","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 0dae182a Difference particular rest law.","incident_date":"2026-10-03","status":"SUBMITTED","created_at":"2026-10-10T08:49:57.652056Z","updated_at":"2026-10-10T08:49:57.660037Z","withdrawn_at":null,"decided_by_id":null}
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177/transitions "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"54fec2e5-dd15-438e-a123-04c721d5b177","reference":"CLM-F41CAF09","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 0dae182a Difference particular rest law.","incident_date":"2026-10-03","status":"UNDER_REVIEW","created_at":"2026-10-10T08:49:57.652056Z","updated_at":"2026-10-10T08:49:57.670097Z","withdrawn_at":null,"decided_by_id":null}
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177/transitions "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177/transitions -> 200 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"54fec2e5-dd15-438e-a123-04c721d5b177","reference":"CLM-F41CAF09","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 0dae182a Difference particular rest law.","incident_date":"2026-10-03","status":"APPROVED","created_at":"2026-10-10T08:49:57.652056Z","updated_at":"2026-10-10T08:49:57.677675Z","withdrawn_at":null,"decided_by_id":"3230e323-9686-4d3d-af0a-9bd7de59d225"}
+08:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177/transitions "HTTP/1.1 409 Conflict"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177/transitions -> 409 (3 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status APPROVED; it must be SUBMITTED."}
+08:49:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177 "HTTP/1.1 200 OK"
+08:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/54fec2e5-dd15-438e-a123-04c721d5b177 -> 200 (2 ms)
+  response: {"id":"54fec2e5-dd15-438e-a123-04c721d5b177","reference":"CLM-F41CAF09","policy_id":"139ff881-b1b5-4e24-be55-03432960d4c5","claimant_id":"9e95fb4d-0556-45e8-9d8c-4c8765e0007f","amount":"100.00","description":"QA 0dae182a Difference particular rest law.","incident_date":"2026-10-03","status":"APPROVED","created_at":"2026-10-10T08:49:57.652056Z","updated_at":"2026-10-10T08:49:57.677675Z","withdrawn_at":null,"decided_by_id":"3230e323-9686-4d3d-af0a-9bd7de59d225"}
+08:49:57 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-start_review]
