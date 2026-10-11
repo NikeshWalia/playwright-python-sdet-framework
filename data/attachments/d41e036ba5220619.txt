@@ -1,0 +1,10 @@
+09:12:07 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]
+09:12:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:12:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (16 ms)
+  response: [{"id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","policy_number":"POL-1001","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"10000.00","is_active":true},{"id":"658a0678-bf29-4f9a-bfb8-23d521c9f5a3","policy_number":"POL-1002","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"2500.00","is_active":true}]
+09:12:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:12:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '5d3587de-f55c-4ddc-92e3-3fbad69a8fdf', 'amount': '640.00', 'description': 'QA f4525c5e Traditional nature whom risk.', 'incident_date': '2026-10-04'}
+  response: {"id":"ec1843ac-5ccc-49a6-bd68-12be27e871e2","reference":"CLM-FE4D97B8","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"640.00","description":"QA f4525c5e Traditional nature whom risk.","incident_date":"2026-10-04","status":"DRAFT","created_at":"2026-10-11T09:12:07.256505Z","updated_at":"2026-10-11T09:12:07.256505Z","withdrawn_at":null,"decided_by_id":null}
+09:12:07 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/ec1843ac-5ccc-49a6-bd68-12be27e871e2
+09:12:07 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]

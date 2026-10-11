@@ -1,0 +1,24 @@
+09:12:12 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-start_review]
+09:12:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:12:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","policy_number":"POL-1001","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"10000.00","is_active":true},{"id":"658a0678-bf29-4f9a-bfb8-23d521c9f5a3","policy_number":"POL-1002","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"2500.00","is_active":true}]
+09:12:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:12:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '5d3587de-f55c-4ddc-92e3-3fbad69a8fdf', 'amount': '100.00', 'description': 'QA 92e97475 Bad big design town few policy.', 'incident_date': '2026-10-04'}
+  response: {"id":"af404728-8759-4158-b91e-e7452afad5ee","reference":"CLM-29E9D390","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"100.00","description":"QA 92e97475 Bad big design town few policy.","incident_date":"2026-10-04","status":"DRAFT","created_at":"2026-10-11T09:12:12.709605Z","updated_at":"2026-10-11T09:12:12.709605Z","withdrawn_at":null,"decided_by_id":null}
+09:12:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af404728-8759-4158-b91e-e7452afad5ee/transitions "HTTP/1.1 200 OK"
+09:12:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af404728-8759-4158-b91e-e7452afad5ee/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"af404728-8759-4158-b91e-e7452afad5ee","reference":"CLM-29E9D390","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"100.00","description":"QA 92e97475 Bad big design town few policy.","incident_date":"2026-10-04","status":"SUBMITTED","created_at":"2026-10-11T09:12:12.709605Z","updated_at":"2026-10-11T09:12:12.720672Z","withdrawn_at":null,"decided_by_id":null}
+09:12:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af404728-8759-4158-b91e-e7452afad5ee/transitions "HTTP/1.1 200 OK"
+09:12:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af404728-8759-4158-b91e-e7452afad5ee/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"af404728-8759-4158-b91e-e7452afad5ee","reference":"CLM-29E9D390","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"100.00","description":"QA 92e97475 Bad big design town few policy.","incident_date":"2026-10-04","status":"UNDER_REVIEW","created_at":"2026-10-11T09:12:12.709605Z","updated_at":"2026-10-11T09:12:12.731356Z","withdrawn_at":null,"decided_by_id":null}
+09:12:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/af404728-8759-4158-b91e-e7452afad5ee/transitions "HTTP/1.1 409 Conflict"
+09:12:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/af404728-8759-4158-b91e-e7452afad5ee/transitions -> 409 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status UNDER_REVIEW; it must be SUBMITTED."}
+09:12:12 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/af404728-8759-4158-b91e-e7452afad5ee "HTTP/1.1 200 OK"
+09:12:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/af404728-8759-4158-b91e-e7452afad5ee -> 200 (4 ms)
+  response: {"id":"af404728-8759-4158-b91e-e7452afad5ee","reference":"CLM-29E9D390","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"100.00","description":"QA 92e97475 Bad big design town few policy.","incident_date":"2026-10-04","status":"UNDER_REVIEW","created_at":"2026-10-11T09:12:12.709605Z","updated_at":"2026-10-11T09:12:12.731356Z","withdrawn_at":null,"decided_by_id":null}
+09:12:12 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-start_review]

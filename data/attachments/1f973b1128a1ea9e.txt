@@ -1,0 +1,15 @@
+09:12:05 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_withdrawing_a_draft_moves_it_to_withdrawn_and_keeps_it_visible
+09:12:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:12:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","policy_number":"POL-1001","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"10000.00","is_active":true},{"id":"658a0678-bf29-4f9a-bfb8-23d521c9f5a3","policy_number":"POL-1002","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"2500.00","is_active":true}]
+09:12:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:12:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '5d3587de-f55c-4ddc-92e3-3fbad69a8fdf', 'amount': '250.00', 'description': 'QA c2d8bbce Head rate doctor movie when.', 'incident_date': '2026-10-04'}
+  response: {"id":"c5fd772a-5b9e-48ec-a8f1-5ca2e18d6adb","reference":"CLM-6560CD7C","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"250.00","description":"QA c2d8bbce Head rate doctor movie when.","incident_date":"2026-10-04","status":"DRAFT","created_at":"2026-10-11T09:12:05.434776Z","updated_at":"2026-10-11T09:12:05.434776Z","withdrawn_at":null,"decided_by_id":null}
+09:12:05 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/c5fd772a-5b9e-48ec-a8f1-5ca2e18d6adb "HTTP/1.1 204 No Content"
+09:12:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/c5fd772a-5b9e-48ec-a8f1-5ca2e18d6adb -> 204 (7 ms)
+  response: 
+09:12:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/c5fd772a-5b9e-48ec-a8f1-5ca2e18d6adb "HTTP/1.1 200 OK"
+09:12:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/c5fd772a-5b9e-48ec-a8f1-5ca2e18d6adb -> 200 (4 ms)
+  response: {"id":"c5fd772a-5b9e-48ec-a8f1-5ca2e18d6adb","reference":"CLM-6560CD7C","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"250.00","description":"QA c2d8bbce Head rate doctor movie when.","incident_date":"2026-10-04","status":"WITHDRAWN","created_at":"2026-10-11T09:12:05.434776Z","updated_at":"2026-10-11T09:12:05.442771Z","withdrawn_at":"2026-10-11T09:12:05.444327Z","decided_by_id":null}
+09:12:05 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_withdrawing_a_draft_moves_it_to_withdrawn_and_keeps_it_visible

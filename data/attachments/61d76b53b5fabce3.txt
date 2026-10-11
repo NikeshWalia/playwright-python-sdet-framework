@@ -1,0 +1,9 @@
+09:12:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[empty]
+09:12:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:12:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","policy_number":"POL-1001","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"10000.00","is_active":true},{"id":"658a0678-bf29-4f9a-bfb8-23d521c9f5a3","policy_number":"POL-1002","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"2500.00","is_active":true}]
+09:12:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+09:12:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (7 ms)
+  request : {'policy_id': '5d3587de-f55c-4ddc-92e3-3fbad69a8fdf', 'amount': '', 'description': 'QA 5c6462b6 Record present hard service recognize stage.', 'incident_date': '2026-10-04'}
+  response: {"detail":[{"type":"decimal_parsing","loc":["body","amount"],"msg":"Input should be a valid decimal","input":""}]}
+09:12:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[empty]

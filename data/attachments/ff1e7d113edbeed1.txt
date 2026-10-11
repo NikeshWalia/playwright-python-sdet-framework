@@ -1,0 +1,28 @@
+09:12:15 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout
+09:12:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:12:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","policy_number":"POL-1001","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"10000.00","is_active":true},{"id":"658a0678-bf29-4f9a-bfb8-23d521c9f5a3","policy_number":"POL-1002","holder_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","coverage_limit":"2500.00","is_active":true}]
+09:12:15 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:12:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:12:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '5d3587de-f55c-4ddc-92e3-3fbad69a8fdf', 'amount': '800.00', 'description': 'QA bcc05786 Moment feeling floor physical point bank energy.', 'incident_date': '2026-10-04'}
+  response: {"id":"79ef9458-3213-495c-84c3-b01ad8548f84","reference":"CLM-7E3377A8","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"800.00","description":"QA bcc05786 Moment feeling floor physical point bank energy.","incident_date":"2026-10-04","status":"DRAFT","created_at":"2026-10-11T09:12:15.370658Z","updated_at":"2026-10-11T09:12:15.370658Z","withdrawn_at":null,"decided_by_id":null}
+09:12:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/79ef9458-3213-495c-84c3-b01ad8548f84/transitions "HTTP/1.1 200 OK"
+09:12:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/79ef9458-3213-495c-84c3-b01ad8548f84/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"79ef9458-3213-495c-84c3-b01ad8548f84","reference":"CLM-7E3377A8","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"800.00","description":"QA bcc05786 Moment feeling floor physical point bank energy.","incident_date":"2026-10-04","status":"SUBMITTED","created_at":"2026-10-11T09:12:15.370658Z","updated_at":"2026-10-11T09:12:15.379871Z","withdrawn_at":null,"decided_by_id":null}
+09:12:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/79ef9458-3213-495c-84c3-b01ad8548f84/transitions "HTTP/1.1 200 OK"
+09:12:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/79ef9458-3213-495c-84c3-b01ad8548f84/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"79ef9458-3213-495c-84c3-b01ad8548f84","reference":"CLM-7E3377A8","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"800.00","description":"QA bcc05786 Moment feeling floor physical point bank energy.","incident_date":"2026-10-04","status":"UNDER_REVIEW","created_at":"2026-10-11T09:12:15.370658Z","updated_at":"2026-10-11T09:12:15.387918Z","withdrawn_at":null,"decided_by_id":null}
+09:12:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/79ef9458-3213-495c-84c3-b01ad8548f84/transitions "HTTP/1.1 200 OK"
+09:12:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/79ef9458-3213-495c-84c3-b01ad8548f84/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"79ef9458-3213-495c-84c3-b01ad8548f84","reference":"CLM-7E3377A8","policy_id":"5d3587de-f55c-4ddc-92e3-3fbad69a8fdf","claimant_id":"903ad663-5c7f-4d1e-9783-640f91fbbe48","amount":"800.00","description":"QA bcc05786 Moment feeling floor physical point bank energy.","incident_date":"2026-10-04","status":"APPROVED","created_at":"2026-10-11T09:12:15.370658Z","updated_at":"2026-10-11T09:12:15.395744Z","withdrawn_at":null,"decided_by_id":"8ff217a1-2c78-4c27-bb39-a0a441a7fc93"}
+09:12:15 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('79ef9458-3213-495c-84c3-b01ad8548f84',)
+  rows: 0
+09:12:15 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('79ef9458-3213-495c-84c3-b01ad8548f84',)
+  rows: 1
+09:12:15 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout
