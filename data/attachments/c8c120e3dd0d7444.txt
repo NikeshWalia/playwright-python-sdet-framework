@@ -1,0 +1,21 @@
+09:37:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit
+09:37:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:37:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"5fb2b0c9-2c91-474d-820b-e2e0dec1b063","policy_number":"POL-1001","holder_id":"179ef01e-eb15-4f3f-8bef-8cbfa0025462","coverage_limit":"10000.00","is_active":true},{"id":"b72b039b-4730-462f-b25e-d610feac63bb","policy_number":"POL-1002","holder_id":"179ef01e-eb15-4f3f-8bef-8cbfa0025462","coverage_limit":"2500.00","is_active":true}]
+09:37:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:37:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '5fb2b0c9-2c91-474d-820b-e2e0dec1b063', 'amount': '5000.01', 'description': 'QA 6b3df396 End popular agree night rich soon spend.', 'incident_date': '2026-10-05'}
+  response: {"id":"ed117c0f-9b3b-4164-92cb-dee71d3a5ca0","reference":"CLM-370F5398","policy_id":"5fb2b0c9-2c91-474d-820b-e2e0dec1b063","claimant_id":"179ef01e-eb15-4f3f-8bef-8cbfa0025462","amount":"5000.01","description":"QA 6b3df396 End popular agree night rich soon spend.","incident_date":"2026-10-05","status":"DRAFT","created_at":"2026-10-12T09:37:24.396325Z","updated_at":"2026-10-12T09:37:24.396325Z","withdrawn_at":null,"decided_by_id":null}
+09:37:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ed117c0f-9b3b-4164-92cb-dee71d3a5ca0/transitions "HTTP/1.1 200 OK"
+09:37:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ed117c0f-9b3b-4164-92cb-dee71d3a5ca0/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ed117c0f-9b3b-4164-92cb-dee71d3a5ca0","reference":"CLM-370F5398","policy_id":"5fb2b0c9-2c91-474d-820b-e2e0dec1b063","claimant_id":"179ef01e-eb15-4f3f-8bef-8cbfa0025462","amount":"5000.01","description":"QA 6b3df396 End popular agree night rich soon spend.","incident_date":"2026-10-05","status":"SUBMITTED","created_at":"2026-10-12T09:37:24.396325Z","updated_at":"2026-10-12T09:37:24.405697Z","withdrawn_at":null,"decided_by_id":null}
+09:37:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ed117c0f-9b3b-4164-92cb-dee71d3a5ca0/transitions "HTTP/1.1 200 OK"
+09:37:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ed117c0f-9b3b-4164-92cb-dee71d3a5ca0/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ed117c0f-9b3b-4164-92cb-dee71d3a5ca0","reference":"CLM-370F5398","policy_id":"5fb2b0c9-2c91-474d-820b-e2e0dec1b063","claimant_id":"179ef01e-eb15-4f3f-8bef-8cbfa0025462","amount":"5000.01","description":"QA 6b3df396 End popular agree night rich soon spend.","incident_date":"2026-10-05","status":"UNDER_REVIEW","created_at":"2026-10-12T09:37:24.396325Z","updated_at":"2026-10-12T09:37:24.416768Z","withdrawn_at":null,"decided_by_id":null}
+09:37:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ed117c0f-9b3b-4164-92cb-dee71d3a5ca0/transitions "HTTP/1.1 200 OK"
+09:37:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ed117c0f-9b3b-4164-92cb-dee71d3a5ca0/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"ed117c0f-9b3b-4164-92cb-dee71d3a5ca0","reference":"CLM-370F5398","policy_id":"5fb2b0c9-2c91-474d-820b-e2e0dec1b063","claimant_id":"179ef01e-eb15-4f3f-8bef-8cbfa0025462","amount":"5000.01","description":"QA 6b3df396 End popular agree night rich soon spend.","incident_date":"2026-10-05","status":"APPROVED","created_at":"2026-10-12T09:37:24.396325Z","updated_at":"2026-10-12T09:37:24.424748Z","withdrawn_at":null,"decided_by_id":"88b2e3ff-80e9-44bf-bdc0-772094ac0646"}
+09:37:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit
