@@ -1,0 +1,25 @@
+09:40:28 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+09:40:28 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:40:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"39372007-2091-4a47-9ef0-535b0cac5c8f","policy_number":"POL-1001","holder_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","coverage_limit":"10000.00","is_active":true},{"id":"ce5ede17-c0f2-4ebc-8f40-de9cf2f24113","policy_number":"POL-1002","holder_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","coverage_limit":"2500.00","is_active":true}]
+09:40:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:40:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '39372007-2091-4a47-9ef0-535b0cac5c8f', 'amount': '250.00', 'description': 'QA f68b24a9 Plan hospital away nation tonight kind affect.', 'incident_date': '2026-10-06'}
+  response: {"id":"4629168e-454a-4227-add2-17ae5be4a4ab","reference":"CLM-CE90ADAA","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"250.00","description":"QA f68b24a9 Plan hospital away nation tonight kind affect.","incident_date":"2026-10-06","status":"DRAFT","created_at":"2026-10-13T09:40:28.711725Z","updated_at":"2026-10-13T09:40:28.711725Z","withdrawn_at":null,"decided_by_id":null}
+09:40:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:40:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '39372007-2091-4a47-9ef0-535b0cac5c8f', 'amount': '250.00', 'description': 'QA aa7c211b Food condition administration animal.', 'incident_date': '2026-10-06'}
+  response: {"id":"0d25586c-2039-4e6f-acf0-3f812e00915c","reference":"CLM-6601A196","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"250.00","description":"QA aa7c211b Food condition administration animal.","incident_date":"2026-10-06","status":"DRAFT","created_at":"2026-10-13T09:40:28.717258Z","updated_at":"2026-10-13T09:40:28.717258Z","withdrawn_at":null,"decided_by_id":null}
+09:40:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:40:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '39372007-2091-4a47-9ef0-535b0cac5c8f', 'amount': '250.00', 'description': 'QA daa5832e Amount floor white page force.', 'incident_date': '2026-10-06'}
+  response: {"id":"63134ef9-74b0-4a5f-af36-113136067c29","reference":"CLM-402F979A","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"250.00","description":"QA daa5832e Amount floor white page force.","incident_date":"2026-10-06","status":"DRAFT","created_at":"2026-10-13T09:40:28.722836Z","updated_at":"2026-10-13T09:40:28.722836Z","withdrawn_at":null,"decided_by_id":null}
+09:40:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:40:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '39372007-2091-4a47-9ef0-535b0cac5c8f', 'amount': '250.00', 'description': 'QA 0e59097c Strategy start audience century prove wind act.', 'incident_date': '2026-10-06'}
+  response: {"id":"4157ba7a-0deb-4feb-bedc-fa48369b5892","reference":"CLM-1043C2BF","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"250.00","description":"QA 0e59097c Strategy start audience century prove wind act.","incident_date":"2026-10-06","status":"DRAFT","created_at":"2026-10-13T09:40:28.728462Z","updated_at":"2026-10-13T09:40:28.728462Z","withdrawn_at":null,"decided_by_id":null}
+09:40:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:40:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '39372007-2091-4a47-9ef0-535b0cac5c8f', 'amount': '250.00', 'description': 'QA effbb9a7 Service usually become current.', 'incident_date': '2026-10-06'}
+  response: {"id":"fb29f38f-190e-4369-8e56-93a4349ef768","reference":"CLM-6CFB1D1B","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"250.00","description":"QA effbb9a7 Service usually become current.","incident_date":"2026-10-06","status":"DRAFT","created_at":"2026-10-13T09:40:28.734278Z","updated_at":"2026-10-13T09:40:28.734278Z","withdrawn_at":null,"decided_by_id":null}
+09:40:28 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

@@ -1,0 +1,10 @@
+09:40:29 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]
+09:40:29 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:40:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"39372007-2091-4a47-9ef0-535b0cac5c8f","policy_number":"POL-1001","holder_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","coverage_limit":"10000.00","is_active":true},{"id":"ce5ede17-c0f2-4ebc-8f40-de9cf2f24113","policy_number":"POL-1002","holder_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","coverage_limit":"2500.00","is_active":true}]
+09:40:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:40:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '39372007-2091-4a47-9ef0-535b0cac5c8f', 'amount': '640.00', 'description': 'QA e3a02e13 Each whose day treat story American real.', 'incident_date': '2026-10-06'}
+  response: {"id":"4a58b7a3-5334-4c9e-ae17-cbb0e30fc0b8","reference":"CLM-02191EB0","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"640.00","description":"QA e3a02e13 Each whose day treat story American real.","incident_date":"2026-10-06","status":"DRAFT","created_at":"2026-10-13T09:40:29.942855Z","updated_at":"2026-10-13T09:40:29.942855Z","withdrawn_at":null,"decided_by_id":null}
+09:40:29 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/4a58b7a3-5334-4c9e-ae17-cbb0e30fc0b8
+09:40:30 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_can_submit_their_draft[chromium]

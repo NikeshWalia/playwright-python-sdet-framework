@@ -1,0 +1,25 @@
+09:40:33 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
+09:40:33 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:40:33 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"39372007-2091-4a47-9ef0-535b0cac5c8f","policy_number":"POL-1001","holder_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","coverage_limit":"10000.00","is_active":true},{"id":"ce5ede17-c0f2-4ebc-8f40-de9cf2f24113","policy_number":"POL-1002","holder_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","coverage_limit":"2500.00","is_active":true}]
+09:40:33 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:40:33 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '39372007-2091-4a47-9ef0-535b0cac5c8f', 'amount': '750.00', 'description': 'QA 83bd4762 Test purpose close determine.', 'incident_date': '2026-10-06'}
+  response: {"id":"378737e5-5f3a-435a-a622-71286ae1ab4f","reference":"CLM-40188D69","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"750.00","description":"QA 83bd4762 Test purpose close determine.","incident_date":"2026-10-06","status":"DRAFT","created_at":"2026-10-13T09:40:33.019637Z","updated_at":"2026-10-13T09:40:33.019637Z","withdrawn_at":null,"decided_by_id":null}
+09:40:33 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/378737e5-5f3a-435a-a622-71286ae1ab4f/transitions "HTTP/1.1 200 OK"
+09:40:33 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/378737e5-5f3a-435a-a622-71286ae1ab4f/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"378737e5-5f3a-435a-a622-71286ae1ab4f","reference":"CLM-40188D69","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"750.00","description":"QA 83bd4762 Test purpose close determine.","incident_date":"2026-10-06","status":"SUBMITTED","created_at":"2026-10-13T09:40:33.019637Z","updated_at":"2026-10-13T09:40:33.028235Z","withdrawn_at":null,"decided_by_id":null}
+09:40:33 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/378737e5-5f3a-435a-a622-71286ae1ab4f/transitions "HTTP/1.1 200 OK"
+09:40:33 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/378737e5-5f3a-435a-a622-71286ae1ab4f/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"378737e5-5f3a-435a-a622-71286ae1ab4f","reference":"CLM-40188D69","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"750.00","description":"QA 83bd4762 Test purpose close determine.","incident_date":"2026-10-06","status":"UNDER_REVIEW","created_at":"2026-10-13T09:40:33.019637Z","updated_at":"2026-10-13T09:40:33.035256Z","withdrawn_at":null,"decided_by_id":null}
+09:40:33 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/378737e5-5f3a-435a-a622-71286ae1ab4f/transitions "HTTP/1.1 200 OK"
+09:40:33 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/378737e5-5f3a-435a-a622-71286ae1ab4f/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"378737e5-5f3a-435a-a622-71286ae1ab4f","reference":"CLM-40188D69","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"750.00","description":"QA 83bd4762 Test purpose close determine.","incident_date":"2026-10-06","status":"APPROVED","created_at":"2026-10-13T09:40:33.019637Z","updated_at":"2026-10-13T09:40:33.043277Z","withdrawn_at":null,"decided_by_id":"9daafd5f-a5dd-4120-96b0-287b14591d4a"}
+09:40:33 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/378737e5-5f3a-435a-a622-71286ae1ab4f/transitions "HTTP/1.1 200 OK"
+09:40:33 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/378737e5-5f3a-435a-a622-71286ae1ab4f/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"378737e5-5f3a-435a-a622-71286ae1ab4f","reference":"CLM-40188D69","policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","claimant_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","amount":"750.00","description":"QA 83bd4762 Test purpose close determine.","incident_date":"2026-10-06","status":"PAID","created_at":"2026-10-13T09:40:33.019637Z","updated_at":"2026-10-13T09:40:33.055072Z","withdrawn_at":null,"decided_by_id":"9daafd5f-a5dd-4120-96b0-287b14591d4a"}
+09:40:33 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
