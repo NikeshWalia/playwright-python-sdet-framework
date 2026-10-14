@@ -1,0 +1,20 @@
+07:56:05 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]
+07:56:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:56:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"98948590-fccd-426c-8ddf-ad6df31dac37","policy_number":"POL-1001","holder_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","coverage_limit":"10000.00","is_active":true},{"id":"3635b556-0d5e-44f3-a211-d2edf69b121d","policy_number":"POL-1002","holder_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","coverage_limit":"2500.00","is_active":true}]
+07:56:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:56:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '98948590-fccd-426c-8ddf-ad6df31dac37', 'amount': '100.00', 'description': 'QA 632efa11 Smile leave economy thought real drop create.', 'incident_date': '2026-10-07'}
+  response: {"id":"beff3c25-71bd-42dc-88ac-76ea36bca3b2","reference":"CLM-0E7D1D5F","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"100.00","description":"QA 632efa11 Smile leave economy thought real drop create.","incident_date":"2026-10-07","status":"DRAFT","created_at":"2026-10-14T07:56:05.715496Z","updated_at":"2026-10-14T07:56:05.715496Z","withdrawn_at":null,"decided_by_id":null}
+07:56:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/beff3c25-71bd-42dc-88ac-76ea36bca3b2/transitions "HTTP/1.1 200 OK"
+07:56:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/beff3c25-71bd-42dc-88ac-76ea36bca3b2/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"beff3c25-71bd-42dc-88ac-76ea36bca3b2","reference":"CLM-0E7D1D5F","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"100.00","description":"QA 632efa11 Smile leave economy thought real drop create.","incident_date":"2026-10-07","status":"SUBMITTED","created_at":"2026-10-14T07:56:05.715496Z","updated_at":"2026-10-14T07:56:05.725918Z","withdrawn_at":null,"decided_by_id":null}
+07:56:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/beff3c25-71bd-42dc-88ac-76ea36bca3b2/transitions "HTTP/1.1 409 Conflict"
+07:56:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/beff3c25-71bd-42dc-88ac-76ea36bca3b2/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+07:56:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/beff3c25-71bd-42dc-88ac-76ea36bca3b2 "HTTP/1.1 200 OK"
+07:56:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/beff3c25-71bd-42dc-88ac-76ea36bca3b2 -> 200 (4 ms)
+  response: {"id":"beff3c25-71bd-42dc-88ac-76ea36bca3b2","reference":"CLM-0E7D1D5F","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"100.00","description":"QA 632efa11 Smile leave economy thought real drop create.","incident_date":"2026-10-07","status":"SUBMITTED","created_at":"2026-10-14T07:56:05.715496Z","updated_at":"2026-10-14T07:56:05.725918Z","withdrawn_at":null,"decided_by_id":null}
+07:56:05 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]

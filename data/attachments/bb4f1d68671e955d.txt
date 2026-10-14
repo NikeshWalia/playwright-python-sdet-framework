@@ -1,9 +1,0 @@
-09:40:28 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[amount]
-09:40:28 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-09:40:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
-  response: [{"id":"39372007-2091-4a47-9ef0-535b0cac5c8f","policy_number":"POL-1001","holder_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","coverage_limit":"10000.00","is_active":true},{"id":"ce5ede17-c0f2-4ebc-8f40-de9cf2f24113","policy_number":"POL-1002","holder_id":"48f1e568-010d-4a36-b9ca-b3cebb1f0f8c","coverage_limit":"2500.00","is_active":true}]
-09:40:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-09:40:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
-  request : {'policy_id': '39372007-2091-4a47-9ef0-535b0cac5c8f', 'description': 'QA 1badb8b8 Staff population movement option stock order.', 'incident_date': '2026-10-06'}
-  response: {"detail":[{"type":"missing","loc":["body","amount"],"msg":"Field required","input":{"policy_id":"39372007-2091-4a47-9ef0-535b0cac5c8f","description":"QA 1badb8b8 Staff population movement option stock order.","incident_date":"2026-10-06"}}]}
-09:40:28 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[amount]

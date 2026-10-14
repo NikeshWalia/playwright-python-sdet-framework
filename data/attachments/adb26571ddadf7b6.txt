@@ -1,0 +1,32 @@
+07:56:06 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row
+07:56:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"98948590-fccd-426c-8ddf-ad6df31dac37","policy_number":"POL-1001","holder_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","coverage_limit":"10000.00","is_active":true},{"id":"3635b556-0d5e-44f3-a211-d2edf69b121d","policy_number":"POL-1002","holder_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","coverage_limit":"2500.00","is_active":true}]
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:56:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '98948590-fccd-426c-8ddf-ad6df31dac37', 'amount': '700.00', 'description': 'QA 557a7297 Key computer kid information agent black.', 'incident_date': '2026-10-07'}
+  response: {"id":"b158221a-015d-4fe3-b44f-96c7a8696bda","reference":"CLM-14C3FC36","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"700.00","description":"QA 557a7297 Key computer kid information agent black.","incident_date":"2026-10-07","status":"DRAFT","created_at":"2026-10-14T07:56:06.583609Z","updated_at":"2026-10-14T07:56:06.583609Z","withdrawn_at":null,"decided_by_id":null}
+07:56:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b158221a-015d-4fe3-b44f-96c7a8696bda/transitions "HTTP/1.1 200 OK"
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b158221a-015d-4fe3-b44f-96c7a8696bda/transitions -> 200 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b158221a-015d-4fe3-b44f-96c7a8696bda","reference":"CLM-14C3FC36","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"700.00","description":"QA 557a7297 Key computer kid information agent black.","incident_date":"2026-10-07","status":"SUBMITTED","created_at":"2026-10-14T07:56:06.583609Z","updated_at":"2026-10-14T07:56:06.591473Z","withdrawn_at":null,"decided_by_id":null}
+07:56:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b158221a-015d-4fe3-b44f-96c7a8696bda/transitions "HTTP/1.1 200 OK"
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b158221a-015d-4fe3-b44f-96c7a8696bda/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b158221a-015d-4fe3-b44f-96c7a8696bda","reference":"CLM-14C3FC36","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"700.00","description":"QA 557a7297 Key computer kid information agent black.","incident_date":"2026-10-07","status":"UNDER_REVIEW","created_at":"2026-10-14T07:56:06.583609Z","updated_at":"2026-10-14T07:56:06.597786Z","withdrawn_at":null,"decided_by_id":null}
+07:56:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b158221a-015d-4fe3-b44f-96c7a8696bda/transitions "HTTP/1.1 200 OK"
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b158221a-015d-4fe3-b44f-96c7a8696bda/transitions -> 200 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"b158221a-015d-4fe3-b44f-96c7a8696bda","reference":"CLM-14C3FC36","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"700.00","description":"QA 557a7297 Key computer kid information agent black.","incident_date":"2026-10-07","status":"APPROVED","created_at":"2026-10-14T07:56:06.583609Z","updated_at":"2026-10-14T07:56:06.603503Z","withdrawn_at":null,"decided_by_id":"008e5561-d219-4fe7-b588-ef92f80b8421"}
+07:56:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b158221a-015d-4fe3-b44f-96c7a8696bda/transitions "HTTP/1.1 200 OK"
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b158221a-015d-4fe3-b44f-96c7a8696bda/transitions -> 200 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"b158221a-015d-4fe3-b44f-96c7a8696bda","reference":"CLM-14C3FC36","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"700.00","description":"QA 557a7297 Key computer kid information agent black.","incident_date":"2026-10-07","status":"PAID","created_at":"2026-10-14T07:56:06.583609Z","updated_at":"2026-10-14T07:56:06.609166Z","withdrawn_at":null,"decided_by_id":"008e5561-d219-4fe7-b588-ef92f80b8421"}
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('b158221a-015d-4fe3-b44f-96c7a8696bda',)
+  rows: 5
+07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('b158221a-015d-4fe3-b44f-96c7a8696bda',)
+  rows: 1
+07:56:06 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row

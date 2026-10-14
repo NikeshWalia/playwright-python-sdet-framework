@@ -1,0 +1,15 @@
+07:55:57 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_withdrawing_a_draft_moves_it_to_withdrawn_and_keeps_it_visible
+07:55:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:55:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"98948590-fccd-426c-8ddf-ad6df31dac37","policy_number":"POL-1001","holder_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","coverage_limit":"10000.00","is_active":true},{"id":"3635b556-0d5e-44f3-a211-d2edf69b121d","policy_number":"POL-1002","holder_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","coverage_limit":"2500.00","is_active":true}]
+07:55:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '98948590-fccd-426c-8ddf-ad6df31dac37', 'amount': '250.00', 'description': 'QA 7fea09e7 Five team listen.', 'incident_date': '2026-10-07'}
+  response: {"id":"1bf0382f-7702-4bd8-8e4d-c1d567a91c79","reference":"CLM-2A6B77C7","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"250.00","description":"QA 7fea09e7 Five team listen.","incident_date":"2026-10-07","status":"DRAFT","created_at":"2026-10-14T07:55:57.698526Z","updated_at":"2026-10-14T07:55:57.698526Z","withdrawn_at":null,"decided_by_id":null}
+07:55:57 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/1bf0382f-7702-4bd8-8e4d-c1d567a91c79 "HTTP/1.1 204 No Content"
+07:55:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/1bf0382f-7702-4bd8-8e4d-c1d567a91c79 -> 204 (5 ms)
+  response: 
+07:55:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/1bf0382f-7702-4bd8-8e4d-c1d567a91c79 "HTTP/1.1 200 OK"
+07:55:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/1bf0382f-7702-4bd8-8e4d-c1d567a91c79 -> 200 (4 ms)
+  response: {"id":"1bf0382f-7702-4bd8-8e4d-c1d567a91c79","reference":"CLM-2A6B77C7","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"250.00","description":"QA 7fea09e7 Five team listen.","incident_date":"2026-10-07","status":"WITHDRAWN","created_at":"2026-10-14T07:55:57.698526Z","updated_at":"2026-10-14T07:55:57.705751Z","withdrawn_at":"2026-10-14T07:55:57.707036Z","decided_by_id":null}
+07:55:57 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_withdrawing_a_draft_moves_it_to_withdrawn_and_keeps_it_visible

@@ -1,0 +1,20 @@
+07:56:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-approve]
+07:56:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:56:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"98948590-fccd-426c-8ddf-ad6df31dac37","policy_number":"POL-1001","holder_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","coverage_limit":"10000.00","is_active":true},{"id":"3635b556-0d5e-44f3-a211-d2edf69b121d","policy_number":"POL-1002","holder_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","coverage_limit":"2500.00","is_active":true}]
+07:56:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:56:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '98948590-fccd-426c-8ddf-ad6df31dac37', 'amount': '100.00', 'description': 'QA 130947c9 Their cost back seek collection responsibility.', 'incident_date': '2026-10-07'}
+  response: {"id":"6a0e5b0c-ca21-4e35-b07e-2a03fc830250","reference":"CLM-97681BF8","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"100.00","description":"QA 130947c9 Their cost back seek collection responsibility.","incident_date":"2026-10-07","status":"DRAFT","created_at":"2026-10-14T07:56:04.822233Z","updated_at":"2026-10-14T07:56:04.822233Z","withdrawn_at":null,"decided_by_id":null}
+07:56:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6a0e5b0c-ca21-4e35-b07e-2a03fc830250/transitions "HTTP/1.1 200 OK"
+07:56:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6a0e5b0c-ca21-4e35-b07e-2a03fc830250/transitions -> 200 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"6a0e5b0c-ca21-4e35-b07e-2a03fc830250","reference":"CLM-97681BF8","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"100.00","description":"QA 130947c9 Their cost back seek collection responsibility.","incident_date":"2026-10-07","status":"SUBMITTED","created_at":"2026-10-14T07:56:04.822233Z","updated_at":"2026-10-14T07:56:04.830176Z","withdrawn_at":null,"decided_by_id":null}
+07:56:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6a0e5b0c-ca21-4e35-b07e-2a03fc830250/transitions "HTTP/1.1 409 Conflict"
+07:56:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6a0e5b0c-ca21-4e35-b07e-2a03fc830250/transitions -> 409 (3 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+07:56:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/6a0e5b0c-ca21-4e35-b07e-2a03fc830250 "HTTP/1.1 200 OK"
+07:56:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/6a0e5b0c-ca21-4e35-b07e-2a03fc830250 -> 200 (3 ms)
+  response: {"id":"6a0e5b0c-ca21-4e35-b07e-2a03fc830250","reference":"CLM-97681BF8","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"100.00","description":"QA 130947c9 Their cost back seek collection responsibility.","incident_date":"2026-10-07","status":"SUBMITTED","created_at":"2026-10-14T07:56:04.822233Z","updated_at":"2026-10-14T07:56:04.830176Z","withdrawn_at":null,"decided_by_id":null}
+07:56:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-approve]
