@@ -1,5 +1,0 @@
-07:55:56 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
-07:55:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
-07:55:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (5 ms)
-  response: {"items":[{"id":"d94988d5-0c77-4f32-9c97-98fc4a799122","reference":"CLM-0ED52D34","policy_id":"98948590-fccd-426c-8ddf-ad6df31dac37","claimant_id":"154c9a5d-c523-4fbc-bc4e-aedfccbe4c30","amount":"250.00","description":"QA a938e824 Network all happy beyond fear.","incident_date":"2026-10-07","status":"WITHDRAWN","created_at":"2026-10-14T07:55:56.367387Z","updated_at":"2026-10-14T07:55:56.375508Z","withdrawn_at":"2026-10-14T07:55:56.377155Z","decided_by_id":null}],"page":1,"size":50,"total":1}
-07:55:56 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]

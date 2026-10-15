@@ -1,0 +1,16 @@
+07:40:36 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[reject]
+07:40:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:40:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"801309a1-ef47-433f-8035-d02ae8e0fc18","policy_number":"POL-1001","holder_id":"f06dfa0a-0da4-458b-b707-01584b396b04","coverage_limit":"10000.00","is_active":true},{"id":"a180b7a5-f314-41b9-be80-1229d2bf001f","policy_number":"POL-1002","holder_id":"f06dfa0a-0da4-458b-b707-01584b396b04","coverage_limit":"2500.00","is_active":true}]
+07:40:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:40:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '801309a1-ef47-433f-8035-d02ae8e0fc18', 'amount': '250.00', 'description': 'QA 40a1a730 Week wide bag newspaper.', 'incident_date': '2026-10-08'}
+  response: {"id":"45c22b4e-a603-4209-b270-25f36d106651","reference":"CLM-8D50CEEC","policy_id":"801309a1-ef47-433f-8035-d02ae8e0fc18","claimant_id":"f06dfa0a-0da4-458b-b707-01584b396b04","amount":"250.00","description":"QA 40a1a730 Week wide bag newspaper.","incident_date":"2026-10-08","status":"DRAFT","created_at":"2026-10-15T07:40:36.440010Z","updated_at":"2026-10-15T07:40:36.440010Z","withdrawn_at":null,"decided_by_id":null}
+07:40:36 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/45c22b4e-a603-4209-b270-25f36d106651 "HTTP/1.1 204 No Content"
+07:40:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/45c22b4e-a603-4209-b270-25f36d106651 -> 204 (11 ms)
+  response: 
+07:40:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/45c22b4e-a603-4209-b270-25f36d106651/transitions "HTTP/1.1 409 Conflict"
+07:40:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/45c22b4e-a603-4209-b270-25f36d106651/transitions -> 409 (6 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status WITHDRAWN; it must be UNDER_REVIEW."}
+07:40:36 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[reject]

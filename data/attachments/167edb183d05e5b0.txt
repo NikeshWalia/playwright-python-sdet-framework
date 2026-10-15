@@ -1,0 +1,20 @@
+07:40:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]
+07:40:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:40:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"801309a1-ef47-433f-8035-d02ae8e0fc18","policy_number":"POL-1001","holder_id":"f06dfa0a-0da4-458b-b707-01584b396b04","coverage_limit":"10000.00","is_active":true},{"id":"a180b7a5-f314-41b9-be80-1229d2bf001f","policy_number":"POL-1002","holder_id":"f06dfa0a-0da4-458b-b707-01584b396b04","coverage_limit":"2500.00","is_active":true}]
+07:40:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:40:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '801309a1-ef47-433f-8035-d02ae8e0fc18', 'amount': '100.00', 'description': 'QA 381a05c1 Provide me culture claim detail.', 'incident_date': '2026-10-08'}
+  response: {"id":"543fc929-ed99-4f71-9ce2-6ed62bfd7c08","reference":"CLM-CF79AD70","policy_id":"801309a1-ef47-433f-8035-d02ae8e0fc18","claimant_id":"f06dfa0a-0da4-458b-b707-01584b396b04","amount":"100.00","description":"QA 381a05c1 Provide me culture claim detail.","incident_date":"2026-10-08","status":"DRAFT","created_at":"2026-10-15T07:40:35.982812Z","updated_at":"2026-10-15T07:40:35.982812Z","withdrawn_at":null,"decided_by_id":null}
+07:40:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/543fc929-ed99-4f71-9ce2-6ed62bfd7c08/transitions "HTTP/1.1 200 OK"
+07:40:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/543fc929-ed99-4f71-9ce2-6ed62bfd7c08/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"543fc929-ed99-4f71-9ce2-6ed62bfd7c08","reference":"CLM-CF79AD70","policy_id":"801309a1-ef47-433f-8035-d02ae8e0fc18","claimant_id":"f06dfa0a-0da4-458b-b707-01584b396b04","amount":"100.00","description":"QA 381a05c1 Provide me culture claim detail.","incident_date":"2026-10-08","status":"SUBMITTED","created_at":"2026-10-15T07:40:35.982812Z","updated_at":"2026-10-15T07:40:35.995255Z","withdrawn_at":null,"decided_by_id":null}
+07:40:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/543fc929-ed99-4f71-9ce2-6ed62bfd7c08/transitions "HTTP/1.1 409 Conflict"
+07:40:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/543fc929-ed99-4f71-9ce2-6ed62bfd7c08/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+07:40:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/543fc929-ed99-4f71-9ce2-6ed62bfd7c08 "HTTP/1.1 200 OK"
+07:40:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/543fc929-ed99-4f71-9ce2-6ed62bfd7c08 -> 200 (5 ms)
+  response: {"id":"543fc929-ed99-4f71-9ce2-6ed62bfd7c08","reference":"CLM-CF79AD70","policy_id":"801309a1-ef47-433f-8035-d02ae8e0fc18","claimant_id":"f06dfa0a-0da4-458b-b707-01584b396b04","amount":"100.00","description":"QA 381a05c1 Provide me culture claim detail.","incident_date":"2026-10-08","status":"SUBMITTED","created_at":"2026-10-15T07:40:35.982812Z","updated_at":"2026-10-15T07:40:35.995255Z","withdrawn_at":null,"decided_by_id":null}
+07:40:36 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]
