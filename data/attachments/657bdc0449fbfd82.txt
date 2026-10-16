@@ -1,1 +1,0 @@
-07:40:29 INFO    [qa-d0dd60bc0c] claimdesk_qa.claimdesk_qa.ui.base_page: Opening http://127.0.0.1:8000/claims/ea564aea-678b-441d-9278-7f1245bf5121

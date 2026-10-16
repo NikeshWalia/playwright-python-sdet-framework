@@ -1,0 +1,25 @@
+07:27:20 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:27:20 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:27:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"9f44ac9f-3380-4424-862b-716365ed2e90","policy_number":"POL-1001","holder_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","coverage_limit":"10000.00","is_active":true},{"id":"dec39214-bd44-4c3c-bf70-decef01b6729","policy_number":"POL-1002","holder_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","coverage_limit":"2500.00","is_active":true}]
+07:27:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:27:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '9f44ac9f-3380-4424-862b-716365ed2e90', 'amount': '250.00', 'description': 'QA ccd5ad38 Leg north marriage have evening fish every affect.', 'incident_date': '2026-10-09'}
+  response: {"id":"ff183ed1-8e3f-4ae1-8458-900f352ae5b1","reference":"CLM-8D04FE32","policy_id":"9f44ac9f-3380-4424-862b-716365ed2e90","claimant_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","amount":"250.00","description":"QA ccd5ad38 Leg north marriage have evening fish every affect.","incident_date":"2026-10-09","status":"DRAFT","created_at":"2026-10-16T07:27:20.359580Z","updated_at":"2026-10-16T07:27:20.359580Z","withdrawn_at":null,"decided_by_id":null}
+07:27:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:27:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '9f44ac9f-3380-4424-862b-716365ed2e90', 'amount': '250.00', 'description': 'QA c019003c Form cause throw section commercial of kind.', 'incident_date': '2026-10-09'}
+  response: {"id":"8e18a03e-9b64-4b29-b09f-87108964ceeb","reference":"CLM-AB24C115","policy_id":"9f44ac9f-3380-4424-862b-716365ed2e90","claimant_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","amount":"250.00","description":"QA c019003c Form cause throw section commercial of kind.","incident_date":"2026-10-09","status":"DRAFT","created_at":"2026-10-16T07:27:20.372562Z","updated_at":"2026-10-16T07:27:20.372562Z","withdrawn_at":null,"decided_by_id":null}
+07:27:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:27:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '9f44ac9f-3380-4424-862b-716365ed2e90', 'amount': '250.00', 'description': 'QA b1d34a1b Heart discuss sport benefit fear dream herself as.', 'incident_date': '2026-10-09'}
+  response: {"id":"67d3b473-e87a-4e8c-b87d-cb7d4e68a7d4","reference":"CLM-7AC1D51E","policy_id":"9f44ac9f-3380-4424-862b-716365ed2e90","claimant_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","amount":"250.00","description":"QA b1d34a1b Heart discuss sport benefit fear dream herself as.","incident_date":"2026-10-09","status":"DRAFT","created_at":"2026-10-16T07:27:20.382421Z","updated_at":"2026-10-16T07:27:20.382421Z","withdrawn_at":null,"decided_by_id":null}
+07:27:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:27:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '9f44ac9f-3380-4424-862b-716365ed2e90', 'amount': '250.00', 'description': 'QA ab8a773d Official police serious central color paper.', 'incident_date': '2026-10-09'}
+  response: {"id":"e04e1769-69f0-4b9d-af34-e7533d3ec402","reference":"CLM-433C0EF2","policy_id":"9f44ac9f-3380-4424-862b-716365ed2e90","claimant_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","amount":"250.00","description":"QA ab8a773d Official police serious central color paper.","incident_date":"2026-10-09","status":"DRAFT","created_at":"2026-10-16T07:27:20.392028Z","updated_at":"2026-10-16T07:27:20.392028Z","withdrawn_at":null,"decided_by_id":null}
+07:27:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:27:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '9f44ac9f-3380-4424-862b-716365ed2e90', 'amount': '250.00', 'description': 'QA 91a0b2e8 Lot perform pay in commercial success public.', 'incident_date': '2026-10-09'}
+  response: {"id":"62ca49bb-4d80-426a-8a67-39f75eee1448","reference":"CLM-BF554748","policy_id":"9f44ac9f-3380-4424-862b-716365ed2e90","claimant_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","amount":"250.00","description":"QA 91a0b2e8 Lot perform pay in commercial success public.","incident_date":"2026-10-09","status":"DRAFT","created_at":"2026-10-16T07:27:20.405128Z","updated_at":"2026-10-16T07:27:20.405128Z","withdrawn_at":null,"decided_by_id":null}
+07:27:20 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

@@ -1,0 +1,19 @@
+07:27:30 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
+07:27:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:27:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"9f44ac9f-3380-4424-862b-716365ed2e90","policy_number":"POL-1001","holder_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","coverage_limit":"10000.00","is_active":true},{"id":"dec39214-bd44-4c3c-bf70-decef01b6729","policy_number":"POL-1002","holder_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","coverage_limit":"2500.00","is_active":true}]
+07:27:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:27:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '9f44ac9f-3380-4424-862b-716365ed2e90', 'amount': '100.00', 'description': 'QA ef72314f Nor who wish Mr eat.', 'incident_date': '2026-10-09'}
+  response: {"id":"f7e8aa52-88ee-449f-b0e5-736636c98a11","reference":"CLM-3CFDBBED","policy_id":"9f44ac9f-3380-4424-862b-716365ed2e90","claimant_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","amount":"100.00","description":"QA ef72314f Nor who wish Mr eat.","incident_date":"2026-10-09","status":"DRAFT","created_at":"2026-10-16T07:27:30.347266Z","updated_at":"2026-10-16T07:27:30.347266Z","withdrawn_at":null,"decided_by_id":null}
+07:27:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/f7e8aa52-88ee-449f-b0e5-736636c98a11 "HTTP/1.1 200 OK"
+07:27:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/f7e8aa52-88ee-449f-b0e5-736636c98a11 -> 200 (7 ms)
+  response: {"id":"f7e8aa52-88ee-449f-b0e5-736636c98a11","reference":"CLM-3CFDBBED","policy_id":"9f44ac9f-3380-4424-862b-716365ed2e90","claimant_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","amount":"100.00","description":"QA ef72314f Nor who wish Mr eat.","incident_date":"2026-10-09","status":"DRAFT","created_at":"2026-10-16T07:27:30.347266Z","updated_at":"2026-10-16T07:27:30.347266Z","withdrawn_at":null,"decided_by_id":null}
+07:27:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7e8aa52-88ee-449f-b0e5-736636c98a11/transitions "HTTP/1.1 409 Conflict"
+07:27:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7e8aa52-88ee-449f-b0e5-736636c98a11/transitions -> 409 (9 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status DRAFT; it must be APPROVED."}
+07:27:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/f7e8aa52-88ee-449f-b0e5-736636c98a11 "HTTP/1.1 200 OK"
+07:27:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/f7e8aa52-88ee-449f-b0e5-736636c98a11 -> 200 (7 ms)
+  response: {"id":"f7e8aa52-88ee-449f-b0e5-736636c98a11","reference":"CLM-3CFDBBED","policy_id":"9f44ac9f-3380-4424-862b-716365ed2e90","claimant_id":"18b7be95-7bb4-42b9-88a3-315b60d29b59","amount":"100.00","description":"QA ef72314f Nor who wish Mr eat.","incident_date":"2026-10-09","status":"DRAFT","created_at":"2026-10-16T07:27:30.347266Z","updated_at":"2026-10-16T07:27:30.347266Z","withdrawn_at":null,"decided_by_id":null}
+07:27:30 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
