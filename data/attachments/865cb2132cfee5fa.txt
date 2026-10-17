@@ -1,0 +1,10 @@
+07:08:38 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]
+07:08:38 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:08:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"13eab8c8-d3c7-4eb0-a3fb-cffd214ad656","policy_number":"POL-1001","holder_id":"c08c4292-953f-4f68-9fdc-77541d0541c6","coverage_limit":"10000.00","is_active":true},{"id":"2f640251-9a62-44fd-a7b5-1939322ca497","policy_number":"POL-1002","holder_id":"c08c4292-953f-4f68-9fdc-77541d0541c6","coverage_limit":"2500.00","is_active":true}]
+07:08:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:08:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '13eab8c8-d3c7-4eb0-a3fb-cffd214ad656', 'amount': '250.00', 'description': 'QA c7dd7574 Store degree my matter.', 'incident_date': '2026-10-10'}
+  response: {"id":"7f47d609-e744-4ad8-bc4a-8b07185aa10d","reference":"CLM-19A9ECFA","policy_id":"13eab8c8-d3c7-4eb0-a3fb-cffd214ad656","claimant_id":"c08c4292-953f-4f68-9fdc-77541d0541c6","amount":"250.00","description":"QA c7dd7574 Store degree my matter.","incident_date":"2026-10-10","status":"DRAFT","created_at":"2026-10-17T07:08:38.438374Z","updated_at":"2026-10-17T07:08:38.438374Z","withdrawn_at":null,"decided_by_id":null}
+07:08:38 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:08:38 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]

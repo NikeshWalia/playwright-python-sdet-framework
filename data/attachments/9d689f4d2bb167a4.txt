@@ -1,0 +1,6 @@
+07:08:37 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_form.py::test_a_future_incident_date_is_rejected[chromium]
+07:08:37 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/new
+07:08:37 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:08:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (11 ms)
+  response: [{"id":"13eab8c8-d3c7-4eb0-a3fb-cffd214ad656","policy_number":"POL-1001","holder_id":"c08c4292-953f-4f68-9fdc-77541d0541c6","coverage_limit":"10000.00","is_active":true},{"id":"2f640251-9a62-44fd-a7b5-1939322ca497","policy_number":"POL-1002","holder_id":"c08c4292-953f-4f68-9fdc-77541d0541c6","coverage_limit":"2500.00","is_active":true}]
+07:08:37 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_form.py::test_a_future_incident_date_is_rejected[chromium]

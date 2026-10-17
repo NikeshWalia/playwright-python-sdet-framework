@@ -1,2 +1,0 @@
-07:27:24 INFO    [qa-bbc26a0600] claimdesk_qa.claimdesk_qa.ui.base_page: Opening http://127.0.0.1:8000/claims
-07:27:25 INFO    [qa-bbc26a0600] claimdesk_qa.claimdesk_qa.ui.base_page: Opening http://127.0.0.1:8000/claims/477d0798-17e2-4eda-9910-b94c5efc528c
