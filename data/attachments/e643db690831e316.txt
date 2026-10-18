@@ -1,0 +1,28 @@
+07:23:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn
+07:23:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"952e8045-ae18-4ed5-b762-93ed7d668db8","policy_number":"POL-1001","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"10000.00","is_active":true},{"id":"eeb6c08f-8c7f-4dbe-a7bb-3de93dba927f","policy_number":"POL-1002","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"2500.00","is_active":true}]
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '952e8045-ae18-4ed5-b762-93ed7d668db8', 'amount': '300.00', 'description': 'QA 32856526 Space week stuff court.', 'incident_date': '2026-10-11'}
+  response: {"id":"a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123","reference":"CLM-55265E91","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"300.00","description":"QA 32856526 Space week stuff court.","incident_date":"2026-10-11","status":"DRAFT","created_at":"2026-10-18T07:23:14.318661Z","updated_at":"2026-10-18T07:23:14.318661Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123","reference":"CLM-55265E91","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"300.00","description":"QA 32856526 Space week stuff court.","incident_date":"2026-10-11","status":"SUBMITTED","created_at":"2026-10-18T07:23:14.318661Z","updated_at":"2026-10-18T07:23:14.328096Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123","reference":"CLM-55265E91","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"300.00","description":"QA 32856526 Space week stuff court.","incident_date":"2026-10-11","status":"UNDER_REVIEW","created_at":"2026-10-18T07:23:14.318661Z","updated_at":"2026-10-18T07:23:14.336646Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123","reference":"CLM-55265E91","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"300.00","description":"QA 32856526 Space week stuff court.","incident_date":"2026-10-11","status":"APPROVED","created_at":"2026-10-18T07:23:14.318661Z","updated_at":"2026-10-18T07:23:14.345936Z","withdrawn_at":null,"decided_by_id":"f21ed37a-bfe8-4166-b3bd-c82c7895d3d8"}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123/transitions -> 200 (9 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123","reference":"CLM-55265E91","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"300.00","description":"QA 32856526 Space week stuff court.","incident_date":"2026-10-11","status":"PAID","created_at":"2026-10-18T07:23:14.318661Z","updated_at":"2026-10-18T07:23:14.352757Z","withdrawn_at":null,"decided_by_id":"f21ed37a-bfe8-4166-b3bd-c82c7895d3d8"}
+07:23:14 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123 "HTTP/1.1 409 Conflict"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/a3af6a1b-e7d2-461b-8fdf-cbd6d65e7123 -> 409 (5 ms)
+  response: {"detail":"Only a DRAFT claim can be withdrawn; this one is PAID."}
+07:23:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn

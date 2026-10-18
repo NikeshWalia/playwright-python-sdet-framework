@@ -1,0 +1,10 @@
+07:23:10 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_searching_narrows_the_table_to_one_claim[chromium]
+07:23:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:23:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"952e8045-ae18-4ed5-b762-93ed7d668db8","policy_number":"POL-1001","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"10000.00","is_active":true},{"id":"eeb6c08f-8c7f-4dbe-a7bb-3de93dba927f","policy_number":"POL-1002","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"2500.00","is_active":true}]
+07:23:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:23:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': '952e8045-ae18-4ed5-b762-93ed7d668db8', 'amount': '250.00', 'description': 'QA 4da32216 Their line science save billion home.', 'incident_date': '2026-10-11'}
+  response: {"id":"bdb20831-0db2-4d5e-93f2-77e15f4c6ad3","reference":"CLM-68D6497C","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"250.00","description":"QA 4da32216 Their line science save billion home.","incident_date":"2026-10-11","status":"DRAFT","created_at":"2026-10-18T07:23:10.913284Z","updated_at":"2026-10-18T07:23:10.913284Z","withdrawn_at":null,"decided_by_id":null}
+07:23:10 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+07:23:11 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_searching_narrows_the_table_to_one_claim[chromium]

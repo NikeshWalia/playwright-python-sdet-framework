@@ -1,0 +1,28 @@
+07:23:13 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-start_review]
+07:23:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:23:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"952e8045-ae18-4ed5-b762-93ed7d668db8","policy_number":"POL-1001","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"10000.00","is_active":true},{"id":"eeb6c08f-8c7f-4dbe-a7bb-3de93dba927f","policy_number":"POL-1002","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"2500.00","is_active":true}]
+07:23:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:23:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '952e8045-ae18-4ed5-b762-93ed7d668db8', 'amount': '100.00', 'description': 'QA ff90cd5d New country herself either rate check.', 'incident_date': '2026-10-11'}
+  response: {"id":"20ff4b58-b776-4912-ad40-63d0c1fbffaa","reference":"CLM-1EF12F78","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"100.00","description":"QA ff90cd5d New country herself either rate check.","incident_date":"2026-10-11","status":"DRAFT","created_at":"2026-10-18T07:23:13.888353Z","updated_at":"2026-10-18T07:23:13.888353Z","withdrawn_at":null,"decided_by_id":null}
+07:23:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa/transitions "HTTP/1.1 200 OK"
+07:23:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"20ff4b58-b776-4912-ad40-63d0c1fbffaa","reference":"CLM-1EF12F78","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"100.00","description":"QA ff90cd5d New country herself either rate check.","incident_date":"2026-10-11","status":"SUBMITTED","created_at":"2026-10-18T07:23:13.888353Z","updated_at":"2026-10-18T07:23:13.897423Z","withdrawn_at":null,"decided_by_id":null}
+07:23:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa/transitions "HTTP/1.1 200 OK"
+07:23:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"20ff4b58-b776-4912-ad40-63d0c1fbffaa","reference":"CLM-1EF12F78","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"100.00","description":"QA ff90cd5d New country herself either rate check.","incident_date":"2026-10-11","status":"UNDER_REVIEW","created_at":"2026-10-18T07:23:13.888353Z","updated_at":"2026-10-18T07:23:13.904805Z","withdrawn_at":null,"decided_by_id":null}
+07:23:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa/transitions "HTTP/1.1 200 OK"
+07:23:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa/transitions -> 200 (9 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"20ff4b58-b776-4912-ad40-63d0c1fbffaa","reference":"CLM-1EF12F78","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"100.00","description":"QA ff90cd5d New country herself either rate check.","incident_date":"2026-10-11","status":"REJECTED","created_at":"2026-10-18T07:23:13.888353Z","updated_at":"2026-10-18T07:23:13.911449Z","withdrawn_at":null,"decided_by_id":"f21ed37a-bfe8-4166-b3bd-c82c7895d3d8"}
+07:23:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa/transitions "HTTP/1.1 409 Conflict"
+07:23:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa/transitions -> 409 (4 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status REJECTED; it must be SUBMITTED."}
+07:23:13 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa "HTTP/1.1 200 OK"
+07:23:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/20ff4b58-b776-4912-ad40-63d0c1fbffaa -> 200 (5 ms)
+  response: {"id":"20ff4b58-b776-4912-ad40-63d0c1fbffaa","reference":"CLM-1EF12F78","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"100.00","description":"QA ff90cd5d New country herself either rate check.","incident_date":"2026-10-11","status":"REJECTED","created_at":"2026-10-18T07:23:13.888353Z","updated_at":"2026-10-18T07:23:13.911449Z","withdrawn_at":null,"decided_by_id":"f21ed37a-bfe8-4166-b3bd-c82c7895d3d8"}
+07:23:13 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-start_review]

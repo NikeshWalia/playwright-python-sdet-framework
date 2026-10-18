@@ -1,0 +1,20 @@
+07:23:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-reject]
+07:23:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"952e8045-ae18-4ed5-b762-93ed7d668db8","policy_number":"POL-1001","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"10000.00","is_active":true},{"id":"eeb6c08f-8c7f-4dbe-a7bb-3de93dba927f","policy_number":"POL-1002","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"2500.00","is_active":true}]
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '952e8045-ae18-4ed5-b762-93ed7d668db8', 'amount': '100.00', 'description': 'QA 88192258 Character movie chance wrong much positive.', 'incident_date': '2026-10-11'}
+  response: {"id":"f1eddb1c-de05-41bc-be01-2a043f4e48ba","reference":"CLM-DC98E20F","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"100.00","description":"QA 88192258 Character movie chance wrong much positive.","incident_date":"2026-10-11","status":"DRAFT","created_at":"2026-10-18T07:23:14.321169Z","updated_at":"2026-10-18T07:23:14.321169Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f1eddb1c-de05-41bc-be01-2a043f4e48ba/transitions "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f1eddb1c-de05-41bc-be01-2a043f4e48ba/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"f1eddb1c-de05-41bc-be01-2a043f4e48ba","reference":"CLM-DC98E20F","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"100.00","description":"QA 88192258 Character movie chance wrong much positive.","incident_date":"2026-10-11","status":"SUBMITTED","created_at":"2026-10-18T07:23:14.321169Z","updated_at":"2026-10-18T07:23:14.330427Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f1eddb1c-de05-41bc-be01-2a043f4e48ba/transitions "HTTP/1.1 409 Conflict"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f1eddb1c-de05-41bc-be01-2a043f4e48ba/transitions -> 409 (4 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+07:23:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/f1eddb1c-de05-41bc-be01-2a043f4e48ba "HTTP/1.1 200 OK"
+07:23:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/f1eddb1c-de05-41bc-be01-2a043f4e48ba -> 200 (4 ms)
+  response: {"id":"f1eddb1c-de05-41bc-be01-2a043f4e48ba","reference":"CLM-DC98E20F","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"100.00","description":"QA 88192258 Character movie chance wrong much positive.","incident_date":"2026-10-11","status":"SUBMITTED","created_at":"2026-10-18T07:23:14.321169Z","updated_at":"2026-10-18T07:23:14.330427Z","withdrawn_at":null,"decided_by_id":null}
+07:23:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-reject]
