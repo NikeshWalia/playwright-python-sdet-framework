@@ -1,0 +1,5 @@
+08:01:45 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
+08:01:45 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
+08:01:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (6 ms)
+  response: {"items":[{"id":"f70cc00d-723d-4382-b1ee-c27cd3694aaa","reference":"CLM-10820934","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"250.00","description":"QA 7ecfc4fe Drop animal technology himself over bag economic.","incident_date":"2026-10-12","status":"DRAFT","created_at":"2026-10-19T08:01:45.174885Z","updated_at":"2026-10-19T08:01:45.174885Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":56}
+08:01:45 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]

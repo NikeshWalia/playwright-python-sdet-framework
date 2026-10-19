@@ -1,9 +1,0 @@
-07:23:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_unknown_field_does_not_change_the_claim
-07:23:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-07:23:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
-  response: [{"id":"952e8045-ae18-4ed5-b762-93ed7d668db8","policy_number":"POL-1001","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"10000.00","is_active":true},{"id":"eeb6c08f-8c7f-4dbe-a7bb-3de93dba927f","policy_number":"POL-1002","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"2500.00","is_active":true}]
-07:23:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-07:23:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
-  request : {'policy_id': '952e8045-ae18-4ed5-b762-93ed7d668db8', 'amount': '250.00', 'description': 'QA 565f6b9b Growth him democratic focus cause.', 'incident_date': '2026-10-11', 'status': 'PAID', 'is_admin': True}
-  response: {"id":"d79ff4a7-a9be-4fbf-95d4-cf8a090cdd19","reference":"CLM-820E5CBE","policy_id":"952e8045-ae18-4ed5-b762-93ed7d668db8","claimant_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","amount":"250.00","description":"QA 565f6b9b Growth him democratic focus cause.","incident_date":"2026-10-11","status":"DRAFT","created_at":"2026-10-18T07:23:06.898994Z","updated_at":"2026-10-18T07:23:06.898994Z","withdrawn_at":null,"decided_by_id":null}
-07:23:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_unknown_field_does_not_change_the_claim

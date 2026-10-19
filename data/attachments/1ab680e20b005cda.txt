@@ -1,0 +1,26 @@
+08:01:47 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+08:01:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:01:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","policy_number":"POL-1001","holder_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","coverage_limit":"10000.00","is_active":true},{"id":"dd69fc92-51dc-489d-8acc-94c6bfddeac2","policy_number":"POL-1002","holder_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","coverage_limit":"2500.00","is_active":true}]
+08:01:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:01:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03', 'amount': '410.00', 'description': 'QA e6482e3f Today born language film rather.', 'incident_date': '2026-10-12'}
+  response: {"id":"ea38e397-1968-4620-8473-aa3922814fd1","reference":"CLM-42722193","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"410.00","description":"QA e6482e3f Today born language film rather.","incident_date":"2026-10-12","status":"DRAFT","created_at":"2026-10-19T08:01:47.941371Z","updated_at":"2026-10-19T08:01:47.941371Z","withdrawn_at":null,"decided_by_id":null}
+08:01:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ea38e397-1968-4620-8473-aa3922814fd1/transitions "HTTP/1.1 200 OK"
+08:01:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ea38e397-1968-4620-8473-aa3922814fd1/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ea38e397-1968-4620-8473-aa3922814fd1","reference":"CLM-42722193","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"410.00","description":"QA e6482e3f Today born language film rather.","incident_date":"2026-10-12","status":"SUBMITTED","created_at":"2026-10-19T08:01:47.941371Z","updated_at":"2026-10-19T08:01:47.955605Z","withdrawn_at":null,"decided_by_id":null}
+08:01:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ea38e397-1968-4620-8473-aa3922814fd1/transitions "HTTP/1.1 200 OK"
+08:01:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ea38e397-1968-4620-8473-aa3922814fd1/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ea38e397-1968-4620-8473-aa3922814fd1","reference":"CLM-42722193","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"410.00","description":"QA e6482e3f Today born language film rather.","incident_date":"2026-10-12","status":"UNDER_REVIEW","created_at":"2026-10-19T08:01:47.941371Z","updated_at":"2026-10-19T08:01:47.967294Z","withdrawn_at":null,"decided_by_id":null}
+08:01:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ea38e397-1968-4620-8473-aa3922814fd1/transitions "HTTP/1.1 200 OK"
+08:01:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ea38e397-1968-4620-8473-aa3922814fd1/transitions -> 200 (14 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"ea38e397-1968-4620-8473-aa3922814fd1","reference":"CLM-42722193","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"410.00","description":"QA e6482e3f Today born language film rather.","incident_date":"2026-10-12","status":"APPROVED","created_at":"2026-10-19T08:01:47.941371Z","updated_at":"2026-10-19T08:01:47.980814Z","withdrawn_at":null,"decided_by_id":"bc9d0310-53ce-4af8-8d5e-7ca08b0293cb"}
+08:01:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ea38e397-1968-4620-8473-aa3922814fd1/transitions "HTTP/1.1 200 OK"
+08:01:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ea38e397-1968-4620-8473-aa3922814fd1/transitions -> 200 (27 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"ea38e397-1968-4620-8473-aa3922814fd1","reference":"CLM-42722193","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"410.00","description":"QA e6482e3f Today born language film rather.","incident_date":"2026-10-12","status":"PAID","created_at":"2026-10-19T08:01:47.941371Z","updated_at":"2026-10-19T08:01:47.997036Z","withdrawn_at":null,"decided_by_id":"bc9d0310-53ce-4af8-8d5e-7ca08b0293cb"}
+08:01:48 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/ea38e397-1968-4620-8473-aa3922814fd1
+08:01:48 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]

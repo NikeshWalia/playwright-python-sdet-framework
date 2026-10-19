@@ -1,9 +1,0 @@
-07:23:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[empty]
-07:23:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-07:23:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
-  response: [{"id":"952e8045-ae18-4ed5-b762-93ed7d668db8","policy_number":"POL-1001","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"10000.00","is_active":true},{"id":"eeb6c08f-8c7f-4dbe-a7bb-3de93dba927f","policy_number":"POL-1002","holder_id":"7646b8c2-5c03-4ad3-845d-1bc3aaeaf4b8","coverage_limit":"2500.00","is_active":true}]
-07:23:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-07:23:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
-  request : {'policy_id': '952e8045-ae18-4ed5-b762-93ed7d668db8', 'amount': '250.00', 'description': 'QA 11b04347 Law position case life maintain.', 'incident_date': ''}
-  response: {"detail":[{"type":"date_from_datetime_parsing","loc":["body","incident_date"],"msg":"Input should be a valid date or datetime, input is too short","input":"","ctx":{"error":"input is too short"}}]}
-07:23:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[empty]

@@ -1,0 +1,28 @@
+08:01:55 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_refused_transition_writes_no_audit_row
+08:01:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:01:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","policy_number":"POL-1001","holder_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","coverage_limit":"10000.00","is_active":true},{"id":"dd69fc92-51dc-489d-8acc-94c6bfddeac2","policy_number":"POL-1002","holder_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","coverage_limit":"2500.00","is_active":true}]
+08:01:55 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:01:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:01:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03', 'amount': '700.00', 'description': 'QA fdb8f2fd School see different force.', 'incident_date': '2026-10-12'}
+  response: {"id":"ac06faaf-ab13-4fac-9d96-6a9636fb1e37","reference":"CLM-0A1C12A0","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"700.00","description":"QA fdb8f2fd School see different force.","incident_date":"2026-10-12","status":"DRAFT","created_at":"2026-10-19T08:01:55.352208Z","updated_at":"2026-10-19T08:01:55.352208Z","withdrawn_at":null,"decided_by_id":null}
+08:01:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ac06faaf-ab13-4fac-9d96-6a9636fb1e37/transitions "HTTP/1.1 200 OK"
+08:01:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ac06faaf-ab13-4fac-9d96-6a9636fb1e37/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ac06faaf-ab13-4fac-9d96-6a9636fb1e37","reference":"CLM-0A1C12A0","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"700.00","description":"QA fdb8f2fd School see different force.","incident_date":"2026-10-12","status":"SUBMITTED","created_at":"2026-10-19T08:01:55.352208Z","updated_at":"2026-10-19T08:01:55.363540Z","withdrawn_at":null,"decided_by_id":null}
+08:01:55 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('ac06faaf-ab13-4fac-9d96-6a9636fb1e37',)
+  rows: 1
+08:01:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ac06faaf-ab13-4fac-9d96-6a9636fb1e37/transitions "HTTP/1.1 409 Conflict"
+08:01:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ac06faaf-ab13-4fac-9d96-6a9636fb1e37/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+08:01:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ac06faaf-ab13-4fac-9d96-6a9636fb1e37/transitions "HTTP/1.1 409 Conflict"
+08:01:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ac06faaf-ab13-4fac-9d96-6a9636fb1e37/transitions -> 409 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+08:01:55 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('ac06faaf-ab13-4fac-9d96-6a9636fb1e37',)
+  rows: 1
+08:01:55 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_refused_transition_writes_no_audit_row
