@@ -1,0 +1,9 @@
+07:52:01 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[amount]
+07:52:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"ee89f9d0-b04e-456f-b177-5277c468e017","policy_number":"POL-1001","holder_id":"b230e903-9069-412f-968b-c0a5f86c98cf","coverage_limit":"10000.00","is_active":true},{"id":"cf596cd0-6d66-41b3-aba4-e3ffc88c2199","policy_number":"POL-1002","holder_id":"b230e903-9069-412f-968b-c0a5f86c98cf","coverage_limit":"2500.00","is_active":true}]
+07:52:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (3 ms)
+  request : {'policy_id': 'ee89f9d0-b04e-456f-b177-5277c468e017', 'description': 'QA 949c10e2 Stay general real spend day early conference.', 'incident_date': '2026-10-13'}
+  response: {"detail":[{"type":"missing","loc":["body","amount"],"msg":"Field required","input":{"policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","description":"QA 949c10e2 Stay general real spend day early conference.","incident_date":"2026-10-13"}}]}
+07:52:01 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[amount]

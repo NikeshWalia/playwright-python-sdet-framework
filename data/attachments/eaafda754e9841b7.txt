@@ -1,0 +1,28 @@
+07:52:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn
+07:52:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:52:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"ee89f9d0-b04e-456f-b177-5277c468e017","policy_number":"POL-1001","holder_id":"b230e903-9069-412f-968b-c0a5f86c98cf","coverage_limit":"10000.00","is_active":true},{"id":"cf596cd0-6d66-41b3-aba4-e3ffc88c2199","policy_number":"POL-1002","holder_id":"b230e903-9069-412f-968b-c0a5f86c98cf","coverage_limit":"2500.00","is_active":true}]
+07:52:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:52:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'ee89f9d0-b04e-456f-b177-5277c468e017', 'amount': '300.00', 'description': 'QA e074aaf7 Point go by western network consumer stock.', 'incident_date': '2026-10-13'}
+  response: {"id":"04ddc30e-b421-4073-b66b-c58db91f6f7f","reference":"CLM-5BF969A4","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"300.00","description":"QA e074aaf7 Point go by western network consumer stock.","incident_date":"2026-10-13","status":"DRAFT","created_at":"2026-10-20T07:52:10.261085Z","updated_at":"2026-10-20T07:52:10.261085Z","withdrawn_at":null,"decided_by_id":null}
+07:52:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f/transitions "HTTP/1.1 200 OK"
+07:52:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f/transitions -> 200 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"04ddc30e-b421-4073-b66b-c58db91f6f7f","reference":"CLM-5BF969A4","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"300.00","description":"QA e074aaf7 Point go by western network consumer stock.","incident_date":"2026-10-13","status":"SUBMITTED","created_at":"2026-10-20T07:52:10.261085Z","updated_at":"2026-10-20T07:52:10.267445Z","withdrawn_at":null,"decided_by_id":null}
+07:52:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f/transitions "HTTP/1.1 200 OK"
+07:52:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f/transitions -> 200 (5 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"04ddc30e-b421-4073-b66b-c58db91f6f7f","reference":"CLM-5BF969A4","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"300.00","description":"QA e074aaf7 Point go by western network consumer stock.","incident_date":"2026-10-13","status":"UNDER_REVIEW","created_at":"2026-10-20T07:52:10.261085Z","updated_at":"2026-10-20T07:52:10.273563Z","withdrawn_at":null,"decided_by_id":null}
+07:52:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f/transitions "HTTP/1.1 200 OK"
+07:52:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f/transitions -> 200 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"04ddc30e-b421-4073-b66b-c58db91f6f7f","reference":"CLM-5BF969A4","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"300.00","description":"QA e074aaf7 Point go by western network consumer stock.","incident_date":"2026-10-13","status":"APPROVED","created_at":"2026-10-20T07:52:10.261085Z","updated_at":"2026-10-20T07:52:10.279099Z","withdrawn_at":null,"decided_by_id":"9723d271-a02e-4d35-a2cc-b13f9b4f9293"}
+07:52:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f/transitions "HTTP/1.1 200 OK"
+07:52:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f/transitions -> 200 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"04ddc30e-b421-4073-b66b-c58db91f6f7f","reference":"CLM-5BF969A4","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"300.00","description":"QA e074aaf7 Point go by western network consumer stock.","incident_date":"2026-10-13","status":"PAID","created_at":"2026-10-20T07:52:10.261085Z","updated_at":"2026-10-20T07:52:10.284694Z","withdrawn_at":null,"decided_by_id":"9723d271-a02e-4d35-a2cc-b13f9b4f9293"}
+07:52:10 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f "HTTP/1.1 409 Conflict"
+07:52:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/04ddc30e-b421-4073-b66b-c58db91f6f7f -> 409 (3 ms)
+  response: {"detail":"Only a DRAFT claim can be withdrawn; this one is PAID."}
+07:52:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn

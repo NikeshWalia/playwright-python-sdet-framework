@@ -1,0 +1,21 @@
+07:52:01 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[far-below-limit]
+07:52:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"ee89f9d0-b04e-456f-b177-5277c468e017","policy_number":"POL-1001","holder_id":"b230e903-9069-412f-968b-c0a5f86c98cf","coverage_limit":"10000.00","is_active":true},{"id":"cf596cd0-6d66-41b3-aba4-e3ffc88c2199","policy_number":"POL-1002","holder_id":"b230e903-9069-412f-968b-c0a5f86c98cf","coverage_limit":"2500.00","is_active":true}]
+07:52:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': 'ee89f9d0-b04e-456f-b177-5277c468e017', 'amount': '0.01', 'description': 'QA 8a58c141 Inside forget that game letter.', 'incident_date': '2026-10-13'}
+  response: {"id":"7e1a3000-ce5d-4910-b044-c9af9eff3849","reference":"CLM-8C555430","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"0.01","description":"QA 8a58c141 Inside forget that game letter.","incident_date":"2026-10-13","status":"DRAFT","created_at":"2026-10-20T07:52:01.565093Z","updated_at":"2026-10-20T07:52:01.565093Z","withdrawn_at":null,"decided_by_id":null}
+07:52:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7e1a3000-ce5d-4910-b044-c9af9eff3849/transitions "HTTP/1.1 200 OK"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7e1a3000-ce5d-4910-b044-c9af9eff3849/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7e1a3000-ce5d-4910-b044-c9af9eff3849","reference":"CLM-8C555430","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"0.01","description":"QA 8a58c141 Inside forget that game letter.","incident_date":"2026-10-13","status":"SUBMITTED","created_at":"2026-10-20T07:52:01.565093Z","updated_at":"2026-10-20T07:52:01.571352Z","withdrawn_at":null,"decided_by_id":null}
+07:52:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7e1a3000-ce5d-4910-b044-c9af9eff3849/transitions "HTTP/1.1 200 OK"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7e1a3000-ce5d-4910-b044-c9af9eff3849/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7e1a3000-ce5d-4910-b044-c9af9eff3849","reference":"CLM-8C555430","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"0.01","description":"QA 8a58c141 Inside forget that game letter.","incident_date":"2026-10-13","status":"UNDER_REVIEW","created_at":"2026-10-20T07:52:01.565093Z","updated_at":"2026-10-20T07:52:01.578733Z","withdrawn_at":null,"decided_by_id":null}
+07:52:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7e1a3000-ce5d-4910-b044-c9af9eff3849/transitions "HTTP/1.1 200 OK"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7e1a3000-ce5d-4910-b044-c9af9eff3849/transitions -> 200 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"7e1a3000-ce5d-4910-b044-c9af9eff3849","reference":"CLM-8C555430","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"0.01","description":"QA 8a58c141 Inside forget that game letter.","incident_date":"2026-10-13","status":"APPROVED","created_at":"2026-10-20T07:52:01.565093Z","updated_at":"2026-10-20T07:52:01.584605Z","withdrawn_at":null,"decided_by_id":"9723d271-a02e-4d35-a2cc-b13f9b4f9293"}
+07:52:01 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[far-below-limit]

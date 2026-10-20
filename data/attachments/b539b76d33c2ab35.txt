@@ -1,0 +1,15 @@
+07:52:01 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_withdrawing_a_draft_moves_it_to_withdrawn_and_keeps_it_visible
+07:52:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"ee89f9d0-b04e-456f-b177-5277c468e017","policy_number":"POL-1001","holder_id":"b230e903-9069-412f-968b-c0a5f86c98cf","coverage_limit":"10000.00","is_active":true},{"id":"cf596cd0-6d66-41b3-aba4-e3ffc88c2199","policy_number":"POL-1002","holder_id":"b230e903-9069-412f-968b-c0a5f86c98cf","coverage_limit":"2500.00","is_active":true}]
+07:52:01 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'ee89f9d0-b04e-456f-b177-5277c468e017', 'amount': '250.00', 'description': 'QA d44e6b43 Create develop trade behind institution fly Republican.', 'incident_date': '2026-10-13'}
+  response: {"id":"5d47da3d-4cc9-469f-93bf-9a4a00645b89","reference":"CLM-19F87C70","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"250.00","description":"QA d44e6b43 Create develop trade behind institution fly Republican.","incident_date":"2026-10-13","status":"DRAFT","created_at":"2026-10-20T07:52:01.931298Z","updated_at":"2026-10-20T07:52:01.931298Z","withdrawn_at":null,"decided_by_id":null}
+07:52:01 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/5d47da3d-4cc9-469f-93bf-9a4a00645b89 "HTTP/1.1 204 No Content"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/5d47da3d-4cc9-469f-93bf-9a4a00645b89 -> 204 (4 ms)
+  response: 
+07:52:01 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/5d47da3d-4cc9-469f-93bf-9a4a00645b89 "HTTP/1.1 200 OK"
+07:52:01 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/5d47da3d-4cc9-469f-93bf-9a4a00645b89 -> 200 (3 ms)
+  response: {"id":"5d47da3d-4cc9-469f-93bf-9a4a00645b89","reference":"CLM-19F87C70","policy_id":"ee89f9d0-b04e-456f-b177-5277c468e017","claimant_id":"b230e903-9069-412f-968b-c0a5f86c98cf","amount":"250.00","description":"QA d44e6b43 Create develop trade behind institution fly Republican.","incident_date":"2026-10-13","status":"WITHDRAWN","created_at":"2026-10-20T07:52:01.931298Z","updated_at":"2026-10-20T07:52:01.936749Z","withdrawn_at":"2026-10-20T07:52:01.937741Z","decided_by_id":null}
+07:52:01 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_withdrawing_a_draft_moves_it_to_withdrawn_and_keeps_it_visible

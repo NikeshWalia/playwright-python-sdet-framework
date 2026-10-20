@@ -1,9 +1,0 @@
-08:01:45 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_returns_the_full_contract
-08:01:45 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-08:01:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
-  response: [{"id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","policy_number":"POL-1001","holder_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","coverage_limit":"10000.00","is_active":true},{"id":"dd69fc92-51dc-489d-8acc-94c6bfddeac2","policy_number":"POL-1002","holder_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","coverage_limit":"2500.00","is_active":true}]
-08:01:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-08:01:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
-  request : {'policy_id': '3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03', 'amount': '1250.50', 'description': 'QA 25419be8 Lead pressure along series watch color head.', 'incident_date': '2026-10-12'}
-  response: {"id":"526914ea-a0e8-4d0b-8da5-cd97bb4e5ebb","reference":"CLM-74211182","policy_id":"3c90b6ee-d2a1-4583-9d4c-f5e8a6a67e03","claimant_id":"f2b71677-c41c-4217-9281-4a3f22f0ca65","amount":"1250.50","description":"QA 25419be8 Lead pressure along series watch color head.","incident_date":"2026-10-12","status":"DRAFT","created_at":"2026-10-19T08:01:45.066872Z","updated_at":"2026-10-19T08:01:45.066872Z","withdrawn_at":null,"decided_by_id":null}
-08:01:45 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_returns_the_full_contract
