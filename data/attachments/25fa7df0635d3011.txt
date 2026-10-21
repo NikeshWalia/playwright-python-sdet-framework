@@ -1,0 +1,9 @@
+07:55:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]
+07:55:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:55:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","policy_number":"POL-1001","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"10000.00","is_active":true},{"id":"0b4ea613-adc7-410b-ae13-053c9b6acc93","policy_number":"POL-1002","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"2500.00","is_active":true}]
+07:55:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '１２３', 'description': 'QA 09ff138c Economic also follow Congress.', 'incident_date': '2026-10-14'}
+  response: {"id":"b0a4bac1-a8e3-4aef-a42f-987c519fa0a9","reference":"CLM-FFAC6951","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"123.00","description":"QA 09ff138c Economic also follow Congress.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:35.524548Z","updated_at":"2026-10-21T07:55:35.524548Z","withdrawn_at":null,"decided_by_id":null}
+07:55:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]

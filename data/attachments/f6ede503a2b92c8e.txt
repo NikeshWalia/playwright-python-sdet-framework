@@ -1,0 +1,16 @@
+07:55:44 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[pay]
+07:55:44 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","policy_number":"POL-1001","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"10000.00","is_active":true},{"id":"0b4ea613-adc7-410b-ae13-053c9b6acc93","policy_number":"POL-1002","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"2500.00","is_active":true}]
+07:55:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '250.00', 'description': 'QA 98d52bfa Style hot activity answer develop.', 'incident_date': '2026-10-14'}
+  response: {"id":"c78d2600-6108-4da0-9740-783ee986af1f","reference":"CLM-DA9F5F68","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"250.00","description":"QA 98d52bfa Style hot activity answer develop.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:44.619440Z","updated_at":"2026-10-21T07:55:44.619440Z","withdrawn_at":null,"decided_by_id":null}
+07:55:44 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/c78d2600-6108-4da0-9740-783ee986af1f "HTTP/1.1 204 No Content"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/c78d2600-6108-4da0-9740-783ee986af1f -> 204 (5 ms)
+  response: 
+07:55:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c78d2600-6108-4da0-9740-783ee986af1f/transitions "HTTP/1.1 409 Conflict"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c78d2600-6108-4da0-9740-783ee986af1f/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status WITHDRAWN; it must be APPROVED."}
+07:55:44 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[pay]

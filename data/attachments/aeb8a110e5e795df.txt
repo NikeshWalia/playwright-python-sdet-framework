@@ -1,0 +1,24 @@
+07:55:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]
+07:55:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:55:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","policy_number":"POL-1001","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"10000.00","is_active":true},{"id":"0b4ea613-adc7-410b-ae13-053c9b6acc93","policy_number":"POL-1002","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"2500.00","is_active":true}]
+07:55:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '5000.01', 'description': 'QA d5130620 It give sea structure.', 'incident_date': '2026-10-14'}
+  response: {"id":"dd487871-b2ef-4b94-8bcb-8f102d6d8f67","reference":"CLM-BFCBB3FF","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"5000.01","description":"QA d5130620 It give sea structure.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:35.821491Z","updated_at":"2026-10-21T07:55:35.821491Z","withdrawn_at":null,"decided_by_id":null}
+07:55:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dd487871-b2ef-4b94-8bcb-8f102d6d8f67/transitions "HTTP/1.1 200 OK"
+07:55:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dd487871-b2ef-4b94-8bcb-8f102d6d8f67/transitions -> 200 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"dd487871-b2ef-4b94-8bcb-8f102d6d8f67","reference":"CLM-BFCBB3FF","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"5000.01","description":"QA d5130620 It give sea structure.","incident_date":"2026-10-14","status":"SUBMITTED","created_at":"2026-10-21T07:55:35.821491Z","updated_at":"2026-10-21T07:55:35.829359Z","withdrawn_at":null,"decided_by_id":null}
+07:55:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dd487871-b2ef-4b94-8bcb-8f102d6d8f67/transitions "HTTP/1.1 200 OK"
+07:55:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dd487871-b2ef-4b94-8bcb-8f102d6d8f67/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"dd487871-b2ef-4b94-8bcb-8f102d6d8f67","reference":"CLM-BFCBB3FF","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"5000.01","description":"QA d5130620 It give sea structure.","incident_date":"2026-10-14","status":"UNDER_REVIEW","created_at":"2026-10-21T07:55:35.821491Z","updated_at":"2026-10-21T07:55:35.836198Z","withdrawn_at":null,"decided_by_id":null}
+07:55:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dd487871-b2ef-4b94-8bcb-8f102d6d8f67/transitions "HTTP/1.1 403 Forbidden"
+07:55:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dd487871-b2ef-4b94-8bcb-8f102d6d8f67/transitions -> 403 (4 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 5000.01 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+07:55:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/dd487871-b2ef-4b94-8bcb-8f102d6d8f67 "HTTP/1.1 200 OK"
+07:55:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/dd487871-b2ef-4b94-8bcb-8f102d6d8f67 -> 200 (3 ms)
+  response: {"id":"dd487871-b2ef-4b94-8bcb-8f102d6d8f67","reference":"CLM-BFCBB3FF","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"5000.01","description":"QA d5130620 It give sea structure.","incident_date":"2026-10-14","status":"UNDER_REVIEW","created_at":"2026-10-21T07:55:35.821491Z","updated_at":"2026-10-21T07:55:35.836198Z","withdrawn_at":null,"decided_by_id":null}
+07:55:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]

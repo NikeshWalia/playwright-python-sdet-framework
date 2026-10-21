@@ -1,0 +1,28 @@
+07:55:43 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout
+07:55:43 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","policy_number":"POL-1001","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"10000.00","is_active":true},{"id":"0b4ea613-adc7-410b-ae13-053c9b6acc93","policy_number":"POL-1002","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"2500.00","is_active":true}]
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+07:55:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (47 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '800.00', 'description': 'QA 431f8d77 Into rise boy none.', 'incident_date': '2026-10-14'}
+  response: {"id":"6556b803-5537-4e0f-ad06-c4ee2a8f73d5","reference":"CLM-3101EE1A","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"800.00","description":"QA 431f8d77 Into rise boy none.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:43.318979Z","updated_at":"2026-10-21T07:55:43.318979Z","withdrawn_at":null,"decided_by_id":null}
+07:55:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6556b803-5537-4e0f-ad06-c4ee2a8f73d5/transitions "HTTP/1.1 200 OK"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6556b803-5537-4e0f-ad06-c4ee2a8f73d5/transitions -> 200 (124 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"6556b803-5537-4e0f-ad06-c4ee2a8f73d5","reference":"CLM-3101EE1A","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"800.00","description":"QA 431f8d77 Into rise boy none.","incident_date":"2026-10-14","status":"SUBMITTED","created_at":"2026-10-21T07:55:43.318979Z","updated_at":"2026-10-21T07:55:43.367023Z","withdrawn_at":null,"decided_by_id":null}
+07:55:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6556b803-5537-4e0f-ad06-c4ee2a8f73d5/transitions "HTTP/1.1 200 OK"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6556b803-5537-4e0f-ad06-c4ee2a8f73d5/transitions -> 200 (107 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"6556b803-5537-4e0f-ad06-c4ee2a8f73d5","reference":"CLM-3101EE1A","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"800.00","description":"QA 431f8d77 Into rise boy none.","incident_date":"2026-10-14","status":"UNDER_REVIEW","created_at":"2026-10-21T07:55:43.318979Z","updated_at":"2026-10-21T07:55:43.491956Z","withdrawn_at":null,"decided_by_id":null}
+07:55:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6556b803-5537-4e0f-ad06-c4ee2a8f73d5/transitions "HTTP/1.1 200 OK"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6556b803-5537-4e0f-ad06-c4ee2a8f73d5/transitions -> 200 (112 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"6556b803-5537-4e0f-ad06-c4ee2a8f73d5","reference":"CLM-3101EE1A","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"800.00","description":"QA 431f8d77 Into rise boy none.","incident_date":"2026-10-14","status":"APPROVED","created_at":"2026-10-21T07:55:43.318979Z","updated_at":"2026-10-21T07:55:43.598711Z","withdrawn_at":null,"decided_by_id":"de8f3419-ce9b-4438-92b6-c36644d92fe7"}
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('6556b803-5537-4e0f-ad06-c4ee2a8f73d5',)
+  rows: 0
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('6556b803-5537-4e0f-ad06-c4ee2a8f73d5',)
+  rows: 1
+07:55:43 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_an_unpaid_claim_has_no_payout

@@ -1,0 +1,19 @@
+07:55:43 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
+07:55:43 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","policy_number":"POL-1001","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"10000.00","is_active":true},{"id":"0b4ea613-adc7-410b-ae13-053c9b6acc93","policy_number":"POL-1002","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"2500.00","is_active":true}]
+07:55:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '100.00', 'description': 'QA a46d7c7e Bed trade whatever condition knowledge despite produce.', 'incident_date': '2026-10-14'}
+  response: {"id":"cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13","reference":"CLM-26FA9CFF","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA a46d7c7e Bed trade whatever condition knowledge despite produce.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:43.950556Z","updated_at":"2026-10-21T07:55:43.950556Z","withdrawn_at":null,"decided_by_id":null}
+07:55:43 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13 "HTTP/1.1 200 OK"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13 -> 200 (5 ms)
+  response: {"id":"cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13","reference":"CLM-26FA9CFF","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA a46d7c7e Bed trade whatever condition knowledge despite produce.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:43.950556Z","updated_at":"2026-10-21T07:55:43.950556Z","withdrawn_at":null,"decided_by_id":null}
+07:55:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13/transitions "HTTP/1.1 409 Conflict"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status DRAFT; it must be APPROVED."}
+07:55:43 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13 "HTTP/1.1 200 OK"
+07:55:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13 -> 200 (4 ms)
+  response: {"id":"cc9ad9dd-a4d0-49e9-a1da-5f1a1eb82c13","reference":"CLM-26FA9CFF","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA a46d7c7e Bed trade whatever condition knowledge despite produce.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:43.950556Z","updated_at":"2026-10-21T07:55:43.950556Z","withdrawn_at":null,"decided_by_id":null}
+07:55:43 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]

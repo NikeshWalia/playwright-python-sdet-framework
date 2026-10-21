@@ -1,0 +1,32 @@
+07:55:44 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-pay]
+07:55:44 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","policy_number":"POL-1001","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"10000.00","is_active":true},{"id":"0b4ea613-adc7-410b-ae13-053c9b6acc93","policy_number":"POL-1002","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"2500.00","is_active":true}]
+07:55:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '100.00', 'description': 'QA 418d601a Machine north choose tell low.', 'incident_date': '2026-10-14'}
+  response: {"id":"e1a256f7-d135-4beb-9699-688a24cfba6e","reference":"CLM-125E4E49","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA 418d601a Machine north choose tell low.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:44.401027Z","updated_at":"2026-10-21T07:55:44.401027Z","withdrawn_at":null,"decided_by_id":null}
+07:55:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions "HTTP/1.1 200 OK"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions -> 200 (17 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"e1a256f7-d135-4beb-9699-688a24cfba6e","reference":"CLM-125E4E49","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA 418d601a Machine north choose tell low.","incident_date":"2026-10-14","status":"SUBMITTED","created_at":"2026-10-21T07:55:44.401027Z","updated_at":"2026-10-21T07:55:44.408358Z","withdrawn_at":null,"decided_by_id":null}
+07:55:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions "HTTP/1.1 200 OK"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions -> 200 (34 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"e1a256f7-d135-4beb-9699-688a24cfba6e","reference":"CLM-125E4E49","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA 418d601a Machine north choose tell low.","incident_date":"2026-10-14","status":"UNDER_REVIEW","created_at":"2026-10-21T07:55:44.401027Z","updated_at":"2026-10-21T07:55:44.426207Z","withdrawn_at":null,"decided_by_id":null}
+07:55:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions "HTTP/1.1 200 OK"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions -> 200 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"e1a256f7-d135-4beb-9699-688a24cfba6e","reference":"CLM-125E4E49","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA 418d601a Machine north choose tell low.","incident_date":"2026-10-14","status":"APPROVED","created_at":"2026-10-21T07:55:44.401027Z","updated_at":"2026-10-21T07:55:44.460830Z","withdrawn_at":null,"decided_by_id":"de8f3419-ce9b-4438-92b6-c36644d92fe7"}
+07:55:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions "HTTP/1.1 200 OK"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions -> 200 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"e1a256f7-d135-4beb-9699-688a24cfba6e","reference":"CLM-125E4E49","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA 418d601a Machine north choose tell low.","incident_date":"2026-10-14","status":"PAID","created_at":"2026-10-21T07:55:44.401027Z","updated_at":"2026-10-21T07:55:44.467790Z","withdrawn_at":null,"decided_by_id":"de8f3419-ce9b-4438-92b6-c36644d92fe7"}
+07:55:44 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions "HTTP/1.1 409 Conflict"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+07:55:44 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e "HTTP/1.1 200 OK"
+07:55:44 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/e1a256f7-d135-4beb-9699-688a24cfba6e -> 200 (3 ms)
+  response: {"id":"e1a256f7-d135-4beb-9699-688a24cfba6e","reference":"CLM-125E4E49","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"100.00","description":"QA 418d601a Machine north choose tell low.","incident_date":"2026-10-14","status":"PAID","created_at":"2026-10-21T07:55:44.401027Z","updated_at":"2026-10-21T07:55:44.467790Z","withdrawn_at":null,"decided_by_id":"de8f3419-ce9b-4438-92b6-c36644d92fe7"}
+07:55:44 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-pay]

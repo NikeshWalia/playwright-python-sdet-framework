@@ -1,0 +1,25 @@
+07:55:36 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:55:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:55:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","policy_number":"POL-1001","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"10000.00","is_active":true},{"id":"0b4ea613-adc7-410b-ae13-053c9b6acc93","policy_number":"POL-1002","holder_id":"32bac0f9-203d-41fb-8395-425b65c664b8","coverage_limit":"2500.00","is_active":true}]
+07:55:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '250.00', 'description': 'QA 0f5af671 Party skill perform husband training.', 'incident_date': '2026-10-14'}
+  response: {"id":"ab75dac9-72be-451f-bc7b-3e7ccf8769cf","reference":"CLM-18AB9C0E","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"250.00","description":"QA 0f5af671 Party skill perform husband training.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:36.051557Z","updated_at":"2026-10-21T07:55:36.051557Z","withdrawn_at":null,"decided_by_id":null}
+07:55:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '250.00', 'description': 'QA fbf6e32c Smile little include smile.', 'incident_date': '2026-10-14'}
+  response: {"id":"151a8d46-7cf7-4496-9e89-59c4acd4f22b","reference":"CLM-81D0D3BA","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"250.00","description":"QA fbf6e32c Smile little include smile.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:36.059182Z","updated_at":"2026-10-21T07:55:36.059182Z","withdrawn_at":null,"decided_by_id":null}
+07:55:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '250.00', 'description': 'QA 95fe0bd8 For indeed maybe but ago security.', 'incident_date': '2026-10-14'}
+  response: {"id":"d04fbfef-b3f7-42f7-a300-d27f5658be42","reference":"CLM-73DC612A","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"250.00","description":"QA 95fe0bd8 For indeed maybe but ago security.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:36.071985Z","updated_at":"2026-10-21T07:55:36.071985Z","withdrawn_at":null,"decided_by_id":null}
+07:55:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '250.00', 'description': 'QA 75e01312 Any receive among build act those.', 'incident_date': '2026-10-14'}
+  response: {"id":"4c9f70f1-68d6-47cd-8696-e065df815a7f","reference":"CLM-F90F4825","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"250.00","description":"QA 75e01312 Any receive among build act those.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:36.083274Z","updated_at":"2026-10-21T07:55:36.083274Z","withdrawn_at":null,"decided_by_id":null}
+07:55:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:55:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': 'c2571f81-aea3-49dc-be70-cca09d3a3e65', 'amount': '250.00', 'description': 'QA 812e9655 Hard reach difference although know.', 'incident_date': '2026-10-14'}
+  response: {"id":"fde064b3-b1fe-4f7d-8f69-5b22d50cb9b6","reference":"CLM-D01E2824","policy_id":"c2571f81-aea3-49dc-be70-cca09d3a3e65","claimant_id":"32bac0f9-203d-41fb-8395-425b65c664b8","amount":"250.00","description":"QA 812e9655 Hard reach difference although know.","incident_date":"2026-10-14","status":"DRAFT","created_at":"2026-10-21T07:55:36.089778Z","updated_at":"2026-10-21T07:55:36.089778Z","withdrawn_at":null,"decided_by_id":null}
+07:55:36 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
