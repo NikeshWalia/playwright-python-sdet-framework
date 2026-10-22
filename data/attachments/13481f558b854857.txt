@@ -1,0 +1,26 @@
+07:56:10 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+07:56:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:56:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"ba900ce7-6109-4cab-a545-ec864ed1475a","policy_number":"POL-1001","holder_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","coverage_limit":"10000.00","is_active":true},{"id":"b85963d7-efa5-4695-8151-712301e00322","policy_number":"POL-1002","holder_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","coverage_limit":"2500.00","is_active":true}]
+07:56:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:56:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': 'ba900ce7-6109-4cab-a545-ec864ed1475a', 'amount': '410.00', 'description': 'QA 8b6756dc Story often back wife at white.', 'incident_date': '2026-10-15'}
+  response: {"id":"54636e96-6159-4573-a899-6fd2dec089fd","reference":"CLM-5561A3EA","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"410.00","description":"QA 8b6756dc Story often back wife at white.","incident_date":"2026-10-15","status":"DRAFT","created_at":"2026-10-22T07:56:10.525421Z","updated_at":"2026-10-22T07:56:10.525421Z","withdrawn_at":null,"decided_by_id":null}
+07:56:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/54636e96-6159-4573-a899-6fd2dec089fd/transitions "HTTP/1.1 200 OK"
+07:56:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/54636e96-6159-4573-a899-6fd2dec089fd/transitions -> 200 (21 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"54636e96-6159-4573-a899-6fd2dec089fd","reference":"CLM-5561A3EA","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"410.00","description":"QA 8b6756dc Story often back wife at white.","incident_date":"2026-10-15","status":"SUBMITTED","created_at":"2026-10-22T07:56:10.525421Z","updated_at":"2026-10-22T07:56:10.541469Z","withdrawn_at":null,"decided_by_id":null}
+07:56:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/54636e96-6159-4573-a899-6fd2dec089fd/transitions "HTTP/1.1 200 OK"
+07:56:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/54636e96-6159-4573-a899-6fd2dec089fd/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"54636e96-6159-4573-a899-6fd2dec089fd","reference":"CLM-5561A3EA","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"410.00","description":"QA 8b6756dc Story often back wife at white.","incident_date":"2026-10-15","status":"UNDER_REVIEW","created_at":"2026-10-22T07:56:10.525421Z","updated_at":"2026-10-22T07:56:10.563928Z","withdrawn_at":null,"decided_by_id":null}
+07:56:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/54636e96-6159-4573-a899-6fd2dec089fd/transitions "HTTP/1.1 200 OK"
+07:56:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/54636e96-6159-4573-a899-6fd2dec089fd/transitions -> 200 (15 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"54636e96-6159-4573-a899-6fd2dec089fd","reference":"CLM-5561A3EA","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"410.00","description":"QA 8b6756dc Story often back wife at white.","incident_date":"2026-10-15","status":"APPROVED","created_at":"2026-10-22T07:56:10.525421Z","updated_at":"2026-10-22T07:56:10.577868Z","withdrawn_at":null,"decided_by_id":"3389c6fd-058b-460b-a4ea-9375594ac8f2"}
+07:56:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/54636e96-6159-4573-a899-6fd2dec089fd/transitions "HTTP/1.1 200 OK"
+07:56:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/54636e96-6159-4573-a899-6fd2dec089fd/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"54636e96-6159-4573-a899-6fd2dec089fd","reference":"CLM-5561A3EA","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"410.00","description":"QA 8b6756dc Story often back wife at white.","incident_date":"2026-10-15","status":"PAID","created_at":"2026-10-22T07:56:10.525421Z","updated_at":"2026-10-22T07:56:10.593578Z","withdrawn_at":null,"decided_by_id":"3389c6fd-058b-460b-a4ea-9375594ac8f2"}
+07:56:10 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/54636e96-6159-4573-a899-6fd2dec089fd
+07:56:10 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]

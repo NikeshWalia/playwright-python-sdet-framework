@@ -1,0 +1,24 @@
+07:56:07 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[far-above-limit]
+07:56:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:56:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"ba900ce7-6109-4cab-a545-ec864ed1475a","policy_number":"POL-1001","holder_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","coverage_limit":"10000.00","is_active":true},{"id":"b85963d7-efa5-4695-8151-712301e00322","policy_number":"POL-1002","holder_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","coverage_limit":"2500.00","is_active":true}]
+07:56:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:56:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'ba900ce7-6109-4cab-a545-ec864ed1475a', 'amount': '9999.99', 'description': 'QA 369035b9 Decide important into party finally.', 'incident_date': '2026-10-15'}
+  response: {"id":"ae858468-da5c-4a71-bc78-1b977f30e362","reference":"CLM-1D379193","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"9999.99","description":"QA 369035b9 Decide important into party finally.","incident_date":"2026-10-15","status":"DRAFT","created_at":"2026-10-22T07:56:07.182955Z","updated_at":"2026-10-22T07:56:07.182955Z","withdrawn_at":null,"decided_by_id":null}
+07:56:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ae858468-da5c-4a71-bc78-1b977f30e362/transitions "HTTP/1.1 200 OK"
+07:56:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ae858468-da5c-4a71-bc78-1b977f30e362/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ae858468-da5c-4a71-bc78-1b977f30e362","reference":"CLM-1D379193","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"9999.99","description":"QA 369035b9 Decide important into party finally.","incident_date":"2026-10-15","status":"SUBMITTED","created_at":"2026-10-22T07:56:07.182955Z","updated_at":"2026-10-22T07:56:07.193894Z","withdrawn_at":null,"decided_by_id":null}
+07:56:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ae858468-da5c-4a71-bc78-1b977f30e362/transitions "HTTP/1.1 200 OK"
+07:56:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ae858468-da5c-4a71-bc78-1b977f30e362/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ae858468-da5c-4a71-bc78-1b977f30e362","reference":"CLM-1D379193","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"9999.99","description":"QA 369035b9 Decide important into party finally.","incident_date":"2026-10-15","status":"UNDER_REVIEW","created_at":"2026-10-22T07:56:07.182955Z","updated_at":"2026-10-22T07:56:07.203646Z","withdrawn_at":null,"decided_by_id":null}
+07:56:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ae858468-da5c-4a71-bc78-1b977f30e362/transitions "HTTP/1.1 403 Forbidden"
+07:56:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ae858468-da5c-4a71-bc78-1b977f30e362/transitions -> 403 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 9999.99 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+07:56:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ae858468-da5c-4a71-bc78-1b977f30e362 "HTTP/1.1 200 OK"
+07:56:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ae858468-da5c-4a71-bc78-1b977f30e362 -> 200 (5 ms)
+  response: {"id":"ae858468-da5c-4a71-bc78-1b977f30e362","reference":"CLM-1D379193","policy_id":"ba900ce7-6109-4cab-a545-ec864ed1475a","claimant_id":"98f16ee5-9cc5-4253-924d-bbfbab910561","amount":"9999.99","description":"QA 369035b9 Decide important into party finally.","incident_date":"2026-10-15","status":"UNDER_REVIEW","created_at":"2026-10-22T07:56:07.182955Z","updated_at":"2026-10-22T07:56:07.203646Z","withdrawn_at":null,"decided_by_id":null}
+07:56:07 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[far-above-limit]
