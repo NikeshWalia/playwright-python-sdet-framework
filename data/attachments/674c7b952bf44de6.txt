@@ -1,0 +1,24 @@
+07:58:43 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_approve_their_own_claim
+07:58:43 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","policy_number":"POL-1001","holder_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","coverage_limit":"10000.00","is_active":true},{"id":"aab3941f-6cca-47e0-ac58-eb10885160ed","policy_number":"POL-1002","holder_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","coverage_limit":"2500.00","is_active":true}]
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'd4551d7f-a6c2-47b4-815e-aa248a3935c1', 'amount': '100.00', 'description': 'QA 5da8f742 Sound significant authority drive article.', 'incident_date': '2026-10-16'}
+  response: {"id":"b28cdd59-b0f7-4f37-9547-ccaba5561be7","reference":"CLM-16A49C8A","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"100.00","description":"QA 5da8f742 Sound significant authority drive article.","incident_date":"2026-10-16","status":"DRAFT","created_at":"2026-10-23T07:58:43.329216Z","updated_at":"2026-10-23T07:58:43.329216Z","withdrawn_at":null,"decided_by_id":null}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b28cdd59-b0f7-4f37-9547-ccaba5561be7/transitions "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b28cdd59-b0f7-4f37-9547-ccaba5561be7/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b28cdd59-b0f7-4f37-9547-ccaba5561be7","reference":"CLM-16A49C8A","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"100.00","description":"QA 5da8f742 Sound significant authority drive article.","incident_date":"2026-10-16","status":"SUBMITTED","created_at":"2026-10-23T07:58:43.329216Z","updated_at":"2026-10-23T07:58:43.339659Z","withdrawn_at":null,"decided_by_id":null}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b28cdd59-b0f7-4f37-9547-ccaba5561be7/transitions "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b28cdd59-b0f7-4f37-9547-ccaba5561be7/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b28cdd59-b0f7-4f37-9547-ccaba5561be7","reference":"CLM-16A49C8A","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"100.00","description":"QA 5da8f742 Sound significant authority drive article.","incident_date":"2026-10-16","status":"UNDER_REVIEW","created_at":"2026-10-23T07:58:43.329216Z","updated_at":"2026-10-23T07:58:43.351175Z","withdrawn_at":null,"decided_by_id":null}
+07:58:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b28cdd59-b0f7-4f37-9547-ccaba5561be7/transitions "HTTP/1.1 403 Forbidden"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b28cdd59-b0f7-4f37-9547-ccaba5561be7/transitions -> 403 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Role CUSTOMER may not approve a claim."}
+07:58:43 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/b28cdd59-b0f7-4f37-9547-ccaba5561be7 "HTTP/1.1 200 OK"
+07:58:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/b28cdd59-b0f7-4f37-9547-ccaba5561be7 -> 200 (7 ms)
+  response: {"id":"b28cdd59-b0f7-4f37-9547-ccaba5561be7","reference":"CLM-16A49C8A","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"100.00","description":"QA 5da8f742 Sound significant authority drive article.","incident_date":"2026-10-16","status":"UNDER_REVIEW","created_at":"2026-10-23T07:58:43.329216Z","updated_at":"2026-10-23T07:58:43.351175Z","withdrawn_at":null,"decided_by_id":null}
+07:58:43 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_approve_their_own_claim

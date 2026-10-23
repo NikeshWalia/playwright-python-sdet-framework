@@ -1,0 +1,28 @@
+07:58:52 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn
+07:58:52 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:58:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","policy_number":"POL-1001","holder_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","coverage_limit":"10000.00","is_active":true},{"id":"aab3941f-6cca-47e0-ac58-eb10885160ed","policy_number":"POL-1002","holder_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","coverage_limit":"2500.00","is_active":true}]
+07:58:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:58:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'd4551d7f-a6c2-47b4-815e-aa248a3935c1', 'amount': '300.00', 'description': 'QA 7817dcc9 Interest ready admit item act defense.', 'incident_date': '2026-10-16'}
+  response: {"id":"a018330f-53e2-4279-bdfd-e518036578a4","reference":"CLM-006E2CDD","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"300.00","description":"QA 7817dcc9 Interest ready admit item act defense.","incident_date":"2026-10-16","status":"DRAFT","created_at":"2026-10-23T07:58:52.580097Z","updated_at":"2026-10-23T07:58:52.580097Z","withdrawn_at":null,"decided_by_id":null}
+07:58:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4/transitions "HTTP/1.1 200 OK"
+07:58:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a018330f-53e2-4279-bdfd-e518036578a4","reference":"CLM-006E2CDD","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"300.00","description":"QA 7817dcc9 Interest ready admit item act defense.","incident_date":"2026-10-16","status":"SUBMITTED","created_at":"2026-10-23T07:58:52.580097Z","updated_at":"2026-10-23T07:58:52.591755Z","withdrawn_at":null,"decided_by_id":null}
+07:58:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4/transitions "HTTP/1.1 200 OK"
+07:58:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a018330f-53e2-4279-bdfd-e518036578a4","reference":"CLM-006E2CDD","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"300.00","description":"QA 7817dcc9 Interest ready admit item act defense.","incident_date":"2026-10-16","status":"UNDER_REVIEW","created_at":"2026-10-23T07:58:52.580097Z","updated_at":"2026-10-23T07:58:52.602327Z","withdrawn_at":null,"decided_by_id":null}
+07:58:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4/transitions "HTTP/1.1 200 OK"
+07:58:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"a018330f-53e2-4279-bdfd-e518036578a4","reference":"CLM-006E2CDD","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"300.00","description":"QA 7817dcc9 Interest ready admit item act defense.","incident_date":"2026-10-16","status":"APPROVED","created_at":"2026-10-23T07:58:52.580097Z","updated_at":"2026-10-23T07:58:52.614536Z","withdrawn_at":null,"decided_by_id":"9a3e0d99-167a-4c27-8df0-b5c3802b5f8c"}
+07:58:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4/transitions "HTTP/1.1 200 OK"
+07:58:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"a018330f-53e2-4279-bdfd-e518036578a4","reference":"CLM-006E2CDD","policy_id":"d4551d7f-a6c2-47b4-815e-aa248a3935c1","claimant_id":"21489e34-f4c1-4a33-9bbd-a212aae4581a","amount":"300.00","description":"QA 7817dcc9 Interest ready admit item act defense.","incident_date":"2026-10-16","status":"PAID","created_at":"2026-10-23T07:58:52.580097Z","updated_at":"2026-10-23T07:58:52.624691Z","withdrawn_at":null,"decided_by_id":"9a3e0d99-167a-4c27-8df0-b5c3802b5f8c"}
+07:58:52 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4 "HTTP/1.1 409 Conflict"
+07:58:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/a018330f-53e2-4279-bdfd-e518036578a4 -> 409 (5 ms)
+  response: {"detail":"Only a DRAFT claim can be withdrawn; this one is PAID."}
+07:58:52 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn

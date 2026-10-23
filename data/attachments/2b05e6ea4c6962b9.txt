@@ -1,6 +1,0 @@
-07:56:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_administrator_can_create_a_user
-07:56:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/users "HTTP/1.1 201 Created"
-07:56:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/users -> 201 (77 ms)
-  request : {'email': 'qa+4c14f54e@example.com', 'full_name': 'Terry Salinas', 'role': 'CUSTOMER', 'password': 'Passw0rd!generated'}
-  response: {"id":"5c885ad2-5bfd-4345-a952-4efdc3a2c4b8","email":"qa+4c14f54e@example.com","full_name":"Terry Salinas","role":"CUSTOMER","is_active":true,"created_at":"2026-10-22T07:56:06.856132Z"}
-07:56:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_administrator_can_create_a_user
