@@ -1,0 +1,19 @@
+07:32:28 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_modify_another_customers_claim
+07:32:28 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:28 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '250.00', 'description': 'QA ead5f995 Former have put deal small trouble.', 'incident_date': '2026-10-17'}
+  response: {"id":"04025c19-c188-4a17-857a-b10ef97d6ec6","reference":"CLM-697D0BCC","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"250.00","description":"QA ead5f995 Former have put deal small trouble.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:28.742475Z","updated_at":"2026-10-24T07:32:28.742475Z","withdrawn_at":null,"decided_by_id":null}
+07:32:28 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/04025c19-c188-4a17-857a-b10ef97d6ec6 "HTTP/1.1 404 Not Found"
+07:32:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/04025c19-c188-4a17-857a-b10ef97d6ec6 -> 404 (4 ms)
+  request : {'description': 'hijacked by another user'}
+  response: {"detail":"Claim not found"}
+07:32:28 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/04025c19-c188-4a17-857a-b10ef97d6ec6 "HTTP/1.1 404 Not Found"
+07:32:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/04025c19-c188-4a17-857a-b10ef97d6ec6 -> 404 (3 ms)
+  response: {"detail":"Claim not found"}
+07:32:28 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/04025c19-c188-4a17-857a-b10ef97d6ec6 "HTTP/1.1 200 OK"
+07:32:28 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/04025c19-c188-4a17-857a-b10ef97d6ec6 -> 200 (3 ms)
+  response: {"id":"04025c19-c188-4a17-857a-b10ef97d6ec6","reference":"CLM-697D0BCC","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"250.00","description":"QA ead5f995 Former have put deal small trouble.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:28.742475Z","updated_at":"2026-10-24T07:32:28.742475Z","withdrawn_at":null,"decided_by_id":null}
+07:32:28 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_modify_another_customers_claim

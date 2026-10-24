@@ -1,0 +1,14 @@
+07:32:31 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
+07:32:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '820.00', 'description': 'QA f546052b Indicate writer serve hand mother.', 'incident_date': '2026-10-17'}
+  response: {"id":"1bf66f87-654c-4834-9a63-62385730b81c","reference":"CLM-70FE53B9","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"820.00","description":"QA f546052b Indicate writer serve hand mother.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:31.841759Z","updated_at":"2026-10-24T07:32:31.841759Z","withdrawn_at":null,"decided_by_id":null}
+07:32:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1bf66f87-654c-4834-9a63-62385730b81c/transitions "HTTP/1.1 200 OK"
+07:32:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1bf66f87-654c-4834-9a63-62385730b81c/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"1bf66f87-654c-4834-9a63-62385730b81c","reference":"CLM-70FE53B9","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"820.00","description":"QA f546052b Indicate writer serve hand mother.","incident_date":"2026-10-17","status":"SUBMITTED","created_at":"2026-10-24T07:32:31.841759Z","updated_at":"2026-10-24T07:32:31.849952Z","withdrawn_at":null,"decided_by_id":null}
+07:32:31 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/1bf66f87-654c-4834-9a63-62385730b81c
+07:32:32 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]

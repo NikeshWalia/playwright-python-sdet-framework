@@ -1,0 +1,16 @@
+07:32:37 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[start_review]
+07:32:37 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '250.00', 'description': 'QA d1b8f8aa Dog region Mr view.', 'incident_date': '2026-10-17'}
+  response: {"id":"d44efcb4-0abf-4a9c-8398-6d27a8ca2822","reference":"CLM-AB7179E7","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"250.00","description":"QA d1b8f8aa Dog region Mr view.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:37.685219Z","updated_at":"2026-10-24T07:32:37.685219Z","withdrawn_at":null,"decided_by_id":null}
+07:32:37 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/d44efcb4-0abf-4a9c-8398-6d27a8ca2822 "HTTP/1.1 204 No Content"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/d44efcb4-0abf-4a9c-8398-6d27a8ca2822 -> 204 (4 ms)
+  response: 
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d44efcb4-0abf-4a9c-8398-6d27a8ca2822/transitions "HTTP/1.1 409 Conflict"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d44efcb4-0abf-4a9c-8398-6d27a8ca2822/transitions -> 409 (3 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status WITHDRAWN; it must be SUBMITTED."}
+07:32:37 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[start_review]

@@ -1,0 +1,28 @@
+07:32:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-start_review]
+07:32:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (84 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '100.00', 'description': 'QA 51fdc3f2 Amount arm big natural society inside.', 'incident_date': '2026-10-17'}
+  response: {"id":"d2f6ef72-bcff-4730-b4e7-dd16d13cd152","reference":"CLM-04A0B44A","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA 51fdc3f2 Amount arm big natural society inside.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:35.424744Z","updated_at":"2026-10-24T07:32:35.424744Z","withdrawn_at":null,"decided_by_id":null}
+07:32:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152/transitions "HTTP/1.1 200 OK"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152/transitions -> 200 (120 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"d2f6ef72-bcff-4730-b4e7-dd16d13cd152","reference":"CLM-04A0B44A","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA 51fdc3f2 Amount arm big natural society inside.","incident_date":"2026-10-17","status":"SUBMITTED","created_at":"2026-10-24T07:32:35.424744Z","updated_at":"2026-10-24T07:32:35.508355Z","withdrawn_at":null,"decided_by_id":null}
+07:32:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152/transitions "HTTP/1.1 200 OK"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152/transitions -> 200 (111 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"d2f6ef72-bcff-4730-b4e7-dd16d13cd152","reference":"CLM-04A0B44A","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA 51fdc3f2 Amount arm big natural society inside.","incident_date":"2026-10-17","status":"UNDER_REVIEW","created_at":"2026-10-24T07:32:35.424744Z","updated_at":"2026-10-24T07:32:35.630003Z","withdrawn_at":null,"decided_by_id":null}
+07:32:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152/transitions "HTTP/1.1 200 OK"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152/transitions -> 200 (109 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"d2f6ef72-bcff-4730-b4e7-dd16d13cd152","reference":"CLM-04A0B44A","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA 51fdc3f2 Amount arm big natural society inside.","incident_date":"2026-10-17","status":"APPROVED","created_at":"2026-10-24T07:32:35.424744Z","updated_at":"2026-10-24T07:32:35.741252Z","withdrawn_at":null,"decided_by_id":"b9034f79-af71-46c5-9e43-5e49820806b8"}
+07:32:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152/transitions "HTTP/1.1 409 Conflict"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152/transitions -> 409 (3 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status APPROVED; it must be SUBMITTED."}
+07:32:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152 "HTTP/1.1 200 OK"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/d2f6ef72-bcff-4730-b4e7-dd16d13cd152 -> 200 (3 ms)
+  response: {"id":"d2f6ef72-bcff-4730-b4e7-dd16d13cd152","reference":"CLM-04A0B44A","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA 51fdc3f2 Amount arm big natural society inside.","incident_date":"2026-10-17","status":"APPROVED","created_at":"2026-10-24T07:32:35.424744Z","updated_at":"2026-10-24T07:32:35.741252Z","withdrawn_at":null,"decided_by_id":"b9034f79-af71-46c5-9e43-5e49820806b8"}
+07:32:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-start_review]

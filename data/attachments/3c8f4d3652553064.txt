@@ -1,0 +1,25 @@
+07:32:29 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+07:32:29 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '250.00', 'description': 'QA 93942c26 Serious during each door he bit.', 'incident_date': '2026-10-17'}
+  response: {"id":"bd48dd2d-5cb6-49d4-a036-081932fce9eb","reference":"CLM-E0212AFF","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"250.00","description":"QA 93942c26 Serious during each door he bit.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:29.233920Z","updated_at":"2026-10-24T07:32:29.233920Z","withdrawn_at":null,"decided_by_id":null}
+07:32:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '250.00', 'description': 'QA de98aa4d Beat family world.', 'incident_date': '2026-10-17'}
+  response: {"id":"e264fc71-769a-4138-a6e0-d25af38ddc1c","reference":"CLM-66D67DB0","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"250.00","description":"QA de98aa4d Beat family world.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:29.240406Z","updated_at":"2026-10-24T07:32:29.240406Z","withdrawn_at":null,"decided_by_id":null}
+07:32:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '250.00', 'description': 'QA a86b4b33 Here vote theory surface agent view option.', 'incident_date': '2026-10-17'}
+  response: {"id":"bdb5e854-9e50-44d6-8a38-fd0ae4920551","reference":"CLM-F1D3A6A1","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"250.00","description":"QA a86b4b33 Here vote theory surface agent view option.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:29.246444Z","updated_at":"2026-10-24T07:32:29.246444Z","withdrawn_at":null,"decided_by_id":null}
+07:32:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '250.00', 'description': 'QA dbcaee16 Little open do.', 'incident_date': '2026-10-17'}
+  response: {"id":"c0ad308d-a890-4ba0-9b6a-3cf996ad0a65","reference":"CLM-6DD49CEC","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"250.00","description":"QA dbcaee16 Little open do.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:29.252502Z","updated_at":"2026-10-24T07:32:29.252502Z","withdrawn_at":null,"decided_by_id":null}
+07:32:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '250.00', 'description': 'QA ae1f7071 Throw we land.', 'incident_date': '2026-10-17'}
+  response: {"id":"ea0557c6-63e2-4806-9852-b4b3dbf5b653","reference":"CLM-E7084850","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"250.00","description":"QA ae1f7071 Throw we land.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:29.258363Z","updated_at":"2026-10-24T07:32:29.258363Z","withdrawn_at":null,"decided_by_id":null}
+07:32:29 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

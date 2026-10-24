@@ -1,0 +1,25 @@
+07:32:34 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
+07:32:34 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '750.00', 'description': 'QA 1c611f23 Keep fall especially rock sit describe kind.', 'incident_date': '2026-10-17'}
+  response: {"id":"2d6f6333-5f05-4e29-b837-613c3892166d","reference":"CLM-31DCC298","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"750.00","description":"QA 1c611f23 Keep fall especially rock sit describe kind.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:34.709952Z","updated_at":"2026-10-24T07:32:34.709952Z","withdrawn_at":null,"decided_by_id":null}
+07:32:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2d6f6333-5f05-4e29-b837-613c3892166d/transitions "HTTP/1.1 200 OK"
+07:32:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2d6f6333-5f05-4e29-b837-613c3892166d/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2d6f6333-5f05-4e29-b837-613c3892166d","reference":"CLM-31DCC298","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"750.00","description":"QA 1c611f23 Keep fall especially rock sit describe kind.","incident_date":"2026-10-17","status":"SUBMITTED","created_at":"2026-10-24T07:32:34.709952Z","updated_at":"2026-10-24T07:32:34.718077Z","withdrawn_at":null,"decided_by_id":null}
+07:32:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2d6f6333-5f05-4e29-b837-613c3892166d/transitions "HTTP/1.1 200 OK"
+07:32:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2d6f6333-5f05-4e29-b837-613c3892166d/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2d6f6333-5f05-4e29-b837-613c3892166d","reference":"CLM-31DCC298","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"750.00","description":"QA 1c611f23 Keep fall especially rock sit describe kind.","incident_date":"2026-10-17","status":"UNDER_REVIEW","created_at":"2026-10-24T07:32:34.709952Z","updated_at":"2026-10-24T07:32:34.726009Z","withdrawn_at":null,"decided_by_id":null}
+07:32:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2d6f6333-5f05-4e29-b837-613c3892166d/transitions "HTTP/1.1 200 OK"
+07:32:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2d6f6333-5f05-4e29-b837-613c3892166d/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"2d6f6333-5f05-4e29-b837-613c3892166d","reference":"CLM-31DCC298","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"750.00","description":"QA 1c611f23 Keep fall especially rock sit describe kind.","incident_date":"2026-10-17","status":"APPROVED","created_at":"2026-10-24T07:32:34.709952Z","updated_at":"2026-10-24T07:32:34.733678Z","withdrawn_at":null,"decided_by_id":"b9034f79-af71-46c5-9e43-5e49820806b8"}
+07:32:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2d6f6333-5f05-4e29-b837-613c3892166d/transitions "HTTP/1.1 200 OK"
+07:32:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2d6f6333-5f05-4e29-b837-613c3892166d/transitions -> 200 (20 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"2d6f6333-5f05-4e29-b837-613c3892166d","reference":"CLM-31DCC298","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"750.00","description":"QA 1c611f23 Keep fall especially rock sit describe kind.","incident_date":"2026-10-17","status":"PAID","created_at":"2026-10-24T07:32:34.709952Z","updated_at":"2026-10-24T07:32:34.746722Z","withdrawn_at":null,"decided_by_id":"b9034f79-af71-46c5-9e43-5e49820806b8"}
+07:32:34 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle

@@ -1,0 +1,20 @@
+07:32:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-submit]
+07:32:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '100.00', 'description': 'QA 286e1968 Performance sing short probably.', 'incident_date': '2026-10-17'}
+  response: {"id":"6a61facd-85d2-44c6-8b19-0b69becf924a","reference":"CLM-22C08752","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA 286e1968 Performance sing short probably.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:35.053139Z","updated_at":"2026-10-24T07:32:35.053139Z","withdrawn_at":null,"decided_by_id":null}
+07:32:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6a61facd-85d2-44c6-8b19-0b69becf924a/transitions "HTTP/1.1 200 OK"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6a61facd-85d2-44c6-8b19-0b69becf924a/transitions -> 200 (14 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"6a61facd-85d2-44c6-8b19-0b69becf924a","reference":"CLM-22C08752","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA 286e1968 Performance sing short probably.","incident_date":"2026-10-17","status":"SUBMITTED","created_at":"2026-10-24T07:32:35.053139Z","updated_at":"2026-10-24T07:32:35.062071Z","withdrawn_at":null,"decided_by_id":null}
+07:32:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6a61facd-85d2-44c6-8b19-0b69becf924a/transitions "HTTP/1.1 409 Conflict"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6a61facd-85d2-44c6-8b19-0b69becf924a/transitions -> 409 (5 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status SUBMITTED; it must be DRAFT."}
+07:32:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/6a61facd-85d2-44c6-8b19-0b69becf924a "HTTP/1.1 200 OK"
+07:32:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/6a61facd-85d2-44c6-8b19-0b69becf924a -> 200 (3 ms)
+  response: {"id":"6a61facd-85d2-44c6-8b19-0b69becf924a","reference":"CLM-22C08752","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA 286e1968 Performance sing short probably.","incident_date":"2026-10-17","status":"SUBMITTED","created_at":"2026-10-24T07:32:35.053139Z","updated_at":"2026-10-24T07:32:35.062071Z","withdrawn_at":null,"decided_by_id":null}
+07:32:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-submit]

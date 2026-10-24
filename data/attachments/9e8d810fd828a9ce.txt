@@ -1,0 +1,28 @@
+07:32:36 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-approve]
+07:32:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (106 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '100.00', 'description': 'QA f3399f84 Get everything member realize poor left.', 'incident_date': '2026-10-17'}
+  response: {"id":"2fbac0d4-80b5-4292-b5f6-9bb6dc289a89","reference":"CLM-AD89F7A0","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA f3399f84 Get everything member realize poor left.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:36.942532Z","updated_at":"2026-10-24T07:32:36.942532Z","withdrawn_at":null,"decided_by_id":null}
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89/transitions "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89/transitions -> 200 (65 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2fbac0d4-80b5-4292-b5f6-9bb6dc289a89","reference":"CLM-AD89F7A0","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA f3399f84 Get everything member realize poor left.","incident_date":"2026-10-17","status":"SUBMITTED","created_at":"2026-10-24T07:32:36.942532Z","updated_at":"2026-10-24T07:32:37.051643Z","withdrawn_at":null,"decided_by_id":null}
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89/transitions "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2fbac0d4-80b5-4292-b5f6-9bb6dc289a89","reference":"CLM-AD89F7A0","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA f3399f84 Get everything member realize poor left.","incident_date":"2026-10-17","status":"UNDER_REVIEW","created_at":"2026-10-24T07:32:36.942532Z","updated_at":"2026-10-24T07:32:37.117618Z","withdrawn_at":null,"decided_by_id":null}
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89/transitions "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89/transitions -> 200 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"2fbac0d4-80b5-4292-b5f6-9bb6dc289a89","reference":"CLM-AD89F7A0","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA f3399f84 Get everything member realize poor left.","incident_date":"2026-10-17","status":"APPROVED","created_at":"2026-10-24T07:32:36.942532Z","updated_at":"2026-10-24T07:32:37.129076Z","withdrawn_at":null,"decided_by_id":"b9034f79-af71-46c5-9e43-5e49820806b8"}
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89/transitions "HTTP/1.1 409 Conflict"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89/transitions -> 409 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status APPROVED; it must be UNDER_REVIEW."}
+07:32:37 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89 "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2fbac0d4-80b5-4292-b5f6-9bb6dc289a89 -> 200 (2 ms)
+  response: {"id":"2fbac0d4-80b5-4292-b5f6-9bb6dc289a89","reference":"CLM-AD89F7A0","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"100.00","description":"QA f3399f84 Get everything member realize poor left.","incident_date":"2026-10-17","status":"APPROVED","created_at":"2026-10-24T07:32:36.942532Z","updated_at":"2026-10-24T07:32:37.129076Z","withdrawn_at":null,"decided_by_id":"b9034f79-af71-46c5-9e43-5e49820806b8"}
+07:32:37 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-approve]

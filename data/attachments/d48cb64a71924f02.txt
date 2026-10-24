@@ -1,0 +1,28 @@
+07:32:37 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn
+07:32:37 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (2 ms)
+  response: [{"id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","policy_number":"POL-1001","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"10000.00","is_active":true},{"id":"9bbe08e8-df96-4f2b-96c0-3002cfb94269","policy_number":"POL-1002","holder_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","coverage_limit":"2500.00","is_active":true}]
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (4 ms)
+  request : {'policy_id': 'f01126a8-5a65-4ef5-adcb-f9cb9d951c42', 'amount': '300.00', 'description': 'QA 179fc984 Interest training measure plan.', 'incident_date': '2026-10-17'}
+  response: {"id":"1f8d47ec-4799-4a6e-a0b4-17174f48ac29","reference":"CLM-7D7D5A8C","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"300.00","description":"QA 179fc984 Interest training measure plan.","incident_date":"2026-10-17","status":"DRAFT","created_at":"2026-10-24T07:32:37.855696Z","updated_at":"2026-10-24T07:32:37.855696Z","withdrawn_at":null,"decided_by_id":null}
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29/transitions "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29/transitions -> 200 (4 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"1f8d47ec-4799-4a6e-a0b4-17174f48ac29","reference":"CLM-7D7D5A8C","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"300.00","description":"QA 179fc984 Interest training measure plan.","incident_date":"2026-10-17","status":"SUBMITTED","created_at":"2026-10-24T07:32:37.855696Z","updated_at":"2026-10-24T07:32:37.860396Z","withdrawn_at":null,"decided_by_id":null}
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29/transitions "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29/transitions -> 200 (4 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"1f8d47ec-4799-4a6e-a0b4-17174f48ac29","reference":"CLM-7D7D5A8C","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"300.00","description":"QA 179fc984 Interest training measure plan.","incident_date":"2026-10-17","status":"UNDER_REVIEW","created_at":"2026-10-24T07:32:37.855696Z","updated_at":"2026-10-24T07:32:37.864965Z","withdrawn_at":null,"decided_by_id":null}
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29/transitions "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29/transitions -> 200 (4 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"1f8d47ec-4799-4a6e-a0b4-17174f48ac29","reference":"CLM-7D7D5A8C","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"300.00","description":"QA 179fc984 Interest training measure plan.","incident_date":"2026-10-17","status":"APPROVED","created_at":"2026-10-24T07:32:37.855696Z","updated_at":"2026-10-24T07:32:37.869416Z","withdrawn_at":null,"decided_by_id":"b9034f79-af71-46c5-9e43-5e49820806b8"}
+07:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29/transitions "HTTP/1.1 200 OK"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29/transitions -> 200 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"1f8d47ec-4799-4a6e-a0b4-17174f48ac29","reference":"CLM-7D7D5A8C","policy_id":"f01126a8-5a65-4ef5-adcb-f9cb9d951c42","claimant_id":"3e99009f-ec5b-4d04-bd5a-daea8ea0c3d6","amount":"300.00","description":"QA 179fc984 Interest training measure plan.","incident_date":"2026-10-17","status":"PAID","created_at":"2026-10-24T07:32:37.855696Z","updated_at":"2026-10-24T07:32:37.873942Z","withdrawn_at":null,"decided_by_id":"b9034f79-af71-46c5-9e43-5e49820806b8"}
+07:32:37 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29 "HTTP/1.1 409 Conflict"
+07:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/1f8d47ec-4799-4a6e-a0b4-17174f48ac29 -> 409 (3 ms)
+  response: {"detail":"Only a DRAFT claim can be withdrawn; this one is PAID."}
+07:32:37 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn
