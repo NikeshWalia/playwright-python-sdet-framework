@@ -1,0 +1,28 @@
+07:46:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-start_review]
+07:46:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","policy_number":"POL-1001","holder_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","coverage_limit":"10000.00","is_active":true},{"id":"22273b3d-dd83-4168-8cde-f65b05cbd996","policy_number":"POL-1002","holder_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","coverage_limit":"2500.00","is_active":true}]
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (22 ms)
+  request : {'policy_id': '8a95dd48-f798-4b4a-8229-bcbefc0436e1', 'amount': '100.00', 'description': 'QA 78f2067b Fast ever such product send growth soon.', 'incident_date': '2026-10-18'}
+  response: {"id":"62ad245e-712b-47fe-9e83-aafee1a10a95","reference":"CLM-60AF32B3","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA 78f2067b Fast ever such product send growth soon.","incident_date":"2026-10-18","status":"DRAFT","created_at":"2026-10-25T07:46:04.605181Z","updated_at":"2026-10-25T07:46:04.605181Z","withdrawn_at":null,"decided_by_id":null}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95/transitions "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95/transitions -> 200 (19 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"62ad245e-712b-47fe-9e83-aafee1a10a95","reference":"CLM-60AF32B3","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA 78f2067b Fast ever such product send growth soon.","incident_date":"2026-10-18","status":"SUBMITTED","created_at":"2026-10-25T07:46:04.605181Z","updated_at":"2026-10-25T07:46:04.626864Z","withdrawn_at":null,"decided_by_id":null}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95/transitions "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"62ad245e-712b-47fe-9e83-aafee1a10a95","reference":"CLM-60AF32B3","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA 78f2067b Fast ever such product send growth soon.","incident_date":"2026-10-18","status":"UNDER_REVIEW","created_at":"2026-10-25T07:46:04.605181Z","updated_at":"2026-10-25T07:46:04.646206Z","withdrawn_at":null,"decided_by_id":null}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95/transitions "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95/transitions -> 200 (27 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"62ad245e-712b-47fe-9e83-aafee1a10a95","reference":"CLM-60AF32B3","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA 78f2067b Fast ever such product send growth soon.","incident_date":"2026-10-18","status":"REJECTED","created_at":"2026-10-25T07:46:04.605181Z","updated_at":"2026-10-25T07:46:04.659309Z","withdrawn_at":null,"decided_by_id":"7411470b-36de-4af8-9a91-517906e04027"}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95/transitions "HTTP/1.1 409 Conflict"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95/transitions -> 409 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status REJECTED; it must be SUBMITTED."}
+07:46:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95 "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/62ad245e-712b-47fe-9e83-aafee1a10a95 -> 200 (6 ms)
+  response: {"id":"62ad245e-712b-47fe-9e83-aafee1a10a95","reference":"CLM-60AF32B3","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA 78f2067b Fast ever such product send growth soon.","incident_date":"2026-10-18","status":"REJECTED","created_at":"2026-10-25T07:46:04.605181Z","updated_at":"2026-10-25T07:46:04.659309Z","withdrawn_at":null,"decided_by_id":"7411470b-36de-4af8-9a91-517906e04027"}
+07:46:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-start_review]

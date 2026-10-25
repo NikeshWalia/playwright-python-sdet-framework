@@ -1,0 +1,32 @@
+07:46:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-start_review]
+07:46:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","policy_number":"POL-1001","holder_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","coverage_limit":"10000.00","is_active":true},{"id":"22273b3d-dd83-4168-8cde-f65b05cbd996","policy_number":"POL-1002","holder_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","coverage_limit":"2500.00","is_active":true}]
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (35 ms)
+  request : {'policy_id': '8a95dd48-f798-4b4a-8229-bcbefc0436e1', 'amount': '100.00', 'description': 'QA ec815535 Notice less less growth.', 'incident_date': '2026-10-18'}
+  response: {"id":"2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18","reference":"CLM-E2D6748A","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA ec815535 Notice less less growth.","incident_date":"2026-10-18","status":"DRAFT","created_at":"2026-10-25T07:46:04.853528Z","updated_at":"2026-10-25T07:46:04.853528Z","withdrawn_at":null,"decided_by_id":null}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18","reference":"CLM-E2D6748A","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA ec815535 Notice less less growth.","incident_date":"2026-10-18","status":"SUBMITTED","created_at":"2026-10-25T07:46:04.853528Z","updated_at":"2026-10-25T07:46:04.889666Z","withdrawn_at":null,"decided_by_id":null}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions -> 200 (19 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18","reference":"CLM-E2D6748A","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA ec815535 Notice less less growth.","incident_date":"2026-10-18","status":"UNDER_REVIEW","created_at":"2026-10-25T07:46:04.853528Z","updated_at":"2026-10-25T07:46:04.905960Z","withdrawn_at":null,"decided_by_id":null}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions -> 200 (15 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18","reference":"CLM-E2D6748A","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA ec815535 Notice less less growth.","incident_date":"2026-10-18","status":"APPROVED","created_at":"2026-10-25T07:46:04.853528Z","updated_at":"2026-10-25T07:46:04.921911Z","withdrawn_at":null,"decided_by_id":"7411470b-36de-4af8-9a91-517906e04027"}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18","reference":"CLM-E2D6748A","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA ec815535 Notice less less growth.","incident_date":"2026-10-18","status":"PAID","created_at":"2026-10-25T07:46:04.853528Z","updated_at":"2026-10-25T07:46:04.938833Z","withdrawn_at":null,"decided_by_id":"7411470b-36de-4af8-9a91-517906e04027"}
+07:46:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions "HTTP/1.1 409 Conflict"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18/transitions -> 409 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status PAID; it must be SUBMITTED."}
+07:46:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18 "HTTP/1.1 200 OK"
+07:46:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18 -> 200 (5 ms)
+  response: {"id":"2ccd6cca-5ac6-4fee-83c6-087ec7cb2f18","reference":"CLM-E2D6748A","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"100.00","description":"QA ec815535 Notice less less growth.","incident_date":"2026-10-18","status":"PAID","created_at":"2026-10-25T07:46:04.853528Z","updated_at":"2026-10-25T07:46:04.938833Z","withdrawn_at":null,"decided_by_id":"7411470b-36de-4af8-9a91-517906e04027"}
+07:46:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-start_review]

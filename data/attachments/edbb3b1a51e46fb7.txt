@@ -1,0 +1,25 @@
+07:46:03 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
+07:46:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+07:46:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","policy_number":"POL-1001","holder_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","coverage_limit":"10000.00","is_active":true},{"id":"22273b3d-dd83-4168-8cde-f65b05cbd996","policy_number":"POL-1002","holder_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","coverage_limit":"2500.00","is_active":true}]
+07:46:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+07:46:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '8a95dd48-f798-4b4a-8229-bcbefc0436e1', 'amount': '750.00', 'description': 'QA 528328e2 Prevent my staff down how cultural.', 'incident_date': '2026-10-18'}
+  response: {"id":"edacb6ae-c399-4c06-8e51-d78364c1ffe0","reference":"CLM-0165482E","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"750.00","description":"QA 528328e2 Prevent my staff down how cultural.","incident_date":"2026-10-18","status":"DRAFT","created_at":"2026-10-25T07:46:03.522862Z","updated_at":"2026-10-25T07:46:03.522862Z","withdrawn_at":null,"decided_by_id":null}
+07:46:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/edacb6ae-c399-4c06-8e51-d78364c1ffe0/transitions "HTTP/1.1 200 OK"
+07:46:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/edacb6ae-c399-4c06-8e51-d78364c1ffe0/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"edacb6ae-c399-4c06-8e51-d78364c1ffe0","reference":"CLM-0165482E","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"750.00","description":"QA 528328e2 Prevent my staff down how cultural.","incident_date":"2026-10-18","status":"SUBMITTED","created_at":"2026-10-25T07:46:03.522862Z","updated_at":"2026-10-25T07:46:03.534216Z","withdrawn_at":null,"decided_by_id":null}
+07:46:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/edacb6ae-c399-4c06-8e51-d78364c1ffe0/transitions "HTTP/1.1 200 OK"
+07:46:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/edacb6ae-c399-4c06-8e51-d78364c1ffe0/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"edacb6ae-c399-4c06-8e51-d78364c1ffe0","reference":"CLM-0165482E","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"750.00","description":"QA 528328e2 Prevent my staff down how cultural.","incident_date":"2026-10-18","status":"UNDER_REVIEW","created_at":"2026-10-25T07:46:03.522862Z","updated_at":"2026-10-25T07:46:03.545944Z","withdrawn_at":null,"decided_by_id":null}
+07:46:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/edacb6ae-c399-4c06-8e51-d78364c1ffe0/transitions "HTTP/1.1 200 OK"
+07:46:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/edacb6ae-c399-4c06-8e51-d78364c1ffe0/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"edacb6ae-c399-4c06-8e51-d78364c1ffe0","reference":"CLM-0165482E","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"750.00","description":"QA 528328e2 Prevent my staff down how cultural.","incident_date":"2026-10-18","status":"APPROVED","created_at":"2026-10-25T07:46:03.522862Z","updated_at":"2026-10-25T07:46:03.555811Z","withdrawn_at":null,"decided_by_id":"7411470b-36de-4af8-9a91-517906e04027"}
+07:46:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/edacb6ae-c399-4c06-8e51-d78364c1ffe0/transitions "HTTP/1.1 200 OK"
+07:46:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/edacb6ae-c399-4c06-8e51-d78364c1ffe0/transitions -> 200 (12 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"edacb6ae-c399-4c06-8e51-d78364c1ffe0","reference":"CLM-0165482E","policy_id":"8a95dd48-f798-4b4a-8229-bcbefc0436e1","claimant_id":"128acdc4-3ff5-4592-9bc7-d05ae6465d62","amount":"750.00","description":"QA 528328e2 Prevent my staff down how cultural.","incident_date":"2026-10-18","status":"PAID","created_at":"2026-10-25T07:46:03.522862Z","updated_at":"2026-10-25T07:46:03.566541Z","withdrawn_at":null,"decided_by_id":"7411470b-36de-4af8-9a91-517906e04027"}
+07:46:03 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
