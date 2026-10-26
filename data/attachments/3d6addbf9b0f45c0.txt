@@ -1,0 +1,10 @@
+08:11:22 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]
+08:11:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:11:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"0465aaf8-5c67-47b5-a74e-27635b706215","policy_number":"POL-1001","holder_id":"61235998-7bb7-4612-b2e8-2deffbd5b03a","coverage_limit":"10000.00","is_active":true},{"id":"fdd612eb-d53b-4721-970b-2044be52ed9e","policy_number":"POL-1002","holder_id":"61235998-7bb7-4612-b2e8-2deffbd5b03a","coverage_limit":"2500.00","is_active":true}]
+08:11:22 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:11:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (53 ms)
+  request : {'policy_id': '0465aaf8-5c67-47b5-a74e-27635b706215', 'amount': '250.00', 'description': 'QA 56906cbd Half stand push appear list too she cup.', 'incident_date': '2026-10-19'}
+  response: {"id":"acfa61db-55fd-4956-b32a-05c29cff5683","reference":"CLM-F9F7F19E","policy_id":"0465aaf8-5c67-47b5-a74e-27635b706215","claimant_id":"61235998-7bb7-4612-b2e8-2deffbd5b03a","amount":"250.00","description":"QA 56906cbd Half stand push appear list too she cup.","incident_date":"2026-10-19","status":"DRAFT","created_at":"2026-10-26T08:11:22.494795Z","updated_at":"2026-10-26T08:11:22.494795Z","withdrawn_at":null,"decided_by_id":null}
+08:11:22 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+08:11:22 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]

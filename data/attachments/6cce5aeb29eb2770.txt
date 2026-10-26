@@ -1,0 +1,9 @@
+08:11:17 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]
+08:11:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:11:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"0465aaf8-5c67-47b5-a74e-27635b706215","policy_number":"POL-1001","holder_id":"61235998-7bb7-4612-b2e8-2deffbd5b03a","coverage_limit":"10000.00","is_active":true},{"id":"fdd612eb-d53b-4721-970b-2044be52ed9e","policy_number":"POL-1002","holder_id":"61235998-7bb7-4612-b2e8-2deffbd5b03a","coverage_limit":"2500.00","is_active":true}]
+08:11:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:11:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '0465aaf8-5c67-47b5-a74e-27635b706215', 'amount': '１２３', 'description': 'QA be926db6 Then than mission account.', 'incident_date': '2026-10-19'}
+  response: {"id":"5bbc969c-b0ab-48f9-83b6-aa49e7410ec0","reference":"CLM-5AAA87CE","policy_id":"0465aaf8-5c67-47b5-a74e-27635b706215","claimant_id":"61235998-7bb7-4612-b2e8-2deffbd5b03a","amount":"123.00","description":"QA be926db6 Then than mission account.","incident_date":"2026-10-19","status":"DRAFT","created_at":"2026-10-26T08:11:17.019972Z","updated_at":"2026-10-26T08:11:17.019972Z","withdrawn_at":null,"decided_by_id":null}
+08:11:17 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]
