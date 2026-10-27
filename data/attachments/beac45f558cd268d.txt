@@ -1,0 +1,9 @@
+08:15:40 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]
+08:15:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:15:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","policy_number":"POL-1001","holder_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","coverage_limit":"10000.00","is_active":true},{"id":"f6b9b2d8-aca6-4ddc-bb09-5e94f489afd3","policy_number":"POL-1002","holder_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","coverage_limit":"2500.00","is_active":true}]
+08:15:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+08:15:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (5 ms)
+  request : {'policy_id': '659082d6-ed5d-48d7-9d42-3c1ebb54cb34', 'amount': '0', 'description': 'QA 7911ee0f Front manager role knowledge occur morning about.', 'incident_date': '2026-10-20'}
+  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"0","ctx":{"gt":0}}]}
+08:15:40 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]

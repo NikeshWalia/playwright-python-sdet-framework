@@ -1,0 +1,32 @@
+08:15:50 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-reject]
+08:15:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:15:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","policy_number":"POL-1001","holder_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","coverage_limit":"10000.00","is_active":true},{"id":"f6b9b2d8-aca6-4ddc-bb09-5e94f489afd3","policy_number":"POL-1002","holder_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","coverage_limit":"2500.00","is_active":true}]
+08:15:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:15:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '659082d6-ed5d-48d7-9d42-3c1ebb54cb34', 'amount': '100.00', 'description': 'QA 28345ad7 Firm close another computer.', 'incident_date': '2026-10-20'}
+  response: {"id":"8f9c64ba-9473-45e9-83ba-13d28a6cac42","reference":"CLM-91E8E16D","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"100.00","description":"QA 28345ad7 Firm close another computer.","incident_date":"2026-10-20","status":"DRAFT","created_at":"2026-10-27T08:15:50.474094Z","updated_at":"2026-10-27T08:15:50.474094Z","withdrawn_at":null,"decided_by_id":null}
+08:15:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions "HTTP/1.1 200 OK"
+08:15:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"8f9c64ba-9473-45e9-83ba-13d28a6cac42","reference":"CLM-91E8E16D","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"100.00","description":"QA 28345ad7 Firm close another computer.","incident_date":"2026-10-20","status":"SUBMITTED","created_at":"2026-10-27T08:15:50.474094Z","updated_at":"2026-10-27T08:15:50.487027Z","withdrawn_at":null,"decided_by_id":null}
+08:15:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions "HTTP/1.1 200 OK"
+08:15:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"8f9c64ba-9473-45e9-83ba-13d28a6cac42","reference":"CLM-91E8E16D","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"100.00","description":"QA 28345ad7 Firm close another computer.","incident_date":"2026-10-20","status":"UNDER_REVIEW","created_at":"2026-10-27T08:15:50.474094Z","updated_at":"2026-10-27T08:15:50.499830Z","withdrawn_at":null,"decided_by_id":null}
+08:15:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions "HTTP/1.1 200 OK"
+08:15:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"8f9c64ba-9473-45e9-83ba-13d28a6cac42","reference":"CLM-91E8E16D","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"100.00","description":"QA 28345ad7 Firm close another computer.","incident_date":"2026-10-20","status":"APPROVED","created_at":"2026-10-27T08:15:50.474094Z","updated_at":"2026-10-27T08:15:50.511102Z","withdrawn_at":null,"decided_by_id":"f5f48af8-029b-44e2-b5d7-c03b818269e8"}
+08:15:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions "HTTP/1.1 200 OK"
+08:15:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions -> 200 (13 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"8f9c64ba-9473-45e9-83ba-13d28a6cac42","reference":"CLM-91E8E16D","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"100.00","description":"QA 28345ad7 Firm close another computer.","incident_date":"2026-10-20","status":"PAID","created_at":"2026-10-27T08:15:50.474094Z","updated_at":"2026-10-27T08:15:50.523035Z","withdrawn_at":null,"decided_by_id":"f5f48af8-029b-44e2-b5d7-c03b818269e8"}
+08:15:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions "HTTP/1.1 409 Conflict"
+08:15:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42/transitions -> 409 (7 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status PAID; it must be UNDER_REVIEW."}
+08:15:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42 "HTTP/1.1 200 OK"
+08:15:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/8f9c64ba-9473-45e9-83ba-13d28a6cac42 -> 200 (9 ms)
+  response: {"id":"8f9c64ba-9473-45e9-83ba-13d28a6cac42","reference":"CLM-91E8E16D","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"100.00","description":"QA 28345ad7 Firm close another computer.","incident_date":"2026-10-20","status":"PAID","created_at":"2026-10-27T08:15:50.474094Z","updated_at":"2026-10-27T08:15:50.523035Z","withdrawn_at":null,"decided_by_id":"f5f48af8-029b-44e2-b5d7-c03b818269e8"}
+08:15:50 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-reject]

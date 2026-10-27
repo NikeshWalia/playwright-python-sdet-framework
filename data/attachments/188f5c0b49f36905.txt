@@ -1,0 +1,28 @@
+08:15:51 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn
+08:15:51 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:15:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","policy_number":"POL-1001","holder_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","coverage_limit":"10000.00","is_active":true},{"id":"f6b9b2d8-aca6-4ddc-bb09-5e94f489afd3","policy_number":"POL-1002","holder_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","coverage_limit":"2500.00","is_active":true}]
+08:15:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:15:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '659082d6-ed5d-48d7-9d42-3c1ebb54cb34', 'amount': '300.00', 'description': 'QA 62d92bfe Between thus speech night east whole candidate nice.', 'incident_date': '2026-10-20'}
+  response: {"id":"00ec429d-e7fb-4e91-8ed5-18dd159586d9","reference":"CLM-72E0C8F7","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"300.00","description":"QA 62d92bfe Between thus speech night east whole candidate nice.","incident_date":"2026-10-20","status":"DRAFT","created_at":"2026-10-27T08:15:51.488174Z","updated_at":"2026-10-27T08:15:51.488174Z","withdrawn_at":null,"decided_by_id":null}
+08:15:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9/transitions "HTTP/1.1 200 OK"
+08:15:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"00ec429d-e7fb-4e91-8ed5-18dd159586d9","reference":"CLM-72E0C8F7","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"300.00","description":"QA 62d92bfe Between thus speech night east whole candidate nice.","incident_date":"2026-10-20","status":"SUBMITTED","created_at":"2026-10-27T08:15:51.488174Z","updated_at":"2026-10-27T08:15:51.499079Z","withdrawn_at":null,"decided_by_id":null}
+08:15:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9/transitions "HTTP/1.1 200 OK"
+08:15:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"00ec429d-e7fb-4e91-8ed5-18dd159586d9","reference":"CLM-72E0C8F7","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"300.00","description":"QA 62d92bfe Between thus speech night east whole candidate nice.","incident_date":"2026-10-20","status":"UNDER_REVIEW","created_at":"2026-10-27T08:15:51.488174Z","updated_at":"2026-10-27T08:15:51.508613Z","withdrawn_at":null,"decided_by_id":null}
+08:15:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9/transitions "HTTP/1.1 200 OK"
+08:15:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"00ec429d-e7fb-4e91-8ed5-18dd159586d9","reference":"CLM-72E0C8F7","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"300.00","description":"QA 62d92bfe Between thus speech night east whole candidate nice.","incident_date":"2026-10-20","status":"APPROVED","created_at":"2026-10-27T08:15:51.488174Z","updated_at":"2026-10-27T08:15:51.518507Z","withdrawn_at":null,"decided_by_id":"f5f48af8-029b-44e2-b5d7-c03b818269e8"}
+08:15:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9/transitions "HTTP/1.1 200 OK"
+08:15:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9/transitions -> 200 (17 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"00ec429d-e7fb-4e91-8ed5-18dd159586d9","reference":"CLM-72E0C8F7","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"300.00","description":"QA 62d92bfe Between thus speech night east whole candidate nice.","incident_date":"2026-10-20","status":"PAID","created_at":"2026-10-27T08:15:51.488174Z","updated_at":"2026-10-27T08:15:51.532214Z","withdrawn_at":null,"decided_by_id":"f5f48af8-029b-44e2-b5d7-c03b818269e8"}
+08:15:51 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9 "HTTP/1.1 409 Conflict"
+08:15:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/00ec429d-e7fb-4e91-8ed5-18dd159586d9 -> 409 (12 ms)
+  response: {"detail":"Only a DRAFT claim can be withdrawn; this one is PAID."}
+08:15:51 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn

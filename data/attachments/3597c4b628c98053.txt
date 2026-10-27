@@ -1,0 +1,9 @@
+08:15:41 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]
+08:15:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:15:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","policy_number":"POL-1001","holder_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","coverage_limit":"10000.00","is_active":true},{"id":"f6b9b2d8-aca6-4ddc-bb09-5e94f489afd3","policy_number":"POL-1002","holder_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","coverage_limit":"2500.00","is_active":true}]
+08:15:41 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:15:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '659082d6-ed5d-48d7-9d42-3c1ebb54cb34', 'amount': '１２３', 'description': 'QA 2bd4884b Tax fill field young.', 'incident_date': '2026-10-20'}
+  response: {"id":"82fefbe7-d775-4dd6-8924-3148cd89a177","reference":"CLM-83F2A19E","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"123.00","description":"QA 2bd4884b Tax fill field young.","incident_date":"2026-10-20","status":"DRAFT","created_at":"2026-10-27T08:15:41.262846Z","updated_at":"2026-10-27T08:15:41.262846Z","withdrawn_at":null,"decided_by_id":null}
+08:15:41 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]
