@@ -1,0 +1,10 @@
+08:53:25 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_opening_a_claim_from_the_table_navigates_to_its_detail_page[chromium]
+08:53:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:53:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","policy_number":"POL-1001","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"10000.00","is_active":true},{"id":"0617bea1-85db-4a80-a798-60cf2dd72ea2","policy_number":"POL-1002","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"2500.00","is_active":true}]
+08:53:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '250.00', 'description': 'QA 80abcd53 Difficult her account music culture also notice personal.', 'incident_date': '2026-10-21'}
+  response: {"id":"cd3f57a1-1d31-4108-90f6-08e5713dd99d","reference":"CLM-A0FD7DD6","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"250.00","description":"QA 80abcd53 Difficult her account music culture also notice personal.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:25.248676Z","updated_at":"2026-10-28T08:53:25.248676Z","withdrawn_at":null,"decided_by_id":null}
+08:53:25 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+08:53:25 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_opening_a_claim_from_the_table_navigates_to_its_detail_page[chromium]

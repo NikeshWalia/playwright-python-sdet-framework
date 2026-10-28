@@ -1,0 +1,25 @@
+08:53:19 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+08:53:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:53:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","policy_number":"POL-1001","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"10000.00","is_active":true},{"id":"0617bea1-85db-4a80-a798-60cf2dd72ea2","policy_number":"POL-1002","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"2500.00","is_active":true}]
+08:53:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '250.00', 'description': 'QA b2725bf8 Part expect party let push picture bit.', 'incident_date': '2026-10-21'}
+  response: {"id":"5d8dc8b2-1a3a-477f-9fdf-d12432d63d09","reference":"CLM-6464AE91","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"250.00","description":"QA b2725bf8 Part expect party let push picture bit.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:19.730247Z","updated_at":"2026-10-28T08:53:19.730247Z","withdrawn_at":null,"decided_by_id":null}
+08:53:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '250.00', 'description': 'QA 8fc3f4d8 Church certainly dinner letter.', 'incident_date': '2026-10-21'}
+  response: {"id":"21edf587-466b-44ea-8e89-ad49dbbdc189","reference":"CLM-3C07A8C9","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"250.00","description":"QA 8fc3f4d8 Church certainly dinner letter.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:19.738279Z","updated_at":"2026-10-28T08:53:19.738279Z","withdrawn_at":null,"decided_by_id":null}
+08:53:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (48 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '250.00', 'description': 'QA f0115a1a Long campaign per service nothing service open.', 'incident_date': '2026-10-21'}
+  response: {"id":"bb155091-fdec-4f9f-a8d2-c5811bf5244c","reference":"CLM-70C8E78E","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"250.00","description":"QA f0115a1a Long campaign per service nothing service open.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:19.752299Z","updated_at":"2026-10-28T08:53:19.752299Z","withdrawn_at":null,"decided_by_id":null}
+08:53:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (22 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '250.00', 'description': 'QA 2277bc58 Third fish investment scene.', 'incident_date': '2026-10-21'}
+  response: {"id":"2c11583b-7102-4517-b549-353b86cf0d2e","reference":"CLM-746E8134","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"250.00","description":"QA 2277bc58 Third fish investment scene.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:19.801797Z","updated_at":"2026-10-28T08:53:19.801797Z","withdrawn_at":null,"decided_by_id":null}
+08:53:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '250.00', 'description': 'QA abeed729 Affect middle stage individual.', 'incident_date': '2026-10-21'}
+  response: {"id":"4b4d83a3-d7c9-4926-9256-7161f9264911","reference":"CLM-2D945A47","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"250.00","description":"QA abeed729 Affect middle stage individual.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:19.823434Z","updated_at":"2026-10-28T08:53:19.823434Z","withdrawn_at":null,"decided_by_id":null}
+08:53:19 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

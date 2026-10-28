@@ -1,5 +1,0 @@
-08:15:41 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
-08:15:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
-08:15:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (8 ms)
-  response: {"items":[{"id":"c502850a-9063-4b66-996e-f589708d1883","reference":"CLM-8EF7A5F8","policy_id":"659082d6-ed5d-48d7-9d42-3c1ebb54cb34","claimant_id":"2b95dda0-84eb-45fe-b6b7-bf8173185ca1","amount":"250.00","description":"QA 4bbdde30 Hot listen set per.","incident_date":"2026-10-20","status":"DRAFT","created_at":"2026-10-27T08:15:41.974228Z","updated_at":"2026-10-27T08:15:41.974228Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":55}
-08:15:41 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]

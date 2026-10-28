@@ -1,0 +1,29 @@
+08:53:27 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_the_audit_chain_has_no_gaps
+08:53:27 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:53:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","policy_number":"POL-1001","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"10000.00","is_active":true},{"id":"0617bea1-85db-4a80-a798-60cf2dd72ea2","policy_number":"POL-1002","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"2500.00","is_active":true}]
+08:53:27 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:53:27 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '700.00', 'description': 'QA 1add7a0e Painting who us pass land culture.', 'incident_date': '2026-10-21'}
+  response: {"id":"fc391d02-61a3-4fe9-b4be-99f0e3ea1c37","reference":"CLM-E8E1E8CE","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"700.00","description":"QA 1add7a0e Painting who us pass land culture.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:27.599175Z","updated_at":"2026-10-28T08:53:27.599175Z","withdrawn_at":null,"decided_by_id":null}
+08:53:27 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fc391d02-61a3-4fe9-b4be-99f0e3ea1c37/transitions "HTTP/1.1 200 OK"
+08:53:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fc391d02-61a3-4fe9-b4be-99f0e3ea1c37/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"fc391d02-61a3-4fe9-b4be-99f0e3ea1c37","reference":"CLM-E8E1E8CE","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"700.00","description":"QA 1add7a0e Painting who us pass land culture.","incident_date":"2026-10-21","status":"SUBMITTED","created_at":"2026-10-28T08:53:27.599175Z","updated_at":"2026-10-28T08:53:27.608035Z","withdrawn_at":null,"decided_by_id":null}
+08:53:27 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fc391d02-61a3-4fe9-b4be-99f0e3ea1c37/transitions "HTTP/1.1 200 OK"
+08:53:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fc391d02-61a3-4fe9-b4be-99f0e3ea1c37/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"fc391d02-61a3-4fe9-b4be-99f0e3ea1c37","reference":"CLM-E8E1E8CE","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"700.00","description":"QA 1add7a0e Painting who us pass land culture.","incident_date":"2026-10-21","status":"UNDER_REVIEW","created_at":"2026-10-28T08:53:27.599175Z","updated_at":"2026-10-28T08:53:27.616177Z","withdrawn_at":null,"decided_by_id":null}
+08:53:27 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fc391d02-61a3-4fe9-b4be-99f0e3ea1c37/transitions "HTTP/1.1 200 OK"
+08:53:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fc391d02-61a3-4fe9-b4be-99f0e3ea1c37/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"fc391d02-61a3-4fe9-b4be-99f0e3ea1c37","reference":"CLM-E8E1E8CE","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"700.00","description":"QA 1add7a0e Painting who us pass land culture.","incident_date":"2026-10-21","status":"APPROVED","created_at":"2026-10-28T08:53:27.599175Z","updated_at":"2026-10-28T08:53:27.624271Z","withdrawn_at":null,"decided_by_id":"71762e0f-d953-4dba-a4df-cd9eb27e932c"}
+08:53:27 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fc391d02-61a3-4fe9-b4be-99f0e3ea1c37/transitions "HTTP/1.1 200 OK"
+08:53:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fc391d02-61a3-4fe9-b4be-99f0e3ea1c37/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"fc391d02-61a3-4fe9-b4be-99f0e3ea1c37","reference":"CLM-E8E1E8CE","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"700.00","description":"QA 1add7a0e Painting who us pass land culture.","incident_date":"2026-10-21","status":"PAID","created_at":"2026-10-28T08:53:27.599175Z","updated_at":"2026-10-28T08:53:27.633160Z","withdrawn_at":null,"decided_by_id":"71762e0f-d953-4dba-a4df-cd9eb27e932c"}
+08:53:27 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('fc391d02-61a3-4fe9-b4be-99f0e3ea1c37',)
+  rows: 5
+08:53:27 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_the_audit_chain_has_no_gaps

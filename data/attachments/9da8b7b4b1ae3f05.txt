@@ -1,0 +1,10 @@
+08:53:22 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_customer_never_sees_another_customers_claim[chromium]
+08:53:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:53:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","policy_number":"POL-1001","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"10000.00","is_active":true},{"id":"0617bea1-85db-4a80-a798-60cf2dd72ea2","policy_number":"POL-1002","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"2500.00","is_active":true}]
+08:53:22 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (21 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '250.00', 'description': 'QA 3924712f Future on practice ask despite prove.', 'incident_date': '2026-10-21'}
+  response: {"id":"aa2c8105-ef1c-42d8-8e94-d730b1f9532e","reference":"CLM-119A7313","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"250.00","description":"QA 3924712f Future on practice ask despite prove.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:22.692138Z","updated_at":"2026-10-28T08:53:22.692138Z","withdrawn_at":null,"decided_by_id":null}
+08:53:22 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+08:53:22 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_customer_never_sees_another_customers_claim[chromium]

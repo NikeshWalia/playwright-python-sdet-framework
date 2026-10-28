@@ -1,0 +1,21 @@
+08:53:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-approve-APPROVED]
+08:53:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:53:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","policy_number":"POL-1001","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"10000.00","is_active":true},{"id":"0617bea1-85db-4a80-a798-60cf2dd72ea2","policy_number":"POL-1002","holder_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","coverage_limit":"2500.00","is_active":true}]
+08:53:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '10dd02c1-0ae8-47b7-841a-2a10135a37ec', 'amount': '100.00', 'description': 'QA 2ad8f956 Join meet religious write.', 'incident_date': '2026-10-21'}
+  response: {"id":"d73914a1-ed02-49e1-b81d-85043f5691d0","reference":"CLM-305D55CB","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"100.00","description":"QA 2ad8f956 Join meet religious write.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:24.615873Z","updated_at":"2026-10-28T08:53:24.615873Z","withdrawn_at":null,"decided_by_id":null}
+08:53:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d73914a1-ed02-49e1-b81d-85043f5691d0/transitions "HTTP/1.1 200 OK"
+08:53:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d73914a1-ed02-49e1-b81d-85043f5691d0/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"d73914a1-ed02-49e1-b81d-85043f5691d0","reference":"CLM-305D55CB","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"100.00","description":"QA 2ad8f956 Join meet religious write.","incident_date":"2026-10-21","status":"SUBMITTED","created_at":"2026-10-28T08:53:24.615873Z","updated_at":"2026-10-28T08:53:24.626733Z","withdrawn_at":null,"decided_by_id":null}
+08:53:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d73914a1-ed02-49e1-b81d-85043f5691d0/transitions "HTTP/1.1 200 OK"
+08:53:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d73914a1-ed02-49e1-b81d-85043f5691d0/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"d73914a1-ed02-49e1-b81d-85043f5691d0","reference":"CLM-305D55CB","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"100.00","description":"QA 2ad8f956 Join meet religious write.","incident_date":"2026-10-21","status":"UNDER_REVIEW","created_at":"2026-10-28T08:53:24.615873Z","updated_at":"2026-10-28T08:53:24.636842Z","withdrawn_at":null,"decided_by_id":null}
+08:53:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d73914a1-ed02-49e1-b81d-85043f5691d0/transitions "HTTP/1.1 200 OK"
+08:53:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d73914a1-ed02-49e1-b81d-85043f5691d0/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"d73914a1-ed02-49e1-b81d-85043f5691d0","reference":"CLM-305D55CB","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"100.00","description":"QA 2ad8f956 Join meet religious write.","incident_date":"2026-10-21","status":"APPROVED","created_at":"2026-10-28T08:53:24.615873Z","updated_at":"2026-10-28T08:53:24.647231Z","withdrawn_at":null,"decided_by_id":"71762e0f-d953-4dba-a4df-cd9eb27e932c"}
+08:53:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-approve-APPROVED]
