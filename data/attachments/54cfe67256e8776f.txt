@@ -1,0 +1,21 @@
+08:46:41 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_withdrawn_in_the_browser_survives_in_the_database[chromium]
+08:46:41 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:46:41 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"8e95dc44-664c-495f-a237-9d5bbadc0f6d","policy_number":"POL-1001","holder_id":"556ffc47-e5f0-44af-a8f6-13b3d6673be4","coverage_limit":"10000.00","is_active":true},{"id":"086b5e15-cb92-4e38-a88e-117f4de51daf","policy_number":"POL-1002","holder_id":"556ffc47-e5f0-44af-a8f6-13b3d6673be4","coverage_limit":"2500.00","is_active":true}]
+08:46:42 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:46:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:46:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '8e95dc44-664c-495f-a237-9d5bbadc0f6d', 'amount': '640.00', 'description': 'QA 5aa7686b Father most while half.', 'incident_date': '2026-10-22'}
+  response: {"id":"d1737640-5227-4912-92c9-04b51c1cf7cb","reference":"CLM-EEFCEAF9","policy_id":"8e95dc44-664c-495f-a237-9d5bbadc0f6d","claimant_id":"556ffc47-e5f0-44af-a8f6-13b3d6673be4","amount":"640.00","description":"QA 5aa7686b Father most while half.","incident_date":"2026-10-22","status":"DRAFT","created_at":"2026-10-29T08:46:42.011495Z","updated_at":"2026-10-29T08:46:42.011495Z","withdrawn_at":null,"decided_by_id":null}
+08:46:42 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+08:46:42 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/d1737640-5227-4912-92c9-04b51c1cf7cb "HTTP/1.1 204 No Content"
+08:46:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/d1737640-5227-4912-92c9-04b51c1cf7cb -> 204 (10 ms)
+  response: 
+08:46:42 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/d1737640-5227-4912-92c9-04b51c1cf7cb
+08:46:42 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('d1737640-5227-4912-92c9-04b51c1cf7cb',)
+  rows: 1
+08:46:42 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('d1737640-5227-4912-92c9-04b51c1cf7cb',)
+  rows: 2
+08:46:42 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_withdrawn_in_the_browser_survives_in_the_database[chromium]

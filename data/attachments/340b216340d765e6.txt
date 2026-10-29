@@ -1,5 +1,0 @@
-08:53:19 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
-08:53:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
-08:53:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (4 ms)
-  response: {"items":[{"id":"4b4bccee-1e70-4cfc-8a74-ecf311dcc926","reference":"CLM-BCE63A9E","policy_id":"10dd02c1-0ae8-47b7-841a-2a10135a37ec","claimant_id":"5fee1f26-b2a1-4a31-be61-5a07dcd18222","amount":"250.00","description":"QA bafaa54c Answer movement group message.","incident_date":"2026-10-21","status":"DRAFT","created_at":"2026-10-28T08:53:19.748526Z","updated_at":"2026-10-28T08:53:19.748526Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":53}
-08:53:19 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
