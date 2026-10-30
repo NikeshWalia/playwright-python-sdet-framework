@@ -1,0 +1,25 @@
+08:53:50 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
+08:53:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","policy_number":"POL-1001","holder_id":"987646b3-9a25-41a6-a975-73a06ace57a3","coverage_limit":"10000.00","is_active":true},{"id":"aab7ec90-49b5-4b1e-8855-224a9f7c46d8","policy_number":"POL-1002","holder_id":"987646b3-9a25-41a6-a975-73a06ace57a3","coverage_limit":"2500.00","is_active":true}]
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'd46998fb-d8ba-4f60-aa89-febcee15f29e', 'amount': '750.00', 'description': 'QA fa958e93 Upon head ago score might cost plan yard.', 'incident_date': '2026-10-23'}
+  response: {"id":"800d4781-66d9-427e-a53d-a57466486367","reference":"CLM-44814394","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"750.00","description":"QA fa958e93 Upon head ago score might cost plan yard.","incident_date":"2026-10-23","status":"DRAFT","created_at":"2026-10-30T08:53:50.445686Z","updated_at":"2026-10-30T08:53:50.445686Z","withdrawn_at":null,"decided_by_id":null}
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/800d4781-66d9-427e-a53d-a57466486367/transitions "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/800d4781-66d9-427e-a53d-a57466486367/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"800d4781-66d9-427e-a53d-a57466486367","reference":"CLM-44814394","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"750.00","description":"QA fa958e93 Upon head ago score might cost plan yard.","incident_date":"2026-10-23","status":"SUBMITTED","created_at":"2026-10-30T08:53:50.445686Z","updated_at":"2026-10-30T08:53:50.455497Z","withdrawn_at":null,"decided_by_id":null}
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/800d4781-66d9-427e-a53d-a57466486367/transitions "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/800d4781-66d9-427e-a53d-a57466486367/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"800d4781-66d9-427e-a53d-a57466486367","reference":"CLM-44814394","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"750.00","description":"QA fa958e93 Upon head ago score might cost plan yard.","incident_date":"2026-10-23","status":"UNDER_REVIEW","created_at":"2026-10-30T08:53:50.445686Z","updated_at":"2026-10-30T08:53:50.467160Z","withdrawn_at":null,"decided_by_id":null}
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/800d4781-66d9-427e-a53d-a57466486367/transitions "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/800d4781-66d9-427e-a53d-a57466486367/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"800d4781-66d9-427e-a53d-a57466486367","reference":"CLM-44814394","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"750.00","description":"QA fa958e93 Upon head ago score might cost plan yard.","incident_date":"2026-10-23","status":"APPROVED","created_at":"2026-10-30T08:53:50.445686Z","updated_at":"2026-10-30T08:53:50.478852Z","withdrawn_at":null,"decided_by_id":"06645029-1808-4772-9ec8-a7966cdd810d"}
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/800d4781-66d9-427e-a53d-a57466486367/transitions "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/800d4781-66d9-427e-a53d-a57466486367/transitions -> 200 (15 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"800d4781-66d9-427e-a53d-a57466486367","reference":"CLM-44814394","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"750.00","description":"QA fa958e93 Upon head ago score might cost plan yard.","incident_date":"2026-10-23","status":"PAID","created_at":"2026-10-30T08:53:50.445686Z","updated_at":"2026-10-30T08:53:50.489721Z","withdrawn_at":null,"decided_by_id":"06645029-1808-4772-9ec8-a7966cdd810d"}
+08:53:50 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle

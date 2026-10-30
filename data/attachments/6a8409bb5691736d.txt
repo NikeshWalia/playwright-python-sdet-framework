@@ -1,0 +1,21 @@
+08:53:50 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-reject-REJECTED]
+08:53:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","policy_number":"POL-1001","holder_id":"987646b3-9a25-41a6-a975-73a06ace57a3","coverage_limit":"10000.00","is_active":true},{"id":"aab7ec90-49b5-4b1e-8855-224a9f7c46d8","policy_number":"POL-1002","holder_id":"987646b3-9a25-41a6-a975-73a06ace57a3","coverage_limit":"2500.00","is_active":true}]
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'd46998fb-d8ba-4f60-aa89-febcee15f29e', 'amount': '100.00', 'description': 'QA 204270ae Gas fly speak tell this rate lay local.', 'incident_date': '2026-10-23'}
+  response: {"id":"db324166-15ef-42b3-8a7f-da713c7abd41","reference":"CLM-8141097D","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 204270ae Gas fly speak tell this rate lay local.","incident_date":"2026-10-23","status":"DRAFT","created_at":"2026-10-30T08:53:50.728200Z","updated_at":"2026-10-30T08:53:50.728200Z","withdrawn_at":null,"decided_by_id":null}
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/db324166-15ef-42b3-8a7f-da713c7abd41/transitions "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/db324166-15ef-42b3-8a7f-da713c7abd41/transitions -> 200 (16 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"db324166-15ef-42b3-8a7f-da713c7abd41","reference":"CLM-8141097D","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 204270ae Gas fly speak tell this rate lay local.","incident_date":"2026-10-23","status":"SUBMITTED","created_at":"2026-10-30T08:53:50.728200Z","updated_at":"2026-10-30T08:53:50.742459Z","withdrawn_at":null,"decided_by_id":null}
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/db324166-15ef-42b3-8a7f-da713c7abd41/transitions "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/db324166-15ef-42b3-8a7f-da713c7abd41/transitions -> 200 (17 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"db324166-15ef-42b3-8a7f-da713c7abd41","reference":"CLM-8141097D","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 204270ae Gas fly speak tell this rate lay local.","incident_date":"2026-10-23","status":"UNDER_REVIEW","created_at":"2026-10-30T08:53:50.728200Z","updated_at":"2026-10-30T08:53:50.759908Z","withdrawn_at":null,"decided_by_id":null}
+08:53:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/db324166-15ef-42b3-8a7f-da713c7abd41/transitions "HTTP/1.1 200 OK"
+08:53:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/db324166-15ef-42b3-8a7f-da713c7abd41/transitions -> 200 (13 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"db324166-15ef-42b3-8a7f-da713c7abd41","reference":"CLM-8141097D","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 204270ae Gas fly speak tell this rate lay local.","incident_date":"2026-10-23","status":"REJECTED","created_at":"2026-10-30T08:53:50.728200Z","updated_at":"2026-10-30T08:53:50.778038Z","withdrawn_at":null,"decided_by_id":"06645029-1808-4772-9ec8-a7966cdd810d"}
+08:53:50 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-reject-REJECTED]

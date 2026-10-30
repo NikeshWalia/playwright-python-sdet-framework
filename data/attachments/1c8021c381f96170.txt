@@ -1,0 +1,28 @@
+08:53:52 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-pay]
+08:53:52 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:53:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","policy_number":"POL-1001","holder_id":"987646b3-9a25-41a6-a975-73a06ace57a3","coverage_limit":"10000.00","is_active":true},{"id":"aab7ec90-49b5-4b1e-8855-224a9f7c46d8","policy_number":"POL-1002","holder_id":"987646b3-9a25-41a6-a975-73a06ace57a3","coverage_limit":"2500.00","is_active":true}]
+08:53:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:53:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'd46998fb-d8ba-4f60-aa89-febcee15f29e', 'amount': '100.00', 'description': 'QA 4fd1d06e Yeah road the rule reflect deep body.', 'incident_date': '2026-10-23'}
+  response: {"id":"a1f3d25c-a05c-4f78-890c-9abcf2fe70b3","reference":"CLM-574479D5","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 4fd1d06e Yeah road the rule reflect deep body.","incident_date":"2026-10-23","status":"DRAFT","created_at":"2026-10-30T08:53:52.758622Z","updated_at":"2026-10-30T08:53:52.758622Z","withdrawn_at":null,"decided_by_id":null}
+08:53:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3/transitions "HTTP/1.1 200 OK"
+08:53:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a1f3d25c-a05c-4f78-890c-9abcf2fe70b3","reference":"CLM-574479D5","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 4fd1d06e Yeah road the rule reflect deep body.","incident_date":"2026-10-23","status":"SUBMITTED","created_at":"2026-10-30T08:53:52.758622Z","updated_at":"2026-10-30T08:53:52.770976Z","withdrawn_at":null,"decided_by_id":null}
+08:53:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3/transitions "HTTP/1.1 200 OK"
+08:53:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a1f3d25c-a05c-4f78-890c-9abcf2fe70b3","reference":"CLM-574479D5","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 4fd1d06e Yeah road the rule reflect deep body.","incident_date":"2026-10-23","status":"UNDER_REVIEW","created_at":"2026-10-30T08:53:52.758622Z","updated_at":"2026-10-30T08:53:52.783291Z","withdrawn_at":null,"decided_by_id":null}
+08:53:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3/transitions "HTTP/1.1 200 OK"
+08:53:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3/transitions -> 200 (14 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"a1f3d25c-a05c-4f78-890c-9abcf2fe70b3","reference":"CLM-574479D5","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 4fd1d06e Yeah road the rule reflect deep body.","incident_date":"2026-10-23","status":"REJECTED","created_at":"2026-10-30T08:53:52.758622Z","updated_at":"2026-10-30T08:53:52.794747Z","withdrawn_at":null,"decided_by_id":"06645029-1808-4772-9ec8-a7966cdd810d"}
+08:53:52 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3/transitions "HTTP/1.1 409 Conflict"
+08:53:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status REJECTED; it must be APPROVED."}
+08:53:52 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3 "HTTP/1.1 200 OK"
+08:53:52 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/a1f3d25c-a05c-4f78-890c-9abcf2fe70b3 -> 200 (6 ms)
+  response: {"id":"a1f3d25c-a05c-4f78-890c-9abcf2fe70b3","reference":"CLM-574479D5","policy_id":"d46998fb-d8ba-4f60-aa89-febcee15f29e","claimant_id":"987646b3-9a25-41a6-a975-73a06ace57a3","amount":"100.00","description":"QA 4fd1d06e Yeah road the rule reflect deep body.","incident_date":"2026-10-23","status":"REJECTED","created_at":"2026-10-30T08:53:52.758622Z","updated_at":"2026-10-30T08:53:52.794747Z","withdrawn_at":null,"decided_by_id":"06645029-1808-4772-9ec8-a7966cdd810d"}
+08:53:52 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-pay]
