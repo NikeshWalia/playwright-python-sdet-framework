@@ -1,0 +1,31 @@
+08:43:11 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it
+08:43:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('customer@example.com',)
+  rows: 1
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+08:43:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '700.00', 'description': 'QA 7abed183 Improve should evening happen car become time.', 'incident_date': '2026-10-24'}
+  response: {"id":"4c230747-33fb-44ac-b86a-7ce71e2756d3","reference":"CLM-E4C7CB4D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"700.00","description":"QA 7abed183 Improve should evening happen car become time.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:11.420462Z","updated_at":"2026-10-31T08:43:11.420462Z","withdrawn_at":null,"decided_by_id":null}
+08:43:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4c230747-33fb-44ac-b86a-7ce71e2756d3/transitions "HTTP/1.1 200 OK"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4c230747-33fb-44ac-b86a-7ce71e2756d3/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"4c230747-33fb-44ac-b86a-7ce71e2756d3","reference":"CLM-E4C7CB4D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"700.00","description":"QA 7abed183 Improve should evening happen car become time.","incident_date":"2026-10-24","status":"SUBMITTED","created_at":"2026-10-31T08:43:11.420462Z","updated_at":"2026-10-31T08:43:11.430606Z","withdrawn_at":null,"decided_by_id":null}
+08:43:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4c230747-33fb-44ac-b86a-7ce71e2756d3/transitions "HTTP/1.1 200 OK"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4c230747-33fb-44ac-b86a-7ce71e2756d3/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"4c230747-33fb-44ac-b86a-7ce71e2756d3","reference":"CLM-E4C7CB4D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"700.00","description":"QA 7abed183 Improve should evening happen car become time.","incident_date":"2026-10-24","status":"UNDER_REVIEW","created_at":"2026-10-31T08:43:11.420462Z","updated_at":"2026-10-31T08:43:11.441404Z","withdrawn_at":null,"decided_by_id":null}
+08:43:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4c230747-33fb-44ac-b86a-7ce71e2756d3/transitions "HTTP/1.1 200 OK"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4c230747-33fb-44ac-b86a-7ce71e2756d3/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"4c230747-33fb-44ac-b86a-7ce71e2756d3","reference":"CLM-E4C7CB4D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"700.00","description":"QA 7abed183 Improve should evening happen car become time.","incident_date":"2026-10-24","status":"APPROVED","created_at":"2026-10-31T08:43:11.420462Z","updated_at":"2026-10-31T08:43:11.452363Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('4c230747-33fb-44ac-b86a-7ce71e2756d3',)
+  rows: 4
+08:43:11 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it

@@ -1,0 +1,25 @@
+08:43:07 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
+08:43:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '750.00', 'description': 'QA 674531aa Assume teacher score hope wish or.', 'incident_date': '2026-10-24'}
+  response: {"id":"2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd","reference":"CLM-15B3D596","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"750.00","description":"QA 674531aa Assume teacher score hope wish or.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:07.838447Z","updated_at":"2026-10-31T08:43:07.838447Z","withdrawn_at":null,"decided_by_id":null}
+08:43:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd/transitions "HTTP/1.1 200 OK"
+08:43:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd","reference":"CLM-15B3D596","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"750.00","description":"QA 674531aa Assume teacher score hope wish or.","incident_date":"2026-10-24","status":"SUBMITTED","created_at":"2026-10-31T08:43:07.838447Z","updated_at":"2026-10-31T08:43:07.851555Z","withdrawn_at":null,"decided_by_id":null}
+08:43:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd/transitions "HTTP/1.1 200 OK"
+08:43:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd","reference":"CLM-15B3D596","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"750.00","description":"QA 674531aa Assume teacher score hope wish or.","incident_date":"2026-10-24","status":"UNDER_REVIEW","created_at":"2026-10-31T08:43:07.838447Z","updated_at":"2026-10-31T08:43:07.863812Z","withdrawn_at":null,"decided_by_id":null}
+08:43:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd/transitions "HTTP/1.1 200 OK"
+08:43:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd/transitions -> 200 (13 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd","reference":"CLM-15B3D596","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"750.00","description":"QA 674531aa Assume teacher score hope wish or.","incident_date":"2026-10-24","status":"APPROVED","created_at":"2026-10-31T08:43:07.838447Z","updated_at":"2026-10-31T08:43:07.879127Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd/transitions "HTTP/1.1 200 OK"
+08:43:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"2f0ffe2f-b837-4a9b-b7a0-784ee0cb1abd","reference":"CLM-15B3D596","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"750.00","description":"QA 674531aa Assume teacher score hope wish or.","incident_date":"2026-10-24","status":"PAID","created_at":"2026-10-31T08:43:07.838447Z","updated_at":"2026-10-31T08:43:07.891917Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:07 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle

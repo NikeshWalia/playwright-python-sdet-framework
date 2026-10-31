@@ -1,0 +1,26 @@
+08:43:04 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+08:43:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (18 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '410.00', 'description': 'QA 65d3188e Over research matter decade.', 'incident_date': '2026-10-24'}
+  response: {"id":"0d2556ff-1990-4843-bc7b-b26a34718ec9","reference":"CLM-23459C2A","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"410.00","description":"QA 65d3188e Over research matter decade.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:04.418739Z","updated_at":"2026-10-31T08:43:04.418739Z","withdrawn_at":null,"decided_by_id":null}
+08:43:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9/transitions "HTTP/1.1 200 OK"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9/transitions -> 200 (20 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"0d2556ff-1990-4843-bc7b-b26a34718ec9","reference":"CLM-23459C2A","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"410.00","description":"QA 65d3188e Over research matter decade.","incident_date":"2026-10-24","status":"SUBMITTED","created_at":"2026-10-31T08:43:04.418739Z","updated_at":"2026-10-31T08:43:04.441163Z","withdrawn_at":null,"decided_by_id":null}
+08:43:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9/transitions "HTTP/1.1 200 OK"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"0d2556ff-1990-4843-bc7b-b26a34718ec9","reference":"CLM-23459C2A","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"410.00","description":"QA 65d3188e Over research matter decade.","incident_date":"2026-10-24","status":"UNDER_REVIEW","created_at":"2026-10-31T08:43:04.418739Z","updated_at":"2026-10-31T08:43:04.459860Z","withdrawn_at":null,"decided_by_id":null}
+08:43:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9/transitions "HTTP/1.1 200 OK"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9/transitions -> 200 (14 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"0d2556ff-1990-4843-bc7b-b26a34718ec9","reference":"CLM-23459C2A","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"410.00","description":"QA 65d3188e Over research matter decade.","incident_date":"2026-10-24","status":"APPROVED","created_at":"2026-10-31T08:43:04.418739Z","updated_at":"2026-10-31T08:43:04.470844Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9/transitions "HTTP/1.1 200 OK"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"0d2556ff-1990-4843-bc7b-b26a34718ec9","reference":"CLM-23459C2A","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"410.00","description":"QA 65d3188e Over research matter decade.","incident_date":"2026-10-24","status":"PAID","created_at":"2026-10-31T08:43:04.418739Z","updated_at":"2026-10-31T08:43:04.485242Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:04 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/0d2556ff-1990-4843-bc7b-b26a34718ec9
+08:43:04 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

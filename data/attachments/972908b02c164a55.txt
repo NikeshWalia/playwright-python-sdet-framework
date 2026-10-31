@@ -1,0 +1,17 @@
+08:43:07 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[SUBMITTED-start_review-UNDER_REVIEW]
+08:43:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '100.00', 'description': 'QA d38a6a79 Culture with end figure.', 'incident_date': '2026-10-24'}
+  response: {"id":"a8fcd9a6-afba-49c5-9c1c-3974c9c298d5","reference":"CLM-5A30F656","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA d38a6a79 Culture with end figure.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:08.003418Z","updated_at":"2026-10-31T08:43:08.003418Z","withdrawn_at":null,"decided_by_id":null}
+08:43:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a8fcd9a6-afba-49c5-9c1c-3974c9c298d5/transitions "HTTP/1.1 200 OK"
+08:43:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a8fcd9a6-afba-49c5-9c1c-3974c9c298d5/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a8fcd9a6-afba-49c5-9c1c-3974c9c298d5","reference":"CLM-5A30F656","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA d38a6a79 Culture with end figure.","incident_date":"2026-10-24","status":"SUBMITTED","created_at":"2026-10-31T08:43:08.003418Z","updated_at":"2026-10-31T08:43:08.017564Z","withdrawn_at":null,"decided_by_id":null}
+08:43:08 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a8fcd9a6-afba-49c5-9c1c-3974c9c298d5/transitions "HTTP/1.1 200 OK"
+08:43:08 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a8fcd9a6-afba-49c5-9c1c-3974c9c298d5/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a8fcd9a6-afba-49c5-9c1c-3974c9c298d5","reference":"CLM-5A30F656","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA d38a6a79 Culture with end figure.","incident_date":"2026-10-24","status":"UNDER_REVIEW","created_at":"2026-10-31T08:43:08.003418Z","updated_at":"2026-10-31T08:43:08.030373Z","withdrawn_at":null,"decided_by_id":null}
+08:43:08 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[SUBMITTED-start_review-UNDER_REVIEW]

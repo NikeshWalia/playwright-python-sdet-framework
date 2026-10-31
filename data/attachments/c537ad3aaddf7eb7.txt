@@ -1,0 +1,18 @@
+08:43:04 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]
+08:43:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (13 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (21 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '5000.01', 'description': 'QA 30492b24 Edge send ready body we north.', 'incident_date': '2026-10-24'}
+  response: {"id":"d77bd1ea-ae3a-47a7-a8cb-2060e4de8627","reference":"CLM-646737E8","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"5000.01","description":"QA 30492b24 Edge send ready body we north.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:04.764160Z","updated_at":"2026-10-31T08:43:04.764160Z","withdrawn_at":null,"decided_by_id":null}
+08:43:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d77bd1ea-ae3a-47a7-a8cb-2060e4de8627/transitions "HTTP/1.1 200 OK"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d77bd1ea-ae3a-47a7-a8cb-2060e4de8627/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"d77bd1ea-ae3a-47a7-a8cb-2060e4de8627","reference":"CLM-646737E8","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"5000.01","description":"QA 30492b24 Edge send ready body we north.","incident_date":"2026-10-24","status":"SUBMITTED","created_at":"2026-10-31T08:43:04.764160Z","updated_at":"2026-10-31T08:43:04.783282Z","withdrawn_at":null,"decided_by_id":null}
+08:43:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d77bd1ea-ae3a-47a7-a8cb-2060e4de8627/transitions "HTTP/1.1 200 OK"
+08:43:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d77bd1ea-ae3a-47a7-a8cb-2060e4de8627/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"d77bd1ea-ae3a-47a7-a8cb-2060e4de8627","reference":"CLM-646737E8","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"5000.01","description":"QA 30492b24 Edge send ready body we north.","incident_date":"2026-10-24","status":"UNDER_REVIEW","created_at":"2026-10-31T08:43:04.764160Z","updated_at":"2026-10-31T08:43:04.793446Z","withdrawn_at":null,"decided_by_id":null}
+08:43:04 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/d77bd1ea-ae3a-47a7-a8cb-2060e4de8627
+08:43:05 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]

@@ -1,0 +1,31 @@
+08:43:11 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
+08:43:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+08:43:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '800.00', 'description': 'QA 5d910868 Skin research sea house daughter most region.', 'incident_date': '2026-10-24'}
+  response: {"id":"ced79f7f-edb2-44e2-a72a-1c7311bc036e","reference":"CLM-B7A0F9CC","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"800.00","description":"QA 5d910868 Skin research sea house daughter most region.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:11.809823Z","updated_at":"2026-10-31T08:43:11.809823Z","withdrawn_at":null,"decided_by_id":null}
+08:43:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ced79f7f-edb2-44e2-a72a-1c7311bc036e/transitions "HTTP/1.1 200 OK"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ced79f7f-edb2-44e2-a72a-1c7311bc036e/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ced79f7f-edb2-44e2-a72a-1c7311bc036e","reference":"CLM-B7A0F9CC","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"800.00","description":"QA 5d910868 Skin research sea house daughter most region.","incident_date":"2026-10-24","status":"SUBMITTED","created_at":"2026-10-31T08:43:11.809823Z","updated_at":"2026-10-31T08:43:11.820611Z","withdrawn_at":null,"decided_by_id":null}
+08:43:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ced79f7f-edb2-44e2-a72a-1c7311bc036e/transitions "HTTP/1.1 200 OK"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ced79f7f-edb2-44e2-a72a-1c7311bc036e/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ced79f7f-edb2-44e2-a72a-1c7311bc036e","reference":"CLM-B7A0F9CC","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"800.00","description":"QA 5d910868 Skin research sea house daughter most region.","incident_date":"2026-10-24","status":"UNDER_REVIEW","created_at":"2026-10-31T08:43:11.809823Z","updated_at":"2026-10-31T08:43:11.831205Z","withdrawn_at":null,"decided_by_id":null}
+08:43:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ced79f7f-edb2-44e2-a72a-1c7311bc036e/transitions "HTTP/1.1 200 OK"
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ced79f7f-edb2-44e2-a72a-1c7311bc036e/transitions -> 200 (10 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"ced79f7f-edb2-44e2-a72a-1c7311bc036e","reference":"CLM-B7A0F9CC","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"800.00","description":"QA 5d910868 Skin research sea house daughter most region.","incident_date":"2026-10-24","status":"REJECTED","created_at":"2026-10-31T08:43:11.809823Z","updated_at":"2026-10-31T08:43:11.840659Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('ced79f7f-edb2-44e2-a72a-1c7311bc036e',)
+  rows: 1
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('ced79f7f-edb2-44e2-a72a-1c7311bc036e',)
+  rows: 1
+08:43:11 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('ced79f7f-edb2-44e2-a72a-1c7311bc036e',)
+  rows: 1
+08:43:11 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid

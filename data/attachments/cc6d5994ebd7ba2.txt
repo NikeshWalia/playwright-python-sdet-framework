@@ -1,0 +1,19 @@
+08:43:00 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_modify_another_customers_claim
+08:43:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '250.00', 'description': 'QA 1db85d06 In edge knowledge of special table.', 'incident_date': '2026-10-24'}
+  response: {"id":"ad21c728-0b84-4ba7-81f2-37b6ab2a17fb","reference":"CLM-3DAAB583","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"250.00","description":"QA 1db85d06 In edge knowledge of special table.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:00.519146Z","updated_at":"2026-10-31T08:43:00.519146Z","withdrawn_at":null,"decided_by_id":null}
+08:43:00 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/ad21c728-0b84-4ba7-81f2-37b6ab2a17fb "HTTP/1.1 404 Not Found"
+08:43:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/ad21c728-0b84-4ba7-81f2-37b6ab2a17fb -> 404 (7 ms)
+  request : {'description': 'hijacked by another user'}
+  response: {"detail":"Claim not found"}
+08:43:00 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/ad21c728-0b84-4ba7-81f2-37b6ab2a17fb "HTTP/1.1 404 Not Found"
+08:43:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/ad21c728-0b84-4ba7-81f2-37b6ab2a17fb -> 404 (6 ms)
+  response: {"detail":"Claim not found"}
+08:43:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ad21c728-0b84-4ba7-81f2-37b6ab2a17fb "HTTP/1.1 200 OK"
+08:43:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ad21c728-0b84-4ba7-81f2-37b6ab2a17fb -> 200 (6 ms)
+  response: {"id":"ad21c728-0b84-4ba7-81f2-37b6ab2a17fb","reference":"CLM-3DAAB583","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"250.00","description":"QA 1db85d06 In edge knowledge of special table.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:00.519146Z","updated_at":"2026-10-31T08:43:00.519146Z","withdrawn_at":null,"decided_by_id":null}
+08:43:00 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_modify_another_customers_claim

@@ -1,0 +1,10 @@
+08:43:06 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]
+08:43:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (12 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (16 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '432.10', 'description': 'QA cd01eb92 Red thought speak become.', 'incident_date': '2026-10-24'}
+  response: {"id":"93cae79c-35ec-4128-957c-b49a8d4a04fb","reference":"CLM-216F41D9","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"432.10","description":"QA cd01eb92 Red thought speak become.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:06.472500Z","updated_at":"2026-10-31T08:43:06.472500Z","withdrawn_at":null,"decided_by_id":null}
+08:43:06 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+08:43:06 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]

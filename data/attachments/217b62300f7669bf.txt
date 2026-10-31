@@ -1,0 +1,32 @@
+08:43:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-pay]
+08:43:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '100.00', 'description': 'QA aa53441f Game watch certainly enough area discussion near structure.', 'incident_date': '2026-10-24'}
+  response: {"id":"eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181","reference":"CLM-8F7635DD","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA aa53441f Game watch certainly enough area discussion near structure.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:10.284970Z","updated_at":"2026-10-31T08:43:10.284970Z","withdrawn_at":null,"decided_by_id":null}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181","reference":"CLM-8F7635DD","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA aa53441f Game watch certainly enough area discussion near structure.","incident_date":"2026-10-24","status":"SUBMITTED","created_at":"2026-10-31T08:43:10.284970Z","updated_at":"2026-10-31T08:43:10.298636Z","withdrawn_at":null,"decided_by_id":null}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181","reference":"CLM-8F7635DD","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA aa53441f Game watch certainly enough area discussion near structure.","incident_date":"2026-10-24","status":"UNDER_REVIEW","created_at":"2026-10-31T08:43:10.284970Z","updated_at":"2026-10-31T08:43:10.309701Z","withdrawn_at":null,"decided_by_id":null}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181","reference":"CLM-8F7635DD","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA aa53441f Game watch certainly enough area discussion near structure.","incident_date":"2026-10-24","status":"APPROVED","created_at":"2026-10-31T08:43:10.284970Z","updated_at":"2026-10-31T08:43:10.322572Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions -> 200 (16 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181","reference":"CLM-8F7635DD","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA aa53441f Game watch certainly enough area discussion near structure.","incident_date":"2026-10-24","status":"PAID","created_at":"2026-10-31T08:43:10.284970Z","updated_at":"2026-10-31T08:43:10.334678Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions "HTTP/1.1 409 Conflict"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181/transitions -> 409 (8 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+08:43:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181 "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181 -> 200 (7 ms)
+  response: {"id":"eb4a3cc8-f28b-4cf9-b34a-8ea1d1a9d181","reference":"CLM-8F7635DD","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"100.00","description":"QA aa53441f Game watch certainly enough area discussion near structure.","incident_date":"2026-10-24","status":"PAID","created_at":"2026-10-31T08:43:10.284970Z","updated_at":"2026-10-31T08:43:10.334678Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-pay]

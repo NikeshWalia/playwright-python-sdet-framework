@@ -1,0 +1,36 @@
+08:43:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_edited
+08:43:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"34629e2e-509b-4778-b424-e0a614876d9c","policy_number":"POL-1001","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"10000.00","is_active":true},{"id":"bc6646b2-2581-4761-896b-a02b3272d1ce","policy_number":"POL-1002","holder_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","coverage_limit":"2500.00","is_active":true}]
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '34629e2e-509b-4778-b424-e0a614876d9c', 'amount': '300.00', 'description': 'QA fde67e04 Lawyer everything consider brother image serve.', 'incident_date': '2026-10-24'}
+  response: {"id":"5047303d-a921-4e68-9d68-719ad8b5b72f","reference":"CLM-0179D67D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"300.00","description":"QA fde67e04 Lawyer everything consider brother image serve.","incident_date":"2026-10-24","status":"DRAFT","created_at":"2026-10-31T08:43:10.736703Z","updated_at":"2026-10-31T08:43:10.736703Z","withdrawn_at":null,"decided_by_id":null}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f/transitions "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"5047303d-a921-4e68-9d68-719ad8b5b72f","reference":"CLM-0179D67D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"300.00","description":"QA fde67e04 Lawyer everything consider brother image serve.","incident_date":"2026-10-24","status":"SUBMITTED","created_at":"2026-10-31T08:43:10.736703Z","updated_at":"2026-10-31T08:43:10.747684Z","withdrawn_at":null,"decided_by_id":null}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f/transitions "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"5047303d-a921-4e68-9d68-719ad8b5b72f","reference":"CLM-0179D67D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"300.00","description":"QA fde67e04 Lawyer everything consider brother image serve.","incident_date":"2026-10-24","status":"UNDER_REVIEW","created_at":"2026-10-31T08:43:10.736703Z","updated_at":"2026-10-31T08:43:10.757367Z","withdrawn_at":null,"decided_by_id":null}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f/transitions "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f/transitions -> 200 (14 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"5047303d-a921-4e68-9d68-719ad8b5b72f","reference":"CLM-0179D67D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"300.00","description":"QA fde67e04 Lawyer everything consider brother image serve.","incident_date":"2026-10-24","status":"APPROVED","created_at":"2026-10-31T08:43:10.736703Z","updated_at":"2026-10-31T08:43:10.771310Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f/transitions "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f/transitions -> 200 (13 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"5047303d-a921-4e68-9d68-719ad8b5b72f","reference":"CLM-0179D67D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"300.00","description":"QA fde67e04 Lawyer everything consider brother image serve.","incident_date":"2026-10-24","status":"PAID","created_at":"2026-10-31T08:43:10.736703Z","updated_at":"2026-10-31T08:43:10.784203Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:10 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f "HTTP/1.1 409 Conflict"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f -> 409 (6 ms)
+  request : {'description': 'changed after payment'}
+  response: {"detail":"A claim in status PAID can no longer be edited."}
+08:43:10 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f "HTTP/1.1 409 Conflict"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f -> 409 (7 ms)
+  request : {'amount': '1.00'}
+  response: {"detail":"A claim in status PAID can no longer be edited."}
+08:43:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f "HTTP/1.1 200 OK"
+08:43:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/5047303d-a921-4e68-9d68-719ad8b5b72f -> 200 (5 ms)
+  response: {"id":"5047303d-a921-4e68-9d68-719ad8b5b72f","reference":"CLM-0179D67D","policy_id":"34629e2e-509b-4778-b424-e0a614876d9c","claimant_id":"15f4726f-cda9-4d50-acef-33343b8e7a46","amount":"300.00","description":"QA fde67e04 Lawyer everything consider brother image serve.","incident_date":"2026-10-24","status":"PAID","created_at":"2026-10-31T08:43:10.736703Z","updated_at":"2026-10-31T08:43:10.784203Z","withdrawn_at":null,"decided_by_id":"926e6c4f-01a1-42dd-b76f-dd9b10aea71b"}
+08:43:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_edited
