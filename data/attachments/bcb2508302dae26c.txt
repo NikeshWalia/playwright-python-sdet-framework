@@ -1,0 +1,10 @@
+09:32:37 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]
+09:32:37 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"aa393b5a-939d-41e1-9395-f38a88ff9c74","policy_number":"POL-1001","holder_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","coverage_limit":"10000.00","is_active":true},{"id":"1237b1d7-0ed7-4517-ae5a-31af1540e82c","policy_number":"POL-1002","holder_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","coverage_limit":"2500.00","is_active":true}]
+09:32:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:32:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': 'aa393b5a-939d-41e1-9395-f38a88ff9c74', 'amount': '250.00', 'description': 'QA d9f0d1a8 Bank music they one speech price.', 'incident_date': '2026-10-25'}
+  response: {"id":"7eb13cd0-8fc7-481f-b11b-f33e9c1928ea","reference":"CLM-9519C762","policy_id":"aa393b5a-939d-41e1-9395-f38a88ff9c74","claimant_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","amount":"250.00","description":"QA d9f0d1a8 Bank music they one speech price.","incident_date":"2026-10-25","status":"DRAFT","created_at":"2026-11-01T09:32:37.369398Z","updated_at":"2026-11-01T09:32:37.369398Z","withdrawn_at":null,"decided_by_id":null}
+09:32:37 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+09:32:37 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_new_claim_is_absent_from_a_non_matching_status_filter[chromium]

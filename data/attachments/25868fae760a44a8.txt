@@ -1,0 +1,31 @@
+09:32:40 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
+09:32:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"aa393b5a-939d-41e1-9395-f38a88ff9c74","policy_number":"POL-1001","holder_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","coverage_limit":"10000.00","is_active":true},{"id":"1237b1d7-0ed7-4517-ae5a-31af1540e82c","policy_number":"POL-1002","holder_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","coverage_limit":"2500.00","is_active":true}]
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:32:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (90 ms)
+  request : {'policy_id': 'aa393b5a-939d-41e1-9395-f38a88ff9c74', 'amount': '800.00', 'description': 'QA 5af90706 Ask law meet news concern fire.', 'incident_date': '2026-10-25'}
+  response: {"id":"b06bdb78-46a0-4ff6-8c87-addd7ad8c76d","reference":"CLM-E169A33A","policy_id":"aa393b5a-939d-41e1-9395-f38a88ff9c74","claimant_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","amount":"800.00","description":"QA 5af90706 Ask law meet news concern fire.","incident_date":"2026-10-25","status":"DRAFT","created_at":"2026-11-01T09:32:40.343323Z","updated_at":"2026-11-01T09:32:40.343323Z","withdrawn_at":null,"decided_by_id":null}
+09:32:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b06bdb78-46a0-4ff6-8c87-addd7ad8c76d/transitions "HTTP/1.1 200 OK"
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b06bdb78-46a0-4ff6-8c87-addd7ad8c76d/transitions -> 200 (101 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b06bdb78-46a0-4ff6-8c87-addd7ad8c76d","reference":"CLM-E169A33A","policy_id":"aa393b5a-939d-41e1-9395-f38a88ff9c74","claimant_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","amount":"800.00","description":"QA 5af90706 Ask law meet news concern fire.","incident_date":"2026-10-25","status":"SUBMITTED","created_at":"2026-11-01T09:32:40.343323Z","updated_at":"2026-11-01T09:32:40.434920Z","withdrawn_at":null,"decided_by_id":null}
+09:32:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b06bdb78-46a0-4ff6-8c87-addd7ad8c76d/transitions "HTTP/1.1 200 OK"
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b06bdb78-46a0-4ff6-8c87-addd7ad8c76d/transitions -> 200 (110 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b06bdb78-46a0-4ff6-8c87-addd7ad8c76d","reference":"CLM-E169A33A","policy_id":"aa393b5a-939d-41e1-9395-f38a88ff9c74","claimant_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","amount":"800.00","description":"QA 5af90706 Ask law meet news concern fire.","incident_date":"2026-10-25","status":"UNDER_REVIEW","created_at":"2026-11-01T09:32:40.343323Z","updated_at":"2026-11-01T09:32:40.536610Z","withdrawn_at":null,"decided_by_id":null}
+09:32:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b06bdb78-46a0-4ff6-8c87-addd7ad8c76d/transitions "HTTP/1.1 200 OK"
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b06bdb78-46a0-4ff6-8c87-addd7ad8c76d/transitions -> 200 (148 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"b06bdb78-46a0-4ff6-8c87-addd7ad8c76d","reference":"CLM-E169A33A","policy_id":"aa393b5a-939d-41e1-9395-f38a88ff9c74","claimant_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","amount":"800.00","description":"QA 5af90706 Ask law meet news concern fire.","incident_date":"2026-10-25","status":"REJECTED","created_at":"2026-11-01T09:32:40.343323Z","updated_at":"2026-11-01T09:32:40.645873Z","withdrawn_at":null,"decided_by_id":"062c4b6b-0406-493b-8c44-e24957f4adb3"}
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('b06bdb78-46a0-4ff6-8c87-addd7ad8c76d',)
+  rows: 1
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('b06bdb78-46a0-4ff6-8c87-addd7ad8c76d',)
+  rows: 1
+09:32:40 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('b06bdb78-46a0-4ff6-8c87-addd7ad8c76d',)
+  rows: 1
+09:32:40 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
