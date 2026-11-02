@@ -1,0 +1,36 @@
+09:49:57 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_edited
+09:49:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"724c0794-fc62-420e-83dc-23445e553cc0","policy_number":"POL-1001","holder_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","coverage_limit":"10000.00","is_active":true},{"id":"3c3dc9a3-3423-4dba-9431-a8431b9ddbf6","policy_number":"POL-1002","holder_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","coverage_limit":"2500.00","is_active":true}]
+09:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': '724c0794-fc62-420e-83dc-23445e553cc0', 'amount': '300.00', 'description': 'QA 4cdadb66 Almost his toward near military which protect catch.', 'incident_date': '2026-10-26'}
+  response: {"id":"ad0894d1-f2bb-4164-9ae9-dd79a22c358c","reference":"CLM-BD64919A","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"300.00","description":"QA 4cdadb66 Almost his toward near military which protect catch.","incident_date":"2026-10-26","status":"DRAFT","created_at":"2026-11-02T09:49:57.392408Z","updated_at":"2026-11-02T09:49:57.392408Z","withdrawn_at":null,"decided_by_id":null}
+09:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c/transitions "HTTP/1.1 200 OK"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"ad0894d1-f2bb-4164-9ae9-dd79a22c358c","reference":"CLM-BD64919A","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"300.00","description":"QA 4cdadb66 Almost his toward near military which protect catch.","incident_date":"2026-10-26","status":"SUBMITTED","created_at":"2026-11-02T09:49:57.392408Z","updated_at":"2026-11-02T09:49:57.410371Z","withdrawn_at":null,"decided_by_id":null}
+09:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c/transitions "HTTP/1.1 200 OK"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"ad0894d1-f2bb-4164-9ae9-dd79a22c358c","reference":"CLM-BD64919A","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"300.00","description":"QA 4cdadb66 Almost his toward near military which protect catch.","incident_date":"2026-10-26","status":"UNDER_REVIEW","created_at":"2026-11-02T09:49:57.392408Z","updated_at":"2026-11-02T09:49:57.422748Z","withdrawn_at":null,"decided_by_id":null}
+09:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c/transitions "HTTP/1.1 200 OK"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c/transitions -> 200 (13 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"ad0894d1-f2bb-4164-9ae9-dd79a22c358c","reference":"CLM-BD64919A","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"300.00","description":"QA 4cdadb66 Almost his toward near military which protect catch.","incident_date":"2026-10-26","status":"APPROVED","created_at":"2026-11-02T09:49:57.392408Z","updated_at":"2026-11-02T09:49:57.436062Z","withdrawn_at":null,"decided_by_id":"4468acd4-adda-4686-87de-0c16250ce097"}
+09:49:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c/transitions "HTTP/1.1 200 OK"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c/transitions -> 200 (15 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"ad0894d1-f2bb-4164-9ae9-dd79a22c358c","reference":"CLM-BD64919A","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"300.00","description":"QA 4cdadb66 Almost his toward near military which protect catch.","incident_date":"2026-10-26","status":"PAID","created_at":"2026-11-02T09:49:57.392408Z","updated_at":"2026-11-02T09:49:57.449471Z","withdrawn_at":null,"decided_by_id":"4468acd4-adda-4686-87de-0c16250ce097"}
+09:49:57 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c "HTTP/1.1 409 Conflict"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c -> 409 (7 ms)
+  request : {'description': 'changed after payment'}
+  response: {"detail":"A claim in status PAID can no longer be edited."}
+09:49:57 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c "HTTP/1.1 409 Conflict"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c -> 409 (6 ms)
+  request : {'amount': '1.00'}
+  response: {"detail":"A claim in status PAID can no longer be edited."}
+09:49:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c "HTTP/1.1 200 OK"
+09:49:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/ad0894d1-f2bb-4164-9ae9-dd79a22c358c -> 200 (7 ms)
+  response: {"id":"ad0894d1-f2bb-4164-9ae9-dd79a22c358c","reference":"CLM-BD64919A","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"300.00","description":"QA 4cdadb66 Almost his toward near military which protect catch.","incident_date":"2026-10-26","status":"PAID","created_at":"2026-11-02T09:49:57.392408Z","updated_at":"2026-11-02T09:49:57.449471Z","withdrawn_at":null,"decided_by_id":"4468acd4-adda-4686-87de-0c16250ce097"}
+09:49:57 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_edited

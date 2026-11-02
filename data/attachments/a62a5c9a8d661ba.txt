@@ -1,0 +1,21 @@
+09:49:47 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit
+09:49:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:49:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"724c0794-fc62-420e-83dc-23445e553cc0","policy_number":"POL-1001","holder_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","coverage_limit":"10000.00","is_active":true},{"id":"3c3dc9a3-3423-4dba-9431-a8431b9ddbf6","policy_number":"POL-1002","holder_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","coverage_limit":"2500.00","is_active":true}]
+09:49:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:49:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '724c0794-fc62-420e-83dc-23445e553cc0', 'amount': '5000.01', 'description': 'QA 79442f66 Two human information dark oil.', 'incident_date': '2026-10-26'}
+  response: {"id":"c25f78f8-6195-4b64-a35c-8ec94493a101","reference":"CLM-8F831EEA","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"5000.01","description":"QA 79442f66 Two human information dark oil.","incident_date":"2026-10-26","status":"DRAFT","created_at":"2026-11-02T09:49:47.939100Z","updated_at":"2026-11-02T09:49:47.939100Z","withdrawn_at":null,"decided_by_id":null}
+09:49:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c25f78f8-6195-4b64-a35c-8ec94493a101/transitions "HTTP/1.1 200 OK"
+09:49:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c25f78f8-6195-4b64-a35c-8ec94493a101/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"c25f78f8-6195-4b64-a35c-8ec94493a101","reference":"CLM-8F831EEA","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"5000.01","description":"QA 79442f66 Two human information dark oil.","incident_date":"2026-10-26","status":"SUBMITTED","created_at":"2026-11-02T09:49:47.939100Z","updated_at":"2026-11-02T09:49:47.951660Z","withdrawn_at":null,"decided_by_id":null}
+09:49:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c25f78f8-6195-4b64-a35c-8ec94493a101/transitions "HTTP/1.1 200 OK"
+09:49:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c25f78f8-6195-4b64-a35c-8ec94493a101/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"c25f78f8-6195-4b64-a35c-8ec94493a101","reference":"CLM-8F831EEA","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"5000.01","description":"QA 79442f66 Two human information dark oil.","incident_date":"2026-10-26","status":"UNDER_REVIEW","created_at":"2026-11-02T09:49:47.939100Z","updated_at":"2026-11-02T09:49:47.962994Z","withdrawn_at":null,"decided_by_id":null}
+09:49:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c25f78f8-6195-4b64-a35c-8ec94493a101/transitions "HTTP/1.1 200 OK"
+09:49:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c25f78f8-6195-4b64-a35c-8ec94493a101/transitions -> 200 (11 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"c25f78f8-6195-4b64-a35c-8ec94493a101","reference":"CLM-8F831EEA","policy_id":"724c0794-fc62-420e-83dc-23445e553cc0","claimant_id":"601c51da-95b8-4e08-9e09-63201cbd9a8c","amount":"5000.01","description":"QA 79442f66 Two human information dark oil.","incident_date":"2026-10-26","status":"APPROVED","created_at":"2026-11-02T09:49:47.939100Z","updated_at":"2026-11-02T09:49:47.975055Z","withdrawn_at":null,"decided_by_id":"52feff87-ee4a-457b-a35a-a6a94a0f402f"}
+09:49:47 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit

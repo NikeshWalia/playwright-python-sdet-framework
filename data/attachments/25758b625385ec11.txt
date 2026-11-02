@@ -1,9 +1,0 @@
-09:32:30 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[text]
-09:32:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-09:32:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
-  response: [{"id":"aa393b5a-939d-41e1-9395-f38a88ff9c74","policy_number":"POL-1001","holder_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","coverage_limit":"10000.00","is_active":true},{"id":"1237b1d7-0ed7-4517-ae5a-31af1540e82c","policy_number":"POL-1002","holder_id":"c4ec2d96-f96c-4f28-a0e3-3d473475bb33","coverage_limit":"2500.00","is_active":true}]
-09:32:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-09:32:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
-  request : {'policy_id': 'aa393b5a-939d-41e1-9395-f38a88ff9c74', 'amount': 'not-a-number', 'description': 'QA 5aede2cd Less thought study level feeling.', 'incident_date': '2026-10-25'}
-  response: {"detail":[{"type":"decimal_parsing","loc":["body","amount"],"msg":"Input should be a valid decimal","input":"not-a-number"}]}
-09:32:30 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[text]
