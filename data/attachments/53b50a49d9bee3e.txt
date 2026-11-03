@@ -1,0 +1,23 @@
+09:54:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event
+09:54:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:54:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","policy_number":"POL-1001","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"10000.00","is_active":true},{"id":"f73e4de2-5c27-4889-8a10-875c7ff9cc5e","policy_number":"POL-1002","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"2500.00","is_active":true}]
+09:54:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:54:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '001ada5f-04f1-4ae0-9491-c6dc2d5c12dc', 'amount': '300.00', 'description': 'QA 44943165 White now want understand real.', 'incident_date': '2026-10-27'}
+  response: {"id":"2b0fa0fa-a73d-4b8d-916e-404716b4905f","reference":"CLM-DEFBD9D9","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"300.00","description":"QA 44943165 White now want understand real.","incident_date":"2026-10-27","status":"DRAFT","created_at":"2026-11-03T09:54:24.873952Z","updated_at":"2026-11-03T09:54:24.873952Z","withdrawn_at":null,"decided_by_id":null}
+09:54:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2b0fa0fa-a73d-4b8d-916e-404716b4905f/transitions "HTTP/1.1 200 OK"
+09:54:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2b0fa0fa-a73d-4b8d-916e-404716b4905f/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2b0fa0fa-a73d-4b8d-916e-404716b4905f","reference":"CLM-DEFBD9D9","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"300.00","description":"QA 44943165 White now want understand real.","incident_date":"2026-10-27","status":"SUBMITTED","created_at":"2026-11-03T09:54:24.873952Z","updated_at":"2026-11-03T09:54:24.885108Z","withdrawn_at":null,"decided_by_id":null}
+09:54:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2b0fa0fa-a73d-4b8d-916e-404716b4905f/events "HTTP/1.1 200 OK"
+09:54:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2b0fa0fa-a73d-4b8d-916e-404716b4905f/events -> 200 (5 ms)
+  response: [{"id":"529a5987-6e21-4d6d-9a89-f31573485377","claim_id":"2b0fa0fa-a73d-4b8d-916e-404716b4905f","actor_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-11-03T09:54:24.873952Z"},{"id":"60030cad-d19c-4a70-88af-8df72c29e9d8","claim_id":"2b0fa0fa-a73d-4b8d-916e-404716b4905f","actor_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-11-03T09:54:24.885108Z"}]
+09:54:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2b0fa0fa-a73d-4b8d-916e-404716b4905f/transitions "HTTP/1.1 409 Conflict"
+09:54:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2b0fa0fa-a73d-4b8d-916e-404716b4905f/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+09:54:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2b0fa0fa-a73d-4b8d-916e-404716b4905f/events "HTTP/1.1 200 OK"
+09:54:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2b0fa0fa-a73d-4b8d-916e-404716b4905f/events -> 200 (5 ms)
+  response: [{"id":"529a5987-6e21-4d6d-9a89-f31573485377","claim_id":"2b0fa0fa-a73d-4b8d-916e-404716b4905f","actor_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-11-03T09:54:24.873952Z"},{"id":"60030cad-d19c-4a70-88af-8df72c29e9d8","claim_id":"2b0fa0fa-a73d-4b8d-916e-404716b4905f","actor_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","from_status":"DRAFT","to_status":"SUBMITTED","note":null,"occurred_at":"2026-11-03T09:54:24.885108Z"}]
+09:54:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_refused_transition_writes_no_audit_event

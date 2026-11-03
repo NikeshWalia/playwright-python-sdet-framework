@@ -1,0 +1,9 @@
+09:54:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[empty]
+09:54:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:54:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","policy_number":"POL-1001","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"10000.00","is_active":true},{"id":"f73e4de2-5c27-4889-8a10-875c7ff9cc5e","policy_number":"POL-1002","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"2500.00","is_active":true}]
+09:54:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+09:54:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
+  request : {'policy_id': '001ada5f-04f1-4ae0-9491-c6dc2d5c12dc', 'amount': '250.00', 'description': 'QA f786727e Exist fill effect million.', 'incident_date': ''}
+  response: {"detail":[{"type":"date_from_datetime_parsing","loc":["body","incident_date"],"msg":"Input should be a valid date or datetime, input is too short","input":"","ctx":{"error":"input is too short"}}]}
+09:54:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[empty]

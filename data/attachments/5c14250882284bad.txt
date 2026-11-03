@@ -1,0 +1,24 @@
+09:54:23 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-pay]
+09:54:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:54:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","policy_number":"POL-1001","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"10000.00","is_active":true},{"id":"f73e4de2-5c27-4889-8a10-875c7ff9cc5e","policy_number":"POL-1002","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"2500.00","is_active":true}]
+09:54:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:54:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': '001ada5f-04f1-4ae0-9491-c6dc2d5c12dc', 'amount': '100.00', 'description': 'QA 1bc4dbcd Traditional time tell check play many decide.', 'incident_date': '2026-10-27'}
+  response: {"id":"a56a0807-7eae-4915-9e03-be49a81a166e","reference":"CLM-51592EBA","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"100.00","description":"QA 1bc4dbcd Traditional time tell check play many decide.","incident_date":"2026-10-27","status":"DRAFT","created_at":"2026-11-03T09:54:23.583127Z","updated_at":"2026-11-03T09:54:23.583127Z","withdrawn_at":null,"decided_by_id":null}
+09:54:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a56a0807-7eae-4915-9e03-be49a81a166e/transitions "HTTP/1.1 200 OK"
+09:54:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a56a0807-7eae-4915-9e03-be49a81a166e/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a56a0807-7eae-4915-9e03-be49a81a166e","reference":"CLM-51592EBA","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"100.00","description":"QA 1bc4dbcd Traditional time tell check play many decide.","incident_date":"2026-10-27","status":"SUBMITTED","created_at":"2026-11-03T09:54:23.583127Z","updated_at":"2026-11-03T09:54:23.598085Z","withdrawn_at":null,"decided_by_id":null}
+09:54:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a56a0807-7eae-4915-9e03-be49a81a166e/transitions "HTTP/1.1 200 OK"
+09:54:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a56a0807-7eae-4915-9e03-be49a81a166e/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a56a0807-7eae-4915-9e03-be49a81a166e","reference":"CLM-51592EBA","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"100.00","description":"QA 1bc4dbcd Traditional time tell check play many decide.","incident_date":"2026-10-27","status":"UNDER_REVIEW","created_at":"2026-11-03T09:54:23.583127Z","updated_at":"2026-11-03T09:54:23.612331Z","withdrawn_at":null,"decided_by_id":null}
+09:54:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a56a0807-7eae-4915-9e03-be49a81a166e/transitions "HTTP/1.1 409 Conflict"
+09:54:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a56a0807-7eae-4915-9e03-be49a81a166e/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status UNDER_REVIEW; it must be APPROVED."}
+09:54:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/a56a0807-7eae-4915-9e03-be49a81a166e "HTTP/1.1 200 OK"
+09:54:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/a56a0807-7eae-4915-9e03-be49a81a166e -> 200 (5 ms)
+  response: {"id":"a56a0807-7eae-4915-9e03-be49a81a166e","reference":"CLM-51592EBA","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"100.00","description":"QA 1bc4dbcd Traditional time tell check play many decide.","incident_date":"2026-10-27","status":"UNDER_REVIEW","created_at":"2026-11-03T09:54:23.583127Z","updated_at":"2026-11-03T09:54:23.612331Z","withdrawn_at":null,"decided_by_id":null}
+09:54:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-pay]

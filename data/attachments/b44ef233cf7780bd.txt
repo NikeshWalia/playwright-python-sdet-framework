@@ -1,0 +1,29 @@
+09:54:25 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_the_audit_chain_has_no_gaps
+09:54:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","policy_number":"POL-1001","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"10000.00","is_active":true},{"id":"f73e4de2-5c27-4889-8a10-875c7ff9cc5e","policy_number":"POL-1002","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"2500.00","is_active":true}]
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '001ada5f-04f1-4ae0-9491-c6dc2d5c12dc', 'amount': '700.00', 'description': 'QA 1cf10faf Thought court window source offer.', 'incident_date': '2026-10-27'}
+  response: {"id":"5d0db962-d6c1-476c-aee3-41e531656bbd","reference":"CLM-8D344A27","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"700.00","description":"QA 1cf10faf Thought court window source offer.","incident_date":"2026-10-27","status":"DRAFT","created_at":"2026-11-03T09:54:25.077039Z","updated_at":"2026-11-03T09:54:25.077039Z","withdrawn_at":null,"decided_by_id":null}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5d0db962-d6c1-476c-aee3-41e531656bbd/transitions "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5d0db962-d6c1-476c-aee3-41e531656bbd/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"5d0db962-d6c1-476c-aee3-41e531656bbd","reference":"CLM-8D344A27","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"700.00","description":"QA 1cf10faf Thought court window source offer.","incident_date":"2026-10-27","status":"SUBMITTED","created_at":"2026-11-03T09:54:25.077039Z","updated_at":"2026-11-03T09:54:25.087186Z","withdrawn_at":null,"decided_by_id":null}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5d0db962-d6c1-476c-aee3-41e531656bbd/transitions "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5d0db962-d6c1-476c-aee3-41e531656bbd/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"5d0db962-d6c1-476c-aee3-41e531656bbd","reference":"CLM-8D344A27","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"700.00","description":"QA 1cf10faf Thought court window source offer.","incident_date":"2026-10-27","status":"UNDER_REVIEW","created_at":"2026-11-03T09:54:25.077039Z","updated_at":"2026-11-03T09:54:25.096237Z","withdrawn_at":null,"decided_by_id":null}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5d0db962-d6c1-476c-aee3-41e531656bbd/transitions "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5d0db962-d6c1-476c-aee3-41e531656bbd/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"5d0db962-d6c1-476c-aee3-41e531656bbd","reference":"CLM-8D344A27","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"700.00","description":"QA 1cf10faf Thought court window source offer.","incident_date":"2026-10-27","status":"APPROVED","created_at":"2026-11-03T09:54:25.077039Z","updated_at":"2026-11-03T09:54:25.105403Z","withdrawn_at":null,"decided_by_id":"f31fb1fd-5472-4cb7-b724-c1267898bf42"}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5d0db962-d6c1-476c-aee3-41e531656bbd/transitions "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5d0db962-d6c1-476c-aee3-41e531656bbd/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"5d0db962-d6c1-476c-aee3-41e531656bbd","reference":"CLM-8D344A27","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"700.00","description":"QA 1cf10faf Thought court window source offer.","incident_date":"2026-10-27","status":"PAID","created_at":"2026-11-03T09:54:25.077039Z","updated_at":"2026-11-03T09:54:25.114479Z","withdrawn_at":null,"decided_by_id":"f31fb1fd-5472-4cb7-b724-c1267898bf42"}
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('5d0db962-d6c1-476c-aee3-41e531656bbd',)
+  rows: 5
+09:54:25 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_the_audit_chain_has_no_gaps

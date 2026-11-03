@@ -1,0 +1,40 @@
+09:54:25 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
+09:54:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","policy_number":"POL-1001","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"10000.00","is_active":true},{"id":"f73e4de2-5c27-4889-8a10-875c7ff9cc5e","policy_number":"POL-1002","holder_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","coverage_limit":"2500.00","is_active":true}]
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '001ada5f-04f1-4ae0-9491-c6dc2d5c12dc', 'amount': '800.00', 'description': 'QA a07f2e8c Compare expect water thank beautiful hand.', 'incident_date': '2026-10-27'}
+  response: {"id":"f7a2df59-5f41-4f86-8ce4-e1297080892b","reference":"CLM-2296DE32","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"800.00","description":"QA a07f2e8c Compare expect water thank beautiful hand.","incident_date":"2026-10-27","status":"DRAFT","created_at":"2026-11-03T09:54:25.370526Z","updated_at":"2026-11-03T09:54:25.370526Z","withdrawn_at":null,"decided_by_id":null}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"f7a2df59-5f41-4f86-8ce4-e1297080892b","reference":"CLM-2296DE32","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"800.00","description":"QA a07f2e8c Compare expect water thank beautiful hand.","incident_date":"2026-10-27","status":"SUBMITTED","created_at":"2026-11-03T09:54:25.370526Z","updated_at":"2026-11-03T09:54:25.380267Z","withdrawn_at":null,"decided_by_id":null}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"f7a2df59-5f41-4f86-8ce4-e1297080892b","reference":"CLM-2296DE32","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"800.00","description":"QA a07f2e8c Compare expect water thank beautiful hand.","incident_date":"2026-10-27","status":"UNDER_REVIEW","created_at":"2026-11-03T09:54:25.370526Z","updated_at":"2026-11-03T09:54:25.390189Z","withdrawn_at":null,"decided_by_id":null}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"f7a2df59-5f41-4f86-8ce4-e1297080892b","reference":"CLM-2296DE32","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"800.00","description":"QA a07f2e8c Compare expect water thank beautiful hand.","incident_date":"2026-10-27","status":"APPROVED","created_at":"2026-11-03T09:54:25.370526Z","updated_at":"2026-11-03T09:54:25.400236Z","withdrawn_at":null,"decided_by_id":"f31fb1fd-5472-4cb7-b724-c1267898bf42"}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions "HTTP/1.1 200 OK"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"f7a2df59-5f41-4f86-8ce4-e1297080892b","reference":"CLM-2296DE32","policy_id":"001ada5f-04f1-4ae0-9491-c6dc2d5c12dc","claimant_id":"17da5965-6a3a-49dc-b60f-39861cc1b6f0","amount":"800.00","description":"QA a07f2e8c Compare expect water thank beautiful hand.","incident_date":"2026-10-27","status":"PAID","created_at":"2026-11-03T09:54:25.370526Z","updated_at":"2026-11-03T09:54:25.408956Z","withdrawn_at":null,"decided_by_id":"f31fb1fd-5472-4cb7-b724-c1267898bf42"}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions "HTTP/1.1 409 Conflict"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+09:54:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions "HTTP/1.1 409 Conflict"
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f7a2df59-5f41-4f86-8ce4-e1297080892b/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('f7a2df59-5f41-4f86-8ce4-e1297080892b',)
+  rows: 1
+09:54:25 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('f7a2df59-5f41-4f86-8ce4-e1297080892b',)
+  rows: 1
+09:54:25 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
