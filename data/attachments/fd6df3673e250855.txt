@@ -1,0 +1,25 @@
+09:42:11 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+09:42:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:42:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","policy_number":"POL-1001","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"10000.00","is_active":true},{"id":"9dd3e5be-f5d3-46a1-9778-adddf4a793d7","policy_number":"POL-1002","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"2500.00","is_active":true}]
+09:42:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '250.00', 'description': 'QA 075a69bf Analysis likely many hold happy future.', 'incident_date': '2026-10-28'}
+  response: {"id":"d7d75afe-64af-4171-86bf-9909c30e68df","reference":"CLM-74CB3400","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"250.00","description":"QA 075a69bf Analysis likely many hold happy future.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:11.563161Z","updated_at":"2026-11-04T09:42:11.563161Z","withdrawn_at":null,"decided_by_id":null}
+09:42:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '250.00', 'description': 'QA 1688bd8a Pm body fire value.', 'incident_date': '2026-10-28'}
+  response: {"id":"0e9a4990-621d-4e0d-b08f-5c72fadcf4f0","reference":"CLM-C1EB2CE4","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"250.00","description":"QA 1688bd8a Pm body fire value.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:11.571947Z","updated_at":"2026-11-04T09:42:11.571947Z","withdrawn_at":null,"decided_by_id":null}
+09:42:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '250.00', 'description': 'QA ce7d8fca Republican thing likely contain some know trial.', 'incident_date': '2026-10-28'}
+  response: {"id":"53cfbc79-e26d-47b7-8b25-ea6fe6d8f4e4","reference":"CLM-D66E05E4","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"250.00","description":"QA ce7d8fca Republican thing likely contain some know trial.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:11.582543Z","updated_at":"2026-11-04T09:42:11.582543Z","withdrawn_at":null,"decided_by_id":null}
+09:42:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '250.00', 'description': 'QA 716bbf3b Sit information total doctor effect issue.', 'incident_date': '2026-10-28'}
+  response: {"id":"5456b7f6-d4ef-4c6d-9e91-70aa28f284f1","reference":"CLM-6D06F2A4","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"250.00","description":"QA 716bbf3b Sit information total doctor effect issue.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:11.591333Z","updated_at":"2026-11-04T09:42:11.591333Z","withdrawn_at":null,"decided_by_id":null}
+09:42:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '250.00', 'description': 'QA dd7b5f67 Nation similar happy nation professor travel discuss.', 'incident_date': '2026-10-28'}
+  response: {"id":"9a712461-f6cd-4150-986d-d9126ffc1149","reference":"CLM-14768CAF","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"250.00","description":"QA dd7b5f67 Nation similar happy nation professor travel discuss.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:11.601009Z","updated_at":"2026-11-04T09:42:11.601009Z","withdrawn_at":null,"decided_by_id":null}
+09:42:11 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

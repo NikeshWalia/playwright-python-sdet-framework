@@ -1,0 +1,26 @@
+09:42:14 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+09:42:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:42:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (11 ms)
+  response: [{"id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","policy_number":"POL-1001","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"10000.00","is_active":true},{"id":"9dd3e5be-f5d3-46a1-9778-adddf4a793d7","policy_number":"POL-1002","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"2500.00","is_active":true}]
+09:42:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '410.00', 'description': 'QA f0b5fc3e On meet leave country fly above.', 'incident_date': '2026-10-28'}
+  response: {"id":"93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0","reference":"CLM-EA22618D","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"410.00","description":"QA f0b5fc3e On meet leave country fly above.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:14.226239Z","updated_at":"2026-11-04T09:42:14.226239Z","withdrawn_at":null,"decided_by_id":null}
+09:42:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0/transitions "HTTP/1.1 200 OK"
+09:42:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0","reference":"CLM-EA22618D","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"410.00","description":"QA f0b5fc3e On meet leave country fly above.","incident_date":"2026-10-28","status":"SUBMITTED","created_at":"2026-11-04T09:42:14.226239Z","updated_at":"2026-11-04T09:42:14.236891Z","withdrawn_at":null,"decided_by_id":null}
+09:42:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0/transitions "HTTP/1.1 200 OK"
+09:42:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0/transitions -> 200 (17 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0","reference":"CLM-EA22618D","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"410.00","description":"QA f0b5fc3e On meet leave country fly above.","incident_date":"2026-10-28","status":"UNDER_REVIEW","created_at":"2026-11-04T09:42:14.226239Z","updated_at":"2026-11-04T09:42:14.247577Z","withdrawn_at":null,"decided_by_id":null}
+09:42:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0/transitions "HTTP/1.1 200 OK"
+09:42:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0/transitions -> 200 (18 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0","reference":"CLM-EA22618D","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"410.00","description":"QA f0b5fc3e On meet leave country fly above.","incident_date":"2026-10-28","status":"APPROVED","created_at":"2026-11-04T09:42:14.226239Z","updated_at":"2026-11-04T09:42:14.269335Z","withdrawn_at":null,"decided_by_id":"5060f9f5-dace-43cd-9dd0-5c73e02fbc71"}
+09:42:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0/transitions "HTTP/1.1 200 OK"
+09:42:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0/transitions -> 200 (30 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0","reference":"CLM-EA22618D","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"410.00","description":"QA f0b5fc3e On meet leave country fly above.","incident_date":"2026-10-28","status":"PAID","created_at":"2026-11-04T09:42:14.226239Z","updated_at":"2026-11-04T09:42:14.284326Z","withdrawn_at":null,"decided_by_id":"5060f9f5-dace-43cd-9dd0-5c73e02fbc71"}
+09:42:14 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/93eb72b8-8c5a-48ad-8fb5-0f77ca8d54c0
+09:42:14 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]

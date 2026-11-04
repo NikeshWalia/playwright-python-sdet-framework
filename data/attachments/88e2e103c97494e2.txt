@@ -1,0 +1,9 @@
+09:42:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[whitespace]
+09:42:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:42:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","policy_number":"POL-1001","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"10000.00","is_active":true},{"id":"9dd3e5be-f5d3-46a1-9778-adddf4a793d7","policy_number":"POL-1002","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"2500.00","is_active":true}]
+09:42:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+09:42:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (5 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '  ', 'description': 'QA 39ab2d54 Heart win security clear front.', 'incident_date': '2026-10-28'}
+  response: {"detail":[{"type":"decimal_parsing","loc":["body","amount"],"msg":"Input should be a valid decimal","input":"  "}]}
+09:42:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[whitespace]

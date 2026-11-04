@@ -1,0 +1,24 @@
+09:42:19 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-pay]
+09:42:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","policy_number":"POL-1001","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"10000.00","is_active":true},{"id":"9dd3e5be-f5d3-46a1-9778-adddf4a793d7","policy_number":"POL-1002","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"2500.00","is_active":true}]
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '100.00', 'description': 'QA d2fbfec8 Statement town while throw chance various administration.', 'incident_date': '2026-10-28'}
+  response: {"id":"3f91c1ff-1175-4d76-b6c4-8918779a1964","reference":"CLM-66C30B93","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA d2fbfec8 Statement town while throw chance various administration.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:19.690946Z","updated_at":"2026-11-04T09:42:19.690946Z","withdrawn_at":null,"decided_by_id":null}
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3f91c1ff-1175-4d76-b6c4-8918779a1964/transitions "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3f91c1ff-1175-4d76-b6c4-8918779a1964/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"3f91c1ff-1175-4d76-b6c4-8918779a1964","reference":"CLM-66C30B93","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA d2fbfec8 Statement town while throw chance various administration.","incident_date":"2026-10-28","status":"SUBMITTED","created_at":"2026-11-04T09:42:19.690946Z","updated_at":"2026-11-04T09:42:19.708271Z","withdrawn_at":null,"decided_by_id":null}
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3f91c1ff-1175-4d76-b6c4-8918779a1964/transitions "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3f91c1ff-1175-4d76-b6c4-8918779a1964/transitions -> 200 (15 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"3f91c1ff-1175-4d76-b6c4-8918779a1964","reference":"CLM-66C30B93","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA d2fbfec8 Statement town while throw chance various administration.","incident_date":"2026-10-28","status":"UNDER_REVIEW","created_at":"2026-11-04T09:42:19.690946Z","updated_at":"2026-11-04T09:42:19.722757Z","withdrawn_at":null,"decided_by_id":null}
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/3f91c1ff-1175-4d76-b6c4-8918779a1964/transitions "HTTP/1.1 409 Conflict"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/3f91c1ff-1175-4d76-b6c4-8918779a1964/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status UNDER_REVIEW; it must be APPROVED."}
+09:42:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/3f91c1ff-1175-4d76-b6c4-8918779a1964 "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/3f91c1ff-1175-4d76-b6c4-8918779a1964 -> 200 (6 ms)
+  response: {"id":"3f91c1ff-1175-4d76-b6c4-8918779a1964","reference":"CLM-66C30B93","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA d2fbfec8 Statement town while throw chance various administration.","incident_date":"2026-10-28","status":"UNDER_REVIEW","created_at":"2026-11-04T09:42:19.690946Z","updated_at":"2026-11-04T09:42:19.722757Z","withdrawn_at":null,"decided_by_id":null}
+09:42:19 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-pay]

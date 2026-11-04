@@ -1,0 +1,19 @@
+09:42:10 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_a_customer_cannot_modify_another_customers_claim
+09:42:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:42:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","policy_number":"POL-1001","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"10000.00","is_active":true},{"id":"9dd3e5be-f5d3-46a1-9778-adddf4a793d7","policy_number":"POL-1002","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"2500.00","is_active":true}]
+09:42:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '250.00', 'description': 'QA 6425b9e2 Claim oil continue manager.', 'incident_date': '2026-10-28'}
+  response: {"id":"212f71ea-36c9-45e0-98c7-f31826c7ac6c","reference":"CLM-FFF61F4E","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"250.00","description":"QA 6425b9e2 Claim oil continue manager.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:10.794085Z","updated_at":"2026-11-04T09:42:10.794085Z","withdrawn_at":null,"decided_by_id":null}
+09:42:10 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/212f71ea-36c9-45e0-98c7-f31826c7ac6c "HTTP/1.1 404 Not Found"
+09:42:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/212f71ea-36c9-45e0-98c7-f31826c7ac6c -> 404 (6 ms)
+  request : {'description': 'hijacked by another user'}
+  response: {"detail":"Claim not found"}
+09:42:10 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/212f71ea-36c9-45e0-98c7-f31826c7ac6c "HTTP/1.1 404 Not Found"
+09:42:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/212f71ea-36c9-45e0-98c7-f31826c7ac6c -> 404 (5 ms)
+  response: {"detail":"Claim not found"}
+09:42:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/212f71ea-36c9-45e0-98c7-f31826c7ac6c "HTTP/1.1 200 OK"
+09:42:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/212f71ea-36c9-45e0-98c7-f31826c7ac6c -> 200 (8 ms)
+  response: {"id":"212f71ea-36c9-45e0-98c7-f31826c7ac6c","reference":"CLM-FFF61F4E","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"250.00","description":"QA 6425b9e2 Claim oil continue manager.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:10.794085Z","updated_at":"2026-11-04T09:42:10.794085Z","withdrawn_at":null,"decided_by_id":null}
+09:42:10 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_a_customer_cannot_modify_another_customers_claim

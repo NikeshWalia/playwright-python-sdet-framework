@@ -1,0 +1,28 @@
+09:42:19 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-pay]
+09:42:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","policy_number":"POL-1001","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"10000.00","is_active":true},{"id":"9dd3e5be-f5d3-46a1-9778-adddf4a793d7","policy_number":"POL-1002","holder_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","coverage_limit":"2500.00","is_active":true}]
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '3c4c156d-c9fa-48ae-9f2e-bf03aa95e096', 'amount': '100.00', 'description': 'QA a88257ee Upon step poor someone best point.', 'incident_date': '2026-10-28'}
+  response: {"id":"f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27","reference":"CLM-BC9D3569","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA a88257ee Upon step poor someone best point.","incident_date":"2026-10-28","status":"DRAFT","created_at":"2026-11-04T09:42:19.772915Z","updated_at":"2026-11-04T09:42:19.772915Z","withdrawn_at":null,"decided_by_id":null}
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27/transitions "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27","reference":"CLM-BC9D3569","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA a88257ee Upon step poor someone best point.","incident_date":"2026-10-28","status":"SUBMITTED","created_at":"2026-11-04T09:42:19.772915Z","updated_at":"2026-11-04T09:42:19.785787Z","withdrawn_at":null,"decided_by_id":null}
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27/transitions "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27","reference":"CLM-BC9D3569","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA a88257ee Upon step poor someone best point.","incident_date":"2026-10-28","status":"UNDER_REVIEW","created_at":"2026-11-04T09:42:19.772915Z","updated_at":"2026-11-04T09:42:19.797755Z","withdrawn_at":null,"decided_by_id":null}
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27/transitions "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27/transitions -> 200 (9 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27","reference":"CLM-BC9D3569","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA a88257ee Upon step poor someone best point.","incident_date":"2026-10-28","status":"REJECTED","created_at":"2026-11-04T09:42:19.772915Z","updated_at":"2026-11-04T09:42:19.808553Z","withdrawn_at":null,"decided_by_id":"5060f9f5-dace-43cd-9dd0-5c73e02fbc71"}
+09:42:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27/transitions "HTTP/1.1 409 Conflict"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status REJECTED; it must be APPROVED."}
+09:42:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27 "HTTP/1.1 200 OK"
+09:42:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27 -> 200 (4 ms)
+  response: {"id":"f4afb1a0-af7c-4dfb-b2d8-9867d33d9a27","reference":"CLM-BC9D3569","policy_id":"3c4c156d-c9fa-48ae-9f2e-bf03aa95e096","claimant_id":"0ccb3fbe-7d15-4202-9938-4bf75ec4b389","amount":"100.00","description":"QA a88257ee Upon step poor someone best point.","incident_date":"2026-10-28","status":"REJECTED","created_at":"2026-11-04T09:42:19.772915Z","updated_at":"2026-11-04T09:42:19.808553Z","withdrawn_at":null,"decided_by_id":"5060f9f5-dace-43cd-9dd0-5c73e02fbc71"}
+09:42:19 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-pay]
