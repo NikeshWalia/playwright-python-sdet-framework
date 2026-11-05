@@ -1,0 +1,9 @@
+09:45:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_incident_dated_today_is_accepted
+09:45:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"846b8798-903e-4570-9b47-0c94d85dd84f","policy_number":"POL-1001","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"10000.00","is_active":true},{"id":"a2e29f9f-afb3-4407-af09-7e5c368d01aa","policy_number":"POL-1002","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"2500.00","is_active":true}]
+09:45:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '250.00', 'description': 'QA 439349ce Over science side toward.', 'incident_date': '2026-11-05'}
+  response: {"id":"cca6ea7f-bb11-4c49-b333-ad8c66ea5515","reference":"CLM-FFC74502","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"250.00","description":"QA 439349ce Over science side toward.","incident_date":"2026-11-05","status":"DRAFT","created_at":"2026-11-05T09:45:14.692418Z","updated_at":"2026-11-05T09:45:14.692418Z","withdrawn_at":null,"decided_by_id":null}
+09:45:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_incident_dated_today_is_accepted

@@ -1,0 +1,24 @@
+09:45:19 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-submit]
+09:45:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:45:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"846b8798-903e-4570-9b47-0c94d85dd84f","policy_number":"POL-1001","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"10000.00","is_active":true},{"id":"a2e29f9f-afb3-4407-af09-7e5c368d01aa","policy_number":"POL-1002","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"2500.00","is_active":true}]
+09:45:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '100.00', 'description': 'QA 89cd9358 Agent about hard crime.', 'incident_date': '2026-10-29'}
+  response: {"id":"a06597fe-4708-44e7-bac3-7634829a14ba","reference":"CLM-F3FB1648","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"100.00","description":"QA 89cd9358 Agent about hard crime.","incident_date":"2026-10-29","status":"DRAFT","created_at":"2026-11-05T09:45:19.309757Z","updated_at":"2026-11-05T09:45:19.309757Z","withdrawn_at":null,"decided_by_id":null}
+09:45:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a06597fe-4708-44e7-bac3-7634829a14ba/transitions "HTTP/1.1 200 OK"
+09:45:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a06597fe-4708-44e7-bac3-7634829a14ba/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a06597fe-4708-44e7-bac3-7634829a14ba","reference":"CLM-F3FB1648","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"100.00","description":"QA 89cd9358 Agent about hard crime.","incident_date":"2026-10-29","status":"SUBMITTED","created_at":"2026-11-05T09:45:19.309757Z","updated_at":"2026-11-05T09:45:19.320884Z","withdrawn_at":null,"decided_by_id":null}
+09:45:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a06597fe-4708-44e7-bac3-7634829a14ba/transitions "HTTP/1.1 200 OK"
+09:45:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a06597fe-4708-44e7-bac3-7634829a14ba/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a06597fe-4708-44e7-bac3-7634829a14ba","reference":"CLM-F3FB1648","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"100.00","description":"QA 89cd9358 Agent about hard crime.","incident_date":"2026-10-29","status":"UNDER_REVIEW","created_at":"2026-11-05T09:45:19.309757Z","updated_at":"2026-11-05T09:45:19.329387Z","withdrawn_at":null,"decided_by_id":null}
+09:45:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a06597fe-4708-44e7-bac3-7634829a14ba/transitions "HTTP/1.1 409 Conflict"
+09:45:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a06597fe-4708-44e7-bac3-7634829a14ba/transitions -> 409 (3 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status UNDER_REVIEW; it must be DRAFT."}
+09:45:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/a06597fe-4708-44e7-bac3-7634829a14ba "HTTP/1.1 200 OK"
+09:45:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/a06597fe-4708-44e7-bac3-7634829a14ba -> 200 (3 ms)
+  response: {"id":"a06597fe-4708-44e7-bac3-7634829a14ba","reference":"CLM-F3FB1648","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"100.00","description":"QA 89cd9358 Agent about hard crime.","incident_date":"2026-10-29","status":"UNDER_REVIEW","created_at":"2026-11-05T09:45:19.309757Z","updated_at":"2026-11-05T09:45:19.329387Z","withdrawn_at":null,"decided_by_id":null}
+09:45:19 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-submit]

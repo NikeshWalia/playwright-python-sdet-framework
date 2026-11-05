@@ -1,0 +1,6 @@
+09:45:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_auth.py::test_the_login_response_does_not_leak_the_password_hash
+09:45:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (53 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YjJmOTJkMS00YmRmLTQxZjQtYTdlZi04MGQ2NWZiYjAyNzAiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTM4NzE5MTQsImV4cCI6MTc5Mzg3NTUxNH0.9N2x4Y1yHu4PZb4FnrDEFq52ZMyD2Q0i0m7hnAjgpfQ","token_type":"bearer","expires_in":3600}
+09:45:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_auth.py::test_the_login_response_does_not_leak_the_password_hash

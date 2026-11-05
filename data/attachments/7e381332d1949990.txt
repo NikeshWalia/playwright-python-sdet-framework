@@ -1,0 +1,25 @@
+09:45:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+09:45:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"846b8798-903e-4570-9b47-0c94d85dd84f","policy_number":"POL-1001","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"10000.00","is_active":true},{"id":"a2e29f9f-afb3-4407-af09-7e5c368d01aa","policy_number":"POL-1002","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"2500.00","is_active":true}]
+09:45:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '250.00', 'description': 'QA b776aea7 Rock summer piece loss article try.', 'incident_date': '2026-10-29'}
+  response: {"id":"fe2dd43c-768d-46cf-b01b-038945c6cf30","reference":"CLM-36EFA873","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"250.00","description":"QA b776aea7 Rock summer piece loss article try.","incident_date":"2026-10-29","status":"DRAFT","created_at":"2026-11-05T09:45:14.853287Z","updated_at":"2026-11-05T09:45:14.853287Z","withdrawn_at":null,"decided_by_id":null}
+09:45:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '250.00', 'description': 'QA 5fa3ff7f Follow again thought nation would bar top.', 'incident_date': '2026-10-29'}
+  response: {"id":"6d3c6883-811b-4280-aa35-1c19f39ac174","reference":"CLM-AAA693BE","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"250.00","description":"QA 5fa3ff7f Follow again thought nation would bar top.","incident_date":"2026-10-29","status":"DRAFT","created_at":"2026-11-05T09:45:14.858595Z","updated_at":"2026-11-05T09:45:14.858595Z","withdrawn_at":null,"decided_by_id":null}
+09:45:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '250.00', 'description': 'QA c87f45c9 Push business want.', 'incident_date': '2026-10-29'}
+  response: {"id":"af22f8f2-9891-49cb-bc59-de275370f670","reference":"CLM-403E5BD7","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"250.00","description":"QA c87f45c9 Push business want.","incident_date":"2026-10-29","status":"DRAFT","created_at":"2026-11-05T09:45:14.863606Z","updated_at":"2026-11-05T09:45:14.863606Z","withdrawn_at":null,"decided_by_id":null}
+09:45:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '250.00', 'description': 'QA 5e36030b Cost answer option.', 'incident_date': '2026-10-29'}
+  response: {"id":"3d57a449-2a6d-4c06-aba6-ed4b6b5013af","reference":"CLM-901A68E5","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"250.00","description":"QA 5e36030b Cost answer option.","incident_date":"2026-10-29","status":"DRAFT","created_at":"2026-11-05T09:45:14.868949Z","updated_at":"2026-11-05T09:45:14.868949Z","withdrawn_at":null,"decided_by_id":null}
+09:45:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (4 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '250.00', 'description': 'QA f0d76145 Light issue simply base deep.', 'incident_date': '2026-10-29'}
+  response: {"id":"cf9adb22-d5c0-4c8c-a87e-8eb9617079b9","reference":"CLM-B62DEDBF","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"250.00","description":"QA f0d76145 Light issue simply base deep.","incident_date":"2026-10-29","status":"DRAFT","created_at":"2026-11-05T09:45:14.873836Z","updated_at":"2026-11-05T09:45:14.873836Z","withdrawn_at":null,"decided_by_id":null}
+09:45:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

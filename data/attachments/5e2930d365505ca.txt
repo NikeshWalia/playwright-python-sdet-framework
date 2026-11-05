@@ -1,0 +1,26 @@
+09:45:16 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+09:45:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:45:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (18 ms)
+  response: [{"id":"846b8798-903e-4570-9b47-0c94d85dd84f","policy_number":"POL-1001","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"10000.00","is_active":true},{"id":"a2e29f9f-afb3-4407-af09-7e5c368d01aa","policy_number":"POL-1002","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"2500.00","is_active":true}]
+09:45:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '410.00', 'description': 'QA a5e2393f Different others skin kid traditional politics.', 'incident_date': '2026-10-29'}
+  response: {"id":"451b819d-e13e-44e2-85f6-7cd3b9f9e337","reference":"CLM-9E41D156","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"410.00","description":"QA a5e2393f Different others skin kid traditional politics.","incident_date":"2026-10-29","status":"DRAFT","created_at":"2026-11-05T09:45:16.627666Z","updated_at":"2026-11-05T09:45:16.627666Z","withdrawn_at":null,"decided_by_id":null}
+09:45:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337/transitions "HTTP/1.1 200 OK"
+09:45:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"451b819d-e13e-44e2-85f6-7cd3b9f9e337","reference":"CLM-9E41D156","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"410.00","description":"QA a5e2393f Different others skin kid traditional politics.","incident_date":"2026-10-29","status":"SUBMITTED","created_at":"2026-11-05T09:45:16.627666Z","updated_at":"2026-11-05T09:45:16.636500Z","withdrawn_at":null,"decided_by_id":null}
+09:45:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337/transitions "HTTP/1.1 200 OK"
+09:45:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"451b819d-e13e-44e2-85f6-7cd3b9f9e337","reference":"CLM-9E41D156","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"410.00","description":"QA a5e2393f Different others skin kid traditional politics.","incident_date":"2026-10-29","status":"UNDER_REVIEW","created_at":"2026-11-05T09:45:16.627666Z","updated_at":"2026-11-05T09:45:16.643323Z","withdrawn_at":null,"decided_by_id":null}
+09:45:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337/transitions "HTTP/1.1 200 OK"
+09:45:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"451b819d-e13e-44e2-85f6-7cd3b9f9e337","reference":"CLM-9E41D156","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"410.00","description":"QA a5e2393f Different others skin kid traditional politics.","incident_date":"2026-10-29","status":"APPROVED","created_at":"2026-11-05T09:45:16.627666Z","updated_at":"2026-11-05T09:45:16.652580Z","withdrawn_at":null,"decided_by_id":"d519bc56-3dd6-4a61-8b52-3347db1ec6f8"}
+09:45:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337/transitions "HTTP/1.1 200 OK"
+09:45:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"451b819d-e13e-44e2-85f6-7cd3b9f9e337","reference":"CLM-9E41D156","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"410.00","description":"QA a5e2393f Different others skin kid traditional politics.","incident_date":"2026-10-29","status":"PAID","created_at":"2026-11-05T09:45:16.627666Z","updated_at":"2026-11-05T09:45:16.663766Z","withdrawn_at":null,"decided_by_id":"d519bc56-3dd6-4a61-8b52-3347db1ec6f8"}
+09:45:16 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/451b819d-e13e-44e2-85f6-7cd3b9f9e337
+09:45:16 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]

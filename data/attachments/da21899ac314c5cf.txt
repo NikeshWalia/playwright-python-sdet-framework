@@ -1,0 +1,10 @@
+09:45:18 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]
+09:45:18 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:45:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"846b8798-903e-4570-9b47-0c94d85dd84f","policy_number":"POL-1001","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"10000.00","is_active":true},{"id":"a2e29f9f-afb3-4407-af09-7e5c368d01aa","policy_number":"POL-1002","holder_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","coverage_limit":"2500.00","is_active":true}]
+09:45:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '846b8798-903e-4570-9b47-0c94d85dd84f', 'amount': '432.10', 'description': 'QA b364f50b Matter challenge modern why.', 'incident_date': '2026-10-29'}
+  response: {"id":"cd4fb784-acaf-43e9-8388-06b21041ddec","reference":"CLM-F31423F9","policy_id":"846b8798-903e-4570-9b47-0c94d85dd84f","claimant_id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","amount":"432.10","description":"QA b364f50b Matter challenge modern why.","incident_date":"2026-10-29","status":"DRAFT","created_at":"2026-11-05T09:45:18.163306Z","updated_at":"2026-11-05T09:45:18.163306Z","withdrawn_at":null,"decided_by_id":null}
+09:45:18 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+09:45:18 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]

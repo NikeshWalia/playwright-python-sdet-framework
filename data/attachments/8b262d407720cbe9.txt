@@ -1,0 +1,21 @@
+09:45:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:45:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (53 ms)
+  request : {'email': 'admin@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNGU2OWNmMi05ZThkLTRiMDgtYjRmNS0yMzUwMTZlNTlkZGQiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3OTM4NzE5MTMsImV4cCI6MTc5Mzg3NTUxM30.EjvyPjYfGH6IYhVqMN5lQoQLB2KLCFLK2Krvr5oQM6I","token_type":"bearer","expires_in":3600}
+09:45:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:45:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (52 ms)
+  request : {'email': 'adjuster@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkNTE5YmM1Ni0zZGQ2LTRhNjEtOGI1Mi0zMzQ3ZGIxZWM2ZjgiLCJyb2xlIjoiQURKVVNURVIiLCJpYXQiOjE3OTM4NzE5MTMsImV4cCI6MTc5Mzg3NTUxM30.C4HMI_lzU8QM6cakMFYNH0MD23Coxkq4AMPjaBpL9Hk","token_type":"bearer","expires_in":3600}
+09:45:13 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:45:13 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (52 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5YjJmOTJkMS00YmRmLTQxZjQtYTdlZi04MGQ2NWZiYjAyNzAiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTM4NzE5MTMsImV4cCI6MTc5Mzg3NTUxM30.5q-8NH7taEYP6UOgTc-3WaZH8IQg-hUCxzEAAJnkIDE","token_type":"bearer","expires_in":3600}
+09:45:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (54 ms)
+  request : {'email': 'other.customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5OGM5ODQxOS0yZTU4LTQzZDctOTVlMi01MGM4MmI0OTgyMTciLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTM4NzE5MTQsImV4cCI6MTc5Mzg3NTUxNH0.qVn56hXcjwlwyijIpJWCrzfEmSWTW61rBJRHvPobKxs","token_type":"bearer","expires_in":3600}
+09:45:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_auth.py::test_me_returns_the_caller_identity
+09:45:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/auth/me "HTTP/1.1 200 OK"
+09:45:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/auth/me -> 200 (4 ms)
+  response: {"id":"9b2f92d1-4bdf-41f4-a7ef-80d65fbb0270","email":"customer@example.com","full_name":"Casey Customer","role":"CUSTOMER","is_active":true,"created_at":"2026-11-05T09:45:12.651433Z"}
+09:45:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_auth.py::test_me_returns_the_caller_identity
