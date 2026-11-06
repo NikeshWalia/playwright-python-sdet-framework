@@ -1,0 +1,35 @@
+09:42:30 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_paying_a_claim_writes_exactly_one_payout_for_the_right_amount
+09:42:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"f4deef87-1886-4f8e-9620-60d78a022570","policy_number":"POL-1001","holder_id":"d12a815d-3d78-4a24-9a40-c411918d095c","coverage_limit":"10000.00","is_active":true},{"id":"a529fdff-4548-4b37-95b6-a5b4ced6907d","policy_number":"POL-1002","holder_id":"d12a815d-3d78-4a24-9a40-c411918d095c","coverage_limit":"2500.00","is_active":true}]
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:42:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': 'f4deef87-1886-4f8e-9620-60d78a022570', 'amount': '2345.67', 'description': 'QA fa87ad8b Energy how term through hospital similar break.', 'incident_date': '2026-10-30'}
+  response: {"id":"1838180c-3e1a-4e1a-8139-0e847eca3b10","reference":"CLM-B438BBFD","policy_id":"f4deef87-1886-4f8e-9620-60d78a022570","claimant_id":"d12a815d-3d78-4a24-9a40-c411918d095c","amount":"2345.67","description":"QA fa87ad8b Energy how term through hospital similar break.","incident_date":"2026-10-30","status":"DRAFT","created_at":"2026-11-06T09:42:30.825635Z","updated_at":"2026-11-06T09:42:30.825635Z","withdrawn_at":null,"decided_by_id":null}
+09:42:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1838180c-3e1a-4e1a-8139-0e847eca3b10/transitions "HTTP/1.1 200 OK"
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1838180c-3e1a-4e1a-8139-0e847eca3b10/transitions -> 200 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"1838180c-3e1a-4e1a-8139-0e847eca3b10","reference":"CLM-B438BBFD","policy_id":"f4deef87-1886-4f8e-9620-60d78a022570","claimant_id":"d12a815d-3d78-4a24-9a40-c411918d095c","amount":"2345.67","description":"QA fa87ad8b Energy how term through hospital similar break.","incident_date":"2026-10-30","status":"SUBMITTED","created_at":"2026-11-06T09:42:30.825635Z","updated_at":"2026-11-06T09:42:30.832063Z","withdrawn_at":null,"decided_by_id":null}
+09:42:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1838180c-3e1a-4e1a-8139-0e847eca3b10/transitions "HTTP/1.1 200 OK"
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1838180c-3e1a-4e1a-8139-0e847eca3b10/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"1838180c-3e1a-4e1a-8139-0e847eca3b10","reference":"CLM-B438BBFD","policy_id":"f4deef87-1886-4f8e-9620-60d78a022570","claimant_id":"d12a815d-3d78-4a24-9a40-c411918d095c","amount":"2345.67","description":"QA fa87ad8b Energy how term through hospital similar break.","incident_date":"2026-10-30","status":"UNDER_REVIEW","created_at":"2026-11-06T09:42:30.825635Z","updated_at":"2026-11-06T09:42:30.838442Z","withdrawn_at":null,"decided_by_id":null}
+09:42:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1838180c-3e1a-4e1a-8139-0e847eca3b10/transitions "HTTP/1.1 200 OK"
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1838180c-3e1a-4e1a-8139-0e847eca3b10/transitions -> 200 (5 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"1838180c-3e1a-4e1a-8139-0e847eca3b10","reference":"CLM-B438BBFD","policy_id":"f4deef87-1886-4f8e-9620-60d78a022570","claimant_id":"d12a815d-3d78-4a24-9a40-c411918d095c","amount":"2345.67","description":"QA fa87ad8b Energy how term through hospital similar break.","incident_date":"2026-10-30","status":"APPROVED","created_at":"2026-11-06T09:42:30.825635Z","updated_at":"2026-11-06T09:42:30.844173Z","withdrawn_at":null,"decided_by_id":"58e3faa6-89ff-461e-b88e-0b83467245c7"}
+09:42:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1838180c-3e1a-4e1a-8139-0e847eca3b10/transitions "HTTP/1.1 200 OK"
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1838180c-3e1a-4e1a-8139-0e847eca3b10/transitions -> 200 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"1838180c-3e1a-4e1a-8139-0e847eca3b10","reference":"CLM-B438BBFD","policy_id":"f4deef87-1886-4f8e-9620-60d78a022570","claimant_id":"d12a815d-3d78-4a24-9a40-c411918d095c","amount":"2345.67","description":"QA fa87ad8b Energy how term through hospital similar break.","incident_date":"2026-10-30","status":"PAID","created_at":"2026-11-06T09:42:30.825635Z","updated_at":"2026-11-06T09:42:30.849773Z","withdrawn_at":null,"decided_by_id":"58e3faa6-89ff-461e-b88e-0b83467245c7"}
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('1838180c-3e1a-4e1a-8139-0e847eca3b10',)
+  rows: 1
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+09:42:30 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('1838180c-3e1a-4e1a-8139-0e847eca3b10',)
+  rows: 1
+09:42:30 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_paying_a_claim_writes_exactly_one_payout_for_the_right_amount
