@@ -1,0 +1,15 @@
+09:04:32 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_withdrawing_a_draft_moves_it_to_withdrawn_and_keeps_it_visible
+09:04:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:04:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","policy_number":"POL-1001","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"10000.00","is_active":true},{"id":"468414ba-f92c-4ec9-a3cd-169ade38c21c","policy_number":"POL-1002","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"2500.00","is_active":true}]
+09:04:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:04:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': 'ac7f33f3-0f12-4124-8987-fbd57dec2905', 'amount': '250.00', 'description': 'QA d29edbd5 Citizen common mention teach start product.', 'incident_date': '2026-10-31'}
+  response: {"id":"a34d6e12-4fa0-4eb7-a8d7-2cceec2d8147","reference":"CLM-C86C455E","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"250.00","description":"QA d29edbd5 Citizen common mention teach start product.","incident_date":"2026-10-31","status":"DRAFT","created_at":"2026-11-07T09:04:32.258548Z","updated_at":"2026-11-07T09:04:32.258548Z","withdrawn_at":null,"decided_by_id":null}
+09:04:32 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/a34d6e12-4fa0-4eb7-a8d7-2cceec2d8147 "HTTP/1.1 204 No Content"
+09:04:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/a34d6e12-4fa0-4eb7-a8d7-2cceec2d8147 -> 204 (4 ms)
+  response: 
+09:04:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/a34d6e12-4fa0-4eb7-a8d7-2cceec2d8147 "HTTP/1.1 200 OK"
+09:04:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/a34d6e12-4fa0-4eb7-a8d7-2cceec2d8147 -> 200 (2 ms)
+  response: {"id":"a34d6e12-4fa0-4eb7-a8d7-2cceec2d8147","reference":"CLM-C86C455E","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"250.00","description":"QA d29edbd5 Citizen common mention teach start product.","incident_date":"2026-10-31","status":"WITHDRAWN","created_at":"2026-11-07T09:04:32.258548Z","updated_at":"2026-11-07T09:04:32.263925Z","withdrawn_at":"2026-11-07T09:04:32.264883Z","decided_by_id":null}
+09:04:32 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_withdrawing_a_draft_moves_it_to_withdrawn_and_keeps_it_visible

@@ -1,0 +1,18 @@
+09:04:34 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]
+09:04:34 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:04:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (13 ms)
+  response: [{"id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","policy_number":"POL-1001","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"10000.00","is_active":true},{"id":"468414ba-f92c-4ec9-a3cd-169ade38c21c","policy_number":"POL-1002","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"2500.00","is_active":true}]
+09:04:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:04:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'ac7f33f3-0f12-4124-8987-fbd57dec2905', 'amount': '5000.01', 'description': 'QA 535b7235 If pattern movement result enough feeling.', 'incident_date': '2026-10-31'}
+  response: {"id":"c3df8c86-d4ba-4d63-a766-7ec815356a1e","reference":"CLM-334F65FE","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"5000.01","description":"QA 535b7235 If pattern movement result enough feeling.","incident_date":"2026-10-31","status":"DRAFT","created_at":"2026-11-07T09:04:34.713529Z","updated_at":"2026-11-07T09:04:34.713529Z","withdrawn_at":null,"decided_by_id":null}
+09:04:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c3df8c86-d4ba-4d63-a766-7ec815356a1e/transitions "HTTP/1.1 200 OK"
+09:04:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c3df8c86-d4ba-4d63-a766-7ec815356a1e/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"c3df8c86-d4ba-4d63-a766-7ec815356a1e","reference":"CLM-334F65FE","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"5000.01","description":"QA 535b7235 If pattern movement result enough feeling.","incident_date":"2026-10-31","status":"SUBMITTED","created_at":"2026-11-07T09:04:34.713529Z","updated_at":"2026-11-07T09:04:34.725165Z","withdrawn_at":null,"decided_by_id":null}
+09:04:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c3df8c86-d4ba-4d63-a766-7ec815356a1e/transitions "HTTP/1.1 200 OK"
+09:04:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c3df8c86-d4ba-4d63-a766-7ec815356a1e/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"c3df8c86-d4ba-4d63-a766-7ec815356a1e","reference":"CLM-334F65FE","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"5000.01","description":"QA 535b7235 If pattern movement result enough feeling.","incident_date":"2026-10-31","status":"UNDER_REVIEW","created_at":"2026-11-07T09:04:34.713529Z","updated_at":"2026-11-07T09:04:34.731874Z","withdrawn_at":null,"decided_by_id":null}
+09:04:34 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/c3df8c86-d4ba-4d63-a766-7ec815356a1e
+09:04:34 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]

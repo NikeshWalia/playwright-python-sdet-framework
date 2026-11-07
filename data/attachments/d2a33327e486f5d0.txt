@@ -1,0 +1,20 @@
+09:04:37 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-approve]
+09:04:37 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:04:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","policy_number":"POL-1001","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"10000.00","is_active":true},{"id":"468414ba-f92c-4ec9-a3cd-169ade38c21c","policy_number":"POL-1002","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"2500.00","is_active":true}]
+09:04:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:04:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': 'ac7f33f3-0f12-4124-8987-fbd57dec2905', 'amount': '100.00', 'description': 'QA 8b56d8da Edge according one push remember show street.', 'incident_date': '2026-10-31'}
+  response: {"id":"e530e67f-342a-4792-81e6-f9e185966eab","reference":"CLM-3034139E","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"100.00","description":"QA 8b56d8da Edge according one push remember show street.","incident_date":"2026-10-31","status":"DRAFT","created_at":"2026-11-07T09:04:37.624570Z","updated_at":"2026-11-07T09:04:37.624570Z","withdrawn_at":null,"decided_by_id":null}
+09:04:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e530e67f-342a-4792-81e6-f9e185966eab/transitions "HTTP/1.1 200 OK"
+09:04:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e530e67f-342a-4792-81e6-f9e185966eab/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"e530e67f-342a-4792-81e6-f9e185966eab","reference":"CLM-3034139E","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"100.00","description":"QA 8b56d8da Edge according one push remember show street.","incident_date":"2026-10-31","status":"SUBMITTED","created_at":"2026-11-07T09:04:37.624570Z","updated_at":"2026-11-07T09:04:37.633951Z","withdrawn_at":null,"decided_by_id":null}
+09:04:37 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e530e67f-342a-4792-81e6-f9e185966eab/transitions "HTTP/1.1 409 Conflict"
+09:04:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e530e67f-342a-4792-81e6-f9e185966eab/transitions -> 409 (4 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+09:04:37 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/e530e67f-342a-4792-81e6-f9e185966eab "HTTP/1.1 200 OK"
+09:04:37 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/e530e67f-342a-4792-81e6-f9e185966eab -> 200 (4 ms)
+  response: {"id":"e530e67f-342a-4792-81e6-f9e185966eab","reference":"CLM-3034139E","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"100.00","description":"QA 8b56d8da Edge according one push remember show street.","incident_date":"2026-10-31","status":"SUBMITTED","created_at":"2026-11-07T09:04:37.624570Z","updated_at":"2026-11-07T09:04:37.633951Z","withdrawn_at":null,"decided_by_id":null}
+09:04:37 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-approve]
