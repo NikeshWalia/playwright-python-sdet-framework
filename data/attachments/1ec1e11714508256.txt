@@ -1,0 +1,19 @@
+09:22:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
+09:22:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:22:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"924337c8-c709-4cfc-a854-fe50bbf034ad","policy_number":"POL-1001","holder_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","coverage_limit":"10000.00","is_active":true},{"id":"d2f513b1-70c9-4adf-9a9d-aac6aa5321b6","policy_number":"POL-1002","holder_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","coverage_limit":"2500.00","is_active":true}]
+09:22:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:22:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '924337c8-c709-4cfc-a854-fe50bbf034ad', 'amount': '100.00', 'description': 'QA 0aef17d0 Nature out successful glass effect response writer condition.', 'incident_date': '2026-11-01'}
+  response: {"id":"fc7c384c-40cb-4771-b191-1024ec8c3c5e","reference":"CLM-A80B9DD7","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"100.00","description":"QA 0aef17d0 Nature out successful glass effect response writer condition.","incident_date":"2026-11-01","status":"DRAFT","created_at":"2026-11-08T09:22:04.901544Z","updated_at":"2026-11-08T09:22:04.901544Z","withdrawn_at":null,"decided_by_id":null}
+09:22:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/fc7c384c-40cb-4771-b191-1024ec8c3c5e "HTTP/1.1 200 OK"
+09:22:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/fc7c384c-40cb-4771-b191-1024ec8c3c5e -> 200 (7 ms)
+  response: {"id":"fc7c384c-40cb-4771-b191-1024ec8c3c5e","reference":"CLM-A80B9DD7","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"100.00","description":"QA 0aef17d0 Nature out successful glass effect response writer condition.","incident_date":"2026-11-01","status":"DRAFT","created_at":"2026-11-08T09:22:04.901544Z","updated_at":"2026-11-08T09:22:04.901544Z","withdrawn_at":null,"decided_by_id":null}
+09:22:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fc7c384c-40cb-4771-b191-1024ec8c3c5e/transitions "HTTP/1.1 409 Conflict"
+09:22:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fc7c384c-40cb-4771-b191-1024ec8c3c5e/transitions -> 409 (7 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status DRAFT; it must be APPROVED."}
+09:22:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/fc7c384c-40cb-4771-b191-1024ec8c3c5e "HTTP/1.1 200 OK"
+09:22:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/fc7c384c-40cb-4771-b191-1024ec8c3c5e -> 200 (6 ms)
+  response: {"id":"fc7c384c-40cb-4771-b191-1024ec8c3c5e","reference":"CLM-A80B9DD7","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"100.00","description":"QA 0aef17d0 Nature out successful glass effect response writer condition.","incident_date":"2026-11-01","status":"DRAFT","created_at":"2026-11-08T09:22:04.901544Z","updated_at":"2026-11-08T09:22:04.901544Z","withdrawn_at":null,"decided_by_id":null}
+09:22:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]

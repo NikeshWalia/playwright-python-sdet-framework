@@ -1,0 +1,17 @@
+09:21:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/health/ready "HTTP/1.1 200 OK"
+09:21:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:21:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:21:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:21:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+09:21:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:21:54 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:21:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': '924337c8-c709-4cfc-a854-fe50bbf034ad', 'amount': '250.00', 'description': 'QA 434893a0 Environment voice federal.', 'incident_date': '2026-11-01'}
+  response: {"id":"936a9a0d-e14a-4008-a79c-c010086cb4e5","reference":"CLM-6CB1C660","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"250.00","description":"QA 434893a0 Environment voice federal.","incident_date":"2026-11-01","status":"DRAFT","created_at":"2026-11-08T09:21:54.744642Z","updated_at":"2026-11-08T09:21:54.744642Z","withdrawn_at":null,"decided_by_id":null}
+09:21:54 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/936a9a0d-e14a-4008-a79c-c010086cb4e5 "HTTP/1.1 204 No Content"
+09:21:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/936a9a0d-e14a-4008-a79c-c010086cb4e5 -> 204 (10 ms)
+  response: 
+09:21:54 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/936a9a0d-e14a-4008-a79c-c010086cb4e5/events "HTTP/1.1 200 OK"
+09:21:54 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/936a9a0d-e14a-4008-a79c-c010086cb4e5/events -> 200 (9 ms)
+  response: [{"id":"55d470b8-3614-416b-aa79-baf4e4b3aa06","claim_id":"936a9a0d-e14a-4008-a79c-c010086cb4e5","actor_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-11-08T09:21:54.744642Z"},{"id":"05a73bac-052f-4121-9b1d-9eb86efbe748","claim_id":"936a9a0d-e14a-4008-a79c-c010086cb4e5","actor_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","from_status":"DRAFT","to_status":"WITHDRAWN","note":null,"occurred_at":"2026-11-08T09:21:54.762062Z"}]
+09:21:54 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_withdrawal_is_recorded_in_the_audit_trail

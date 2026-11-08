@@ -1,9 +1,0 @@
-09:04:31 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[text]
-09:04:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-09:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
-  response: [{"id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","policy_number":"POL-1001","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"10000.00","is_active":true},{"id":"468414ba-f92c-4ec9-a3cd-169ade38c21c","policy_number":"POL-1002","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"2500.00","is_active":true}]
-09:04:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-09:04:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (3 ms)
-  request : {'policy_id': 'ac7f33f3-0f12-4124-8987-fbd57dec2905', 'amount': 'not-a-number', 'description': 'QA 4ad627c3 Treat management player professional again strong.', 'incident_date': '2026-10-31'}
-  response: {"detail":[{"type":"decimal_parsing","loc":["body","amount"],"msg":"Input should be a valid decimal","input":"not-a-number"}]}
-09:04:31 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[text]

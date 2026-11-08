@@ -1,0 +1,31 @@
+09:22:06 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it
+09:22:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"924337c8-c709-4cfc-a854-fe50bbf034ad","policy_number":"POL-1001","holder_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","coverage_limit":"10000.00","is_active":true},{"id":"d2f513b1-70c9-4adf-9a9d-aac6aa5321b6","policy_number":"POL-1002","holder_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","coverage_limit":"2500.00","is_active":true}]
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('customer@example.com',)
+  rows: 1
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+09:22:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '924337c8-c709-4cfc-a854-fe50bbf034ad', 'amount': '700.00', 'description': 'QA c35afbc4 Laugh leg white prove.', 'incident_date': '2026-11-01'}
+  response: {"id":"27541e81-6226-4613-b0dd-929b826bdb9c","reference":"CLM-AE5437F1","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"700.00","description":"QA c35afbc4 Laugh leg white prove.","incident_date":"2026-11-01","status":"DRAFT","created_at":"2026-11-08T09:22:06.395763Z","updated_at":"2026-11-08T09:22:06.395763Z","withdrawn_at":null,"decided_by_id":null}
+09:22:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/27541e81-6226-4613-b0dd-929b826bdb9c/transitions "HTTP/1.1 200 OK"
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/27541e81-6226-4613-b0dd-929b826bdb9c/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"27541e81-6226-4613-b0dd-929b826bdb9c","reference":"CLM-AE5437F1","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"700.00","description":"QA c35afbc4 Laugh leg white prove.","incident_date":"2026-11-01","status":"SUBMITTED","created_at":"2026-11-08T09:22:06.395763Z","updated_at":"2026-11-08T09:22:06.405953Z","withdrawn_at":null,"decided_by_id":null}
+09:22:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/27541e81-6226-4613-b0dd-929b826bdb9c/transitions "HTTP/1.1 200 OK"
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/27541e81-6226-4613-b0dd-929b826bdb9c/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"27541e81-6226-4613-b0dd-929b826bdb9c","reference":"CLM-AE5437F1","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"700.00","description":"QA c35afbc4 Laugh leg white prove.","incident_date":"2026-11-01","status":"UNDER_REVIEW","created_at":"2026-11-08T09:22:06.395763Z","updated_at":"2026-11-08T09:22:06.416054Z","withdrawn_at":null,"decided_by_id":null}
+09:22:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/27541e81-6226-4613-b0dd-929b826bdb9c/transitions "HTTP/1.1 200 OK"
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/27541e81-6226-4613-b0dd-929b826bdb9c/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"27541e81-6226-4613-b0dd-929b826bdb9c","reference":"CLM-AE5437F1","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"700.00","description":"QA c35afbc4 Laugh leg white prove.","incident_date":"2026-11-01","status":"APPROVED","created_at":"2026-11-08T09:22:06.395763Z","updated_at":"2026-11-08T09:22:06.425799Z","withdrawn_at":null,"decided_by_id":"7f13cc6c-e1ab-4c62-aef1-052aaf48cea3"}
+09:22:06 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('27541e81-6226-4613-b0dd-929b826bdb9c',)
+  rows: 4
+09:22:06 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_each_audit_row_names_the_actor_who_caused_it

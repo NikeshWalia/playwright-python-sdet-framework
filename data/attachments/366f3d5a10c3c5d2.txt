@@ -1,9 +1,0 @@
-09:04:32 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_unknown_field_does_not_change_the_claim
-09:04:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-09:04:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
-  response: [{"id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","policy_number":"POL-1001","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"10000.00","is_active":true},{"id":"468414ba-f92c-4ec9-a3cd-169ade38c21c","policy_number":"POL-1002","holder_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","coverage_limit":"2500.00","is_active":true}]
-09:04:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-09:04:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
-  request : {'policy_id': 'ac7f33f3-0f12-4124-8987-fbd57dec2905', 'amount': '250.00', 'description': 'QA 9cc661d6 After kid receive price.', 'incident_date': '2026-10-31', 'status': 'PAID', 'is_admin': True}
-  response: {"id":"2933446e-7c68-49fa-98f8-756e2133d3bf","reference":"CLM-7D7F81D1","policy_id":"ac7f33f3-0f12-4124-8987-fbd57dec2905","claimant_id":"30f146a8-709d-4a5e-a61e-d31a41f7a3d9","amount":"250.00","description":"QA 9cc661d6 After kid receive price.","incident_date":"2026-10-31","status":"DRAFT","created_at":"2026-11-07T09:04:32.120421Z","updated_at":"2026-11-07T09:04:32.120421Z","withdrawn_at":null,"decided_by_id":null}
-09:04:32 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_unknown_field_does_not_change_the_claim
