@@ -1,9 +1,0 @@
-09:21:56 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_incident_dated_today_is_accepted
-09:21:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-09:21:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
-  response: [{"id":"924337c8-c709-4cfc-a854-fe50bbf034ad","policy_number":"POL-1001","holder_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","coverage_limit":"10000.00","is_active":true},{"id":"d2f513b1-70c9-4adf-9a9d-aac6aa5321b6","policy_number":"POL-1002","holder_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","coverage_limit":"2500.00","is_active":true}]
-09:21:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-09:21:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (121 ms)
-  request : {'policy_id': '924337c8-c709-4cfc-a854-fe50bbf034ad', 'amount': '250.00', 'description': 'QA f02e3c2d Front trouble law however together carry.', 'incident_date': '2026-11-08'}
-  response: {"id":"5e0e3dba-a857-4173-852f-1275eb0a1d0e","reference":"CLM-46960960","policy_id":"924337c8-c709-4cfc-a854-fe50bbf034ad","claimant_id":"6f543e3b-9d2b-4260-a92c-9226c2597bae","amount":"250.00","description":"QA f02e3c2d Front trouble law however together carry.","incident_date":"2026-11-08","status":"DRAFT","created_at":"2026-11-08T09:21:56.123465Z","updated_at":"2026-11-08T09:21:56.123465Z","withdrawn_at":null,"decided_by_id":null}
-09:21:56 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_incident_dated_today_is_accepted

@@ -1,0 +1,21 @@
+10:08:11 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[far-below-limit]
+10:08:11 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:08:11 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"11c02b70-413e-47cd-8203-5c03b81441c6","policy_number":"POL-1001","holder_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","coverage_limit":"10000.00","is_active":true},{"id":"3b1a3b7c-6f15-4143-9de2-7b6b377c31f8","policy_number":"POL-1002","holder_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","coverage_limit":"2500.00","is_active":true}]
+10:08:11 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:08:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '11c02b70-413e-47cd-8203-5c03b81441c6', 'amount': '0.01', 'description': 'QA a473b49f Process rest food fund show.', 'incident_date': '2026-11-02'}
+  response: {"id":"5ac58a6b-9930-4e08-998e-ec8a952daf3f","reference":"CLM-3C2D6FD7","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"0.01","description":"QA a473b49f Process rest food fund show.","incident_date":"2026-11-02","status":"DRAFT","created_at":"2026-11-09T10:08:11.991406Z","updated_at":"2026-11-09T10:08:11.991406Z","withdrawn_at":null,"decided_by_id":null}
+10:08:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5ac58a6b-9930-4e08-998e-ec8a952daf3f/transitions "HTTP/1.1 200 OK"
+10:08:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5ac58a6b-9930-4e08-998e-ec8a952daf3f/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"5ac58a6b-9930-4e08-998e-ec8a952daf3f","reference":"CLM-3C2D6FD7","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"0.01","description":"QA a473b49f Process rest food fund show.","incident_date":"2026-11-02","status":"SUBMITTED","created_at":"2026-11-09T10:08:11.991406Z","updated_at":"2026-11-09T10:08:12.003103Z","withdrawn_at":null,"decided_by_id":null}
+10:08:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5ac58a6b-9930-4e08-998e-ec8a952daf3f/transitions "HTTP/1.1 200 OK"
+10:08:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5ac58a6b-9930-4e08-998e-ec8a952daf3f/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"5ac58a6b-9930-4e08-998e-ec8a952daf3f","reference":"CLM-3C2D6FD7","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"0.01","description":"QA a473b49f Process rest food fund show.","incident_date":"2026-11-02","status":"UNDER_REVIEW","created_at":"2026-11-09T10:08:11.991406Z","updated_at":"2026-11-09T10:08:12.012135Z","withdrawn_at":null,"decided_by_id":null}
+10:08:12 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/5ac58a6b-9930-4e08-998e-ec8a952daf3f/transitions "HTTP/1.1 200 OK"
+10:08:12 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/5ac58a6b-9930-4e08-998e-ec8a952daf3f/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"5ac58a6b-9930-4e08-998e-ec8a952daf3f","reference":"CLM-3C2D6FD7","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"0.01","description":"QA a473b49f Process rest food fund show.","incident_date":"2026-11-02","status":"APPROVED","created_at":"2026-11-09T10:08:11.991406Z","updated_at":"2026-11-09T10:08:12.022352Z","withdrawn_at":null,"decided_by_id":"d1c7d338-ff42-4440-b8ff-2b37ee9c5963"}
+10:08:12 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[far-below-limit]

@@ -1,0 +1,16 @@
+10:08:20 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[start_review]
+10:08:20 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:08:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"11c02b70-413e-47cd-8203-5c03b81441c6","policy_number":"POL-1001","holder_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","coverage_limit":"10000.00","is_active":true},{"id":"3b1a3b7c-6f15-4143-9de2-7b6b377c31f8","policy_number":"POL-1002","holder_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","coverage_limit":"2500.00","is_active":true}]
+10:08:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:08:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '11c02b70-413e-47cd-8203-5c03b81441c6', 'amount': '250.00', 'description': 'QA f8119976 With discussion bed while.', 'incident_date': '2026-11-02'}
+  response: {"id":"9572ee17-e1b5-403a-989d-3c865bec4037","reference":"CLM-FCA610E3","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"250.00","description":"QA f8119976 With discussion bed while.","incident_date":"2026-11-02","status":"DRAFT","created_at":"2026-11-09T10:08:20.161514Z","updated_at":"2026-11-09T10:08:20.161514Z","withdrawn_at":null,"decided_by_id":null}
+10:08:20 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/9572ee17-e1b5-403a-989d-3c865bec4037 "HTTP/1.1 204 No Content"
+10:08:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/9572ee17-e1b5-403a-989d-3c865bec4037 -> 204 (8 ms)
+  response: 
+10:08:20 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9572ee17-e1b5-403a-989d-3c865bec4037/transitions "HTTP/1.1 409 Conflict"
+10:08:20 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9572ee17-e1b5-403a-989d-3c865bec4037/transitions -> 409 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status WITHDRAWN; it must be SUBMITTED."}
+10:08:20 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[start_review]

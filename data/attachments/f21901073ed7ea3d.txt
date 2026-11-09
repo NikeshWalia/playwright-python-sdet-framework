@@ -1,0 +1,21 @@
+10:08:18 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-reject-REJECTED]
+10:08:18 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"11c02b70-413e-47cd-8203-5c03b81441c6","policy_number":"POL-1001","holder_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","coverage_limit":"10000.00","is_active":true},{"id":"3b1a3b7c-6f15-4143-9de2-7b6b377c31f8","policy_number":"POL-1002","holder_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","coverage_limit":"2500.00","is_active":true}]
+10:08:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '11c02b70-413e-47cd-8203-5c03b81441c6', 'amount': '100.00', 'description': 'QA 9d1c7ea1 Myself through medical foot to.', 'incident_date': '2026-11-02'}
+  response: {"id":"8130cd9a-aba8-4399-b470-2ef02d650c5d","reference":"CLM-B9C6D171","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 9d1c7ea1 Myself through medical foot to.","incident_date":"2026-11-02","status":"DRAFT","created_at":"2026-11-09T10:08:18.271219Z","updated_at":"2026-11-09T10:08:18.271219Z","withdrawn_at":null,"decided_by_id":null}
+10:08:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8130cd9a-aba8-4399-b470-2ef02d650c5d/transitions "HTTP/1.1 200 OK"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8130cd9a-aba8-4399-b470-2ef02d650c5d/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"8130cd9a-aba8-4399-b470-2ef02d650c5d","reference":"CLM-B9C6D171","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 9d1c7ea1 Myself through medical foot to.","incident_date":"2026-11-02","status":"SUBMITTED","created_at":"2026-11-09T10:08:18.271219Z","updated_at":"2026-11-09T10:08:18.280703Z","withdrawn_at":null,"decided_by_id":null}
+10:08:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8130cd9a-aba8-4399-b470-2ef02d650c5d/transitions "HTTP/1.1 200 OK"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8130cd9a-aba8-4399-b470-2ef02d650c5d/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"8130cd9a-aba8-4399-b470-2ef02d650c5d","reference":"CLM-B9C6D171","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 9d1c7ea1 Myself through medical foot to.","incident_date":"2026-11-02","status":"UNDER_REVIEW","created_at":"2026-11-09T10:08:18.271219Z","updated_at":"2026-11-09T10:08:18.290985Z","withdrawn_at":null,"decided_by_id":null}
+10:08:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8130cd9a-aba8-4399-b470-2ef02d650c5d/transitions "HTTP/1.1 200 OK"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8130cd9a-aba8-4399-b470-2ef02d650c5d/transitions -> 200 (12 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"8130cd9a-aba8-4399-b470-2ef02d650c5d","reference":"CLM-B9C6D171","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 9d1c7ea1 Myself through medical foot to.","incident_date":"2026-11-02","status":"REJECTED","created_at":"2026-11-09T10:08:18.271219Z","updated_at":"2026-11-09T10:08:18.304658Z","withdrawn_at":null,"decided_by_id":"d1c7d338-ff42-4440-b8ff-2b37ee9c5963"}
+10:08:18 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-reject-REJECTED]

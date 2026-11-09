@@ -1,0 +1,28 @@
+10:08:18 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-start_review]
+10:08:18 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"11c02b70-413e-47cd-8203-5c03b81441c6","policy_number":"POL-1001","holder_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","coverage_limit":"10000.00","is_active":true},{"id":"3b1a3b7c-6f15-4143-9de2-7b6b377c31f8","policy_number":"POL-1002","holder_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","coverage_limit":"2500.00","is_active":true}]
+10:08:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '11c02b70-413e-47cd-8203-5c03b81441c6', 'amount': '100.00', 'description': 'QA 146ae670 Measure morning north how nation which.', 'incident_date': '2026-11-02'}
+  response: {"id":"6b3f8105-8a5c-4bd6-9318-83c235f5f435","reference":"CLM-DD6D40B2","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 146ae670 Measure morning north how nation which.","incident_date":"2026-11-02","status":"DRAFT","created_at":"2026-11-09T10:08:18.961911Z","updated_at":"2026-11-09T10:08:18.961911Z","withdrawn_at":null,"decided_by_id":null}
+10:08:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435/transitions "HTTP/1.1 200 OK"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"6b3f8105-8a5c-4bd6-9318-83c235f5f435","reference":"CLM-DD6D40B2","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 146ae670 Measure morning north how nation which.","incident_date":"2026-11-02","status":"SUBMITTED","created_at":"2026-11-09T10:08:18.961911Z","updated_at":"2026-11-09T10:08:18.972933Z","withdrawn_at":null,"decided_by_id":null}
+10:08:18 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435/transitions "HTTP/1.1 200 OK"
+10:08:18 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"6b3f8105-8a5c-4bd6-9318-83c235f5f435","reference":"CLM-DD6D40B2","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 146ae670 Measure morning north how nation which.","incident_date":"2026-11-02","status":"UNDER_REVIEW","created_at":"2026-11-09T10:08:18.961911Z","updated_at":"2026-11-09T10:08:18.984556Z","withdrawn_at":null,"decided_by_id":null}
+10:08:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435/transitions "HTTP/1.1 200 OK"
+10:08:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435/transitions -> 200 (9 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"6b3f8105-8a5c-4bd6-9318-83c235f5f435","reference":"CLM-DD6D40B2","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 146ae670 Measure morning north how nation which.","incident_date":"2026-11-02","status":"REJECTED","created_at":"2026-11-09T10:08:18.961911Z","updated_at":"2026-11-09T10:08:18.994721Z","withdrawn_at":null,"decided_by_id":"d1c7d338-ff42-4440-b8ff-2b37ee9c5963"}
+10:08:19 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435/transitions "HTTP/1.1 409 Conflict"
+10:08:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435/transitions -> 409 (5 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status REJECTED; it must be SUBMITTED."}
+10:08:19 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435 "HTTP/1.1 200 OK"
+10:08:19 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/6b3f8105-8a5c-4bd6-9318-83c235f5f435 -> 200 (4 ms)
+  response: {"id":"6b3f8105-8a5c-4bd6-9318-83c235f5f435","reference":"CLM-DD6D40B2","policy_id":"11c02b70-413e-47cd-8203-5c03b81441c6","claimant_id":"409033bd-d0ce-4db6-a0c9-47f7667e052d","amount":"100.00","description":"QA 146ae670 Measure morning north how nation which.","incident_date":"2026-11-02","status":"REJECTED","created_at":"2026-11-09T10:08:18.961911Z","updated_at":"2026-11-09T10:08:18.994721Z","withdrawn_at":null,"decided_by_id":"d1c7d338-ff42-4440-b8ff-2b37ee9c5963"}
+10:08:19 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-start_review]
