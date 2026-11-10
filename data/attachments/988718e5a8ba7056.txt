@@ -1,0 +1,14 @@
+10:16:56 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
+10:16:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:16:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","policy_number":"POL-1001","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"10000.00","is_active":true},{"id":"6d9fc64a-f63f-497c-8ced-27b0a60d656c","policy_number":"POL-1002","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"2500.00","is_active":true}]
+10:16:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:16:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (114 ms)
+  request : {'policy_id': 'b52ff4e2-31ee-440e-9b83-a08219c9afcc', 'amount': '820.00', 'description': 'QA 61547524 Money public despite issue science concern.', 'incident_date': '2026-11-03'}
+  response: {"id":"863a354e-7fdc-465d-90fa-292f918d69a2","reference":"CLM-A7916BA9","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"820.00","description":"QA 61547524 Money public despite issue science concern.","incident_date":"2026-11-03","status":"DRAFT","created_at":"2026-11-10T10:16:56.692404Z","updated_at":"2026-11-10T10:16:56.692404Z","withdrawn_at":null,"decided_by_id":null}
+10:16:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/863a354e-7fdc-465d-90fa-292f918d69a2/transitions "HTTP/1.1 200 OK"
+10:16:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/863a354e-7fdc-465d-90fa-292f918d69a2/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"863a354e-7fdc-465d-90fa-292f918d69a2","reference":"CLM-A7916BA9","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"820.00","description":"QA 61547524 Money public despite issue science concern.","incident_date":"2026-11-03","status":"SUBMITTED","created_at":"2026-11-10T10:16:56.692404Z","updated_at":"2026-11-10T10:16:56.807900Z","withdrawn_at":null,"decided_by_id":null}
+10:16:56 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/863a354e-7fdc-465d-90fa-292f918d69a2
+10:16:57 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]

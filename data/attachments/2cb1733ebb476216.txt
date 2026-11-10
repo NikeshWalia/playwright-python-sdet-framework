@@ -1,0 +1,29 @@
+10:17:03 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_the_audit_chain_has_no_gaps
+10:17:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","policy_number":"POL-1001","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"10000.00","is_active":true},{"id":"6d9fc64a-f63f-497c-8ced-27b0a60d656c","policy_number":"POL-1002","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"2500.00","is_active":true}]
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'b52ff4e2-31ee-440e-9b83-a08219c9afcc', 'amount': '700.00', 'description': 'QA c0c35e60 Cover imagine thing carry.', 'incident_date': '2026-11-03'}
+  response: {"id":"278c80c5-94aa-40b5-9095-a82e348d7af5","reference":"CLM-9511757A","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"700.00","description":"QA c0c35e60 Cover imagine thing carry.","incident_date":"2026-11-03","status":"DRAFT","created_at":"2026-11-10T10:17:03.650638Z","updated_at":"2026-11-10T10:17:03.650638Z","withdrawn_at":null,"decided_by_id":null}
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/278c80c5-94aa-40b5-9095-a82e348d7af5/transitions "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/278c80c5-94aa-40b5-9095-a82e348d7af5/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"278c80c5-94aa-40b5-9095-a82e348d7af5","reference":"CLM-9511757A","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"700.00","description":"QA c0c35e60 Cover imagine thing carry.","incident_date":"2026-11-03","status":"SUBMITTED","created_at":"2026-11-10T10:17:03.650638Z","updated_at":"2026-11-10T10:17:03.659535Z","withdrawn_at":null,"decided_by_id":null}
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/278c80c5-94aa-40b5-9095-a82e348d7af5/transitions "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/278c80c5-94aa-40b5-9095-a82e348d7af5/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"278c80c5-94aa-40b5-9095-a82e348d7af5","reference":"CLM-9511757A","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"700.00","description":"QA c0c35e60 Cover imagine thing carry.","incident_date":"2026-11-03","status":"UNDER_REVIEW","created_at":"2026-11-10T10:17:03.650638Z","updated_at":"2026-11-10T10:17:03.668618Z","withdrawn_at":null,"decided_by_id":null}
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/278c80c5-94aa-40b5-9095-a82e348d7af5/transitions "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/278c80c5-94aa-40b5-9095-a82e348d7af5/transitions -> 200 (8 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"278c80c5-94aa-40b5-9095-a82e348d7af5","reference":"CLM-9511757A","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"700.00","description":"QA c0c35e60 Cover imagine thing carry.","incident_date":"2026-11-03","status":"APPROVED","created_at":"2026-11-10T10:17:03.650638Z","updated_at":"2026-11-10T10:17:03.677819Z","withdrawn_at":null,"decided_by_id":"1372e6b0-bb15-4726-8d9a-d2a997c4e576"}
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/278c80c5-94aa-40b5-9095-a82e348d7af5/transitions "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/278c80c5-94aa-40b5-9095-a82e348d7af5/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"278c80c5-94aa-40b5-9095-a82e348d7af5","reference":"CLM-9511757A","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"700.00","description":"QA c0c35e60 Cover imagine thing carry.","incident_date":"2026-11-03","status":"PAID","created_at":"2026-11-10T10:17:03.650638Z","updated_at":"2026-11-10T10:17:03.686629Z","withdrawn_at":null,"decided_by_id":"1372e6b0-bb15-4726-8d9a-d2a997c4e576"}
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('278c80c5-94aa-40b5-9095-a82e348d7af5',)
+  rows: 5
+10:17:03 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_the_audit_chain_has_no_gaps

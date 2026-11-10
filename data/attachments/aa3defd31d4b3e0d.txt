@@ -1,0 +1,40 @@
+10:17:03 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout
+10:17:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","policy_number":"POL-1001","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"10000.00","is_active":true},{"id":"6d9fc64a-f63f-497c-8ced-27b0a60d656c","policy_number":"POL-1002","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"2500.00","is_active":true}]
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'b52ff4e2-31ee-440e-9b83-a08219c9afcc', 'amount': '800.00', 'description': 'QA c82c8475 Pretty century traditional treatment term accept radio agent.', 'incident_date': '2026-11-03'}
+  response: {"id":"fdc44c89-1558-4f38-a704-6949a7436174","reference":"CLM-D2642DA7","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"800.00","description":"QA c82c8475 Pretty century traditional treatment term accept radio agent.","incident_date":"2026-11-03","status":"DRAFT","created_at":"2026-11-10T10:17:03.951528Z","updated_at":"2026-11-10T10:17:03.951528Z","withdrawn_at":null,"decided_by_id":null}
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"fdc44c89-1558-4f38-a704-6949a7436174","reference":"CLM-D2642DA7","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"800.00","description":"QA c82c8475 Pretty century traditional treatment term accept radio agent.","incident_date":"2026-11-03","status":"SUBMITTED","created_at":"2026-11-10T10:17:03.951528Z","updated_at":"2026-11-10T10:17:03.960697Z","withdrawn_at":null,"decided_by_id":null}
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"fdc44c89-1558-4f38-a704-6949a7436174","reference":"CLM-D2642DA7","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"800.00","description":"QA c82c8475 Pretty century traditional treatment term accept radio agent.","incident_date":"2026-11-03","status":"UNDER_REVIEW","created_at":"2026-11-10T10:17:03.951528Z","updated_at":"2026-11-10T10:17:03.969014Z","withdrawn_at":null,"decided_by_id":null}
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"fdc44c89-1558-4f38-a704-6949a7436174","reference":"CLM-D2642DA7","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"800.00","description":"QA c82c8475 Pretty century traditional treatment term accept radio agent.","incident_date":"2026-11-03","status":"APPROVED","created_at":"2026-11-10T10:17:03.951528Z","updated_at":"2026-11-10T10:17:03.977401Z","withdrawn_at":null,"decided_by_id":"1372e6b0-bb15-4726-8d9a-d2a997c4e576"}
+10:17:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions "HTTP/1.1 200 OK"
+10:17:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"fdc44c89-1558-4f38-a704-6949a7436174","reference":"CLM-D2642DA7","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"800.00","description":"QA c82c8475 Pretty century traditional treatment term accept radio agent.","incident_date":"2026-11-03","status":"PAID","created_at":"2026-11-10T10:17:03.951528Z","updated_at":"2026-11-10T10:17:03.986789Z","withdrawn_at":null,"decided_by_id":"1372e6b0-bb15-4726-8d9a-d2a997c4e576"}
+10:17:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions "HTTP/1.1 409 Conflict"
+10:17:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+10:17:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions "HTTP/1.1 409 Conflict"
+10:17:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/fdc44c89-1558-4f38-a704-6949a7436174/transitions -> 409 (5 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status PAID; it must be APPROVED."}
+10:17:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('fdc44c89-1558-4f38-a704-6949a7436174',)
+  rows: 1
+10:17:04 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('fdc44c89-1558-4f38-a704-6949a7436174',)
+  rows: 1
+10:17:04 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_second_payment_attempt_creates_no_second_payout

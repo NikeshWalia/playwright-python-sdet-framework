@@ -1,0 +1,16 @@
+10:17:02 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[start_review]
+10:17:02 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:17:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (12 ms)
+  response: [{"id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","policy_number":"POL-1001","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"10000.00","is_active":true},{"id":"6d9fc64a-f63f-497c-8ced-27b0a60d656c","policy_number":"POL-1002","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"2500.00","is_active":true}]
+10:17:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:17:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': 'b52ff4e2-31ee-440e-9b83-a08219c9afcc', 'amount': '250.00', 'description': 'QA 48cf24ff Strong year money late reach feeling.', 'incident_date': '2026-11-03'}
+  response: {"id":"34126f88-5cfa-4d4e-950d-574815b91872","reference":"CLM-11E47B12","policy_id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","claimant_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","amount":"250.00","description":"QA 48cf24ff Strong year money late reach feeling.","incident_date":"2026-11-03","status":"DRAFT","created_at":"2026-11-10T10:17:02.835173Z","updated_at":"2026-11-10T10:17:02.835173Z","withdrawn_at":null,"decided_by_id":null}
+10:17:02 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/34126f88-5cfa-4d4e-950d-574815b91872 "HTTP/1.1 204 No Content"
+10:17:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/34126f88-5cfa-4d4e-950d-574815b91872 -> 204 (12 ms)
+  response: 
+10:17:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/34126f88-5cfa-4d4e-950d-574815b91872/transitions "HTTP/1.1 409 Conflict"
+10:17:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/34126f88-5cfa-4d4e-950d-574815b91872/transitions -> 409 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status WITHDRAWN; it must be SUBMITTED."}
+10:17:02 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[start_review]
