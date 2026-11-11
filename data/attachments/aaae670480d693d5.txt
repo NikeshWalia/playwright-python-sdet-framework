@@ -1,0 +1,12 @@
+09:45:34 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event
+09:45:34 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:45:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","policy_number":"POL-1001","holder_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","coverage_limit":"10000.00","is_active":true},{"id":"73ea4c57-015b-4f53-b3b9-4f45df2aecbd","policy_number":"POL-1002","holder_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","coverage_limit":"2500.00","is_active":true}]
+09:45:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '1098d6d6-4956-4b4e-a238-72fad9b1621e', 'amount': '250.00', 'description': 'QA c9a89fd7 Real from force rule trade newspaper drop.', 'incident_date': '2026-11-04'}
+  response: {"id":"3a97cae3-0a09-46be-a9ea-3c5aab139a44","reference":"CLM-0A4ADAB4","policy_id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","claimant_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","amount":"250.00","description":"QA c9a89fd7 Real from force rule trade newspaper drop.","incident_date":"2026-11-04","status":"DRAFT","created_at":"2026-11-11T09:45:34.113679Z","updated_at":"2026-11-11T09:45:34.113679Z","withdrawn_at":null,"decided_by_id":null}
+09:45:34 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/3a97cae3-0a09-46be-a9ea-3c5aab139a44/events "HTTP/1.1 200 OK"
+09:45:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/3a97cae3-0a09-46be-a9ea-3c5aab139a44/events -> 200 (4 ms)
+  response: [{"id":"94086398-f6fa-46e8-a836-0f53a5c78fb0","claim_id":"3a97cae3-0a09-46be-a9ea-3c5aab139a44","actor_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-11-11T09:45:34.113679Z"}]
+09:45:34 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event

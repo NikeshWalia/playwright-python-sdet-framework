@@ -1,9 +1,0 @@
-10:16:53 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[far-future]
-10:16:53 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-10:16:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
-  response: [{"id":"b52ff4e2-31ee-440e-9b83-a08219c9afcc","policy_number":"POL-1001","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"10000.00","is_active":true},{"id":"6d9fc64a-f63f-497c-8ced-27b0a60d656c","policy_number":"POL-1002","holder_id":"c5620d57-ba3e-497e-98e2-5791e8b5baf7","coverage_limit":"2500.00","is_active":true}]
-10:16:53 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-10:16:53 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
-  request : {'policy_id': 'b52ff4e2-31ee-440e-9b83-a08219c9afcc', 'amount': '250.00', 'description': 'QA 5631be45 Pick wish manager sell notice.', 'incident_date': '2099-01-01'}
-  response: {"detail":[{"type":"value_error","loc":["body","incident_date"],"msg":"Value error, Incident date cannot be in the future.","input":"2099-01-01","ctx":{"error":{}}}]}
-10:16:53 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_invalid_incident_dates_are_rejected[far-future]

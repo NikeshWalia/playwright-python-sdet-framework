@@ -1,0 +1,25 @@
+09:45:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+09:45:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:45:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","policy_number":"POL-1001","holder_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","coverage_limit":"10000.00","is_active":true},{"id":"73ea4c57-015b-4f53-b3b9-4f45df2aecbd","policy_number":"POL-1002","holder_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","coverage_limit":"2500.00","is_active":true}]
+09:45:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '1098d6d6-4956-4b4e-a238-72fad9b1621e', 'amount': '250.00', 'description': 'QA 3d8d5b2f Bank situation method after.', 'incident_date': '2026-11-04'}
+  response: {"id":"e96b35b9-8f83-4014-87ff-3448f1938bec","reference":"CLM-57475E1A","policy_id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","claimant_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","amount":"250.00","description":"QA 3d8d5b2f Bank situation method after.","incident_date":"2026-11-04","status":"DRAFT","created_at":"2026-11-11T09:45:35.162702Z","updated_at":"2026-11-11T09:45:35.162702Z","withdrawn_at":null,"decided_by_id":null}
+09:45:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '1098d6d6-4956-4b4e-a238-72fad9b1621e', 'amount': '250.00', 'description': 'QA 6e5b2fbd Set next consider whether agent on pull.', 'incident_date': '2026-11-04'}
+  response: {"id":"2913d955-85d6-4f98-bea3-759d92176b9a","reference":"CLM-2342CABE","policy_id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","claimant_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","amount":"250.00","description":"QA 6e5b2fbd Set next consider whether agent on pull.","incident_date":"2026-11-04","status":"DRAFT","created_at":"2026-11-11T09:45:35.168935Z","updated_at":"2026-11-11T09:45:35.168935Z","withdrawn_at":null,"decided_by_id":null}
+09:45:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (5 ms)
+  request : {'policy_id': '1098d6d6-4956-4b4e-a238-72fad9b1621e', 'amount': '250.00', 'description': 'QA 7bbcaa42 Hospital food system.', 'incident_date': '2026-11-04'}
+  response: {"id":"f877b2f4-3208-4f00-bc58-e974fe6a8cc5","reference":"CLM-2D8A0EBD","policy_id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","claimant_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","amount":"250.00","description":"QA 7bbcaa42 Hospital food system.","incident_date":"2026-11-04","status":"DRAFT","created_at":"2026-11-11T09:45:35.174842Z","updated_at":"2026-11-11T09:45:35.174842Z","withdrawn_at":null,"decided_by_id":null}
+09:45:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '1098d6d6-4956-4b4e-a238-72fad9b1621e', 'amount': '250.00', 'description': 'QA cc1fe288 Protect down pull more.', 'incident_date': '2026-11-04'}
+  response: {"id":"a6057630-33bb-48b7-a747-c2a5fab46f73","reference":"CLM-B58E9730","policy_id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","claimant_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","amount":"250.00","description":"QA cc1fe288 Protect down pull more.","incident_date":"2026-11-04","status":"DRAFT","created_at":"2026-11-11T09:45:35.181026Z","updated_at":"2026-11-11T09:45:35.181026Z","withdrawn_at":null,"decided_by_id":null}
+09:45:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:45:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '1098d6d6-4956-4b4e-a238-72fad9b1621e', 'amount': '250.00', 'description': 'QA 36ec8144 Affect the within agreement.', 'incident_date': '2026-11-04'}
+  response: {"id":"ed609246-3b55-4506-b9ed-47a39d728466","reference":"CLM-47294765","policy_id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","claimant_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","amount":"250.00","description":"QA 36ec8144 Affect the within agreement.","incident_date":"2026-11-04","status":"DRAFT","created_at":"2026-11-11T09:45:35.186916Z","updated_at":"2026-11-11T09:45:35.186916Z","withdrawn_at":null,"decided_by_id":null}
+09:45:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
