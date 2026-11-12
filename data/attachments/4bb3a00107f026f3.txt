@@ -1,5 +1,0 @@
-09:45:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
-09:45:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
-09:45:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (4 ms)
-  response: {"items":[{"id":"5c0588a1-9d38-488f-bde6-589fba8f99f7","reference":"CLM-862C94DC","policy_id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","claimant_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","amount":"100.00","description":"QA 2f7a829d Shoulder language institution next rock again.","incident_date":"2026-11-04","status":"UNDER_REVIEW","created_at":"2026-11-11T09:45:35.047608Z","updated_at":"2026-11-11T09:45:35.059782Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":49}
-09:45:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]

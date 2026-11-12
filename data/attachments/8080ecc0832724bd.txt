@@ -1,0 +1,5 @@
+10:06:26 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
+10:06:26 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
+10:06:26 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (5 ms)
+  response: {"items":[{"id":"7130fe4b-61cf-4692-90d7-75fb31de1c0d","reference":"CLM-730C4DB1","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"250.00","description":"QA 567fd65c Area issue out force listen.","incident_date":"2026-11-05","status":"WITHDRAWN","created_at":"2026-11-12T10:06:26.462883Z","updated_at":"2026-11-12T10:06:26.474717Z","withdrawn_at":"2026-11-12T10:06:26.476713Z","decided_by_id":null}],"page":1,"size":50,"total":1}
+10:06:26 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]

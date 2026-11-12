@@ -1,0 +1,19 @@
+10:06:36 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
+10:06:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:06:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"2fae452e-21e9-4a70-a791-dc252ca5be98","policy_number":"POL-1001","holder_id":"5277dd78-7019-4026-9a63-93be78a644ba","coverage_limit":"10000.00","is_active":true},{"id":"4ff6dee6-9851-47f3-8cd9-d88d851d0339","policy_number":"POL-1002","holder_id":"5277dd78-7019-4026-9a63-93be78a644ba","coverage_limit":"2500.00","is_active":true}]
+10:06:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:06:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '2fae452e-21e9-4a70-a791-dc252ca5be98', 'amount': '100.00', 'description': 'QA 54f48c2b Field use short finish middle.', 'incident_date': '2026-11-05'}
+  response: {"id":"d2bf0d70-dc7b-4ba2-a98e-82b96ca07417","reference":"CLM-FF804C67","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"100.00","description":"QA 54f48c2b Field use short finish middle.","incident_date":"2026-11-05","status":"DRAFT","created_at":"2026-11-12T10:06:36.220923Z","updated_at":"2026-11-12T10:06:36.220923Z","withdrawn_at":null,"decided_by_id":null}
+10:06:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/d2bf0d70-dc7b-4ba2-a98e-82b96ca07417 "HTTP/1.1 200 OK"
+10:06:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/d2bf0d70-dc7b-4ba2-a98e-82b96ca07417 -> 200 (6 ms)
+  response: {"id":"d2bf0d70-dc7b-4ba2-a98e-82b96ca07417","reference":"CLM-FF804C67","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"100.00","description":"QA 54f48c2b Field use short finish middle.","incident_date":"2026-11-05","status":"DRAFT","created_at":"2026-11-12T10:06:36.220923Z","updated_at":"2026-11-12T10:06:36.220923Z","withdrawn_at":null,"decided_by_id":null}
+10:06:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d2bf0d70-dc7b-4ba2-a98e-82b96ca07417/transitions "HTTP/1.1 409 Conflict"
+10:06:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d2bf0d70-dc7b-4ba2-a98e-82b96ca07417/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status DRAFT; it must be APPROVED."}
+10:06:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/d2bf0d70-dc7b-4ba2-a98e-82b96ca07417 "HTTP/1.1 200 OK"
+10:06:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/d2bf0d70-dc7b-4ba2-a98e-82b96ca07417 -> 200 (4 ms)
+  response: {"id":"d2bf0d70-dc7b-4ba2-a98e-82b96ca07417","reference":"CLM-FF804C67","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"100.00","description":"QA 54f48c2b Field use short finish middle.","incident_date":"2026-11-05","status":"DRAFT","created_at":"2026-11-12T10:06:36.220923Z","updated_at":"2026-11-12T10:06:36.220923Z","withdrawn_at":null,"decided_by_id":null}
+10:06:36 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]

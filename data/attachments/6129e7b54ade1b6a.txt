@@ -1,0 +1,28 @@
+10:06:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-submit]
+10:06:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:06:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"2fae452e-21e9-4a70-a791-dc252ca5be98","policy_number":"POL-1001","holder_id":"5277dd78-7019-4026-9a63-93be78a644ba","coverage_limit":"10000.00","is_active":true},{"id":"4ff6dee6-9851-47f3-8cd9-d88d851d0339","policy_number":"POL-1002","holder_id":"5277dd78-7019-4026-9a63-93be78a644ba","coverage_limit":"2500.00","is_active":true}]
+10:06:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:06:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (99 ms)
+  request : {'policy_id': '2fae452e-21e9-4a70-a791-dc252ca5be98', 'amount': '100.00', 'description': 'QA 3f82c121 Consider region state stuff either professor.', 'incident_date': '2026-11-05'}
+  response: {"id":"890c0e67-3b6a-4768-936a-8a462b7db3a7","reference":"CLM-7CED7267","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"100.00","description":"QA 3f82c121 Consider region state stuff either professor.","incident_date":"2026-11-05","status":"DRAFT","created_at":"2026-11-12T10:06:35.490915Z","updated_at":"2026-11-12T10:06:35.490915Z","withdrawn_at":null,"decided_by_id":null}
+10:06:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7/transitions "HTTP/1.1 200 OK"
+10:06:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7/transitions -> 200 (181 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"890c0e67-3b6a-4768-936a-8a462b7db3a7","reference":"CLM-7CED7267","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"100.00","description":"QA 3f82c121 Consider region state stuff either professor.","incident_date":"2026-11-05","status":"SUBMITTED","created_at":"2026-11-12T10:06:35.490915Z","updated_at":"2026-11-12T10:06:35.589494Z","withdrawn_at":null,"decided_by_id":null}
+10:06:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7/transitions "HTTP/1.1 200 OK"
+10:06:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7/transitions -> 200 (127 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"890c0e67-3b6a-4768-936a-8a462b7db3a7","reference":"CLM-7CED7267","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"100.00","description":"QA 3f82c121 Consider region state stuff either professor.","incident_date":"2026-11-05","status":"UNDER_REVIEW","created_at":"2026-11-12T10:06:35.490915Z","updated_at":"2026-11-12T10:06:35.772161Z","withdrawn_at":null,"decided_by_id":null}
+10:06:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7/transitions "HTTP/1.1 200 OK"
+10:06:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7/transitions -> 200 (31 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"890c0e67-3b6a-4768-936a-8a462b7db3a7","reference":"CLM-7CED7267","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"100.00","description":"QA 3f82c121 Consider region state stuff either professor.","incident_date":"2026-11-05","status":"APPROVED","created_at":"2026-11-12T10:06:35.490915Z","updated_at":"2026-11-12T10:06:35.897562Z","withdrawn_at":null,"decided_by_id":"647087f9-0699-4e70-bf35-d6ec2034c605"}
+10:06:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7/transitions "HTTP/1.1 409 Conflict"
+10:06:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7/transitions -> 409 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status APPROVED; it must be DRAFT."}
+10:06:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7 "HTTP/1.1 200 OK"
+10:06:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/890c0e67-3b6a-4768-936a-8a462b7db3a7 -> 200 (7 ms)
+  response: {"id":"890c0e67-3b6a-4768-936a-8a462b7db3a7","reference":"CLM-7CED7267","policy_id":"2fae452e-21e9-4a70-a791-dc252ca5be98","claimant_id":"5277dd78-7019-4026-9a63-93be78a644ba","amount":"100.00","description":"QA 3f82c121 Consider region state stuff either professor.","incident_date":"2026-11-05","status":"APPROVED","created_at":"2026-11-12T10:06:35.490915Z","updated_at":"2026-11-12T10:06:35.897562Z","withdrawn_at":null,"decided_by_id":"647087f9-0699-4e70-bf35-d6ec2034c605"}
+10:06:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-submit]

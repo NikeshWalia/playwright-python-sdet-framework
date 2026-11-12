@@ -1,9 +1,0 @@
-09:45:34 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]
-09:45:34 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-09:45:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
-  response: [{"id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","policy_number":"POL-1001","holder_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","coverage_limit":"10000.00","is_active":true},{"id":"73ea4c57-015b-4f53-b3b9-4f45df2aecbd","policy_number":"POL-1002","holder_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","coverage_limit":"2500.00","is_active":true}]
-09:45:34 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-09:45:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
-  request : {'policy_id': '1098d6d6-4956-4b4e-a238-72fad9b1621e', 'amount': '١٢٣', 'description': 'QA b6daedef Choice throw then activity young increase.', 'incident_date': '2026-11-04'}
-  response: {"id":"913e1994-1c3c-4cf2-bc4f-b9a576b24ed0","reference":"CLM-B4C1F3D7","policy_id":"1098d6d6-4956-4b4e-a238-72fad9b1621e","claimant_id":"4e62fafc-fafd-441b-9291-cf3fa1d86deb","amount":"123.00","description":"QA b6daedef Choice throw then activity young increase.","incident_date":"2026-11-04","status":"DRAFT","created_at":"2026-11-11T09:45:34.639831Z","updated_at":"2026-11-11T09:45:34.639831Z","withdrawn_at":null,"decided_by_id":null}
-09:45:34 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]
