@@ -1,9 +1,0 @@
-10:06:27 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_creating_a_claim_against_an_unknown_policy_is_rejected
-10:06:27 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-10:06:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
-  response: [{"id":"2fae452e-21e9-4a70-a791-dc252ca5be98","policy_number":"POL-1001","holder_id":"5277dd78-7019-4026-9a63-93be78a644ba","coverage_limit":"10000.00","is_active":true},{"id":"4ff6dee6-9851-47f3-8cd9-d88d851d0339","policy_number":"POL-1002","holder_id":"5277dd78-7019-4026-9a63-93be78a644ba","coverage_limit":"2500.00","is_active":true}]
-10:06:27 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 404 Not Found"
-10:06:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 404 (7 ms)
-  request : {'policy_id': '00000000-0000-0000-0000-000000000000', 'amount': '250.00', 'description': 'QA ddf64413 Education run Republican art.', 'incident_date': '2026-11-05'}
-  response: {"detail":"Policy not found"}
-10:06:27 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_creating_a_claim_against_an_unknown_policy_is_rejected
