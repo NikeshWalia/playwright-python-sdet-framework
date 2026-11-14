@@ -1,0 +1,16 @@
+09:16:47 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[pay]
+09:16:47 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"2b1d7fca-372a-487a-a330-0d3728b1a021","policy_number":"POL-1001","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"10000.00","is_active":true},{"id":"51d4147a-de28-4440-8d81-d95b4eca48b7","policy_number":"POL-1002","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"2500.00","is_active":true}]
+09:16:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '2b1d7fca-372a-487a-a330-0d3728b1a021', 'amount': '250.00', 'description': 'QA f5ab8c61 The thus owner avoid remember star condition.', 'incident_date': '2026-11-07'}
+  response: {"id":"87335800-1f70-41db-895b-3d96baa59de7","reference":"CLM-7AF9F3D2","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"250.00","description":"QA f5ab8c61 The thus owner avoid remember star condition.","incident_date":"2026-11-07","status":"DRAFT","created_at":"2026-11-14T09:16:47.535086Z","updated_at":"2026-11-14T09:16:47.535086Z","withdrawn_at":null,"decided_by_id":null}
+09:16:47 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/87335800-1f70-41db-895b-3d96baa59de7 "HTTP/1.1 204 No Content"
+09:16:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/87335800-1f70-41db-895b-3d96baa59de7 -> 204 (5 ms)
+  response: 
+09:16:47 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/87335800-1f70-41db-895b-3d96baa59de7/transitions "HTTP/1.1 409 Conflict"
+09:16:47 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/87335800-1f70-41db-895b-3d96baa59de7/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status WITHDRAWN; it must be APPROVED."}
+09:16:47 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[pay]

@@ -1,0 +1,9 @@
+09:16:40 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[amount]
+09:16:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"2b1d7fca-372a-487a-a330-0d3728b1a021","policy_number":"POL-1001","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"10000.00","is_active":true},{"id":"51d4147a-de28-4440-8d81-d95b4eca48b7","policy_number":"POL-1002","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"2500.00","is_active":true}]
+09:16:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+09:16:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (3 ms)
+  request : {'policy_id': '2b1d7fca-372a-487a-a330-0d3728b1a021', 'description': 'QA dd3826d5 Themselves look baby certain through discover environment matter.', 'incident_date': '2026-11-07'}
+  response: {"detail":[{"type":"missing","loc":["body","amount"],"msg":"Field required","input":{"policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","description":"QA dd3826d5 Themselves look baby certain through discover environment matter.","incident_date":"2026-11-07"}}]}
+09:16:40 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[amount]

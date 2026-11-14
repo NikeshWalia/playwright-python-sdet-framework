@@ -1,0 +1,26 @@
+09:16:42 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+09:16:42 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (15 ms)
+  response: [{"id":"2b1d7fca-372a-487a-a330-0d3728b1a021","policy_number":"POL-1001","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"10000.00","is_active":true},{"id":"51d4147a-de28-4440-8d81-d95b4eca48b7","policy_number":"POL-1002","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"2500.00","is_active":true}]
+09:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '2b1d7fca-372a-487a-a330-0d3728b1a021', 'amount': '410.00', 'description': 'QA fe233baf Wear sell character four rest.', 'incident_date': '2026-11-07'}
+  response: {"id":"41a2f587-3d53-43df-86ef-195753f4028d","reference":"CLM-FF51FFF4","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"410.00","description":"QA fe233baf Wear sell character four rest.","incident_date":"2026-11-07","status":"DRAFT","created_at":"2026-11-14T09:16:42.906417Z","updated_at":"2026-11-14T09:16:42.906417Z","withdrawn_at":null,"decided_by_id":null}
+09:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/41a2f587-3d53-43df-86ef-195753f4028d/transitions "HTTP/1.1 200 OK"
+09:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/41a2f587-3d53-43df-86ef-195753f4028d/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"41a2f587-3d53-43df-86ef-195753f4028d","reference":"CLM-FF51FFF4","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"410.00","description":"QA fe233baf Wear sell character four rest.","incident_date":"2026-11-07","status":"SUBMITTED","created_at":"2026-11-14T09:16:42.906417Z","updated_at":"2026-11-14T09:16:42.919436Z","withdrawn_at":null,"decided_by_id":null}
+09:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/41a2f587-3d53-43df-86ef-195753f4028d/transitions "HTTP/1.1 200 OK"
+09:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/41a2f587-3d53-43df-86ef-195753f4028d/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"41a2f587-3d53-43df-86ef-195753f4028d","reference":"CLM-FF51FFF4","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"410.00","description":"QA fe233baf Wear sell character four rest.","incident_date":"2026-11-07","status":"UNDER_REVIEW","created_at":"2026-11-14T09:16:42.906417Z","updated_at":"2026-11-14T09:16:42.930439Z","withdrawn_at":null,"decided_by_id":null}
+09:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/41a2f587-3d53-43df-86ef-195753f4028d/transitions "HTTP/1.1 200 OK"
+09:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/41a2f587-3d53-43df-86ef-195753f4028d/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"41a2f587-3d53-43df-86ef-195753f4028d","reference":"CLM-FF51FFF4","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"410.00","description":"QA fe233baf Wear sell character four rest.","incident_date":"2026-11-07","status":"APPROVED","created_at":"2026-11-14T09:16:42.906417Z","updated_at":"2026-11-14T09:16:42.940463Z","withdrawn_at":null,"decided_by_id":"0bbc6d47-cc37-4754-a276-5bc1782d10e8"}
+09:16:42 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/41a2f587-3d53-43df-86ef-195753f4028d/transitions "HTTP/1.1 200 OK"
+09:16:42 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/41a2f587-3d53-43df-86ef-195753f4028d/transitions -> 200 (10 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"41a2f587-3d53-43df-86ef-195753f4028d","reference":"CLM-FF51FFF4","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"410.00","description":"QA fe233baf Wear sell character four rest.","incident_date":"2026-11-07","status":"PAID","created_at":"2026-11-14T09:16:42.906417Z","updated_at":"2026-11-14T09:16:42.951044Z","withdrawn_at":null,"decided_by_id":"0bbc6d47-cc37-4754-a276-5bc1782d10e8"}
+09:16:42 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/41a2f587-3d53-43df-86ef-195753f4028d
+09:16:43 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

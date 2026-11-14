@@ -1,0 +1,17 @@
+09:16:45 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[SUBMITTED-start_review-UNDER_REVIEW]
+09:16:45 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"2b1d7fca-372a-487a-a330-0d3728b1a021","policy_number":"POL-1001","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"10000.00","is_active":true},{"id":"51d4147a-de28-4440-8d81-d95b4eca48b7","policy_number":"POL-1002","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"2500.00","is_active":true}]
+09:16:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '2b1d7fca-372a-487a-a330-0d3728b1a021', 'amount': '100.00', 'description': 'QA 00eeabe5 List system current science lead central.', 'incident_date': '2026-11-07'}
+  response: {"id":"c677cae2-b2f4-4336-b0a7-512b9d9af0db","reference":"CLM-3304DFA2","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA 00eeabe5 List system current science lead central.","incident_date":"2026-11-07","status":"DRAFT","created_at":"2026-11-14T09:16:45.482666Z","updated_at":"2026-11-14T09:16:45.482666Z","withdrawn_at":null,"decided_by_id":null}
+09:16:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c677cae2-b2f4-4336-b0a7-512b9d9af0db/transitions "HTTP/1.1 200 OK"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c677cae2-b2f4-4336-b0a7-512b9d9af0db/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"c677cae2-b2f4-4336-b0a7-512b9d9af0db","reference":"CLM-3304DFA2","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA 00eeabe5 List system current science lead central.","incident_date":"2026-11-07","status":"SUBMITTED","created_at":"2026-11-14T09:16:45.482666Z","updated_at":"2026-11-14T09:16:45.492613Z","withdrawn_at":null,"decided_by_id":null}
+09:16:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c677cae2-b2f4-4336-b0a7-512b9d9af0db/transitions "HTTP/1.1 200 OK"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c677cae2-b2f4-4336-b0a7-512b9d9af0db/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"c677cae2-b2f4-4336-b0a7-512b9d9af0db","reference":"CLM-3304DFA2","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA 00eeabe5 List system current science lead central.","incident_date":"2026-11-07","status":"UNDER_REVIEW","created_at":"2026-11-14T09:16:45.482666Z","updated_at":"2026-11-14T09:16:45.501495Z","withdrawn_at":null,"decided_by_id":null}
+09:16:45 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[SUBMITTED-start_review-UNDER_REVIEW]

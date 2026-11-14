@@ -1,0 +1,28 @@
+09:16:46 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-reject]
+09:16:46 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"2b1d7fca-372a-487a-a330-0d3728b1a021","policy_number":"POL-1001","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"10000.00","is_active":true},{"id":"51d4147a-de28-4440-8d81-d95b4eca48b7","policy_number":"POL-1002","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"2500.00","is_active":true}]
+09:16:46 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '2b1d7fca-372a-487a-a330-0d3728b1a021', 'amount': '100.00', 'description': 'QA be3c62b1 Since seat security former authority finally.', 'incident_date': '2026-11-07'}
+  response: {"id":"040ca9c9-e716-4e6a-b892-2acb08b6ba56","reference":"CLM-10CE266A","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA be3c62b1 Since seat security former authority finally.","incident_date":"2026-11-07","status":"DRAFT","created_at":"2026-11-14T09:16:46.818736Z","updated_at":"2026-11-14T09:16:46.818736Z","withdrawn_at":null,"decided_by_id":null}
+09:16:46 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56/transitions "HTTP/1.1 200 OK"
+09:16:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"040ca9c9-e716-4e6a-b892-2acb08b6ba56","reference":"CLM-10CE266A","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA be3c62b1 Since seat security former authority finally.","incident_date":"2026-11-07","status":"SUBMITTED","created_at":"2026-11-14T09:16:46.818736Z","updated_at":"2026-11-14T09:16:46.829487Z","withdrawn_at":null,"decided_by_id":null}
+09:16:46 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56/transitions "HTTP/1.1 200 OK"
+09:16:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56/transitions -> 200 (13 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"040ca9c9-e716-4e6a-b892-2acb08b6ba56","reference":"CLM-10CE266A","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA be3c62b1 Since seat security former authority finally.","incident_date":"2026-11-07","status":"UNDER_REVIEW","created_at":"2026-11-14T09:16:46.818736Z","updated_at":"2026-11-14T09:16:46.840659Z","withdrawn_at":null,"decided_by_id":null}
+09:16:46 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56/transitions "HTTP/1.1 200 OK"
+09:16:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"040ca9c9-e716-4e6a-b892-2acb08b6ba56","reference":"CLM-10CE266A","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA be3c62b1 Since seat security former authority finally.","incident_date":"2026-11-07","status":"APPROVED","created_at":"2026-11-14T09:16:46.818736Z","updated_at":"2026-11-14T09:16:46.852332Z","withdrawn_at":null,"decided_by_id":"0bbc6d47-cc37-4754-a276-5bc1782d10e8"}
+09:16:46 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56/transitions "HTTP/1.1 409 Conflict"
+09:16:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56/transitions -> 409 (5 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status APPROVED; it must be UNDER_REVIEW."}
+09:16:46 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56 "HTTP/1.1 200 OK"
+09:16:46 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/040ca9c9-e716-4e6a-b892-2acb08b6ba56 -> 200 (6 ms)
+  response: {"id":"040ca9c9-e716-4e6a-b892-2acb08b6ba56","reference":"CLM-10CE266A","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA be3c62b1 Since seat security former authority finally.","incident_date":"2026-11-07","status":"APPROVED","created_at":"2026-11-14T09:16:46.818736Z","updated_at":"2026-11-14T09:16:46.852332Z","withdrawn_at":null,"decided_by_id":"0bbc6d47-cc37-4754-a276-5bc1782d10e8"}
+09:16:46 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-reject]

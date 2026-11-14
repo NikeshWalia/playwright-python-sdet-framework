@@ -1,0 +1,28 @@
+09:16:45 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-submit]
+09:16:45 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"2b1d7fca-372a-487a-a330-0d3728b1a021","policy_number":"POL-1001","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"10000.00","is_active":true},{"id":"51d4147a-de28-4440-8d81-d95b4eca48b7","policy_number":"POL-1002","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"2500.00","is_active":true}]
+09:16:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '2b1d7fca-372a-487a-a330-0d3728b1a021', 'amount': '100.00', 'description': 'QA bd262f06 Full technology majority student.', 'incident_date': '2026-11-07'}
+  response: {"id":"407d6593-dc91-4345-9f45-555336dc1b95","reference":"CLM-04A4F582","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA bd262f06 Full technology majority student.","incident_date":"2026-11-07","status":"DRAFT","created_at":"2026-11-14T09:16:45.929568Z","updated_at":"2026-11-14T09:16:45.929568Z","withdrawn_at":null,"decided_by_id":null}
+09:16:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95/transitions "HTTP/1.1 200 OK"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"407d6593-dc91-4345-9f45-555336dc1b95","reference":"CLM-04A4F582","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA bd262f06 Full technology majority student.","incident_date":"2026-11-07","status":"SUBMITTED","created_at":"2026-11-14T09:16:45.929568Z","updated_at":"2026-11-14T09:16:45.940882Z","withdrawn_at":null,"decided_by_id":null}
+09:16:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95/transitions "HTTP/1.1 200 OK"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"407d6593-dc91-4345-9f45-555336dc1b95","reference":"CLM-04A4F582","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA bd262f06 Full technology majority student.","incident_date":"2026-11-07","status":"UNDER_REVIEW","created_at":"2026-11-14T09:16:45.929568Z","updated_at":"2026-11-14T09:16:45.950468Z","withdrawn_at":null,"decided_by_id":null}
+09:16:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95/transitions "HTTP/1.1 200 OK"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95/transitions -> 200 (9 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"407d6593-dc91-4345-9f45-555336dc1b95","reference":"CLM-04A4F582","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA bd262f06 Full technology majority student.","incident_date":"2026-11-07","status":"REJECTED","created_at":"2026-11-14T09:16:45.929568Z","updated_at":"2026-11-14T09:16:45.963802Z","withdrawn_at":null,"decided_by_id":"0bbc6d47-cc37-4754-a276-5bc1782d10e8"}
+09:16:45 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95/transitions "HTTP/1.1 409 Conflict"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95/transitions -> 409 (5 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"detail":"Cannot submit a claim in status REJECTED; it must be DRAFT."}
+09:16:45 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95 "HTTP/1.1 200 OK"
+09:16:45 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/407d6593-dc91-4345-9f45-555336dc1b95 -> 200 (5 ms)
+  response: {"id":"407d6593-dc91-4345-9f45-555336dc1b95","reference":"CLM-04A4F582","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"100.00","description":"QA bd262f06 Full technology majority student.","incident_date":"2026-11-07","status":"REJECTED","created_at":"2026-11-14T09:16:45.929568Z","updated_at":"2026-11-14T09:16:45.963802Z","withdrawn_at":null,"decided_by_id":"0bbc6d47-cc37-4754-a276-5bc1782d10e8"}
+09:16:45 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-submit]

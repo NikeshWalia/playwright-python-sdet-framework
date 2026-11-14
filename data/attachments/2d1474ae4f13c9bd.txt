@@ -1,0 +1,18 @@
+09:16:43 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]
+09:16:43 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"2b1d7fca-372a-487a-a330-0d3728b1a021","policy_number":"POL-1001","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"10000.00","is_active":true},{"id":"51d4147a-de28-4440-8d81-d95b4eca48b7","policy_number":"POL-1002","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"2500.00","is_active":true}]
+09:16:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '2b1d7fca-372a-487a-a330-0d3728b1a021', 'amount': '5000.01', 'description': 'QA 57a7095d Customer west language decide speech chance result.', 'incident_date': '2026-11-07'}
+  response: {"id":"09f1d11c-f39b-4f60-b349-811bc9b49f6b","reference":"CLM-DE69E6E8","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"5000.01","description":"QA 57a7095d Customer west language decide speech chance result.","incident_date":"2026-11-07","status":"DRAFT","created_at":"2026-11-14T09:16:43.170894Z","updated_at":"2026-11-14T09:16:43.170894Z","withdrawn_at":null,"decided_by_id":null}
+09:16:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/09f1d11c-f39b-4f60-b349-811bc9b49f6b/transitions "HTTP/1.1 200 OK"
+09:16:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/09f1d11c-f39b-4f60-b349-811bc9b49f6b/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"09f1d11c-f39b-4f60-b349-811bc9b49f6b","reference":"CLM-DE69E6E8","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"5000.01","description":"QA 57a7095d Customer west language decide speech chance result.","incident_date":"2026-11-07","status":"SUBMITTED","created_at":"2026-11-14T09:16:43.170894Z","updated_at":"2026-11-14T09:16:43.182821Z","withdrawn_at":null,"decided_by_id":null}
+09:16:43 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/09f1d11c-f39b-4f60-b349-811bc9b49f6b/transitions "HTTP/1.1 200 OK"
+09:16:43 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/09f1d11c-f39b-4f60-b349-811bc9b49f6b/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"09f1d11c-f39b-4f60-b349-811bc9b49f6b","reference":"CLM-DE69E6E8","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"5000.01","description":"QA 57a7095d Customer west language decide speech chance result.","incident_date":"2026-11-07","status":"UNDER_REVIEW","created_at":"2026-11-14T09:16:43.170894Z","updated_at":"2026-11-14T09:16:43.192446Z","withdrawn_at":null,"decided_by_id":null}
+09:16:43 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/09f1d11c-f39b-4f60-b349-811bc9b49f6b
+09:16:43 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]

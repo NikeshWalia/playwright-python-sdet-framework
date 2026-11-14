@@ -1,0 +1,13 @@
+09:16:40 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_updating_a_draft_changes_only_the_field_sent
+09:16:40 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:16:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"2b1d7fca-372a-487a-a330-0d3728b1a021","policy_number":"POL-1001","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"10000.00","is_active":true},{"id":"51d4147a-de28-4440-8d81-d95b4eca48b7","policy_number":"POL-1002","holder_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","coverage_limit":"2500.00","is_active":true}]
+09:16:40 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:16:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '2b1d7fca-372a-487a-a330-0d3728b1a021', 'amount': '410.00', 'description': 'QA f1335769 War become teach manager between before class.', 'incident_date': '2026-11-07'}
+  response: {"id":"4905d0ea-cdbc-4bc6-bdbb-e9b0aa7a463c","reference":"CLM-33E693D2","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"410.00","description":"QA f1335769 War become teach manager between before class.","incident_date":"2026-11-07","status":"DRAFT","created_at":"2026-11-14T09:16:40.427521Z","updated_at":"2026-11-14T09:16:40.427521Z","withdrawn_at":null,"decided_by_id":null}
+09:16:40 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/4905d0ea-cdbc-4bc6-bdbb-e9b0aa7a463c "HTTP/1.1 200 OK"
+09:16:40 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/4905d0ea-cdbc-4bc6-bdbb-e9b0aa7a463c -> 200 (7 ms)
+  request : {'description': 'Updated description for the claim'}
+  response: {"id":"4905d0ea-cdbc-4bc6-bdbb-e9b0aa7a463c","reference":"CLM-33E693D2","policy_id":"2b1d7fca-372a-487a-a330-0d3728b1a021","claimant_id":"324de51f-3810-4b5c-a9c1-9f34f95a8391","amount":"410.00","description":"Updated description for the claim","incident_date":"2026-11-07","status":"DRAFT","created_at":"2026-11-14T09:16:40.427521Z","updated_at":"2026-11-14T09:16:40.437409Z","withdrawn_at":null,"decided_by_id":null}
+09:16:40 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_updating_a_draft_changes_only_the_field_sent
