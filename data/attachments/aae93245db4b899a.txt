@@ -1,0 +1,21 @@
+09:46:35 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[far-below-limit]
+09:46:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+09:46:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"a935ba90-a114-4f7b-8303-26b30813ddd0","policy_number":"POL-1001","holder_id":"c861db20-38e4-4b1f-ae8f-d665edc86bd4","coverage_limit":"10000.00","is_active":true},{"id":"e4aa7db8-2c07-4807-81b1-9bce4d03d900","policy_number":"POL-1002","holder_id":"c861db20-38e4-4b1f-ae8f-d665edc86bd4","coverage_limit":"2500.00","is_active":true}]
+09:46:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+09:46:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'a935ba90-a114-4f7b-8303-26b30813ddd0', 'amount': '0.01', 'description': 'QA fa883d21 Work at get test although agreement near.', 'incident_date': '2026-11-08'}
+  response: {"id":"97cfe300-5d6f-4092-85f6-07fdb9a68f29","reference":"CLM-5B438A17","policy_id":"a935ba90-a114-4f7b-8303-26b30813ddd0","claimant_id":"c861db20-38e4-4b1f-ae8f-d665edc86bd4","amount":"0.01","description":"QA fa883d21 Work at get test although agreement near.","incident_date":"2026-11-08","status":"DRAFT","created_at":"2026-11-15T09:46:35.104855Z","updated_at":"2026-11-15T09:46:35.104855Z","withdrawn_at":null,"decided_by_id":null}
+09:46:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/97cfe300-5d6f-4092-85f6-07fdb9a68f29/transitions "HTTP/1.1 200 OK"
+09:46:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/97cfe300-5d6f-4092-85f6-07fdb9a68f29/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"97cfe300-5d6f-4092-85f6-07fdb9a68f29","reference":"CLM-5B438A17","policy_id":"a935ba90-a114-4f7b-8303-26b30813ddd0","claimant_id":"c861db20-38e4-4b1f-ae8f-d665edc86bd4","amount":"0.01","description":"QA fa883d21 Work at get test although agreement near.","incident_date":"2026-11-08","status":"SUBMITTED","created_at":"2026-11-15T09:46:35.104855Z","updated_at":"2026-11-15T09:46:35.112558Z","withdrawn_at":null,"decided_by_id":null}
+09:46:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/97cfe300-5d6f-4092-85f6-07fdb9a68f29/transitions "HTTP/1.1 200 OK"
+09:46:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/97cfe300-5d6f-4092-85f6-07fdb9a68f29/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"97cfe300-5d6f-4092-85f6-07fdb9a68f29","reference":"CLM-5B438A17","policy_id":"a935ba90-a114-4f7b-8303-26b30813ddd0","claimant_id":"c861db20-38e4-4b1f-ae8f-d665edc86bd4","amount":"0.01","description":"QA fa883d21 Work at get test although agreement near.","incident_date":"2026-11-08","status":"UNDER_REVIEW","created_at":"2026-11-15T09:46:35.104855Z","updated_at":"2026-11-15T09:46:35.121325Z","withdrawn_at":null,"decided_by_id":null}
+09:46:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/97cfe300-5d6f-4092-85f6-07fdb9a68f29/transitions "HTTP/1.1 200 OK"
+09:46:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/97cfe300-5d6f-4092-85f6-07fdb9a68f29/transitions -> 200 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"97cfe300-5d6f-4092-85f6-07fdb9a68f29","reference":"CLM-5B438A17","policy_id":"a935ba90-a114-4f7b-8303-26b30813ddd0","claimant_id":"c861db20-38e4-4b1f-ae8f-d665edc86bd4","amount":"0.01","description":"QA fa883d21 Work at get test although agreement near.","incident_date":"2026-11-08","status":"APPROVED","created_at":"2026-11-15T09:46:35.104855Z","updated_at":"2026-11-15T09:46:35.128740Z","withdrawn_at":null,"decided_by_id":"f05b3944-fe55-4bd2-b79d-f81d89c7c5fc"}
+09:46:35 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[far-below-limit]

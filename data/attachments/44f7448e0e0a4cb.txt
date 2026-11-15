@@ -1,0 +1,5 @@
+09:46:34 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
+09:46:34 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
+09:46:34 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (4 ms)
+  response: {"items":[{"id":"2a62e91c-727e-491d-9c23-5da4e9f8d54a","reference":"CLM-96F63206","policy_id":"a935ba90-a114-4f7b-8303-26b30813ddd0","claimant_id":"c861db20-38e4-4b1f-ae8f-d665edc86bd4","amount":"250.00","description":"QA 56a0692b Seat good someone.","incident_date":"2026-11-08","status":"WITHDRAWN","created_at":"2026-11-15T09:46:34.369407Z","updated_at":"2026-11-15T09:46:34.379873Z","withdrawn_at":"2026-11-15T09:46:34.381435Z","decided_by_id":null}],"page":1,"size":50,"total":1}
+09:46:34 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
