@@ -1,0 +1,20 @@
+10:03:15 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]
+10:03:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:03:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","policy_number":"POL-1001","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"10000.00","is_active":true},{"id":"98ffbc9f-6205-4553-ac19-2b2f41c2aa1c","policy_number":"POL-1002","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"2500.00","is_active":true}]
+10:03:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:03:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '4898316e-fdaf-432c-9fe5-4b3680da8cff', 'amount': '100.00', 'description': 'QA 23fc8789 Difference personal western suffer.', 'incident_date': '2026-11-09'}
+  response: {"id":"247d381c-1a02-4c74-93e5-db9ce7776841","reference":"CLM-A65A45AB","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"100.00","description":"QA 23fc8789 Difference personal western suffer.","incident_date":"2026-11-09","status":"DRAFT","created_at":"2026-11-16T10:03:15.488849Z","updated_at":"2026-11-16T10:03:15.488849Z","withdrawn_at":null,"decided_by_id":null}
+10:03:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/247d381c-1a02-4c74-93e5-db9ce7776841/transitions "HTTP/1.1 200 OK"
+10:03:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/247d381c-1a02-4c74-93e5-db9ce7776841/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"247d381c-1a02-4c74-93e5-db9ce7776841","reference":"CLM-A65A45AB","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"100.00","description":"QA 23fc8789 Difference personal western suffer.","incident_date":"2026-11-09","status":"SUBMITTED","created_at":"2026-11-16T10:03:15.488849Z","updated_at":"2026-11-16T10:03:15.501853Z","withdrawn_at":null,"decided_by_id":null}
+10:03:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/247d381c-1a02-4c74-93e5-db9ce7776841/transitions "HTTP/1.1 409 Conflict"
+10:03:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/247d381c-1a02-4c74-93e5-db9ce7776841/transitions -> 409 (8 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+10:03:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/247d381c-1a02-4c74-93e5-db9ce7776841 "HTTP/1.1 200 OK"
+10:03:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/247d381c-1a02-4c74-93e5-db9ce7776841 -> 200 (7 ms)
+  response: {"id":"247d381c-1a02-4c74-93e5-db9ce7776841","reference":"CLM-A65A45AB","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"100.00","description":"QA 23fc8789 Difference personal western suffer.","incident_date":"2026-11-09","status":"SUBMITTED","created_at":"2026-11-16T10:03:15.488849Z","updated_at":"2026-11-16T10:03:15.501853Z","withdrawn_at":null,"decided_by_id":null}
+10:03:15 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[SUBMITTED-cannot-pay]

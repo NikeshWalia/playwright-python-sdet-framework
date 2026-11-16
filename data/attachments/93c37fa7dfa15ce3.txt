@@ -1,0 +1,9 @@
+10:03:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[scientific-notation]
+10:03:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:03:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","policy_number":"POL-1001","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"10000.00","is_active":true},{"id":"98ffbc9f-6205-4553-ac19-2b2f41c2aa1c","policy_number":"POL-1002","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"2500.00","is_active":true}]
+10:03:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+10:03:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (6 ms)
+  request : {'policy_id': '4898316e-fdaf-432c-9fe5-4b3680da8cff', 'amount': '1e5', 'description': 'QA ff070e4e Science growth officer.', 'incident_date': '2026-11-09'}
+  response: {"detail":"Claim amount 1E+5 exceeds the policy coverage limit of 10000.00."}
+10:03:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_numeric_amounts_are_rejected[scientific-notation]

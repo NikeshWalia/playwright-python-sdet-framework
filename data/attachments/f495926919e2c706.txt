@@ -1,0 +1,12 @@
+10:03:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_searching_finds_a_claim_the_test_created_itself
+10:03:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:03:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","policy_number":"POL-1001","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"10000.00","is_active":true},{"id":"98ffbc9f-6205-4553-ac19-2b2f41c2aa1c","policy_number":"POL-1002","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"2500.00","is_active":true}]
+10:03:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:03:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '4898316e-fdaf-432c-9fe5-4b3680da8cff', 'amount': '250.00', 'description': 'QA ac721692 Design mission if stage threat throw have.', 'incident_date': '2026-11-09'}
+  response: {"id":"5e6141d2-3b74-4f96-a87b-9437727df32d","reference":"CLM-5870C715","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"250.00","description":"QA ac721692 Design mission if stage threat throw have.","incident_date":"2026-11-09","status":"DRAFT","created_at":"2026-11-16T10:03:06.218787Z","updated_at":"2026-11-16T10:03:06.218787Z","withdrawn_at":null,"decided_by_id":null}
+10:03:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?q=ac721692 "HTTP/1.1 200 OK"
+10:03:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?q=ac721692 -> 200 (7 ms)
+  response: {"items":[{"id":"5e6141d2-3b74-4f96-a87b-9437727df32d","reference":"CLM-5870C715","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"250.00","description":"QA ac721692 Design mission if stage threat throw have.","incident_date":"2026-11-09","status":"DRAFT","created_at":"2026-11-16T10:03:06.218787Z","updated_at":"2026-11-16T10:03:06.218787Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":20,"total":1}
+10:03:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_searching_finds_a_claim_the_test_created_itself

@@ -1,0 +1,13 @@
+10:03:17 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_claim_persistence.py::test_a_claim_created_through_the_api_is_persisted
+10:03:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:03:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","policy_number":"POL-1001","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"10000.00","is_active":true},{"id":"98ffbc9f-6205-4553-ac19-2b2f41c2aa1c","policy_number":"POL-1002","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"2500.00","is_active":true}]
+10:03:17 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+10:03:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:03:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '4898316e-fdaf-432c-9fe5-4b3680da8cff', 'amount': '1234.56', 'description': 'QA b078b718 Program especially when above try word.', 'incident_date': '2026-11-09'}
+  response: {"id":"771be16a-357c-42f9-8d7b-b529fef4467c","reference":"CLM-28FF62BD","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"1234.56","description":"QA b078b718 Program especially when above try word.","incident_date":"2026-11-09","status":"DRAFT","created_at":"2026-11-16T10:03:17.231849Z","updated_at":"2026-11-16T10:03:17.231849Z","withdrawn_at":null,"decided_by_id":null}
+10:03:17 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('771be16a-357c-42f9-8d7b-b529fef4467c',)
+  rows: 1
+10:03:17 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_claim_persistence.py::test_a_claim_created_through_the_api_is_persisted

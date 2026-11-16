@@ -1,0 +1,36 @@
+10:03:16 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_edited
+10:03:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","policy_number":"POL-1001","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"10000.00","is_active":true},{"id":"98ffbc9f-6205-4553-ac19-2b2f41c2aa1c","policy_number":"POL-1002","holder_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","coverage_limit":"2500.00","is_active":true}]
+10:03:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '4898316e-fdaf-432c-9fe5-4b3680da8cff', 'amount': '300.00', 'description': 'QA e7562dc9 Move research along purpose get.', 'incident_date': '2026-11-09'}
+  response: {"id":"edc5822f-cde9-494a-9ac3-266ee3663b0b","reference":"CLM-E972F041","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"300.00","description":"QA e7562dc9 Move research along purpose get.","incident_date":"2026-11-09","status":"DRAFT","created_at":"2026-11-16T10:03:16.147458Z","updated_at":"2026-11-16T10:03:16.147458Z","withdrawn_at":null,"decided_by_id":null}
+10:03:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b/transitions "HTTP/1.1 200 OK"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"edc5822f-cde9-494a-9ac3-266ee3663b0b","reference":"CLM-E972F041","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"300.00","description":"QA e7562dc9 Move research along purpose get.","incident_date":"2026-11-09","status":"SUBMITTED","created_at":"2026-11-16T10:03:16.147458Z","updated_at":"2026-11-16T10:03:16.160003Z","withdrawn_at":null,"decided_by_id":null}
+10:03:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b/transitions "HTTP/1.1 200 OK"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"edc5822f-cde9-494a-9ac3-266ee3663b0b","reference":"CLM-E972F041","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"300.00","description":"QA e7562dc9 Move research along purpose get.","incident_date":"2026-11-09","status":"UNDER_REVIEW","created_at":"2026-11-16T10:03:16.147458Z","updated_at":"2026-11-16T10:03:16.170415Z","withdrawn_at":null,"decided_by_id":null}
+10:03:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b/transitions "HTTP/1.1 200 OK"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b/transitions -> 200 (12 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"edc5822f-cde9-494a-9ac3-266ee3663b0b","reference":"CLM-E972F041","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"300.00","description":"QA e7562dc9 Move research along purpose get.","incident_date":"2026-11-09","status":"APPROVED","created_at":"2026-11-16T10:03:16.147458Z","updated_at":"2026-11-16T10:03:16.180696Z","withdrawn_at":null,"decided_by_id":"0c157a3d-9e56-4db1-a2f6-7818274dbcf0"}
+10:03:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b/transitions "HTTP/1.1 200 OK"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b/transitions -> 200 (14 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"edc5822f-cde9-494a-9ac3-266ee3663b0b","reference":"CLM-E972F041","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"300.00","description":"QA e7562dc9 Move research along purpose get.","incident_date":"2026-11-09","status":"PAID","created_at":"2026-11-16T10:03:16.147458Z","updated_at":"2026-11-16T10:03:16.193684Z","withdrawn_at":null,"decided_by_id":"0c157a3d-9e56-4db1-a2f6-7818274dbcf0"}
+10:03:16 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b "HTTP/1.1 409 Conflict"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b -> 409 (6 ms)
+  request : {'description': 'changed after payment'}
+  response: {"detail":"A claim in status PAID can no longer be edited."}
+10:03:16 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b "HTTP/1.1 409 Conflict"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b -> 409 (6 ms)
+  request : {'amount': '1.00'}
+  response: {"detail":"A claim in status PAID can no longer be edited."}
+10:03:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b "HTTP/1.1 200 OK"
+10:03:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/edc5822f-cde9-494a-9ac3-266ee3663b0b -> 200 (4 ms)
+  response: {"id":"edc5822f-cde9-494a-9ac3-266ee3663b0b","reference":"CLM-E972F041","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"300.00","description":"QA e7562dc9 Move research along purpose get.","incident_date":"2026-11-09","status":"PAID","created_at":"2026-11-16T10:03:16.147458Z","updated_at":"2026-11-16T10:03:16.193684Z","withdrawn_at":null,"decided_by_id":"0c157a3d-9e56-4db1-a2f6-7818274dbcf0"}
+10:03:16 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_edited
