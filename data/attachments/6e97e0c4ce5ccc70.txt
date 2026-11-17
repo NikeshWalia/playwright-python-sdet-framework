@@ -1,5 +1,0 @@
-10:03:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_the_seeded_corpus_is_present_for_the_list_tests
-10:03:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?q=CLM-SEED&size=1 "HTTP/1.1 200 OK"
-10:03:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?q=CLM-SEED&size=1 -> 200 (8 ms)
-  response: {"items":[{"id":"01ad533e-9e91-4516-b2cf-45228ed2d309","reference":"CLM-SEED0018","policy_id":"4898316e-fdaf-432c-9fe5-4b3680da8cff","claimant_id":"eff452fd-dae6-4c7c-a244-7442aac0133d","amount":"6100.00","description":"Seeded claim 18 for list, filter and sort coverage","incident_date":"2026-09-23","status":"REJECTED","created_at":"2026-11-16T10:03:03.974377Z","updated_at":"2026-11-16T10:03:03.974377Z","withdrawn_at":null,"decided_by_id":"0c157a3d-9e56-4db1-a2f6-7818274dbcf0"}],"page":1,"size":1,"total":24}
-10:03:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_the_seeded_corpus_is_present_for_the_list_tests

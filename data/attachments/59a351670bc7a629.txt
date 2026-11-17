@@ -1,0 +1,32 @@
+10:59:36 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row
+10:59:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"adc54172-4ba1-4833-90b6-06b66b619c8f","policy_number":"POL-1001","holder_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","coverage_limit":"10000.00","is_active":true},{"id":"99e03177-ecea-4c0e-afef-fd7060d0e7ec","policy_number":"POL-1002","holder_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","coverage_limit":"2500.00","is_active":true}]
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': 'adc54172-4ba1-4833-90b6-06b66b619c8f', 'amount': '700.00', 'description': 'QA 405aef49 Instead on technology rather put.', 'incident_date': '2026-11-10'}
+  response: {"id":"e1bcdfa2-35ba-46bd-ae9b-e3257e49823a","reference":"CLM-FE89647D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"700.00","description":"QA 405aef49 Instead on technology rather put.","incident_date":"2026-11-10","status":"DRAFT","created_at":"2026-11-17T10:59:36.776509Z","updated_at":"2026-11-17T10:59:36.776509Z","withdrawn_at":null,"decided_by_id":null}
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1bcdfa2-35ba-46bd-ae9b-e3257e49823a/transitions "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1bcdfa2-35ba-46bd-ae9b-e3257e49823a/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"e1bcdfa2-35ba-46bd-ae9b-e3257e49823a","reference":"CLM-FE89647D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"700.00","description":"QA 405aef49 Instead on technology rather put.","incident_date":"2026-11-10","status":"SUBMITTED","created_at":"2026-11-17T10:59:36.776509Z","updated_at":"2026-11-17T10:59:36.785110Z","withdrawn_at":null,"decided_by_id":null}
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1bcdfa2-35ba-46bd-ae9b-e3257e49823a/transitions "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1bcdfa2-35ba-46bd-ae9b-e3257e49823a/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"e1bcdfa2-35ba-46bd-ae9b-e3257e49823a","reference":"CLM-FE89647D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"700.00","description":"QA 405aef49 Instead on technology rather put.","incident_date":"2026-11-10","status":"UNDER_REVIEW","created_at":"2026-11-17T10:59:36.776509Z","updated_at":"2026-11-17T10:59:36.793334Z","withdrawn_at":null,"decided_by_id":null}
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1bcdfa2-35ba-46bd-ae9b-e3257e49823a/transitions "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1bcdfa2-35ba-46bd-ae9b-e3257e49823a/transitions -> 200 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"e1bcdfa2-35ba-46bd-ae9b-e3257e49823a","reference":"CLM-FE89647D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"700.00","description":"QA 405aef49 Instead on technology rather put.","incident_date":"2026-11-10","status":"APPROVED","created_at":"2026-11-17T10:59:36.776509Z","updated_at":"2026-11-17T10:59:36.801811Z","withdrawn_at":null,"decided_by_id":"dea053ef-8dcf-434a-b515-b9e47bc9ca5f"}
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/e1bcdfa2-35ba-46bd-ae9b-e3257e49823a/transitions "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/e1bcdfa2-35ba-46bd-ae9b-e3257e49823a/transitions -> 200 (9 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"e1bcdfa2-35ba-46bd-ae9b-e3257e49823a","reference":"CLM-FE89647D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"700.00","description":"QA 405aef49 Instead on technology rather put.","incident_date":"2026-11-10","status":"PAID","created_at":"2026-11-17T10:59:36.776509Z","updated_at":"2026-11-17T10:59:36.809334Z","withdrawn_at":null,"decided_by_id":"dea053ef-8dcf-434a-b515-b9e47bc9ca5f"}
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('e1bcdfa2-35ba-46bd-ae9b-e3257e49823a',)
+  rows: 5
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('e1bcdfa2-35ba-46bd-ae9b-e3257e49823a',)
+  rows: 1
+10:59:36 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row

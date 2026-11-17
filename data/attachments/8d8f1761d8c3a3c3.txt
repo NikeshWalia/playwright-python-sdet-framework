@@ -1,0 +1,28 @@
+10:59:36 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn
+10:59:36 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"adc54172-4ba1-4833-90b6-06b66b619c8f","policy_number":"POL-1001","holder_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","coverage_limit":"10000.00","is_active":true},{"id":"99e03177-ecea-4c0e-afef-fd7060d0e7ec","policy_number":"POL-1002","holder_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","coverage_limit":"2500.00","is_active":true}]
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'adc54172-4ba1-4833-90b6-06b66b619c8f', 'amount': '300.00', 'description': 'QA ab4cb12f Ahead room student despite last red.', 'incident_date': '2026-11-10'}
+  response: {"id":"85a3c96b-26c1-44a6-91fb-1504c8a8e3be","reference":"CLM-29C078C8","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"300.00","description":"QA ab4cb12f Ahead room student despite last red.","incident_date":"2026-11-10","status":"DRAFT","created_at":"2026-11-17T10:59:36.442864Z","updated_at":"2026-11-17T10:59:36.442864Z","withdrawn_at":null,"decided_by_id":null}
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be/transitions "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"85a3c96b-26c1-44a6-91fb-1504c8a8e3be","reference":"CLM-29C078C8","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"300.00","description":"QA ab4cb12f Ahead room student despite last red.","incident_date":"2026-11-10","status":"SUBMITTED","created_at":"2026-11-17T10:59:36.442864Z","updated_at":"2026-11-17T10:59:36.452839Z","withdrawn_at":null,"decided_by_id":null}
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be/transitions "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"85a3c96b-26c1-44a6-91fb-1504c8a8e3be","reference":"CLM-29C078C8","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"300.00","description":"QA ab4cb12f Ahead room student despite last red.","incident_date":"2026-11-10","status":"UNDER_REVIEW","created_at":"2026-11-17T10:59:36.442864Z","updated_at":"2026-11-17T10:59:36.462283Z","withdrawn_at":null,"decided_by_id":null}
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be/transitions "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"85a3c96b-26c1-44a6-91fb-1504c8a8e3be","reference":"CLM-29C078C8","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"300.00","description":"QA ab4cb12f Ahead room student despite last red.","incident_date":"2026-11-10","status":"APPROVED","created_at":"2026-11-17T10:59:36.442864Z","updated_at":"2026-11-17T10:59:36.470624Z","withdrawn_at":null,"decided_by_id":"dea053ef-8dcf-434a-b515-b9e47bc9ca5f"}
+10:59:36 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be/transitions "HTTP/1.1 200 OK"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"85a3c96b-26c1-44a6-91fb-1504c8a8e3be","reference":"CLM-29C078C8","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"300.00","description":"QA ab4cb12f Ahead room student despite last red.","incident_date":"2026-11-10","status":"PAID","created_at":"2026-11-17T10:59:36.442864Z","updated_at":"2026-11-17T10:59:36.481272Z","withdrawn_at":null,"decided_by_id":"dea053ef-8dcf-434a-b515-b9e47bc9ca5f"}
+10:59:36 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be "HTTP/1.1 409 Conflict"
+10:59:36 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/85a3c96b-26c1-44a6-91fb-1504c8a8e3be -> 409 (5 ms)
+  response: {"detail":"Only a DRAFT claim can be withdrawn; this one is PAID."}
+10:59:36 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn

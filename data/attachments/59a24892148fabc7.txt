@@ -1,0 +1,26 @@
+10:59:30 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
+10:59:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:59:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"adc54172-4ba1-4833-90b6-06b66b619c8f","policy_number":"POL-1001","holder_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","coverage_limit":"10000.00","is_active":true},{"id":"99e03177-ecea-4c0e-afef-fd7060d0e7ec","policy_number":"POL-1002","holder_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","coverage_limit":"2500.00","is_active":true}]
+10:59:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:59:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': 'adc54172-4ba1-4833-90b6-06b66b619c8f', 'amount': '410.00', 'description': 'QA 0e907985 Particularly five service data.', 'incident_date': '2026-11-10'}
+  response: {"id":"df04a781-c0f6-40f8-8032-4b12adae7fe9","reference":"CLM-79EE395D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"410.00","description":"QA 0e907985 Particularly five service data.","incident_date":"2026-11-10","status":"DRAFT","created_at":"2026-11-17T10:59:30.317379Z","updated_at":"2026-11-17T10:59:30.317379Z","withdrawn_at":null,"decided_by_id":null}
+10:59:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9/transitions "HTTP/1.1 200 OK"
+10:59:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"df04a781-c0f6-40f8-8032-4b12adae7fe9","reference":"CLM-79EE395D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"410.00","description":"QA 0e907985 Particularly five service data.","incident_date":"2026-11-10","status":"SUBMITTED","created_at":"2026-11-17T10:59:30.317379Z","updated_at":"2026-11-17T10:59:30.329199Z","withdrawn_at":null,"decided_by_id":null}
+10:59:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9/transitions "HTTP/1.1 200 OK"
+10:59:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9/transitions -> 200 (14 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"df04a781-c0f6-40f8-8032-4b12adae7fe9","reference":"CLM-79EE395D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"410.00","description":"QA 0e907985 Particularly five service data.","incident_date":"2026-11-10","status":"UNDER_REVIEW","created_at":"2026-11-17T10:59:30.317379Z","updated_at":"2026-11-17T10:59:30.342416Z","withdrawn_at":null,"decided_by_id":null}
+10:59:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9/transitions "HTTP/1.1 200 OK"
+10:59:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9/transitions -> 200 (12 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"df04a781-c0f6-40f8-8032-4b12adae7fe9","reference":"CLM-79EE395D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"410.00","description":"QA 0e907985 Particularly five service data.","incident_date":"2026-11-10","status":"APPROVED","created_at":"2026-11-17T10:59:30.317379Z","updated_at":"2026-11-17T10:59:30.355049Z","withdrawn_at":null,"decided_by_id":"dea053ef-8dcf-434a-b515-b9e47bc9ca5f"}
+10:59:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9/transitions "HTTP/1.1 200 OK"
+10:59:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"df04a781-c0f6-40f8-8032-4b12adae7fe9","reference":"CLM-79EE395D","policy_id":"adc54172-4ba1-4833-90b6-06b66b619c8f","claimant_id":"f1eee70f-44fa-47bf-9bd0-a4979018df03","amount":"410.00","description":"QA 0e907985 Particularly five service data.","incident_date":"2026-11-10","status":"PAID","created_at":"2026-11-17T10:59:30.317379Z","updated_at":"2026-11-17T10:59:30.367253Z","withdrawn_at":null,"decided_by_id":"dea053ef-8dcf-434a-b515-b9e47bc9ca5f"}
+10:59:30 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/df04a781-c0f6-40f8-8032-4b12adae7fe9
+10:59:30 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_audit_trail_is_visible_and_complete[chromium]
