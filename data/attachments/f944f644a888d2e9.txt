@@ -1,0 +1,12 @@
+10:31:29 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_searching_by_reference_finds_exactly_that_claim
+10:31:29 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:31:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","policy_number":"POL-1001","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"10000.00","is_active":true},{"id":"256bed3a-d051-4dd2-93bc-6bcd78322c7f","policy_number":"POL-1002","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"2500.00","is_active":true}]
+10:31:29 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:31:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '7a6ae7b9-e932-4ac0-8be1-807966fe4bcc', 'amount': '250.00', 'description': 'QA 12ddc020 Article list see.', 'incident_date': '2026-11-11'}
+  response: {"id":"7e4f59cb-1bcb-45dd-82a9-1cdf608ea7fb","reference":"CLM-1CF20877","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"250.00","description":"QA 12ddc020 Article list see.","incident_date":"2026-11-11","status":"DRAFT","created_at":"2026-11-18T10:31:29.881264Z","updated_at":"2026-11-18T10:31:29.881264Z","withdrawn_at":null,"decided_by_id":null}
+10:31:29 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?q=CLM-1CF20877 "HTTP/1.1 200 OK"
+10:31:29 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?q=CLM-1CF20877 -> 200 (6 ms)
+  response: {"items":[{"id":"7e4f59cb-1bcb-45dd-82a9-1cdf608ea7fb","reference":"CLM-1CF20877","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"250.00","description":"QA 12ddc020 Article list see.","incident_date":"2026-11-11","status":"DRAFT","created_at":"2026-11-18T10:31:29.881264Z","updated_at":"2026-11-18T10:31:29.881264Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":20,"total":1}
+10:31:29 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_searching_by_reference_finds_exactly_that_claim

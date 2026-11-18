@@ -1,0 +1,10 @@
+10:31:35 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]
+10:31:35 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:31:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (10 ms)
+  response: [{"id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","policy_number":"POL-1001","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"10000.00","is_active":true},{"id":"256bed3a-d051-4dd2-93bc-6bcd78322c7f","policy_number":"POL-1002","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"2500.00","is_active":true}]
+10:31:35 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:31:35 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': '7a6ae7b9-e932-4ac0-8be1-807966fe4bcc', 'amount': '432.10', 'description': 'QA b0f7fc9f Available take same can statement.', 'incident_date': '2026-11-11'}
+  response: {"id":"7f78f55d-5ffa-4bb3-b34d-69b73e9db5f4","reference":"CLM-81BAF409","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"432.10","description":"QA b0f7fc9f Available take same can statement.","incident_date":"2026-11-11","status":"DRAFT","created_at":"2026-11-18T10:31:35.935462Z","updated_at":"2026-11-18T10:31:35.935462Z","withdrawn_at":null,"decided_by_id":null}
+10:31:35 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims
+10:31:36 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claims_list.py::test_a_claim_created_through_the_api_appears_in_the_table[chromium]

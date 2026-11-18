@@ -1,0 +1,23 @@
+10:31:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+10:31:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (85 ms)
+  request : {'email': 'customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlMmQ1YzFiZi05NWQ0LTQ4MjgtOTkwMS03MDk4ZDc3MDBmYWUiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTQ5OTc4OTEsImV4cCI6MTc5NTAwMTQ5MX0.JOpy9q5B_phjRPn11E8t7iH6d2SoTa9jXD_7ZpYhnHU","token_type":"bearer","expires_in":3600}
+10:31:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+10:31:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (76 ms)
+  request : {'email': 'adjuster@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI0ZjEwMzE0NC04OWMwLTRiODktYWNkYS01ZjkyZTMzNzY4OTUiLCJyb2xlIjoiQURKVVNURVIiLCJpYXQiOjE3OTQ5OTc4OTEsImV4cCI6MTc5NTAwMTQ5MX0.w4mpF1hOMraC3DqlS-HJ0qmsiQpukNoNyo_JMFP-UTA","token_type":"bearer","expires_in":3600}
+10:31:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+10:31:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (87 ms)
+  request : {'email': 'admin@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZWY0ZWJjMi1hMjg3LTQyNWQtYTYxZi1lOTUyZjc1ZGYwMGUiLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3OTQ5OTc4OTIsImV4cCI6MTc5NTAwMTQ5Mn0.7-Yfka3ILZEMjtdB6Fbi-bAPaVV6UN4FAM4iE5-7jIM","token_type":"bearer","expires_in":3600}
+10:31:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+10:31:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/auth/login -> 200 (74 ms)
+  request : {'email': 'other.customer@example.com', 'password': 'Passw0rd!seed'}
+  response: {"access_token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkYmJiZGM4My01NjI0LTQ1MzktYWZmNS1kNzE1MDc1YWU4ZWUiLCJyb2xlIjoiQ1VTVE9NRVIiLCJpYXQiOjE3OTQ5OTc4OTIsImV4cCI6MTc5NTAwMTQ5Mn0.ssBf2jyoUhVzUYbZZLJLw6tdThqP2iPEQ6n9f2-IzeQ","token_type":"bearer","expires_in":3600}
+10:31:32 INFO     claimdesk_qa.tests._fixtures.browser Prepared storage states for customer, adjuster, admin, other_customer
+10:31:32 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_form.py::test_a_rejected_submission_keeps_what_the_user_typed[chromium]
+10:31:32 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/new
+10:31:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:31:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (12 ms)
+  response: [{"id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","policy_number":"POL-1001","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"10000.00","is_active":true},{"id":"256bed3a-d051-4dd2-93bc-6bcd78322c7f","policy_number":"POL-1002","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"2500.00","is_active":true}]
+10:31:32 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_form.py::test_a_rejected_submission_keeps_what_the_user_typed[chromium]

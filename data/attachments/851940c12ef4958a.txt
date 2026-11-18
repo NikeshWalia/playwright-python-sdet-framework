@@ -1,0 +1,32 @@
+10:31:38 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-reject]
+10:31:38 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:31:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","policy_number":"POL-1001","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"10000.00","is_active":true},{"id":"256bed3a-d051-4dd2-93bc-6bcd78322c7f","policy_number":"POL-1002","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"2500.00","is_active":true}]
+10:31:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:31:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (13 ms)
+  request : {'policy_id': '7a6ae7b9-e932-4ac0-8be1-807966fe4bcc', 'amount': '100.00', 'description': 'QA 441b407e Include property argue personal professor clearly police.', 'incident_date': '2026-11-11'}
+  response: {"id":"9c6342d4-a162-4c5b-8482-09a469181948","reference":"CLM-D9421C57","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"100.00","description":"QA 441b407e Include property argue personal professor clearly police.","incident_date":"2026-11-11","status":"DRAFT","created_at":"2026-11-18T10:31:38.917717Z","updated_at":"2026-11-18T10:31:38.917717Z","withdrawn_at":null,"decided_by_id":null}
+10:31:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions "HTTP/1.1 200 OK"
+10:31:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"9c6342d4-a162-4c5b-8482-09a469181948","reference":"CLM-D9421C57","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"100.00","description":"QA 441b407e Include property argue personal professor clearly police.","incident_date":"2026-11-11","status":"SUBMITTED","created_at":"2026-11-18T10:31:38.917717Z","updated_at":"2026-11-18T10:31:38.929379Z","withdrawn_at":null,"decided_by_id":null}
+10:31:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions "HTTP/1.1 200 OK"
+10:31:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"9c6342d4-a162-4c5b-8482-09a469181948","reference":"CLM-D9421C57","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"100.00","description":"QA 441b407e Include property argue personal professor clearly police.","incident_date":"2026-11-11","status":"UNDER_REVIEW","created_at":"2026-11-18T10:31:38.917717Z","updated_at":"2026-11-18T10:31:38.940177Z","withdrawn_at":null,"decided_by_id":null}
+10:31:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions "HTTP/1.1 200 OK"
+10:31:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"9c6342d4-a162-4c5b-8482-09a469181948","reference":"CLM-D9421C57","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"100.00","description":"QA 441b407e Include property argue personal professor clearly police.","incident_date":"2026-11-11","status":"APPROVED","created_at":"2026-11-18T10:31:38.917717Z","updated_at":"2026-11-18T10:31:38.950120Z","withdrawn_at":null,"decided_by_id":"4f103144-89c0-4b89-acda-5f92e3376895"}
+10:31:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions "HTTP/1.1 200 OK"
+10:31:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions -> 200 (9 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"9c6342d4-a162-4c5b-8482-09a469181948","reference":"CLM-D9421C57","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"100.00","description":"QA 441b407e Include property argue personal professor clearly police.","incident_date":"2026-11-11","status":"PAID","created_at":"2026-11-18T10:31:38.917717Z","updated_at":"2026-11-18T10:31:38.960629Z","withdrawn_at":null,"decided_by_id":"4f103144-89c0-4b89-acda-5f92e3376895"}
+10:31:38 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions "HTTP/1.1 409 Conflict"
+10:31:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948/transitions -> 409 (8 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status PAID; it must be UNDER_REVIEW."}
+10:31:38 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948 "HTTP/1.1 200 OK"
+10:31:38 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/9c6342d4-a162-4c5b-8482-09a469181948 -> 200 (5 ms)
+  response: {"id":"9c6342d4-a162-4c5b-8482-09a469181948","reference":"CLM-D9421C57","policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","claimant_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","amount":"100.00","description":"QA 441b407e Include property argue personal professor clearly police.","incident_date":"2026-11-11","status":"PAID","created_at":"2026-11-18T10:31:38.917717Z","updated_at":"2026-11-18T10:31:38.960629Z","withdrawn_at":null,"decided_by_id":"4f103144-89c0-4b89-acda-5f92e3376895"}
+10:31:38 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-reject]
