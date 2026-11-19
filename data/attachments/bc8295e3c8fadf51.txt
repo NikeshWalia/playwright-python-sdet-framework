@@ -1,0 +1,31 @@
+10:39:16 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
+10:39:16 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","policy_number":"POL-1001","holder_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","coverage_limit":"10000.00","is_active":true},{"id":"412848c6-54f6-46c9-be8e-35edc06614f0","policy_number":"POL-1002","holder_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","coverage_limit":"2500.00","is_active":true}]
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+10:39:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '0f9e76d5-d2f2-4b98-8569-fe45837ac925', 'amount': '800.00', 'description': 'QA b6b9655c Parent owner parent interest difficult.', 'incident_date': '2026-11-12'}
+  response: {"id":"dea885be-34cd-45ab-b789-18c9caaff368","reference":"CLM-D1DF02F3","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"800.00","description":"QA b6b9655c Parent owner parent interest difficult.","incident_date":"2026-11-12","status":"DRAFT","created_at":"2026-11-19T10:39:16.188585Z","updated_at":"2026-11-19T10:39:16.188585Z","withdrawn_at":null,"decided_by_id":null}
+10:39:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dea885be-34cd-45ab-b789-18c9caaff368/transitions "HTTP/1.1 200 OK"
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dea885be-34cd-45ab-b789-18c9caaff368/transitions -> 200 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"dea885be-34cd-45ab-b789-18c9caaff368","reference":"CLM-D1DF02F3","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"800.00","description":"QA b6b9655c Parent owner parent interest difficult.","incident_date":"2026-11-12","status":"SUBMITTED","created_at":"2026-11-19T10:39:16.188585Z","updated_at":"2026-11-19T10:39:16.195749Z","withdrawn_at":null,"decided_by_id":null}
+10:39:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dea885be-34cd-45ab-b789-18c9caaff368/transitions "HTTP/1.1 200 OK"
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dea885be-34cd-45ab-b789-18c9caaff368/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"dea885be-34cd-45ab-b789-18c9caaff368","reference":"CLM-D1DF02F3","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"800.00","description":"QA b6b9655c Parent owner parent interest difficult.","incident_date":"2026-11-12","status":"UNDER_REVIEW","created_at":"2026-11-19T10:39:16.188585Z","updated_at":"2026-11-19T10:39:16.202469Z","withdrawn_at":null,"decided_by_id":null}
+10:39:16 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/dea885be-34cd-45ab-b789-18c9caaff368/transitions "HTTP/1.1 200 OK"
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/dea885be-34cd-45ab-b789-18c9caaff368/transitions -> 200 (6 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"dea885be-34cd-45ab-b789-18c9caaff368","reference":"CLM-D1DF02F3","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"800.00","description":"QA b6b9655c Parent owner parent interest difficult.","incident_date":"2026-11-12","status":"REJECTED","created_at":"2026-11-19T10:39:16.188585Z","updated_at":"2026-11-19T10:39:16.208521Z","withdrawn_at":null,"decided_by_id":"5d33c419-2257-4474-91bc-209d41bbbcf4"}
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('dea885be-34cd-45ab-b789-18c9caaff368',)
+  rows: 1
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('dea885be-34cd-45ab-b789-18c9caaff368',)
+  rows: 1
+10:39:16 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('dea885be-34cd-45ab-b789-18c9caaff368',)
+  rows: 1
+10:39:16 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid

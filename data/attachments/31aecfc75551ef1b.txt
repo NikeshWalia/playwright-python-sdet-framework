@@ -1,0 +1,34 @@
+10:39:10 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]
+10:39:10 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","policy_number":"POL-1001","holder_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","coverage_limit":"10000.00","is_active":true},{"id":"412848c6-54f6-46c9-be8e-35edc06614f0","policy_number":"POL-1002","holder_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","coverage_limit":"2500.00","is_active":true}]
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+10:39:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '0f9e76d5-d2f2-4b98-8569-fe45837ac925', 'amount': '1975.25', 'description': 'QA 9f64fd9b Along artist claim edge process respond kid need.', 'incident_date': '2026-11-12'}
+  response: {"id":"b74c087a-eda6-42fe-8df1-073c56a60050","reference":"CLM-9B20A430","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"1975.25","description":"QA 9f64fd9b Along artist claim edge process respond kid need.","incident_date":"2026-11-12","status":"DRAFT","created_at":"2026-11-19T10:39:10.457380Z","updated_at":"2026-11-19T10:39:10.457380Z","withdrawn_at":null,"decided_by_id":null}
+10:39:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b74c087a-eda6-42fe-8df1-073c56a60050/transitions "HTTP/1.1 200 OK"
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b74c087a-eda6-42fe-8df1-073c56a60050/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b74c087a-eda6-42fe-8df1-073c56a60050","reference":"CLM-9B20A430","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"1975.25","description":"QA 9f64fd9b Along artist claim edge process respond kid need.","incident_date":"2026-11-12","status":"SUBMITTED","created_at":"2026-11-19T10:39:10.457380Z","updated_at":"2026-11-19T10:39:10.467763Z","withdrawn_at":null,"decided_by_id":null}
+10:39:10 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b74c087a-eda6-42fe-8df1-073c56a60050/transitions "HTTP/1.1 200 OK"
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b74c087a-eda6-42fe-8df1-073c56a60050/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b74c087a-eda6-42fe-8df1-073c56a60050","reference":"CLM-9B20A430","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"1975.25","description":"QA 9f64fd9b Along artist claim edge process respond kid need.","incident_date":"2026-11-12","status":"UNDER_REVIEW","created_at":"2026-11-19T10:39:10.457380Z","updated_at":"2026-11-19T10:39:10.478133Z","withdrawn_at":null,"decided_by_id":null}
+10:39:10 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/b74c087a-eda6-42fe-8df1-073c56a60050
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('b74c087a-eda6-42fe-8df1-073c56a60050',)
+  rows: 1
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('b74c087a-eda6-42fe-8df1-073c56a60050',)
+  rows: 5
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('b74c087a-eda6-42fe-8df1-073c56a60050',)
+  rows: 1
+10:39:10 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('b74c087a-eda6-42fe-8df1-073c56a60050',)
+  rows: 1
+10:39:10 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]

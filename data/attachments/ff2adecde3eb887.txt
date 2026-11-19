@@ -1,9 +1,0 @@
-10:31:30 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[description]
-10:31:30 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-10:31:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
-  response: [{"id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","policy_number":"POL-1001","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"10000.00","is_active":true},{"id":"256bed3a-d051-4dd2-93bc-6bcd78322c7f","policy_number":"POL-1002","holder_id":"e2d5c1bf-95d4-4828-9901-7098d7700fae","coverage_limit":"2500.00","is_active":true}]
-10:31:30 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-10:31:30 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (5 ms)
-  request : {'policy_id': '7a6ae7b9-e932-4ac0-8be1-807966fe4bcc', 'amount': '250.00', 'incident_date': '2026-11-11'}
-  response: {"detail":[{"type":"missing","loc":["body","description"],"msg":"Field required","input":{"policy_id":"7a6ae7b9-e932-4ac0-8be1-807966fe4bcc","amount":"250.00","incident_date":"2026-11-11"}}]}
-10:31:30 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[description]

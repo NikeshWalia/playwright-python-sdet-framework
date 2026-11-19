@@ -1,0 +1,32 @@
+10:39:15 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row
+10:39:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","policy_number":"POL-1001","holder_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","coverage_limit":"10000.00","is_active":true},{"id":"412848c6-54f6-46c9-be8e-35edc06614f0","policy_number":"POL-1002","holder_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","coverage_limit":"2500.00","is_active":true}]
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+10:39:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': '0f9e76d5-d2f2-4b98-8569-fe45837ac925', 'amount': '700.00', 'description': 'QA a94bc631 Somebody get report production why bring spring kind.', 'incident_date': '2026-11-12'}
+  response: {"id":"c5e79346-4fc1-4bc4-a90d-59a154a6640b","reference":"CLM-AF6C943C","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"700.00","description":"QA a94bc631 Somebody get report production why bring spring kind.","incident_date":"2026-11-12","status":"DRAFT","created_at":"2026-11-19T10:39:15.702227Z","updated_at":"2026-11-19T10:39:15.702227Z","withdrawn_at":null,"decided_by_id":null}
+10:39:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c5e79346-4fc1-4bc4-a90d-59a154a6640b/transitions "HTTP/1.1 200 OK"
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c5e79346-4fc1-4bc4-a90d-59a154a6640b/transitions -> 200 (60 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"c5e79346-4fc1-4bc4-a90d-59a154a6640b","reference":"CLM-AF6C943C","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"700.00","description":"QA a94bc631 Somebody get report production why bring spring kind.","incident_date":"2026-11-12","status":"SUBMITTED","created_at":"2026-11-19T10:39:15.702227Z","updated_at":"2026-11-19T10:39:15.719356Z","withdrawn_at":null,"decided_by_id":null}
+10:39:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c5e79346-4fc1-4bc4-a90d-59a154a6640b/transitions "HTTP/1.1 200 OK"
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c5e79346-4fc1-4bc4-a90d-59a154a6640b/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"c5e79346-4fc1-4bc4-a90d-59a154a6640b","reference":"CLM-AF6C943C","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"700.00","description":"QA a94bc631 Somebody get report production why bring spring kind.","incident_date":"2026-11-12","status":"UNDER_REVIEW","created_at":"2026-11-19T10:39:15.702227Z","updated_at":"2026-11-19T10:39:15.781257Z","withdrawn_at":null,"decided_by_id":null}
+10:39:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c5e79346-4fc1-4bc4-a90d-59a154a6640b/transitions "HTTP/1.1 200 OK"
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c5e79346-4fc1-4bc4-a90d-59a154a6640b/transitions -> 200 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"c5e79346-4fc1-4bc4-a90d-59a154a6640b","reference":"CLM-AF6C943C","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"700.00","description":"QA a94bc631 Somebody get report production why bring spring kind.","incident_date":"2026-11-12","status":"APPROVED","created_at":"2026-11-19T10:39:15.702227Z","updated_at":"2026-11-19T10:39:15.791142Z","withdrawn_at":null,"decided_by_id":"5d33c419-2257-4474-91bc-209d41bbbcf4"}
+10:39:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c5e79346-4fc1-4bc4-a90d-59a154a6640b/transitions "HTTP/1.1 200 OK"
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c5e79346-4fc1-4bc4-a90d-59a154a6640b/transitions -> 200 (9 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"c5e79346-4fc1-4bc4-a90d-59a154a6640b","reference":"CLM-AF6C943C","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"700.00","description":"QA a94bc631 Somebody get report production why bring spring kind.","incident_date":"2026-11-12","status":"PAID","created_at":"2026-11-19T10:39:15.702227Z","updated_at":"2026-11-19T10:39:15.799270Z","withdrawn_at":null,"decided_by_id":"5d33c419-2257-4474-91bc-209d41bbbcf4"}
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('c5e79346-4fc1-4bc4-a90d-59a154a6640b',)
+  rows: 5
+10:39:15 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('c5e79346-4fc1-4bc4-a90d-59a154a6640b',)
+  rows: 1
+10:39:15 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row

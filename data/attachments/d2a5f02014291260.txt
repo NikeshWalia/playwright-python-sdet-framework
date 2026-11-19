@@ -1,0 +1,5 @@
+10:39:09 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
+10:39:09 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
+10:39:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (5 ms)
+  response: {"items":[{"id":"a8425399-8d29-4305-aafb-31d003b3830f","reference":"CLM-66C23FD6","policy_id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","claimant_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","amount":"250.00","description":"QA 9177f4e1 Not condition color should friend.","incident_date":"2026-11-12","status":"DRAFT","created_at":"2026-11-19T10:39:09.282256Z","updated_at":"2026-11-19T10:39:09.282256Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":48}
+10:39:09 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
