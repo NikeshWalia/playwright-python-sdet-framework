@@ -1,0 +1,26 @@
+10:19:58 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]
+10:19:58 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:19:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"0aac0382-e795-4f03-bb56-8e090b0897a0","policy_number":"POL-1001","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"10000.00","is_active":true},{"id":"ceb8cb8c-4d98-4425-b21f-5c477d2cd823","policy_number":"POL-1002","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"2500.00","is_active":true}]
+10:19:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:19:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (19 ms)
+  request : {'policy_id': '0aac0382-e795-4f03-bb56-8e090b0897a0', 'amount': '410.00', 'description': 'QA 44b1e169 Alone who hundred discussion animal state account.', 'incident_date': '2026-11-13'}
+  response: {"id":"035c691e-b613-460f-838e-4b4b14cad057","reference":"CLM-F3FA4EF8","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"410.00","description":"QA 44b1e169 Alone who hundred discussion animal state account.","incident_date":"2026-11-13","status":"DRAFT","created_at":"2026-11-20T10:19:58.397038Z","updated_at":"2026-11-20T10:19:58.397038Z","withdrawn_at":null,"decided_by_id":null}
+10:19:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/035c691e-b613-460f-838e-4b4b14cad057/transitions "HTTP/1.1 200 OK"
+10:19:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/035c691e-b613-460f-838e-4b4b14cad057/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"035c691e-b613-460f-838e-4b4b14cad057","reference":"CLM-F3FA4EF8","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"410.00","description":"QA 44b1e169 Alone who hundred discussion animal state account.","incident_date":"2026-11-13","status":"SUBMITTED","created_at":"2026-11-20T10:19:58.397038Z","updated_at":"2026-11-20T10:19:58.413594Z","withdrawn_at":null,"decided_by_id":null}
+10:19:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/035c691e-b613-460f-838e-4b4b14cad057/transitions "HTTP/1.1 200 OK"
+10:19:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/035c691e-b613-460f-838e-4b4b14cad057/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"035c691e-b613-460f-838e-4b4b14cad057","reference":"CLM-F3FA4EF8","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"410.00","description":"QA 44b1e169 Alone who hundred discussion animal state account.","incident_date":"2026-11-13","status":"UNDER_REVIEW","created_at":"2026-11-20T10:19:58.397038Z","updated_at":"2026-11-20T10:19:58.425672Z","withdrawn_at":null,"decided_by_id":null}
+10:19:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/035c691e-b613-460f-838e-4b4b14cad057/transitions "HTTP/1.1 200 OK"
+10:19:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/035c691e-b613-460f-838e-4b4b14cad057/transitions -> 200 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"035c691e-b613-460f-838e-4b4b14cad057","reference":"CLM-F3FA4EF8","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"410.00","description":"QA 44b1e169 Alone who hundred discussion animal state account.","incident_date":"2026-11-13","status":"APPROVED","created_at":"2026-11-20T10:19:58.397038Z","updated_at":"2026-11-20T10:19:58.435248Z","withdrawn_at":null,"decided_by_id":"fd7e306a-92c8-4cc0-8a95-32fca57eb19f"}
+10:19:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/035c691e-b613-460f-838e-4b4b14cad057/transitions "HTTP/1.1 200 OK"
+10:19:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/035c691e-b613-460f-838e-4b4b14cad057/transitions -> 200 (12 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"035c691e-b613-460f-838e-4b4b14cad057","reference":"CLM-F3FA4EF8","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"410.00","description":"QA 44b1e169 Alone who hundred discussion animal state account.","incident_date":"2026-11-13","status":"PAID","created_at":"2026-11-20T10:19:58.397038Z","updated_at":"2026-11-20T10:19:58.444422Z","withdrawn_at":null,"decided_by_id":"fd7e306a-92c8-4cc0-8a95-32fca57eb19f"}
+10:19:58 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/035c691e-b613-460f-838e-4b4b14cad057
+10:19:58 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_a_settled_claim_offers_no_further_actions[chromium]

@@ -1,0 +1,34 @@
+10:19:57 DEBUG    claimdesk_qa.tests.conftest start tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]
+10:19:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"0aac0382-e795-4f03-bb56-8e090b0897a0","policy_number":"POL-1001","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"10000.00","is_active":true},{"id":"ceb8cb8c-4d98-4425-b21f-5c477d2cd823","policy_number":"POL-1002","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"2500.00","is_active":true}]
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+10:19:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (15 ms)
+  request : {'policy_id': '0aac0382-e795-4f03-bb56-8e090b0897a0', 'amount': '1975.25', 'description': 'QA 265d18cb Rule company allow cause down medical responsibility.', 'incident_date': '2026-11-13'}
+  response: {"id":"0eb58ea0-9cd3-41e1-9315-43b003f7b508","reference":"CLM-365151A7","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"1975.25","description":"QA 265d18cb Rule company allow cause down medical responsibility.","incident_date":"2026-11-13","status":"DRAFT","created_at":"2026-11-20T10:19:57.184384Z","updated_at":"2026-11-20T10:19:57.184384Z","withdrawn_at":null,"decided_by_id":null}
+10:19:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0eb58ea0-9cd3-41e1-9315-43b003f7b508/transitions "HTTP/1.1 200 OK"
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0eb58ea0-9cd3-41e1-9315-43b003f7b508/transitions -> 200 (15 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"0eb58ea0-9cd3-41e1-9315-43b003f7b508","reference":"CLM-365151A7","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"1975.25","description":"QA 265d18cb Rule company allow cause down medical responsibility.","incident_date":"2026-11-13","status":"SUBMITTED","created_at":"2026-11-20T10:19:57.184384Z","updated_at":"2026-11-20T10:19:57.203372Z","withdrawn_at":null,"decided_by_id":null}
+10:19:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/0eb58ea0-9cd3-41e1-9315-43b003f7b508/transitions "HTTP/1.1 200 OK"
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/0eb58ea0-9cd3-41e1-9315-43b003f7b508/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"0eb58ea0-9cd3-41e1-9315-43b003f7b508","reference":"CLM-365151A7","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"1975.25","description":"QA 265d18cb Rule company allow cause down medical responsibility.","incident_date":"2026-11-13","status":"UNDER_REVIEW","created_at":"2026-11-20T10:19:57.184384Z","updated_at":"2026-11-20T10:19:57.216093Z","withdrawn_at":null,"decided_by_id":null}
+10:19:57 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/0eb58ea0-9cd3-41e1-9315-43b003f7b508
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, email, full_name, role, password_hash, is_active, created_at FROM users WHERE email = %s
+  params: ('adjuster@example.com',)
+  rows: 1
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('0eb58ea0-9cd3-41e1-9315-43b003f7b508',)
+  rows: 1
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('0eb58ea0-9cd3-41e1-9315-43b003f7b508',)
+  rows: 5
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, amount, paid_by_id, paid_at FROM payouts WHERE claim_id = %s
+  params: ('0eb58ea0-9cd3-41e1-9315-43b003f7b508',)
+  rows: 1
+10:19:57 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('0eb58ea0-9cd3-41e1-9315-43b003f7b508',)
+  rows: 1
+10:19:57 DEBUG    claimdesk_qa.tests.conftest end tests/e2e/test_claim_lifecycle.py::test_a_claim_approved_in_the_browser_is_paid_correctly_in_the_ledger[chromium]

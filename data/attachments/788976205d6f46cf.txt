@@ -1,9 +1,0 @@
-10:39:09 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_creating_a_claim_against_an_unknown_policy_is_rejected
-10:39:09 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-10:39:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
-  response: [{"id":"0f9e76d5-d2f2-4b98-8569-fe45837ac925","policy_number":"POL-1001","holder_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","coverage_limit":"10000.00","is_active":true},{"id":"412848c6-54f6-46c9-be8e-35edc06614f0","policy_number":"POL-1002","holder_id":"57f4cc45-1127-41e5-a7cf-5cddab533484","coverage_limit":"2500.00","is_active":true}]
-10:39:09 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 404 Not Found"
-10:39:09 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 404 (3 ms)
-  request : {'policy_id': '00000000-0000-0000-0000-000000000000', 'amount': '250.00', 'description': 'QA 8b0694cc Despite direction maintain American identify money.', 'incident_date': '2026-11-12'}
-  response: {"detail":"Policy not found"}
-10:39:09 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_creating_a_claim_against_an_unknown_policy_is_rejected

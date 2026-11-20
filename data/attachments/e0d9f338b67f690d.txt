@@ -1,0 +1,28 @@
+10:20:02 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-approve]
+10:20:02 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:20:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"0aac0382-e795-4f03-bb56-8e090b0897a0","policy_number":"POL-1001","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"10000.00","is_active":true},{"id":"ceb8cb8c-4d98-4425-b21f-5c477d2cd823","policy_number":"POL-1002","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"2500.00","is_active":true}]
+10:20:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:20:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '0aac0382-e795-4f03-bb56-8e090b0897a0', 'amount': '100.00', 'description': 'QA 45fdebce Student film job partner speech station something watch.', 'incident_date': '2026-11-13'}
+  response: {"id":"2754d7c4-8a18-420f-8d67-bb5ca707bc5a","reference":"CLM-FC9205C3","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 45fdebce Student film job partner speech station something watch.","incident_date":"2026-11-13","status":"DRAFT","created_at":"2026-11-20T10:20:02.907740Z","updated_at":"2026-11-20T10:20:02.907740Z","withdrawn_at":null,"decided_by_id":null}
+10:20:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a/transitions "HTTP/1.1 200 OK"
+10:20:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a/transitions -> 200 (11 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2754d7c4-8a18-420f-8d67-bb5ca707bc5a","reference":"CLM-FC9205C3","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 45fdebce Student film job partner speech station something watch.","incident_date":"2026-11-13","status":"SUBMITTED","created_at":"2026-11-20T10:20:02.907740Z","updated_at":"2026-11-20T10:20:02.918253Z","withdrawn_at":null,"decided_by_id":null}
+10:20:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a/transitions "HTTP/1.1 200 OK"
+10:20:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2754d7c4-8a18-420f-8d67-bb5ca707bc5a","reference":"CLM-FC9205C3","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 45fdebce Student film job partner speech station something watch.","incident_date":"2026-11-13","status":"UNDER_REVIEW","created_at":"2026-11-20T10:20:02.907740Z","updated_at":"2026-11-20T10:20:02.930273Z","withdrawn_at":null,"decided_by_id":null}
+10:20:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a/transitions "HTTP/1.1 200 OK"
+10:20:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a/transitions -> 200 (12 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"2754d7c4-8a18-420f-8d67-bb5ca707bc5a","reference":"CLM-FC9205C3","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 45fdebce Student film job partner speech station something watch.","incident_date":"2026-11-13","status":"REJECTED","created_at":"2026-11-20T10:20:02.907740Z","updated_at":"2026-11-20T10:20:02.941312Z","withdrawn_at":null,"decided_by_id":"fd7e306a-92c8-4cc0-8a95-32fca57eb19f"}
+10:20:02 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a/transitions "HTTP/1.1 409 Conflict"
+10:20:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a/transitions -> 409 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status REJECTED; it must be UNDER_REVIEW."}
+10:20:02 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a "HTTP/1.1 200 OK"
+10:20:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/2754d7c4-8a18-420f-8d67-bb5ca707bc5a -> 200 (5 ms)
+  response: {"id":"2754d7c4-8a18-420f-8d67-bb5ca707bc5a","reference":"CLM-FC9205C3","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 45fdebce Student film job partner speech station something watch.","incident_date":"2026-11-13","status":"REJECTED","created_at":"2026-11-20T10:20:02.907740Z","updated_at":"2026-11-20T10:20:02.941312Z","withdrawn_at":null,"decided_by_id":"fd7e306a-92c8-4cc0-8a95-32fca57eb19f"}
+10:20:02 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-approve]

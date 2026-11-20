@@ -1,0 +1,32 @@
+10:20:02 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-approve]
+10:20:02 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:20:02 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"0aac0382-e795-4f03-bb56-8e090b0897a0","policy_number":"POL-1001","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"10000.00","is_active":true},{"id":"ceb8cb8c-4d98-4425-b21f-5c477d2cd823","policy_number":"POL-1002","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"2500.00","is_active":true}]
+10:20:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:20:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': '0aac0382-e795-4f03-bb56-8e090b0897a0', 'amount': '100.00', 'description': 'QA 92f21627 Four bad water door particular daughter.', 'incident_date': '2026-11-13'}
+  response: {"id":"6bdc9465-4454-4c63-8ce3-cf2761abe423","reference":"CLM-4A928852","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 92f21627 Four bad water door particular daughter.","incident_date":"2026-11-13","status":"DRAFT","created_at":"2026-11-20T10:20:02.995032Z","updated_at":"2026-11-20T10:20:02.995032Z","withdrawn_at":null,"decided_by_id":null}
+10:20:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions "HTTP/1.1 200 OK"
+10:20:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"6bdc9465-4454-4c63-8ce3-cf2761abe423","reference":"CLM-4A928852","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 92f21627 Four bad water door particular daughter.","incident_date":"2026-11-13","status":"SUBMITTED","created_at":"2026-11-20T10:20:02.995032Z","updated_at":"2026-11-20T10:20:03.009136Z","withdrawn_at":null,"decided_by_id":null}
+10:20:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions "HTTP/1.1 200 OK"
+10:20:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions -> 200 (12 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"6bdc9465-4454-4c63-8ce3-cf2761abe423","reference":"CLM-4A928852","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 92f21627 Four bad water door particular daughter.","incident_date":"2026-11-13","status":"UNDER_REVIEW","created_at":"2026-11-20T10:20:02.995032Z","updated_at":"2026-11-20T10:20:03.022375Z","withdrawn_at":null,"decided_by_id":null}
+10:20:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions "HTTP/1.1 200 OK"
+10:20:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions -> 200 (14 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"6bdc9465-4454-4c63-8ce3-cf2761abe423","reference":"CLM-4A928852","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 92f21627 Four bad water door particular daughter.","incident_date":"2026-11-13","status":"APPROVED","created_at":"2026-11-20T10:20:02.995032Z","updated_at":"2026-11-20T10:20:03.036211Z","withdrawn_at":null,"decided_by_id":"fd7e306a-92c8-4cc0-8a95-32fca57eb19f"}
+10:20:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions "HTTP/1.1 200 OK"
+10:20:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions -> 200 (12 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"6bdc9465-4454-4c63-8ce3-cf2761abe423","reference":"CLM-4A928852","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 92f21627 Four bad water door particular daughter.","incident_date":"2026-11-13","status":"PAID","created_at":"2026-11-20T10:20:02.995032Z","updated_at":"2026-11-20T10:20:03.048946Z","withdrawn_at":null,"decided_by_id":"fd7e306a-92c8-4cc0-8a95-32fca57eb19f"}
+10:20:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions "HTTP/1.1 409 Conflict"
+10:20:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423/transitions -> 409 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status PAID; it must be UNDER_REVIEW."}
+10:20:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423 "HTTP/1.1 200 OK"
+10:20:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/6bdc9465-4454-4c63-8ce3-cf2761abe423 -> 200 (5 ms)
+  response: {"id":"6bdc9465-4454-4c63-8ce3-cf2761abe423","reference":"CLM-4A928852","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"100.00","description":"QA 92f21627 Four bad water door particular daughter.","incident_date":"2026-11-13","status":"PAID","created_at":"2026-11-20T10:20:02.995032Z","updated_at":"2026-11-20T10:20:03.048946Z","withdrawn_at":null,"decided_by_id":"fd7e306a-92c8-4cc0-8a95-32fca57eb19f"}
+10:20:03 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[PAID-cannot-approve]
