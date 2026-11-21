@@ -1,9 +1,0 @@
-10:19:55 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_an_unknown_field_does_not_change_the_claim
-10:19:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-10:19:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
-  response: [{"id":"0aac0382-e795-4f03-bb56-8e090b0897a0","policy_number":"POL-1001","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"10000.00","is_active":true},{"id":"ceb8cb8c-4d98-4425-b21f-5c477d2cd823","policy_number":"POL-1002","holder_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","coverage_limit":"2500.00","is_active":true}]
-10:19:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-10:19:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
-  request : {'policy_id': '0aac0382-e795-4f03-bb56-8e090b0897a0', 'amount': '250.00', 'description': 'QA cf296d08 Above nor simply analysis.', 'incident_date': '2026-11-13', 'status': 'PAID', 'is_admin': True}
-  response: {"id":"ad92e6e1-2389-4843-9f1b-98b0d3da6638","reference":"CLM-65632E6F","policy_id":"0aac0382-e795-4f03-bb56-8e090b0897a0","claimant_id":"133ff4f2-b00a-4b96-96b7-d3e52d3f32b9","amount":"250.00","description":"QA cf296d08 Above nor simply analysis.","incident_date":"2026-11-13","status":"DRAFT","created_at":"2026-11-20T10:19:55.425037Z","updated_at":"2026-11-20T10:19:55.425037Z","withdrawn_at":null,"decided_by_id":null}
-10:19:55 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_an_unknown_field_does_not_change_the_claim

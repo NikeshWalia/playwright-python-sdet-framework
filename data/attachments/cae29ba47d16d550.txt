@@ -1,0 +1,19 @@
+10:04:27 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-start_review]
+10:04:27 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:04:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"85ff805b-4aeb-4663-b132-66155eeb2abf","policy_number":"POL-1001","holder_id":"8520fbdf-4215-45af-af08-5f9480eae89d","coverage_limit":"10000.00","is_active":true},{"id":"b0723c2a-7ba3-4ecf-99a0-c066b71309ac","policy_number":"POL-1002","holder_id":"8520fbdf-4215-45af-af08-5f9480eae89d","coverage_limit":"2500.00","is_active":true}]
+10:04:27 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:04:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (17 ms)
+  request : {'policy_id': '85ff805b-4aeb-4663-b132-66155eeb2abf', 'amount': '100.00', 'description': 'QA 70440c63 Ever moment change drop year many.', 'incident_date': '2026-11-14'}
+  response: {"id":"c457c572-3c0d-4490-ae0e-fce4378b9204","reference":"CLM-FB5A540B","policy_id":"85ff805b-4aeb-4663-b132-66155eeb2abf","claimant_id":"8520fbdf-4215-45af-af08-5f9480eae89d","amount":"100.00","description":"QA 70440c63 Ever moment change drop year many.","incident_date":"2026-11-14","status":"DRAFT","created_at":"2026-11-21T10:04:27.914402Z","updated_at":"2026-11-21T10:04:27.914402Z","withdrawn_at":null,"decided_by_id":null}
+10:04:27 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/c457c572-3c0d-4490-ae0e-fce4378b9204 "HTTP/1.1 200 OK"
+10:04:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/c457c572-3c0d-4490-ae0e-fce4378b9204 -> 200 (7 ms)
+  response: {"id":"c457c572-3c0d-4490-ae0e-fce4378b9204","reference":"CLM-FB5A540B","policy_id":"85ff805b-4aeb-4663-b132-66155eeb2abf","claimant_id":"8520fbdf-4215-45af-af08-5f9480eae89d","amount":"100.00","description":"QA 70440c63 Ever moment change drop year many.","incident_date":"2026-11-14","status":"DRAFT","created_at":"2026-11-21T10:04:27.914402Z","updated_at":"2026-11-21T10:04:27.914402Z","withdrawn_at":null,"decided_by_id":null}
+10:04:27 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c457c572-3c0d-4490-ae0e-fce4378b9204/transitions "HTTP/1.1 409 Conflict"
+10:04:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c457c572-3c0d-4490-ae0e-fce4378b9204/transitions -> 409 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status DRAFT; it must be SUBMITTED."}
+10:04:27 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/c457c572-3c0d-4490-ae0e-fce4378b9204 "HTTP/1.1 200 OK"
+10:04:27 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/c457c572-3c0d-4490-ae0e-fce4378b9204 -> 200 (5 ms)
+  response: {"id":"c457c572-3c0d-4490-ae0e-fce4378b9204","reference":"CLM-FB5A540B","policy_id":"85ff805b-4aeb-4663-b132-66155eeb2abf","claimant_id":"8520fbdf-4215-45af-af08-5f9480eae89d","amount":"100.00","description":"QA 70440c63 Ever moment change drop year many.","incident_date":"2026-11-14","status":"DRAFT","created_at":"2026-11-21T10:04:27.914402Z","updated_at":"2026-11-21T10:04:27.914402Z","withdrawn_at":null,"decided_by_id":null}
+10:04:27 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-start_review]

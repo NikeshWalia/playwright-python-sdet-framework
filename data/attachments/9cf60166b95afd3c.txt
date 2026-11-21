@@ -1,0 +1,21 @@
+10:04:21 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[one-cent-below-limit]
+10:04:21 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:04:21 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"85ff805b-4aeb-4663-b132-66155eeb2abf","policy_number":"POL-1001","holder_id":"8520fbdf-4215-45af-af08-5f9480eae89d","coverage_limit":"10000.00","is_active":true},{"id":"b0723c2a-7ba3-4ecf-99a0-c066b71309ac","policy_number":"POL-1002","holder_id":"8520fbdf-4215-45af-af08-5f9480eae89d","coverage_limit":"2500.00","is_active":true}]
+10:04:21 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:04:21 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '85ff805b-4aeb-4663-b132-66155eeb2abf', 'amount': '4999.99', 'description': 'QA 39fc92d2 Throughout price culture.', 'incident_date': '2026-11-14'}
+  response: {"id":"8d85a621-c6b5-4ec3-9a39-e9adef92c459","reference":"CLM-1D4D55A3","policy_id":"85ff805b-4aeb-4663-b132-66155eeb2abf","claimant_id":"8520fbdf-4215-45af-af08-5f9480eae89d","amount":"4999.99","description":"QA 39fc92d2 Throughout price culture.","incident_date":"2026-11-14","status":"DRAFT","created_at":"2026-11-21T10:04:21.696981Z","updated_at":"2026-11-21T10:04:21.696981Z","withdrawn_at":null,"decided_by_id":null}
+10:04:21 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8d85a621-c6b5-4ec3-9a39-e9adef92c459/transitions "HTTP/1.1 200 OK"
+10:04:21 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8d85a621-c6b5-4ec3-9a39-e9adef92c459/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"8d85a621-c6b5-4ec3-9a39-e9adef92c459","reference":"CLM-1D4D55A3","policy_id":"85ff805b-4aeb-4663-b132-66155eeb2abf","claimant_id":"8520fbdf-4215-45af-af08-5f9480eae89d","amount":"4999.99","description":"QA 39fc92d2 Throughout price culture.","incident_date":"2026-11-14","status":"SUBMITTED","created_at":"2026-11-21T10:04:21.696981Z","updated_at":"2026-11-21T10:04:21.706409Z","withdrawn_at":null,"decided_by_id":null}
+10:04:21 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8d85a621-c6b5-4ec3-9a39-e9adef92c459/transitions "HTTP/1.1 200 OK"
+10:04:21 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8d85a621-c6b5-4ec3-9a39-e9adef92c459/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"8d85a621-c6b5-4ec3-9a39-e9adef92c459","reference":"CLM-1D4D55A3","policy_id":"85ff805b-4aeb-4663-b132-66155eeb2abf","claimant_id":"8520fbdf-4215-45af-af08-5f9480eae89d","amount":"4999.99","description":"QA 39fc92d2 Throughout price culture.","incident_date":"2026-11-14","status":"UNDER_REVIEW","created_at":"2026-11-21T10:04:21.696981Z","updated_at":"2026-11-21T10:04:21.715119Z","withdrawn_at":null,"decided_by_id":null}
+10:04:21 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8d85a621-c6b5-4ec3-9a39-e9adef92c459/transitions "HTTP/1.1 200 OK"
+10:04:21 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8d85a621-c6b5-4ec3-9a39-e9adef92c459/transitions -> 200 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"8d85a621-c6b5-4ec3-9a39-e9adef92c459","reference":"CLM-1D4D55A3","policy_id":"85ff805b-4aeb-4663-b132-66155eeb2abf","claimant_id":"8520fbdf-4215-45af-af08-5f9480eae89d","amount":"4999.99","description":"QA 39fc92d2 Throughout price culture.","incident_date":"2026-11-14","status":"APPROVED","created_at":"2026-11-21T10:04:21.696981Z","updated_at":"2026-11-21T10:04:21.724791Z","withdrawn_at":null,"decided_by_id":"b5cad0d6-95a7-4fa5-ae53-0ca3f2e4712c"}
+10:04:21 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_approve_up_to_and_including_the_limit[one-cent-below-limit]
