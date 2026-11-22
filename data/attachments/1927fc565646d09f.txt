@@ -1,0 +1,16 @@
+10:07:25 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[reject]
+10:07:25 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:07:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"98cc5d1b-5fc4-446e-a150-527690356caf","policy_number":"POL-1001","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"10000.00","is_active":true},{"id":"8bc07667-d751-43db-82a9-1925def61ba2","policy_number":"POL-1002","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"2500.00","is_active":true}]
+10:07:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '250.00', 'description': 'QA e287e2eb Century movie most traditional.', 'incident_date': '2026-11-15'}
+  response: {"id":"d56fbbe0-579c-4e2d-a819-6dabdd78704b","reference":"CLM-238C035F","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"250.00","description":"QA e287e2eb Century movie most traditional.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:25.729728Z","updated_at":"2026-11-22T10:07:25.729728Z","withdrawn_at":null,"decided_by_id":null}
+10:07:25 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/d56fbbe0-579c-4e2d-a819-6dabdd78704b "HTTP/1.1 204 No Content"
+10:07:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/d56fbbe0-579c-4e2d-a819-6dabdd78704b -> 204 (6 ms)
+  response: 
+10:07:25 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d56fbbe0-579c-4e2d-a819-6dabdd78704b/transitions "HTTP/1.1 409 Conflict"
+10:07:25 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d56fbbe0-579c-4e2d-a819-6dabdd78704b/transitions -> 409 (4 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"detail":"Cannot reject a claim in status WITHDRAWN; it must be UNDER_REVIEW."}
+10:07:25 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_withdrawn_claim_accepts_no_transition[reject]

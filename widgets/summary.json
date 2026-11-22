@@ -1,1 +1,1 @@
-{"reportName":"ClaimDesk QA","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":351,"unknown":0,"total":351},"time":{"start":1795255460598,"stop":1795255471204,"duration":10606,"minDuration":0,"maxDuration":499,"sumDuration":11893}}
+{"reportName":"ClaimDesk QA","testRuns":[],"statistic":{"failed":0,"broken":0,"skipped":0,"passed":351,"unknown":0,"total":351},"time":{"start":1795342036147,"stop":1795342046806,"duration":10659,"minDuration":0,"maxDuration":375,"sumDuration":12016}}

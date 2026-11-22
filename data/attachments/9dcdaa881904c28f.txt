@@ -1,0 +1,25 @@
+10:07:17 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+10:07:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"98cc5d1b-5fc4-446e-a150-527690356caf","policy_number":"POL-1001","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"10000.00","is_active":true},{"id":"8bc07667-d751-43db-82a9-1925def61ba2","policy_number":"POL-1002","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"2500.00","is_active":true}]
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '250.00', 'description': 'QA 7b88afa7 Agent draw campaign tend need worker.', 'incident_date': '2026-11-15'}
+  response: {"id":"4049559f-f6ed-40da-951b-5315c1ebb94d","reference":"CLM-F3BE9159","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"250.00","description":"QA 7b88afa7 Agent draw campaign tend need worker.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:17.711942Z","updated_at":"2026-11-22T10:07:17.711942Z","withdrawn_at":null,"decided_by_id":null}
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '250.00', 'description': 'QA 7896eff5 Member fall nature discussion despite increase.', 'incident_date': '2026-11-15'}
+  response: {"id":"e3f801df-ed20-4aa0-8ac9-dd51ac831c69","reference":"CLM-207C09D7","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"250.00","description":"QA 7896eff5 Member fall nature discussion despite increase.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:17.721170Z","updated_at":"2026-11-22T10:07:17.721170Z","withdrawn_at":null,"decided_by_id":null}
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '250.00', 'description': 'QA 5d25c1fb Wear thought determine these whether born store.', 'incident_date': '2026-11-15'}
+  response: {"id":"bf9cde3b-c159-4ea8-9aa2-ef18ef194e97","reference":"CLM-631EF707","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"250.00","description":"QA 5d25c1fb Wear thought determine these whether born store.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:17.730605Z","updated_at":"2026-11-22T10:07:17.730605Z","withdrawn_at":null,"decided_by_id":null}
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '250.00', 'description': 'QA 2daad401 Lead American yeah watch catch break.', 'incident_date': '2026-11-15'}
+  response: {"id":"803df265-0c49-4b2c-8968-9e6ddaded6f6","reference":"CLM-9D3C308A","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"250.00","description":"QA 2daad401 Lead American yeah watch catch break.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:17.739692Z","updated_at":"2026-11-22T10:07:17.739692Z","withdrawn_at":null,"decided_by_id":null}
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '250.00', 'description': 'QA 78536d10 Former network claim measure always.', 'incident_date': '2026-11-15'}
+  response: {"id":"bc39917a-8c7e-486c-bdce-f82b4064731d","reference":"CLM-12768EA6","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"250.00","description":"QA 78536d10 Former network claim measure always.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:17.747318Z","updated_at":"2026-11-22T10:07:17.747318Z","withdrawn_at":null,"decided_by_id":null}
+10:07:17 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

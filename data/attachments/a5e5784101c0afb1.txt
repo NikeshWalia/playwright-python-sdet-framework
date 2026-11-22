@@ -1,0 +1,16 @@
+10:07:22 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[DRAFT-submit-SUBMITTED]
+10:07:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:07:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"98cc5d1b-5fc4-446e-a150-527690356caf","policy_number":"POL-1001","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"10000.00","is_active":true},{"id":"8bc07667-d751-43db-82a9-1925def61ba2","policy_number":"POL-1002","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"2500.00","is_active":true}]
+10:07:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (107 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '100.00', 'description': 'QA 6a6a3fa0 Interest step fund trip.', 'incident_date': '2026-11-15'}
+  response: {"id":"c3fc89bf-2697-455b-8fe9-baa19bb37265","reference":"CLM-625DD8D8","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"100.00","description":"QA 6a6a3fa0 Interest step fund trip.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:22.967757Z","updated_at":"2026-11-22T10:07:22.967757Z","withdrawn_at":null,"decided_by_id":null}
+10:07:23 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/c3fc89bf-2697-455b-8fe9-baa19bb37265 "HTTP/1.1 200 OK"
+10:07:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/c3fc89bf-2697-455b-8fe9-baa19bb37265 -> 200 (9 ms)
+  response: {"id":"c3fc89bf-2697-455b-8fe9-baa19bb37265","reference":"CLM-625DD8D8","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"100.00","description":"QA 6a6a3fa0 Interest step fund trip.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:22.967757Z","updated_at":"2026-11-22T10:07:22.967757Z","withdrawn_at":null,"decided_by_id":null}
+10:07:23 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c3fc89bf-2697-455b-8fe9-baa19bb37265/transitions "HTTP/1.1 200 OK"
+10:07:23 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c3fc89bf-2697-455b-8fe9-baa19bb37265/transitions -> 200 (157 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"c3fc89bf-2697-455b-8fe9-baa19bb37265","reference":"CLM-625DD8D8","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"100.00","description":"QA 6a6a3fa0 Interest step fund trip.","incident_date":"2026-11-15","status":"SUBMITTED","created_at":"2026-11-22T10:07:22.967757Z","updated_at":"2026-11-22T10:07:23.084279Z","withdrawn_at":null,"decided_by_id":null}
+10:07:23 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[DRAFT-submit-SUBMITTED]

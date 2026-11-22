@@ -1,0 +1,21 @@
+10:07:17 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit
+10:07:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"98cc5d1b-5fc4-446e-a150-527690356caf","policy_number":"POL-1001","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"10000.00","is_active":true},{"id":"8bc07667-d751-43db-82a9-1925def61ba2","policy_number":"POL-1002","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"2500.00","is_active":true}]
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '5000.01', 'description': 'QA 014a5a46 Charge program loss watch two.', 'incident_date': '2026-11-15'}
+  response: {"id":"f60f5e8b-f6cc-485d-9c67-e9538100587b","reference":"CLM-EBDE90DB","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"5000.01","description":"QA 014a5a46 Charge program loss watch two.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:17.546930Z","updated_at":"2026-11-22T10:07:17.546930Z","withdrawn_at":null,"decided_by_id":null}
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f60f5e8b-f6cc-485d-9c67-e9538100587b/transitions "HTTP/1.1 200 OK"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f60f5e8b-f6cc-485d-9c67-e9538100587b/transitions -> 200 (10 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"f60f5e8b-f6cc-485d-9c67-e9538100587b","reference":"CLM-EBDE90DB","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"5000.01","description":"QA 014a5a46 Charge program loss watch two.","incident_date":"2026-11-15","status":"SUBMITTED","created_at":"2026-11-22T10:07:17.546930Z","updated_at":"2026-11-22T10:07:17.556288Z","withdrawn_at":null,"decided_by_id":null}
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f60f5e8b-f6cc-485d-9c67-e9538100587b/transitions "HTTP/1.1 200 OK"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f60f5e8b-f6cc-485d-9c67-e9538100587b/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"f60f5e8b-f6cc-485d-9c67-e9538100587b","reference":"CLM-EBDE90DB","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"5000.01","description":"QA 014a5a46 Charge program loss watch two.","incident_date":"2026-11-15","status":"UNDER_REVIEW","created_at":"2026-11-22T10:07:17.546930Z","updated_at":"2026-11-22T10:07:17.566919Z","withdrawn_at":null,"decided_by_id":null}
+10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/f60f5e8b-f6cc-485d-9c67-e9538100587b/transitions "HTTP/1.1 200 OK"
+10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/f60f5e8b-f6cc-485d-9c67-e9538100587b/transitions -> 200 (12 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"f60f5e8b-f6cc-485d-9c67-e9538100587b","reference":"CLM-EBDE90DB","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"5000.01","description":"QA 014a5a46 Charge program loss watch two.","incident_date":"2026-11-15","status":"APPROVED","created_at":"2026-11-22T10:07:17.546930Z","updated_at":"2026-11-22T10:07:17.574924Z","withdrawn_at":null,"decided_by_id":"d3bcc190-58b2-492e-bec8-1bb243c2f32e"}
+10:07:17 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_administrator_may_approve_above_the_adjuster_limit

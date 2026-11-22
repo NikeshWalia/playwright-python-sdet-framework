@@ -1,0 +1,28 @@
+10:07:24 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-approve]
+10:07:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:07:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"98cc5d1b-5fc4-446e-a150-527690356caf","policy_number":"POL-1001","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"10000.00","is_active":true},{"id":"8bc07667-d751-43db-82a9-1925def61ba2","policy_number":"POL-1002","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"2500.00","is_active":true}]
+10:07:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:07:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '100.00', 'description': 'QA 56f51e69 Later follow bad fly out only.', 'incident_date': '2026-11-15'}
+  response: {"id":"b38893d6-0d8b-485f-b8fb-8b9b01685159","reference":"CLM-FEF16FE6","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"100.00","description":"QA 56f51e69 Later follow bad fly out only.","incident_date":"2026-11-15","status":"DRAFT","created_at":"2026-11-22T10:07:24.647905Z","updated_at":"2026-11-22T10:07:24.647905Z","withdrawn_at":null,"decided_by_id":null}
+10:07:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159/transitions "HTTP/1.1 200 OK"
+10:07:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159/transitions -> 200 (13 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"b38893d6-0d8b-485f-b8fb-8b9b01685159","reference":"CLM-FEF16FE6","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"100.00","description":"QA 56f51e69 Later follow bad fly out only.","incident_date":"2026-11-15","status":"SUBMITTED","created_at":"2026-11-22T10:07:24.647905Z","updated_at":"2026-11-22T10:07:24.659056Z","withdrawn_at":null,"decided_by_id":null}
+10:07:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159/transitions "HTTP/1.1 200 OK"
+10:07:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"b38893d6-0d8b-485f-b8fb-8b9b01685159","reference":"CLM-FEF16FE6","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"100.00","description":"QA 56f51e69 Later follow bad fly out only.","incident_date":"2026-11-15","status":"UNDER_REVIEW","created_at":"2026-11-22T10:07:24.647905Z","updated_at":"2026-11-22T10:07:24.671724Z","withdrawn_at":null,"decided_by_id":null}
+10:07:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159/transitions "HTTP/1.1 200 OK"
+10:07:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159/transitions -> 200 (10 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"b38893d6-0d8b-485f-b8fb-8b9b01685159","reference":"CLM-FEF16FE6","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"100.00","description":"QA 56f51e69 Later follow bad fly out only.","incident_date":"2026-11-15","status":"APPROVED","created_at":"2026-11-22T10:07:24.647905Z","updated_at":"2026-11-22T10:07:24.682140Z","withdrawn_at":null,"decided_by_id":"92794d4c-bd31-4aab-af36-f8acff516469"}
+10:07:24 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159/transitions "HTTP/1.1 409 Conflict"
+10:07:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159/transitions -> 409 (9 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status APPROVED; it must be UNDER_REVIEW."}
+10:07:24 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159 "HTTP/1.1 200 OK"
+10:07:24 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/b38893d6-0d8b-485f-b8fb-8b9b01685159 -> 200 (5 ms)
+  response: {"id":"b38893d6-0d8b-485f-b8fb-8b9b01685159","reference":"CLM-FEF16FE6","policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","claimant_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","amount":"100.00","description":"QA 56f51e69 Later follow bad fly out only.","incident_date":"2026-11-15","status":"APPROVED","created_at":"2026-11-22T10:07:24.647905Z","updated_at":"2026-11-22T10:07:24.682140Z","withdrawn_at":null,"decided_by_id":"92794d4c-bd31-4aab-af36-f8acff516469"}
+10:07:24 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[APPROVED-cannot-approve]
