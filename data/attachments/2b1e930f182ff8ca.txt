@@ -1,0 +1,21 @@
+11:03:56 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-reject-REJECTED]
+11:03:56 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","policy_number":"POL-1001","holder_id":"e0da826f-2520-4813-8ecb-29adaaed9387","coverage_limit":"10000.00","is_active":true},{"id":"9119504a-46c1-4db5-ad2b-db34d4da14ff","policy_number":"POL-1002","holder_id":"e0da826f-2520-4813-8ecb-29adaaed9387","coverage_limit":"2500.00","is_active":true}]
+11:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (14 ms)
+  request : {'policy_id': 'b3b37444-25ed-40c7-8d8d-f279e09758b2', 'amount': '100.00', 'description': 'QA 3464ebb6 Clearly fine care small trial soon.', 'incident_date': '2026-11-16'}
+  response: {"id":"084ccd52-347f-4d93-9112-d0d43a196d08","reference":"CLM-E13F5900","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"100.00","description":"QA 3464ebb6 Clearly fine care small trial soon.","incident_date":"2026-11-16","status":"DRAFT","created_at":"2026-11-23T11:03:56.355825Z","updated_at":"2026-11-23T11:03:56.355825Z","withdrawn_at":null,"decided_by_id":null}
+11:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/084ccd52-347f-4d93-9112-d0d43a196d08/transitions "HTTP/1.1 200 OK"
+11:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/084ccd52-347f-4d93-9112-d0d43a196d08/transitions -> 200 (22 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"084ccd52-347f-4d93-9112-d0d43a196d08","reference":"CLM-E13F5900","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"100.00","description":"QA 3464ebb6 Clearly fine care small trial soon.","incident_date":"2026-11-16","status":"SUBMITTED","created_at":"2026-11-23T11:03:56.355825Z","updated_at":"2026-11-23T11:03:56.369896Z","withdrawn_at":null,"decided_by_id":null}
+11:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/084ccd52-347f-4d93-9112-d0d43a196d08/transitions "HTTP/1.1 200 OK"
+11:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/084ccd52-347f-4d93-9112-d0d43a196d08/transitions -> 200 (9 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"084ccd52-347f-4d93-9112-d0d43a196d08","reference":"CLM-E13F5900","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"100.00","description":"QA 3464ebb6 Clearly fine care small trial soon.","incident_date":"2026-11-16","status":"UNDER_REVIEW","created_at":"2026-11-23T11:03:56.355825Z","updated_at":"2026-11-23T11:03:56.393232Z","withdrawn_at":null,"decided_by_id":null}
+11:03:56 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/084ccd52-347f-4d93-9112-d0d43a196d08/transitions "HTTP/1.1 200 OK"
+11:03:56 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/084ccd52-347f-4d93-9112-d0d43a196d08/transitions -> 200 (9 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"084ccd52-347f-4d93-9112-d0d43a196d08","reference":"CLM-E13F5900","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"100.00","description":"QA 3464ebb6 Clearly fine care small trial soon.","incident_date":"2026-11-16","status":"REJECTED","created_at":"2026-11-23T11:03:56.355825Z","updated_at":"2026-11-23T11:03:56.402593Z","withdrawn_at":null,"decided_by_id":"93a3bb11-4e08-4cf8-8964-321b1b308aa1"}
+11:03:56 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-reject-REJECTED]

@@ -1,0 +1,9 @@
+11:03:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]
+11:03:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:03:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","policy_number":"POL-1001","holder_id":"e0da826f-2520-4813-8ecb-29adaaed9387","coverage_limit":"10000.00","is_active":true},{"id":"9119504a-46c1-4db5-ad2b-db34d4da14ff","policy_number":"POL-1002","holder_id":"e0da826f-2520-4813-8ecb-29adaaed9387","coverage_limit":"2500.00","is_active":true}]
+11:03:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+11:03:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
+  request : {'policy_id': 'b3b37444-25ed-40c7-8d8d-f279e09758b2', 'amount': '0', 'description': 'QA f597d014 Parent institution agree both.', 'incident_date': '2026-11-16'}
+  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"0","ctx":{"gt":0}}]}
+11:03:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[zero]

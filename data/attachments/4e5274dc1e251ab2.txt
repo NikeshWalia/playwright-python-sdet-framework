@@ -1,0 +1,9 @@
+11:03:50 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_returns_the_full_contract
+11:03:50 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:03:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","policy_number":"POL-1001","holder_id":"e0da826f-2520-4813-8ecb-29adaaed9387","coverage_limit":"10000.00","is_active":true},{"id":"9119504a-46c1-4db5-ad2b-db34d4da14ff","policy_number":"POL-1002","holder_id":"e0da826f-2520-4813-8ecb-29adaaed9387","coverage_limit":"2500.00","is_active":true}]
+11:03:50 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:03:50 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': 'b3b37444-25ed-40c7-8d8d-f279e09758b2', 'amount': '1250.50', 'description': 'QA 3987247a None successful policy woman pass.', 'incident_date': '2026-11-16'}
+  response: {"id":"45c2beba-2bf9-4b1e-a326-195d79d82e69","reference":"CLM-4B98B1DC","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"1250.50","description":"QA 3987247a None successful policy woman pass.","incident_date":"2026-11-16","status":"DRAFT","created_at":"2026-11-23T11:03:50.492720Z","updated_at":"2026-11-23T11:03:50.492720Z","withdrawn_at":null,"decided_by_id":null}
+11:03:50 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_returns_the_full_contract

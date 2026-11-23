@@ -1,0 +1,5 @@
+11:03:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]
+11:03:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 "HTTP/1.1 200 OK"
+11:03:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?status=WITHDRAWN&size=50 -> 200 (5 ms)
+  response: {"items":[{"id":"be73cdbf-a2b9-4254-8381-7e32b467603f","reference":"CLM-94A5D3B0","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"250.00","description":"QA 613f89be Itself our voice save.","incident_date":"2026-11-16","status":"WITHDRAWN","created_at":"2026-11-23T11:03:49.206894Z","updated_at":"2026-11-23T11:03:49.225654Z","withdrawn_at":"2026-11-23T11:03:49.229771Z","decided_by_id":null}],"page":1,"size":50,"total":1}
+11:03:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_filtering_by_status_returns_only_that_status[WITHDRAWN]

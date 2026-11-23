@@ -1,0 +1,32 @@
+11:04:00 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row
+11:04:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","policy_number":"POL-1001","holder_id":"e0da826f-2520-4813-8ecb-29adaaed9387","coverage_limit":"10000.00","is_active":true},{"id":"9119504a-46c1-4db5-ad2b-db34d4da14ff","policy_number":"POL-1002","holder_id":"e0da826f-2520-4813-8ecb-29adaaed9387","coverage_limit":"2500.00","is_active":true}]
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+11:04:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': 'b3b37444-25ed-40c7-8d8d-f279e09758b2', 'amount': '700.00', 'description': 'QA f94e1e18 Degree major view including apply.', 'incident_date': '2026-11-16'}
+  response: {"id":"4308590a-e9b4-48cd-8090-d8c05b18a0dc","reference":"CLM-F1DFBC59","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"700.00","description":"QA f94e1e18 Degree major view including apply.","incident_date":"2026-11-16","status":"DRAFT","created_at":"2026-11-23T11:04:00.405784Z","updated_at":"2026-11-23T11:04:00.405784Z","withdrawn_at":null,"decided_by_id":null}
+11:04:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4308590a-e9b4-48cd-8090-d8c05b18a0dc/transitions "HTTP/1.1 200 OK"
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4308590a-e9b4-48cd-8090-d8c05b18a0dc/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"4308590a-e9b4-48cd-8090-d8c05b18a0dc","reference":"CLM-F1DFBC59","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"700.00","description":"QA f94e1e18 Degree major view including apply.","incident_date":"2026-11-16","status":"SUBMITTED","created_at":"2026-11-23T11:04:00.405784Z","updated_at":"2026-11-23T11:04:00.413946Z","withdrawn_at":null,"decided_by_id":null}
+11:04:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4308590a-e9b4-48cd-8090-d8c05b18a0dc/transitions "HTTP/1.1 200 OK"
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4308590a-e9b4-48cd-8090-d8c05b18a0dc/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"4308590a-e9b4-48cd-8090-d8c05b18a0dc","reference":"CLM-F1DFBC59","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"700.00","description":"QA f94e1e18 Degree major view including apply.","incident_date":"2026-11-16","status":"UNDER_REVIEW","created_at":"2026-11-23T11:04:00.405784Z","updated_at":"2026-11-23T11:04:00.421595Z","withdrawn_at":null,"decided_by_id":null}
+11:04:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4308590a-e9b4-48cd-8090-d8c05b18a0dc/transitions "HTTP/1.1 200 OK"
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4308590a-e9b4-48cd-8090-d8c05b18a0dc/transitions -> 200 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"4308590a-e9b4-48cd-8090-d8c05b18a0dc","reference":"CLM-F1DFBC59","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"700.00","description":"QA f94e1e18 Degree major view including apply.","incident_date":"2026-11-16","status":"APPROVED","created_at":"2026-11-23T11:04:00.405784Z","updated_at":"2026-11-23T11:04:00.428617Z","withdrawn_at":null,"decided_by_id":"93a3bb11-4e08-4cf8-8964-321b1b308aa1"}
+11:04:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/4308590a-e9b4-48cd-8090-d8c05b18a0dc/transitions "HTTP/1.1 200 OK"
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/4308590a-e9b4-48cd-8090-d8c05b18a0dc/transitions -> 200 (8 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"4308590a-e9b4-48cd-8090-d8c05b18a0dc","reference":"CLM-F1DFBC59","policy_id":"b3b37444-25ed-40c7-8d8d-f279e09758b2","claimant_id":"e0da826f-2520-4813-8ecb-29adaaed9387","amount":"700.00","description":"QA f94e1e18 Degree major view including apply.","incident_date":"2026-11-16","status":"PAID","created_at":"2026-11-23T11:04:00.405784Z","updated_at":"2026-11-23T11:04:00.435550Z","withdrawn_at":null,"decided_by_id":"93a3bb11-4e08-4cf8-8964-321b1b308aa1"}
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, claim_id, actor_id, from_status, to_status, note, occurred_at FROM claim_events WHERE claim_id = %s ORDER BY occurred_at, id
+  params: ('4308590a-e9b4-48cd-8090-d8c05b18a0dc',)
+  rows: 5
+11:04:00 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('4308590a-e9b4-48cd-8090-d8c05b18a0dc',)
+  rows: 1
+11:04:00 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_every_transition_writes_exactly_one_audit_row

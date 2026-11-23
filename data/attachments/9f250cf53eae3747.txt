@@ -1,9 +1,0 @@
-10:07:17 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[incident_date]
-10:07:17 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
-  response: [{"id":"98cc5d1b-5fc4-446e-a150-527690356caf","policy_number":"POL-1001","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"10000.00","is_active":true},{"id":"8bc07667-d751-43db-82a9-1925def61ba2","policy_number":"POL-1002","holder_id":"0ce1f86e-a86a-4385-9b13-cf5528b39123","coverage_limit":"2500.00","is_active":true}]
-10:07:17 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
-10:07:17 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (4 ms)
-  request : {'policy_id': '98cc5d1b-5fc4-446e-a150-527690356caf', 'amount': '250.00', 'description': 'QA a4ce6f40 Single decision lawyer.'}
-  response: {"detail":[{"type":"missing","loc":["body","incident_date"],"msg":"Field required","input":{"policy_id":"98cc5d1b-5fc4-446e-a150-527690356caf","amount":"250.00","description":"QA a4ce6f40 Single decision lawyer."}}]}
-10:07:17 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_every_required_field_is_actually_required[incident_date]
