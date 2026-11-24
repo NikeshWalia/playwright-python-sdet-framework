@@ -1,0 +1,31 @@
+12:50:05 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid
+12:50:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","policy_number":"POL-1001","holder_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","coverage_limit":"10000.00","is_active":true},{"id":"2565a58b-6be7-4b57-9469-e6740f885d41","policy_number":"POL-1002","holder_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","coverage_limit":"2500.00","is_active":true}]
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+12:50:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '83ab8b81-6edb-43f8-99d2-3eacfee43da7', 'amount': '800.00', 'description': 'QA a7086576 Them administration grow.', 'incident_date': '2026-11-17'}
+  response: {"id":"75eab518-0786-444b-a1d5-cc15018ccb3b","reference":"CLM-7E902517","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"800.00","description":"QA a7086576 Them administration grow.","incident_date":"2026-11-17","status":"DRAFT","created_at":"2026-11-24T12:50:05.568922Z","updated_at":"2026-11-24T12:50:05.568922Z","withdrawn_at":null,"decided_by_id":null}
+12:50:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/75eab518-0786-444b-a1d5-cc15018ccb3b/transitions "HTTP/1.1 200 OK"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/75eab518-0786-444b-a1d5-cc15018ccb3b/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"75eab518-0786-444b-a1d5-cc15018ccb3b","reference":"CLM-7E902517","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"800.00","description":"QA a7086576 Them administration grow.","incident_date":"2026-11-17","status":"SUBMITTED","created_at":"2026-11-24T12:50:05.568922Z","updated_at":"2026-11-24T12:50:05.576729Z","withdrawn_at":null,"decided_by_id":null}
+12:50:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/75eab518-0786-444b-a1d5-cc15018ccb3b/transitions "HTTP/1.1 200 OK"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/75eab518-0786-444b-a1d5-cc15018ccb3b/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"75eab518-0786-444b-a1d5-cc15018ccb3b","reference":"CLM-7E902517","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"800.00","description":"QA a7086576 Them administration grow.","incident_date":"2026-11-17","status":"UNDER_REVIEW","created_at":"2026-11-24T12:50:05.568922Z","updated_at":"2026-11-24T12:50:05.583833Z","withdrawn_at":null,"decided_by_id":null}
+12:50:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/75eab518-0786-444b-a1d5-cc15018ccb3b/transitions "HTTP/1.1 200 OK"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/75eab518-0786-444b-a1d5-cc15018ccb3b/transitions -> 200 (6 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"75eab518-0786-444b-a1d5-cc15018ccb3b","reference":"CLM-7E902517","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"800.00","description":"QA a7086576 Them administration grow.","incident_date":"2026-11-17","status":"REJECTED","created_at":"2026-11-24T12:50:05.568922Z","updated_at":"2026-11-24T12:50:05.590340Z","withdrawn_at":null,"decided_by_id":"2e4d9eb7-1211-42d5-9a5c-796ed951276c"}
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT id, reference, policy_id, claimant_id, amount, description, incident_date, status, created_at, updated_at, withdrawn_at, decided_by_id FROM claims WHERE id = %s
+  params: ('75eab518-0786-444b-a1d5-cc15018ccb3b',)
+  rows: 1
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM payouts WHERE claim_id = %s
+  params: ('75eab518-0786-444b-a1d5-cc15018ccb3b',)
+  rows: 1
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT coalesce(sum(amount), 0) FROM payouts WHERE claim_id = %s
+  params: ('75eab518-0786-444b-a1d5-cc15018ccb3b',)
+  rows: 1
+12:50:05 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_rejected_claim_is_never_paid

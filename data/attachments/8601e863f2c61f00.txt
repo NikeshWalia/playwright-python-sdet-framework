@@ -1,0 +1,28 @@
+12:50:05 DEBUG    claimdesk_qa.tests.conftest start tests/db/test_audit_and_payouts.py::test_a_refused_transition_writes_no_audit_row
+12:50:05 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","policy_number":"POL-1001","holder_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","coverage_limit":"10000.00","is_active":true},{"id":"2565a58b-6be7-4b57-9469-e6740f885d41","policy_number":"POL-1002","holder_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","coverage_limit":"2500.00","is_active":true}]
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.db.connection Connected read-only to postgresql://claimdesk_qa_ro:***masked***@127.0.0.1:5432/claimdesk
+12:50:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '83ab8b81-6edb-43f8-99d2-3eacfee43da7', 'amount': '700.00', 'description': 'QA a9449f52 Only eight least add fly drop.', 'incident_date': '2026-11-17'}
+  response: {"id":"2b3c8da8-faf1-4c45-803a-519b4f019654","reference":"CLM-BC3E80BA","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"700.00","description":"QA a9449f52 Only eight least add fly drop.","incident_date":"2026-11-17","status":"DRAFT","created_at":"2026-11-24T12:50:05.323884Z","updated_at":"2026-11-24T12:50:05.323884Z","withdrawn_at":null,"decided_by_id":null}
+12:50:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2b3c8da8-faf1-4c45-803a-519b4f019654/transitions "HTTP/1.1 200 OK"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2b3c8da8-faf1-4c45-803a-519b4f019654/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2b3c8da8-faf1-4c45-803a-519b4f019654","reference":"CLM-BC3E80BA","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"700.00","description":"QA a9449f52 Only eight least add fly drop.","incident_date":"2026-11-17","status":"SUBMITTED","created_at":"2026-11-24T12:50:05.323884Z","updated_at":"2026-11-24T12:50:05.332115Z","withdrawn_at":null,"decided_by_id":null}
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('2b3c8da8-faf1-4c45-803a-519b4f019654',)
+  rows: 1
+12:50:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2b3c8da8-faf1-4c45-803a-519b4f019654/transitions "HTTP/1.1 409 Conflict"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2b3c8da8-faf1-4c45-803a-519b4f019654/transitions -> 409 (4 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status SUBMITTED; it must be APPROVED."}
+12:50:05 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2b3c8da8-faf1-4c45-803a-519b4f019654/transitions "HTTP/1.1 409 Conflict"
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2b3c8da8-faf1-4c45-803a-519b4f019654/transitions -> 409 (4 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status SUBMITTED; it must be UNDER_REVIEW."}
+12:50:05 DEBUG    claimdesk_qa.claimdesk_qa.db.connection SQL: SELECT count(*) FROM claim_events WHERE claim_id = %s
+  params: ('2b3c8da8-faf1-4c45-803a-519b4f019654',)
+  rows: 1
+12:50:05 DEBUG    claimdesk_qa.tests.conftest end tests/db/test_audit_and_payouts.py::test_a_refused_transition_writes_no_audit_row

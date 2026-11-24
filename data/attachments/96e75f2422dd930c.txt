@@ -1,0 +1,18 @@
+12:49:58 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]
+12:49:58 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+12:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (7 ms)
+  response: [{"id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","policy_number":"POL-1001","holder_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","coverage_limit":"10000.00","is_active":true},{"id":"2565a58b-6be7-4b57-9469-e6740f885d41","policy_number":"POL-1002","holder_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","coverage_limit":"2500.00","is_active":true}]
+12:49:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+12:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (12 ms)
+  request : {'policy_id': '83ab8b81-6edb-43f8-99d2-3eacfee43da7', 'amount': '5000.01', 'description': 'QA 0949120b Natural store test his will.', 'incident_date': '2026-11-17'}
+  response: {"id":"2cd04cf3-ae14-4c2d-b7fd-9db11951be94","reference":"CLM-245C0F43","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"5000.01","description":"QA 0949120b Natural store test his will.","incident_date":"2026-11-17","status":"DRAFT","created_at":"2026-11-24T12:49:58.587507Z","updated_at":"2026-11-24T12:49:58.587507Z","withdrawn_at":null,"decided_by_id":null}
+12:49:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2cd04cf3-ae14-4c2d-b7fd-9db11951be94/transitions "HTTP/1.1 200 OK"
+12:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2cd04cf3-ae14-4c2d-b7fd-9db11951be94/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"2cd04cf3-ae14-4c2d-b7fd-9db11951be94","reference":"CLM-245C0F43","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"5000.01","description":"QA 0949120b Natural store test his will.","incident_date":"2026-11-17","status":"SUBMITTED","created_at":"2026-11-24T12:49:58.587507Z","updated_at":"2026-11-24T12:49:58.601633Z","withdrawn_at":null,"decided_by_id":null}
+12:49:58 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/2cd04cf3-ae14-4c2d-b7fd-9db11951be94/transitions "HTTP/1.1 200 OK"
+12:49:58 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/2cd04cf3-ae14-4c2d-b7fd-9db11951be94/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"2cd04cf3-ae14-4c2d-b7fd-9db11951be94","reference":"CLM-245C0F43","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"5000.01","description":"QA 0949120b Natural store test his will.","incident_date":"2026-11-17","status":"UNDER_REVIEW","created_at":"2026-11-24T12:49:58.587507Z","updated_at":"2026-11-24T12:49:58.612113Z","withdrawn_at":null,"decided_by_id":null}
+12:49:58 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/2cd04cf3-ae14-4c2d-b7fd-9db11951be94
+12:49:58 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_the_approve_button_is_offered_but_the_server_refuses_over_the_limit[chromium]

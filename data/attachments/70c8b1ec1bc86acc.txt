@@ -1,0 +1,25 @@
+12:50:00 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
+12:50:00 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+12:50:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","policy_number":"POL-1001","holder_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","coverage_limit":"10000.00","is_active":true},{"id":"2565a58b-6be7-4b57-9469-e6740f885d41","policy_number":"POL-1002","holder_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","coverage_limit":"2500.00","is_active":true}]
+12:50:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+12:50:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '83ab8b81-6edb-43f8-99d2-3eacfee43da7', 'amount': '750.00', 'description': 'QA f461c4a8 Either collection Democrat another large issue certain.', 'incident_date': '2026-11-17'}
+  response: {"id":"6071fdb8-2839-47b8-a3b5-a3e70727b0ed","reference":"CLM-5221BAE3","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"750.00","description":"QA f461c4a8 Either collection Democrat another large issue certain.","incident_date":"2026-11-17","status":"DRAFT","created_at":"2026-11-24T12:50:00.846937Z","updated_at":"2026-11-24T12:50:00.846937Z","withdrawn_at":null,"decided_by_id":null}
+12:50:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6071fdb8-2839-47b8-a3b5-a3e70727b0ed/transitions "HTTP/1.1 200 OK"
+12:50:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6071fdb8-2839-47b8-a3b5-a3e70727b0ed/transitions -> 200 (16 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"6071fdb8-2839-47b8-a3b5-a3e70727b0ed","reference":"CLM-5221BAE3","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"750.00","description":"QA f461c4a8 Either collection Democrat another large issue certain.","incident_date":"2026-11-17","status":"SUBMITTED","created_at":"2026-11-24T12:50:00.846937Z","updated_at":"2026-11-24T12:50:00.857970Z","withdrawn_at":null,"decided_by_id":null}
+12:50:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6071fdb8-2839-47b8-a3b5-a3e70727b0ed/transitions "HTTP/1.1 200 OK"
+12:50:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6071fdb8-2839-47b8-a3b5-a3e70727b0ed/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"6071fdb8-2839-47b8-a3b5-a3e70727b0ed","reference":"CLM-5221BAE3","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"750.00","description":"QA f461c4a8 Either collection Democrat another large issue certain.","incident_date":"2026-11-17","status":"UNDER_REVIEW","created_at":"2026-11-24T12:50:00.846937Z","updated_at":"2026-11-24T12:50:00.875684Z","withdrawn_at":null,"decided_by_id":null}
+12:50:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6071fdb8-2839-47b8-a3b5-a3e70727b0ed/transitions "HTTP/1.1 200 OK"
+12:50:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6071fdb8-2839-47b8-a3b5-a3e70727b0ed/transitions -> 200 (12 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"6071fdb8-2839-47b8-a3b5-a3e70727b0ed","reference":"CLM-5221BAE3","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"750.00","description":"QA f461c4a8 Either collection Democrat another large issue certain.","incident_date":"2026-11-17","status":"APPROVED","created_at":"2026-11-24T12:50:00.846937Z","updated_at":"2026-11-24T12:50:00.886129Z","withdrawn_at":null,"decided_by_id":"2e4d9eb7-1211-42d5-9a5c-796ed951276c"}
+12:50:00 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/6071fdb8-2839-47b8-a3b5-a3e70727b0ed/transitions "HTTP/1.1 200 OK"
+12:50:00 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/6071fdb8-2839-47b8-a3b5-a3e70727b0ed/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"6071fdb8-2839-47b8-a3b5-a3e70727b0ed","reference":"CLM-5221BAE3","policy_id":"83ab8b81-6edb-43f8-99d2-3eacfee43da7","claimant_id":"3ce9bd71-8780-4dbc-be66-3684dce523ce","amount":"750.00","description":"QA f461c4a8 Either collection Democrat another large issue certain.","incident_date":"2026-11-17","status":"PAID","created_at":"2026-11-24T12:50:00.846937Z","updated_at":"2026-11-24T12:50:00.899848Z","withdrawn_at":null,"decided_by_id":"2e4d9eb7-1211-42d5-9a5c-796ed951276c"}
+12:50:00 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_claim_can_travel_the_full_lifecycle
