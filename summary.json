@@ -1,1 +1,1 @@
-{"name":"ClaimDesk QA","stats":{"failed":0,"broken":0,"skipped":0,"passed":351,"unknown":0,"total":351},"status":"passed","duration":11854,"createdAt":1795524606107,"plugin":"Allure2","meta":{"reportId":"b81c2cef-9ded-4566-b853-a2db36e76622","singleFile":false}}
+{"name":"ClaimDesk QA","stats":{"failed":0,"broken":0,"skipped":0,"passed":351,"unknown":0,"total":351},"status":"passed","duration":10994,"createdAt":1795606576736,"plugin":"Allure2","meta":{"reportId":"8a3341f5-2f46-4f7f-a37f-4e6d3761ae37","singleFile":false}}

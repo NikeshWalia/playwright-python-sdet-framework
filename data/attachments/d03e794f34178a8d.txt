@@ -1,0 +1,13 @@
+11:36:07 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_updating_a_draft_changes_only_the_field_sent
+11:36:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (12 ms)
+  response: [{"id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","policy_number":"POL-1001","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"10000.00","is_active":true},{"id":"94f40639-de15-4f88-a04f-cb16911e8622","policy_number":"POL-1002","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"2500.00","is_active":true}]
+11:36:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '7f258d7e-3ea9-4b55-a617-eeb0ae678dbc', 'amount': '410.00', 'description': 'QA 48adf5ec Population debate officer level staff.', 'incident_date': '2026-11-18'}
+  response: {"id":"4d406679-706c-4b2e-bd44-605a4f473d01","reference":"CLM-935FB5B0","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"410.00","description":"QA 48adf5ec Population debate officer level staff.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:07.463797Z","updated_at":"2026-11-25T11:36:07.463797Z","withdrawn_at":null,"decided_by_id":null}
+11:36:07 INFO     httpx HTTP Request: PATCH http://127.0.0.1:8000/api/v1/claims/4d406679-706c-4b2e-bd44-605a4f473d01 "HTTP/1.1 200 OK"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client PATCH http://127.0.0.1:8000/api/v1/claims/4d406679-706c-4b2e-bd44-605a4f473d01 -> 200 (8 ms)
+  request : {'description': 'Updated description for the claim'}
+  response: {"id":"4d406679-706c-4b2e-bd44-605a4f473d01","reference":"CLM-935FB5B0","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"410.00","description":"Updated description for the claim","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:07.463797Z","updated_at":"2026-11-25T11:36:07.473750Z","withdrawn_at":null,"decided_by_id":null}
+11:36:07 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_updating_a_draft_changes_only_the_field_sent

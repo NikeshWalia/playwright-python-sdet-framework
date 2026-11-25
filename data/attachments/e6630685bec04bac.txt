@@ -1,0 +1,12 @@
+11:36:07 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_a_created_claim_can_be_read_back_unchanged
+11:36:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","policy_number":"POL-1001","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"10000.00","is_active":true},{"id":"94f40639-de15-4f88-a04f-cb16911e8622","policy_number":"POL-1002","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"2500.00","is_active":true}]
+11:36:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '7f258d7e-3ea9-4b55-a617-eeb0ae678dbc', 'amount': '99.99', 'description': 'QA 4b9fac53 Respond term than maybe parent challenge protect.', 'incident_date': '2026-11-18'}
+  response: {"id":"da5d972e-c82b-434c-80fe-f20ba545a840","reference":"CLM-17A31779","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"99.99","description":"QA 4b9fac53 Respond term than maybe parent challenge protect.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:07.367663Z","updated_at":"2026-11-25T11:36:07.367663Z","withdrawn_at":null,"decided_by_id":null}
+11:36:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/da5d972e-c82b-434c-80fe-f20ba545a840 "HTTP/1.1 200 OK"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/da5d972e-c82b-434c-80fe-f20ba545a840 -> 200 (4 ms)
+  response: {"id":"da5d972e-c82b-434c-80fe-f20ba545a840","reference":"CLM-17A31779","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"99.99","description":"QA 4b9fac53 Respond term than maybe parent challenge protect.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:07.367663Z","updated_at":"2026-11-25T11:36:07.367663Z","withdrawn_at":null,"decided_by_id":null}
+11:36:07 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_a_created_claim_can_be_read_back_unchanged

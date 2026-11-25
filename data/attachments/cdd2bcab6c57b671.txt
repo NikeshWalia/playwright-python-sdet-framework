@@ -1,0 +1,24 @@
+11:36:14 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-start_review]
+11:36:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:36:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (6 ms)
+  response: [{"id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","policy_number":"POL-1001","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"10000.00","is_active":true},{"id":"94f40639-de15-4f88-a04f-cb16911e8622","policy_number":"POL-1002","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"2500.00","is_active":true}]
+11:36:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:36:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '7f258d7e-3ea9-4b55-a617-eeb0ae678dbc', 'amount': '100.00', 'description': 'QA 7ef14cb8 Major wish hair could movement free thank.', 'incident_date': '2026-11-18'}
+  response: {"id":"1e87f733-289f-4899-8b55-e59241cd78c2","reference":"CLM-C239E049","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"100.00","description":"QA 7ef14cb8 Major wish hair could movement free thank.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:14.261522Z","updated_at":"2026-11-25T11:36:14.261522Z","withdrawn_at":null,"decided_by_id":null}
+11:36:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1e87f733-289f-4899-8b55-e59241cd78c2/transitions "HTTP/1.1 200 OK"
+11:36:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1e87f733-289f-4899-8b55-e59241cd78c2/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"1e87f733-289f-4899-8b55-e59241cd78c2","reference":"CLM-C239E049","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"100.00","description":"QA 7ef14cb8 Major wish hair could movement free thank.","incident_date":"2026-11-18","status":"SUBMITTED","created_at":"2026-11-25T11:36:14.261522Z","updated_at":"2026-11-25T11:36:14.272641Z","withdrawn_at":null,"decided_by_id":null}
+11:36:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1e87f733-289f-4899-8b55-e59241cd78c2/transitions "HTTP/1.1 200 OK"
+11:36:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1e87f733-289f-4899-8b55-e59241cd78c2/transitions -> 200 (10 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"1e87f733-289f-4899-8b55-e59241cd78c2","reference":"CLM-C239E049","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"100.00","description":"QA 7ef14cb8 Major wish hair could movement free thank.","incident_date":"2026-11-18","status":"UNDER_REVIEW","created_at":"2026-11-25T11:36:14.261522Z","updated_at":"2026-11-25T11:36:14.282802Z","withdrawn_at":null,"decided_by_id":null}
+11:36:14 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/1e87f733-289f-4899-8b55-e59241cd78c2/transitions "HTTP/1.1 409 Conflict"
+11:36:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/1e87f733-289f-4899-8b55-e59241cd78c2/transitions -> 409 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"detail":"Cannot start_review a claim in status UNDER_REVIEW; it must be SUBMITTED."}
+11:36:14 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/1e87f733-289f-4899-8b55-e59241cd78c2 "HTTP/1.1 200 OK"
+11:36:14 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/1e87f733-289f-4899-8b55-e59241cd78c2 -> 200 (5 ms)
+  response: {"id":"1e87f733-289f-4899-8b55-e59241cd78c2","reference":"CLM-C239E049","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"100.00","description":"QA 7ef14cb8 Major wish hair could movement free thank.","incident_date":"2026-11-18","status":"UNDER_REVIEW","created_at":"2026-11-25T11:36:14.261522Z","updated_at":"2026-11-25T11:36:14.282802Z","withdrawn_at":null,"decided_by_id":null}
+11:36:14 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[UNDER_REVIEW-cannot-start_review]

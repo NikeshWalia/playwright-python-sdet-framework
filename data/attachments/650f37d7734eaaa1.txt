@@ -1,0 +1,12 @@
+11:36:06 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event
+11:36:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:36:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","policy_number":"POL-1001","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"10000.00","is_active":true},{"id":"94f40639-de15-4f88-a04f-cb16911e8622","policy_number":"POL-1002","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"2500.00","is_active":true}]
+11:36:06 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:36:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (20 ms)
+  request : {'policy_id': '7f258d7e-3ea9-4b55-a617-eeb0ae678dbc', 'amount': '250.00', 'description': 'QA 49b3f32f Environment investment film who.', 'incident_date': '2026-11-18'}
+  response: {"id":"03e69bc4-7a63-44d2-928d-547bce842fdc","reference":"CLM-11FE866C","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"250.00","description":"QA 49b3f32f Environment investment film who.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:06.286100Z","updated_at":"2026-11-25T11:36:06.286100Z","withdrawn_at":null,"decided_by_id":null}
+11:36:06 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/03e69bc4-7a63-44d2-928d-547bce842fdc/events "HTTP/1.1 200 OK"
+11:36:06 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/03e69bc4-7a63-44d2-928d-547bce842fdc/events -> 200 (7 ms)
+  response: [{"id":"b3990f56-f75f-4f2e-838f-ef7ff4e295f2","claim_id":"03e69bc4-7a63-44d2-928d-547bce842fdc","actor_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-11-25T11:36:06.286100Z"}]
+11:36:06 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_creating_a_claim_records_its_first_audit_event

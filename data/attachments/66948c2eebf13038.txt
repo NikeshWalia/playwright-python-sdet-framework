@@ -1,0 +1,24 @@
+11:36:07 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]
+11:36:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","policy_number":"POL-1001","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"10000.00","is_active":true},{"id":"94f40639-de15-4f88-a04f-cb16911e8622","policy_number":"POL-1002","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"2500.00","is_active":true}]
+11:36:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (10 ms)
+  request : {'policy_id': '7f258d7e-3ea9-4b55-a617-eeb0ae678dbc', 'amount': '5000.01', 'description': 'QA 03563bf8 Produce close red party seven.', 'incident_date': '2026-11-18'}
+  response: {"id":"d286fefa-d2f3-47e0-96ae-79995264dc24","reference":"CLM-9D0DC47B","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"5000.01","description":"QA 03563bf8 Produce close red party seven.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:07.130058Z","updated_at":"2026-11-25T11:36:07.130058Z","withdrawn_at":null,"decided_by_id":null}
+11:36:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d286fefa-d2f3-47e0-96ae-79995264dc24/transitions "HTTP/1.1 200 OK"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d286fefa-d2f3-47e0-96ae-79995264dc24/transitions -> 200 (9 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"d286fefa-d2f3-47e0-96ae-79995264dc24","reference":"CLM-9D0DC47B","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"5000.01","description":"QA 03563bf8 Produce close red party seven.","incident_date":"2026-11-18","status":"SUBMITTED","created_at":"2026-11-25T11:36:07.130058Z","updated_at":"2026-11-25T11:36:07.140619Z","withdrawn_at":null,"decided_by_id":null}
+11:36:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d286fefa-d2f3-47e0-96ae-79995264dc24/transitions "HTTP/1.1 200 OK"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d286fefa-d2f3-47e0-96ae-79995264dc24/transitions -> 200 (11 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"d286fefa-d2f3-47e0-96ae-79995264dc24","reference":"CLM-9D0DC47B","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"5000.01","description":"QA 03563bf8 Produce close red party seven.","incident_date":"2026-11-18","status":"UNDER_REVIEW","created_at":"2026-11-25T11:36:07.130058Z","updated_at":"2026-11-25T11:36:07.150461Z","withdrawn_at":null,"decided_by_id":null}
+11:36:07 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/d286fefa-d2f3-47e0-96ae-79995264dc24/transitions "HTTP/1.1 403 Forbidden"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/d286fefa-d2f3-47e0-96ae-79995264dc24/transitions -> 403 (7 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 5000.01 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+11:36:07 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/d286fefa-d2f3-47e0-96ae-79995264dc24 "HTTP/1.1 200 OK"
+11:36:07 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/d286fefa-d2f3-47e0-96ae-79995264dc24 -> 200 (4 ms)
+  response: {"id":"d286fefa-d2f3-47e0-96ae-79995264dc24","reference":"CLM-9D0DC47B","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"5000.01","description":"QA 03563bf8 Produce close red party seven.","incident_date":"2026-11-18","status":"UNDER_REVIEW","created_at":"2026-11-25T11:36:07.130058Z","updated_at":"2026-11-25T11:36:07.150461Z","withdrawn_at":null,"decided_by_id":null}
+11:36:07 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[one-cent-above-limit]

@@ -1,0 +1,19 @@
+11:36:15 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
+11:36:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:36:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","policy_number":"POL-1001","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"10000.00","is_active":true},{"id":"94f40639-de15-4f88-a04f-cb16911e8622","policy_number":"POL-1002","holder_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","coverage_limit":"2500.00","is_active":true}]
+11:36:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:36:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '7f258d7e-3ea9-4b55-a617-eeb0ae678dbc', 'amount': '100.00', 'description': 'QA 1187623a All teacher minute stand stop administration investment.', 'incident_date': '2026-11-18'}
+  response: {"id":"8122fce7-e576-46ad-b2d7-21d815c6b6ef","reference":"CLM-0B971F49","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"100.00","description":"QA 1187623a All teacher minute stand stop administration investment.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:15.241739Z","updated_at":"2026-11-25T11:36:15.241739Z","withdrawn_at":null,"decided_by_id":null}
+11:36:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/8122fce7-e576-46ad-b2d7-21d815c6b6ef "HTTP/1.1 200 OK"
+11:36:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/8122fce7-e576-46ad-b2d7-21d815c6b6ef -> 200 (6 ms)
+  response: {"id":"8122fce7-e576-46ad-b2d7-21d815c6b6ef","reference":"CLM-0B971F49","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"100.00","description":"QA 1187623a All teacher minute stand stop administration investment.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:15.241739Z","updated_at":"2026-11-25T11:36:15.241739Z","withdrawn_at":null,"decided_by_id":null}
+11:36:15 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/8122fce7-e576-46ad-b2d7-21d815c6b6ef/transitions "HTTP/1.1 409 Conflict"
+11:36:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/8122fce7-e576-46ad-b2d7-21d815c6b6ef/transitions -> 409 (6 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"detail":"Cannot pay a claim in status DRAFT; it must be APPROVED."}
+11:36:15 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/8122fce7-e576-46ad-b2d7-21d815c6b6ef "HTTP/1.1 200 OK"
+11:36:15 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/8122fce7-e576-46ad-b2d7-21d815c6b6ef -> 200 (4 ms)
+  response: {"id":"8122fce7-e576-46ad-b2d7-21d815c6b6ef","reference":"CLM-0B971F49","policy_id":"7f258d7e-3ea9-4b55-a617-eeb0ae678dbc","claimant_id":"24227b87-3321-4ef9-ac1a-3b87750bbdce","amount":"100.00","description":"QA 1187623a All teacher minute stand stop administration investment.","incident_date":"2026-11-18","status":"DRAFT","created_at":"2026-11-25T11:36:15.241739Z","updated_at":"2026-11-25T11:36:15.241739Z","withdrawn_at":null,"decided_by_id":null}
+11:36:15 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[DRAFT-cannot-pay]
