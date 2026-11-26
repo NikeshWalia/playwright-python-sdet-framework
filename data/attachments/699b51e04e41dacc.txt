@@ -1,0 +1,17 @@
+11:21:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/health/ready "HTTP/1.1 200 OK"
+11:21:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+11:21:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+11:21:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+11:21:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/auth/login "HTTP/1.1 200 OK"
+11:21:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:21:03 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:21:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '64aec66e-f41d-4285-a653-99868626c824', 'amount': '250.00', 'description': 'QA b819072b Reduce soldier such drug special Democrat my accept.', 'incident_date': '2026-11-19'}
+  response: {"id":"a75237a2-874f-4c4d-85f2-6090fa76c173","reference":"CLM-36AE3A64","policy_id":"64aec66e-f41d-4285-a653-99868626c824","claimant_id":"9852f490-6503-45fb-b5f3-770b38fc1a1f","amount":"250.00","description":"QA b819072b Reduce soldier such drug special Democrat my accept.","incident_date":"2026-11-19","status":"DRAFT","created_at":"2026-11-26T11:21:03.803860Z","updated_at":"2026-11-26T11:21:03.803860Z","withdrawn_at":null,"decided_by_id":null}
+11:21:03 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/a75237a2-874f-4c4d-85f2-6090fa76c173 "HTTP/1.1 204 No Content"
+11:21:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/a75237a2-874f-4c4d-85f2-6090fa76c173 -> 204 (5 ms)
+  response: 
+11:21:03 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/a75237a2-874f-4c4d-85f2-6090fa76c173/events "HTTP/1.1 200 OK"
+11:21:03 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/a75237a2-874f-4c4d-85f2-6090fa76c173/events -> 200 (5 ms)
+  response: [{"id":"63f5aa3b-572a-4adc-9c78-1eba83832cdf","claim_id":"a75237a2-874f-4c4d-85f2-6090fa76c173","actor_id":"9852f490-6503-45fb-b5f3-770b38fc1a1f","from_status":null,"to_status":"DRAFT","note":null,"occurred_at":"2026-11-26T11:21:03.803860Z"},{"id":"81093a9d-5144-4d7b-bdc7-86fa4ec83eb0","claim_id":"a75237a2-874f-4c4d-85f2-6090fa76c173","actor_id":"9852f490-6503-45fb-b5f3-770b38fc1a1f","from_status":"DRAFT","to_status":"WITHDRAWN","note":null,"occurred_at":"2026-11-26T11:21:03.811176Z"}]
+11:21:03 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_withdrawal_is_recorded_in_the_audit_trail
