@@ -1,9 +1,0 @@
-11:21:04 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]
-11:21:04 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
-11:21:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
-  response: [{"id":"64aec66e-f41d-4285-a653-99868626c824","policy_number":"POL-1001","holder_id":"9852f490-6503-45fb-b5f3-770b38fc1a1f","coverage_limit":"10000.00","is_active":true},{"id":"1ccdbf17-ab7b-48b4-be0c-0329a5d569ed","policy_number":"POL-1002","holder_id":"9852f490-6503-45fb-b5f3-770b38fc1a1f","coverage_limit":"2500.00","is_active":true}]
-11:21:04 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
-11:21:04 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
-  request : {'policy_id': '64aec66e-f41d-4285-a653-99868626c824', 'amount': '１２３', 'description': 'QA acbedaf1 Between trouble allow allow behind notice speak.', 'incident_date': '2026-11-19'}
-  response: {"id":"d88779ad-99a9-450b-90ff-3cd2c4acf528","reference":"CLM-A5A588EA","policy_id":"64aec66e-f41d-4285-a653-99868626c824","claimant_id":"9852f490-6503-45fb-b5f3-770b38fc1a1f","amount":"123.00","description":"QA acbedaf1 Between trouble allow allow behind notice speak.","incident_date":"2026-11-19","status":"DRAFT","created_at":"2026-11-26T11:21:04.317322Z","updated_at":"2026-11-26T11:21:04.317322Z","withdrawn_at":null,"decided_by_id":null}
-11:21:04 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[full-width-digits]

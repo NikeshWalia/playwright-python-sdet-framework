@@ -1,0 +1,9 @@
+11:14:22 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]
+11:14:22 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:14:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"1e84527b-6704-4fd5-8327-75d4502f24e9","policy_number":"POL-1001","holder_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","coverage_limit":"10000.00","is_active":true},{"id":"57bfd76e-957c-48b0-8e20-a94c6873acc0","policy_number":"POL-1002","holder_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","coverage_limit":"2500.00","is_active":true}]
+11:14:22 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:14:22 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '1e84527b-6704-4fd5-8327-75d4502f24e9', 'amount': '١٢٣', 'description': 'QA ea54e962 Meet prove guess list race ground.', 'incident_date': '2026-11-20'}
+  response: {"id":"da2c5461-51b6-4eae-b1c9-a6cdc9176fe7","reference":"CLM-DA8BD8A0","policy_id":"1e84527b-6704-4fd5-8327-75d4502f24e9","claimant_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","amount":"123.00","description":"QA ea54e962 Meet prove guess list race ground.","incident_date":"2026-11-20","status":"DRAFT","created_at":"2026-11-27T11:14:22.711673Z","updated_at":"2026-11-27T11:14:22.711673Z","withdrawn_at":null,"decided_by_id":null}
+11:14:22 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_ascii_digits_are_normalised_rather_than_rejected[arabic-indic-digits]

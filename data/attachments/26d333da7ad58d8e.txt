@@ -1,0 +1,28 @@
+11:14:31 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-approve]
+11:14:31 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+11:14:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"1e84527b-6704-4fd5-8327-75d4502f24e9","policy_number":"POL-1001","holder_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","coverage_limit":"10000.00","is_active":true},{"id":"57bfd76e-957c-48b0-8e20-a94c6873acc0","policy_number":"POL-1002","holder_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","coverage_limit":"2500.00","is_active":true}]
+11:14:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+11:14:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (8 ms)
+  request : {'policy_id': '1e84527b-6704-4fd5-8327-75d4502f24e9', 'amount': '100.00', 'description': 'QA 8977f48a Election seem improve no.', 'incident_date': '2026-11-20'}
+  response: {"id":"753d01a7-18f9-49db-998d-7322c6a7f40b","reference":"CLM-84601FD5","policy_id":"1e84527b-6704-4fd5-8327-75d4502f24e9","claimant_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","amount":"100.00","description":"QA 8977f48a Election seem improve no.","incident_date":"2026-11-20","status":"DRAFT","created_at":"2026-11-27T11:14:31.966392Z","updated_at":"2026-11-27T11:14:31.966392Z","withdrawn_at":null,"decided_by_id":null}
+11:14:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b/transitions "HTTP/1.1 200 OK"
+11:14:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"753d01a7-18f9-49db-998d-7322c6a7f40b","reference":"CLM-84601FD5","policy_id":"1e84527b-6704-4fd5-8327-75d4502f24e9","claimant_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","amount":"100.00","description":"QA 8977f48a Election seem improve no.","incident_date":"2026-11-20","status":"SUBMITTED","created_at":"2026-11-27T11:14:31.966392Z","updated_at":"2026-11-27T11:14:31.974672Z","withdrawn_at":null,"decided_by_id":null}
+11:14:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b/transitions "HTTP/1.1 200 OK"
+11:14:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b/transitions -> 200 (7 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"753d01a7-18f9-49db-998d-7322c6a7f40b","reference":"CLM-84601FD5","policy_id":"1e84527b-6704-4fd5-8327-75d4502f24e9","claimant_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","amount":"100.00","description":"QA 8977f48a Election seem improve no.","incident_date":"2026-11-20","status":"UNDER_REVIEW","created_at":"2026-11-27T11:14:31.966392Z","updated_at":"2026-11-27T11:14:31.982860Z","withdrawn_at":null,"decided_by_id":null}
+11:14:31 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b/transitions "HTTP/1.1 200 OK"
+11:14:31 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b/transitions -> 200 (7 ms)
+  request : {'action': 'reject', 'note': None}
+  response: {"id":"753d01a7-18f9-49db-998d-7322c6a7f40b","reference":"CLM-84601FD5","policy_id":"1e84527b-6704-4fd5-8327-75d4502f24e9","claimant_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","amount":"100.00","description":"QA 8977f48a Election seem improve no.","incident_date":"2026-11-20","status":"REJECTED","created_at":"2026-11-27T11:14:31.966392Z","updated_at":"2026-11-27T11:14:31.990201Z","withdrawn_at":null,"decided_by_id":"b6fac25e-910f-4597-9156-6ce51af09e18"}
+11:14:32 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b/transitions "HTTP/1.1 409 Conflict"
+11:14:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b/transitions -> 409 (4 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Cannot approve a claim in status REJECTED; it must be UNDER_REVIEW."}
+11:14:32 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b "HTTP/1.1 200 OK"
+11:14:32 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/753d01a7-18f9-49db-998d-7322c6a7f40b -> 200 (4 ms)
+  response: {"id":"753d01a7-18f9-49db-998d-7322c6a7f40b","reference":"CLM-84601FD5","policy_id":"1e84527b-6704-4fd5-8327-75d4502f24e9","claimant_id":"b7fa6e75-028b-41e1-91c4-5acdfdcca766","amount":"100.00","description":"QA 8977f48a Election seem improve no.","incident_date":"2026-11-20","status":"REJECTED","created_at":"2026-11-27T11:14:31.966392Z","updated_at":"2026-11-27T11:14:31.990201Z","withdrawn_at":null,"decided_by_id":"b6fac25e-910f-4597-9156-6ce51af09e18"}
+11:14:32 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_illegal_transitions_are_refused[REJECTED-cannot-approve]
