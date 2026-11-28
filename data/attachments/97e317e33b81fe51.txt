@@ -1,0 +1,21 @@
+10:45:57 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_the_approving_actor_is_recorded_on_the_claim
+10:45:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","policy_number":"POL-1001","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"10000.00","is_active":true},{"id":"74afb3bb-f095-4541-b7fc-00cbb781c80a","policy_number":"POL-1002","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"2500.00","is_active":true}]
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '300.00', 'description': 'QA e3099ee0 Resource stand crime second detail.', 'incident_date': '2026-11-21'}
+  response: {"id":"a239266c-edd5-407e-a22b-c7999b0aec38","reference":"CLM-BA189FAD","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA e3099ee0 Resource stand crime second detail.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:57.398905Z","updated_at":"2026-11-28T10:45:57.398905Z","withdrawn_at":null,"decided_by_id":null}
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a239266c-edd5-407e-a22b-c7999b0aec38/transitions "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a239266c-edd5-407e-a22b-c7999b0aec38/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"a239266c-edd5-407e-a22b-c7999b0aec38","reference":"CLM-BA189FAD","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA e3099ee0 Resource stand crime second detail.","incident_date":"2026-11-21","status":"SUBMITTED","created_at":"2026-11-28T10:45:57.398905Z","updated_at":"2026-11-28T10:45:57.406308Z","withdrawn_at":null,"decided_by_id":null}
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a239266c-edd5-407e-a22b-c7999b0aec38/transitions "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a239266c-edd5-407e-a22b-c7999b0aec38/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"a239266c-edd5-407e-a22b-c7999b0aec38","reference":"CLM-BA189FAD","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA e3099ee0 Resource stand crime second detail.","incident_date":"2026-11-21","status":"UNDER_REVIEW","created_at":"2026-11-28T10:45:57.398905Z","updated_at":"2026-11-28T10:45:57.413510Z","withdrawn_at":null,"decided_by_id":null}
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/a239266c-edd5-407e-a22b-c7999b0aec38/transitions "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/a239266c-edd5-407e-a22b-c7999b0aec38/transitions -> 200 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"a239266c-edd5-407e-a22b-c7999b0aec38","reference":"CLM-BA189FAD","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA e3099ee0 Resource stand crime second detail.","incident_date":"2026-11-21","status":"APPROVED","created_at":"2026-11-28T10:45:57.398905Z","updated_at":"2026-11-28T10:45:57.420170Z","withdrawn_at":null,"decided_by_id":"3d105678-4769-479d-86b6-3b46e0861b92"}
+10:45:57 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_the_approving_actor_is_recorded_on_the_claim

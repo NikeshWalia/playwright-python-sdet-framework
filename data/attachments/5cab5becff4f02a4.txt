@@ -1,0 +1,5 @@
+10:45:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]
+10:45:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?size=1 "HTTP/1.1 200 OK"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?size=1 -> 200 (5 ms)
+  response: {"items":[{"id":"c0777749-12ff-49d4-b62f-8de86074178f","reference":"CLM-3C3863C9","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"1250.50","description":"QA c44ea041 Kitchen finally rest special huge save call.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:49.811366Z","updated_at":"2026-11-28T10:45:49.811366Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":1,"total":50}
+10:45:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_page_size_boundaries[size-minimum]

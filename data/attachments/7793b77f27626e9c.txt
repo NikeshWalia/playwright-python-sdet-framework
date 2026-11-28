@@ -1,0 +1,24 @@
+10:45:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[far-above-limit]
+10:45:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","policy_number":"POL-1001","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"10000.00","is_active":true},{"id":"74afb3bb-f095-4541-b7fc-00cbb781c80a","policy_number":"POL-1002","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"2500.00","is_active":true}]
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '9999.99', 'description': 'QA b0d8033e Necessary above up.', 'incident_date': '2026-11-21'}
+  response: {"id":"7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e","reference":"CLM-89427C0A","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"9999.99","description":"QA b0d8033e Necessary above up.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:49.660348Z","updated_at":"2026-11-28T10:45:49.660348Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e/transitions "HTTP/1.1 200 OK"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e/transitions -> 200 (8 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e","reference":"CLM-89427C0A","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"9999.99","description":"QA b0d8033e Necessary above up.","incident_date":"2026-11-21","status":"SUBMITTED","created_at":"2026-11-28T10:45:49.660348Z","updated_at":"2026-11-28T10:45:49.670286Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e/transitions "HTTP/1.1 200 OK"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e","reference":"CLM-89427C0A","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"9999.99","description":"QA b0d8033e Necessary above up.","incident_date":"2026-11-21","status":"UNDER_REVIEW","created_at":"2026-11-28T10:45:49.660348Z","updated_at":"2026-11-28T10:45:49.677961Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e/transitions "HTTP/1.1 403 Forbidden"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e/transitions -> 403 (4 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"detail":"Amount 9999.99 exceeds the adjuster approval limit of 5000.00; an administrator must approve it."}
+10:45:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims/7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e "HTTP/1.1 200 OK"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims/7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e -> 200 (4 ms)
+  response: {"id":"7f1e1188-4e64-4492-ba9e-9b7f83e8cc8e","reference":"CLM-89427C0A","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"9999.99","description":"QA b0d8033e Necessary above up.","incident_date":"2026-11-21","status":"UNDER_REVIEW","created_at":"2026-11-28T10:45:49.660348Z","updated_at":"2026-11-28T10:45:49.677961Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_authorization.py::test_an_adjuster_may_not_approve_above_the_limit[far-above-limit]

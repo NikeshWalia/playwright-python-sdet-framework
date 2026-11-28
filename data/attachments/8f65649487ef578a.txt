@@ -1,0 +1,9 @@
+10:45:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[negative]
+10:45:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","policy_number":"POL-1001","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"10000.00","is_active":true},{"id":"74afb3bb-f095-4541-b7fc-00cbb781c80a","policy_number":"POL-1002","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"2500.00","is_active":true}]
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 422 Unprocessable Entity"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 422 (3 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '-500.00', 'description': 'QA 5a0923d9 Issue establish else gas enjoy.', 'incident_date': '2026-11-21'}
+  response: {"detail":[{"type":"greater_than","loc":["body","amount"],"msg":"Input should be greater than 0","input":"-500.00","ctx":{"gt":0}}]}
+10:45:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_validation.py::test_non_positive_amounts_are_rejected[negative]

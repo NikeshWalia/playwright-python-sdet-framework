@@ -1,0 +1,12 @@
+10:45:48 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_searching_by_reference_finds_exactly_that_claim
+10:45:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:45:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (3 ms)
+  response: [{"id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","policy_number":"POL-1001","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"10000.00","is_active":true},{"id":"74afb3bb-f095-4541-b7fc-00cbb781c80a","policy_number":"POL-1002","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"2500.00","is_active":true}]
+10:45:48 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '250.00', 'description': 'QA cc5cbe64 Activity control him home might fund.', 'incident_date': '2026-11-21'}
+  response: {"id":"341226ab-926d-4577-8d09-2f62f1846a52","reference":"CLM-CD7E4970","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"250.00","description":"QA cc5cbe64 Activity control him home might fund.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:48.967207Z","updated_at":"2026-11-28T10:45:48.967207Z","withdrawn_at":null,"decided_by_id":null}
+10:45:48 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/claims?q=CLM-CD7E4970 "HTTP/1.1 200 OK"
+10:45:48 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/claims?q=CLM-CD7E4970 -> 200 (5 ms)
+  response: {"items":[{"id":"341226ab-926d-4577-8d09-2f62f1846a52","reference":"CLM-CD7E4970","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"250.00","description":"QA cc5cbe64 Activity control him home might fund.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:48.967207Z","updated_at":"2026-11-28T10:45:48.967207Z","withdrawn_at":null,"decided_by_id":null}],"page":1,"size":20,"total":1}
+10:45:48 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_searching_by_reference_finds_exactly_that_claim

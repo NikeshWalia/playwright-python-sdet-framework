@@ -1,0 +1,25 @@
+10:45:49 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference
+10:45:49 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (4 ms)
+  response: [{"id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","policy_number":"POL-1001","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"10000.00","is_active":true},{"id":"74afb3bb-f095-4541-b7fc-00cbb781c80a","policy_number":"POL-1002","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"2500.00","is_active":true}]
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '250.00', 'description': 'QA 72dc5ab9 Run back lot age.', 'incident_date': '2026-11-21'}
+  response: {"id":"6e2c652a-5a09-49f8-920c-e338456c8b30","reference":"CLM-69F76C3F","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"250.00","description":"QA 72dc5ab9 Run back lot age.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:49.858620Z","updated_at":"2026-11-28T10:45:49.858620Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '250.00', 'description': 'QA b8e5d327 Despite national room suggest training.', 'incident_date': '2026-11-21'}
+  response: {"id":"d3f3f954-a498-4ff6-9ca8-4d5ee8c2c7cb","reference":"CLM-7E63853E","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"250.00","description":"QA b8e5d327 Despite national room suggest training.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:49.865754Z","updated_at":"2026-11-28T10:45:49.865754Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '250.00', 'description': 'QA 0e2c502a Level wrong region would.', 'incident_date': '2026-11-21'}
+  response: {"id":"de0c6ac6-3de6-408d-aad9-c4642f569b53","reference":"CLM-D902B485","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"250.00","description":"QA 0e2c502a Level wrong region would.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:49.873823Z","updated_at":"2026-11-28T10:45:49.873823Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (7 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '250.00', 'description': 'QA defc8bcc Chair follow go player list meet measure especially.', 'incident_date': '2026-11-21'}
+  response: {"id":"abf0435d-dc99-492f-bb2b-cab729b40a92","reference":"CLM-DEEE0417","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"250.00","description":"QA defc8bcc Chair follow go player list meet measure especially.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:49.881621Z","updated_at":"2026-11-28T10:45:49.881621Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:49 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (6 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '250.00', 'description': 'QA 7872509b Push week represent often walk full test.', 'incident_date': '2026-11-21'}
+  response: {"id":"fb8ce112-be17-4da5-87b0-2365f9dff2a1","reference":"CLM-4371CA86","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"250.00","description":"QA 7872509b Push week represent often walk full test.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:49.888836Z","updated_at":"2026-11-28T10:45:49.888836Z","withdrawn_at":null,"decided_by_id":null}
+10:45:49 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_claims_crud.py::test_each_claim_receives_a_distinct_reference

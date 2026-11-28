@@ -1,0 +1,28 @@
+10:45:57 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn
+10:45:57 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (8 ms)
+  response: [{"id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","policy_number":"POL-1001","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"10000.00","is_active":true},{"id":"74afb3bb-f095-4541-b7fc-00cbb781c80a","policy_number":"POL-1002","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"2500.00","is_active":true}]
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '300.00', 'description': 'QA c84fd76b Wish nothing as memory full.', 'incident_date': '2026-11-21'}
+  response: {"id":"9eb4f792-d95f-476e-89e3-ba5f67523f3d","reference":"CLM-8605A46D","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA c84fd76b Wish nothing as memory full.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:57.147732Z","updated_at":"2026-11-28T10:45:57.147732Z","withdrawn_at":null,"decided_by_id":null}
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d/transitions "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d/transitions -> 200 (12 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"9eb4f792-d95f-476e-89e3-ba5f67523f3d","reference":"CLM-8605A46D","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA c84fd76b Wish nothing as memory full.","incident_date":"2026-11-21","status":"SUBMITTED","created_at":"2026-11-28T10:45:57.147732Z","updated_at":"2026-11-28T10:45:57.157919Z","withdrawn_at":null,"decided_by_id":null}
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d/transitions "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d/transitions -> 200 (8 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"9eb4f792-d95f-476e-89e3-ba5f67523f3d","reference":"CLM-8605A46D","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA c84fd76b Wish nothing as memory full.","incident_date":"2026-11-21","status":"UNDER_REVIEW","created_at":"2026-11-28T10:45:57.147732Z","updated_at":"2026-11-28T10:45:57.170019Z","withdrawn_at":null,"decided_by_id":null}
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d/transitions "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d/transitions -> 200 (13 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"9eb4f792-d95f-476e-89e3-ba5f67523f3d","reference":"CLM-8605A46D","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA c84fd76b Wish nothing as memory full.","incident_date":"2026-11-21","status":"APPROVED","created_at":"2026-11-28T10:45:57.147732Z","updated_at":"2026-11-28T10:45:57.180276Z","withdrawn_at":null,"decided_by_id":"3d105678-4769-479d-86b6-3b46e0861b92"}
+10:45:57 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d/transitions "HTTP/1.1 200 OK"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d/transitions -> 200 (11 ms)
+  request : {'action': 'pay', 'note': None}
+  response: {"id":"9eb4f792-d95f-476e-89e3-ba5f67523f3d","reference":"CLM-8605A46D","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"300.00","description":"QA c84fd76b Wish nothing as memory full.","incident_date":"2026-11-21","status":"PAID","created_at":"2026-11-28T10:45:57.147732Z","updated_at":"2026-11-28T10:45:57.193166Z","withdrawn_at":null,"decided_by_id":"3d105678-4769-479d-86b6-3b46e0861b92"}
+10:45:57 INFO     httpx HTTP Request: DELETE http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d "HTTP/1.1 409 Conflict"
+10:45:57 DEBUG    claimdesk_qa.claimdesk_qa.api.client DELETE http://127.0.0.1:8000/api/v1/claims/9eb4f792-d95f-476e-89e3-ba5f67523f3d -> 409 (4 ms)
+  response: {"detail":"Only a DRAFT claim can be withdrawn; this one is PAID."}
+10:45:57 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_a_paid_claim_cannot_be_withdrawn

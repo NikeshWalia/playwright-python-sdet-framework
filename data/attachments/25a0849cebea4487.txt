@@ -1,0 +1,21 @@
+10:45:55 DEBUG    claimdesk_qa.tests.conftest start tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-approve-APPROVED]
+10:45:55 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:45:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (5 ms)
+  response: [{"id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","policy_number":"POL-1001","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"10000.00","is_active":true},{"id":"74afb3bb-f095-4541-b7fc-00cbb781c80a","policy_number":"POL-1002","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"2500.00","is_active":true}]
+10:45:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (9 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '100.00', 'description': 'QA a746fb2c Medical listen college least here.', 'incident_date': '2026-11-21'}
+  response: {"id":"c63669d6-c044-4112-b72b-bf64bbf34849","reference":"CLM-4F266EB5","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"100.00","description":"QA a746fb2c Medical listen college least here.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:55.112580Z","updated_at":"2026-11-28T10:45:55.112580Z","withdrawn_at":null,"decided_by_id":null}
+10:45:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c63669d6-c044-4112-b72b-bf64bbf34849/transitions "HTTP/1.1 200 OK"
+10:45:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c63669d6-c044-4112-b72b-bf64bbf34849/transitions -> 200 (6 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"c63669d6-c044-4112-b72b-bf64bbf34849","reference":"CLM-4F266EB5","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"100.00","description":"QA a746fb2c Medical listen college least here.","incident_date":"2026-11-21","status":"SUBMITTED","created_at":"2026-11-28T10:45:55.112580Z","updated_at":"2026-11-28T10:45:55.120978Z","withdrawn_at":null,"decided_by_id":null}
+10:45:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c63669d6-c044-4112-b72b-bf64bbf34849/transitions "HTTP/1.1 200 OK"
+10:45:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c63669d6-c044-4112-b72b-bf64bbf34849/transitions -> 200 (6 ms)
+  request : {'action': 'start_review', 'note': None}
+  response: {"id":"c63669d6-c044-4112-b72b-bf64bbf34849","reference":"CLM-4F266EB5","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"100.00","description":"QA a746fb2c Medical listen college least here.","incident_date":"2026-11-21","status":"UNDER_REVIEW","created_at":"2026-11-28T10:45:55.112580Z","updated_at":"2026-11-28T10:45:55.127458Z","withdrawn_at":null,"decided_by_id":null}
+10:45:55 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/c63669d6-c044-4112-b72b-bf64bbf34849/transitions "HTTP/1.1 200 OK"
+10:45:55 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/c63669d6-c044-4112-b72b-bf64bbf34849/transitions -> 200 (6 ms)
+  request : {'action': 'approve', 'note': None}
+  response: {"id":"c63669d6-c044-4112-b72b-bf64bbf34849","reference":"CLM-4F266EB5","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"100.00","description":"QA a746fb2c Medical listen college least here.","incident_date":"2026-11-21","status":"APPROVED","created_at":"2026-11-28T10:45:55.112580Z","updated_at":"2026-11-28T10:45:55.134090Z","withdrawn_at":null,"decided_by_id":"3d105678-4769-479d-86b6-3b46e0861b92"}
+10:45:55 DEBUG    claimdesk_qa.tests.conftest end tests/api/test_state_machine.py::test_every_published_transition_is_accepted[UNDER_REVIEW-approve-APPROVED]

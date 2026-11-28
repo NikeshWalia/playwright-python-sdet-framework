@@ -1,0 +1,14 @@
+10:45:51 DEBUG    claimdesk_qa.tests.conftest start tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
+10:45:51 INFO     httpx HTTP Request: GET http://127.0.0.1:8000/api/v1/policies "HTTP/1.1 200 OK"
+10:45:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client GET http://127.0.0.1:8000/api/v1/policies -> 200 (9 ms)
+  response: [{"id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","policy_number":"POL-1001","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"10000.00","is_active":true},{"id":"74afb3bb-f095-4541-b7fc-00cbb781c80a","policy_number":"POL-1002","holder_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","coverage_limit":"2500.00","is_active":true}]
+10:45:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims "HTTP/1.1 201 Created"
+10:45:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims -> 201 (11 ms)
+  request : {'policy_id': '6d24b691-b9fc-47d7-bf74-3f29765aa20a', 'amount': '820.00', 'description': 'QA 9827827b Begin send street light.', 'incident_date': '2026-11-21'}
+  response: {"id":"18eaf39a-de31-4782-8bca-a88e9b6061ed","reference":"CLM-0EA8E639","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"820.00","description":"QA 9827827b Begin send street light.","incident_date":"2026-11-21","status":"DRAFT","created_at":"2026-11-28T10:45:51.668970Z","updated_at":"2026-11-28T10:45:51.668970Z","withdrawn_at":null,"decided_by_id":null}
+10:45:51 INFO     httpx HTTP Request: POST http://127.0.0.1:8000/api/v1/claims/18eaf39a-de31-4782-8bca-a88e9b6061ed/transitions "HTTP/1.1 200 OK"
+10:45:51 DEBUG    claimdesk_qa.claimdesk_qa.api.client POST http://127.0.0.1:8000/api/v1/claims/18eaf39a-de31-4782-8bca-a88e9b6061ed/transitions -> 200 (7 ms)
+  request : {'action': 'submit', 'note': None}
+  response: {"id":"18eaf39a-de31-4782-8bca-a88e9b6061ed","reference":"CLM-0EA8E639","policy_id":"6d24b691-b9fc-47d7-bf74-3f29765aa20a","claimant_id":"5c30363f-eb15-4550-9f0c-99e4951916dc","amount":"820.00","description":"QA 9827827b Begin send street light.","incident_date":"2026-11-21","status":"SUBMITTED","created_at":"2026-11-28T10:45:51.668970Z","updated_at":"2026-11-28T10:45:51.679545Z","withdrawn_at":null,"decided_by_id":null}
+10:45:51 INFO     claimdesk_qa.claimdesk_qa.ui.base_page Opening http://127.0.0.1:8000/claims/18eaf39a-de31-4782-8bca-a88e9b6061ed
+10:45:51 DEBUG    claimdesk_qa.tests.conftest end tests/ui/test_claim_workflow.py::test_an_adjuster_can_review_and_approve[chromium]
